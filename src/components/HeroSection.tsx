@@ -23,12 +23,12 @@ export const HeroSection: React.FC = () => {
           camera={{ position: [0, 0, 1] }}
           style={{ background: 'transparent' }}
         >
-          <MandelbrotBackground intensity={0.6} />
+          <MandelbrotBackground />
         </Canvas>
       </div>
 
-      {/* Overlay voor betere leesbaarheid */}
-      <div className="absolute inset-0 bg-gradient-to-b from-dark-bg/50 via-dark-bg/30 to-dark-bg/80 z-10" />
+      {/* Overlay voor betere leesbaarheid - Verminderd zodat achtergrond zichtbaar is */}
+      <div className="absolute inset-0 bg-gradient-to-b from-dark-bg/20 via-dark-bg/10 to-dark-bg/40 z-10" />
 
       {/* Content */}
       <div className="relative z-20 container-custom text-center px-4">

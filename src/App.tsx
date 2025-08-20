@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useTranslation } from 'react-i18next';
 import './i18n';
-
-// Components
+import { MandelbrotBackground } from './components/MandelbrotBackground';
+import { MandelbrotControls } from './components/MandelbrotControls';
 import { Navigation } from './components/Navigation';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
-import { PortfolioSection } from './components/PortfolioSection';
 import { SkillsSection } from './components/SkillsSection';
+import { PortfolioSection } from './components/PortfolioSection';
 import { TimelineSection } from './components/TimelineSection';
 import { GoalsSection } from './components/GoalsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { MandelbrotBackground } from './components/MandelbrotBackground';
-import { MandelbrotControls } from './components/MandelbrotControls';
 
 function App() {
   const { i18n } = useTranslation();
@@ -24,12 +22,12 @@ function App() {
     iterations: 200,
     zoom: 0.05,
     rotation: 0.05,
-    colorSpeed: 0.3,
+    colorSpeed: 0.5, // Verhoogd voor snellere kleurverandering
     glowIntensity: 0.15,
-    color1: '#00ff88',
-    color2: '#ff0088',
-    color3: '#0088ff',
-    color4: '#8800ff'
+    color1: '#00ff88', // Neon groen
+    color2: '#ff0088', // Neon roze
+    color3: '#0088ff', // Neon blauw
+    color4: '#8800ff'  // Neon paars
   });
 
   // Taal wijzigen
