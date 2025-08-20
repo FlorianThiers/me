@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Over mij",
+    "portfolio": "Portfolio",
+    "skills": "Vaardigheden",
+    "timeline": "Reis",
+    "goals": "Doelen",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Ik ben Florian",
+    "subtitle": "Full-Stack Developer & Tech Enthousiast",
+    "description": "Gepassioneerd over het creëren van innovatieve oplossingen die technologie combineren met duurzaamheid. Gespecialiseerd in React, TypeScript, Python en AI-gedreven ontwikkeling.",
+    "cta": "Zie meer",
+    "scroll": "Scroll om te ontdekken"
+  },
+  "about": {
+    "title": "Over mij",
+    "description": "Ik ben een gepassioneerde developer met 7+ jaar ervaring, die mijn liefde voor technologie combineert met een sterke focus op duurzaamheid en innovatie. Momenteel werk ik als developer voor LifeGroup & Electrostock, terwijl ik mijn eigen projecten zoals ParkSportss en ImmoGen nastreef.",
+    "experience": "Jaar Ervaring",
+    "projects": "Projecten",
+    "skills": "Kernvaardigheden",
+    "whatDrivesMe": "Wat drijft mij?",
+    "drive1": "Duurzame tech-oplossingen creëren",
+    "drive2": "Innovatieve applicaties bouwen",
+    "drive3": "Nieuwe technologieën leren",
+    "drive4": "Positieve impact maken"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Uitgelichte Projecten",
+    "viewProject": "Bekijk Project",
+    "technologies": "Gebruikte Technologieën"
+  },
+  "skills": {
+    "title": "Vaardigheden & Expertise",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Databases",
+    "tools": "Tools",
+    "frameworks": "Frameworks",
+    "languages": "Programmeertalen",
+    "specializedExpertise": "Gespecialiseerde Expertise",
+    "alwaysLearning": "Altijd Leren",
+    "fastDevelopment": "Snelle Ontwikkeling",
+    "qualityCode": "Kwaliteitscode",
+    "summary": "Voortdurend mijn vaardigheden uitbreiden en op de hoogte blijven van de nieuwste technologieën. Gepassioneerd over het creëren van efficiënte, schaalbare en onderhoudbare oplossingen met focus op duurzaamheid en AI-integratie."
+  },
+  "timeline": {
+    "title": "Mijn Reis",
+    "skillsEvolution": "Vaardigheden Evolutie Door de Tijd",
+    "readyForNextChapter": "Klaar voor het Volgende Hoofdstuk",
+    "nextChapterDescription": "Mijn reis in technologie gaat door met een passie voor innovatie, duurzaamheid en groei. Altijd enthousiast om nieuwe uitdagingen aan te gaan en bij te dragen aan betekenisvolle projecten die het verschil maken.",
+    "letsWorkTogether": "Laten we samenwerken"
+  },
+  "goals": {
+    "title": "Doelen & Visie",
+    "subtitle": "Een duurzame toekomst bouwen door technologie",
+    "shortTerm": "Korte Termijn Doelen (6-12 maanden)",
+    "longTerm": "Lange Termijn Visie (3-10 jaar)",
+    "mission": "Persoonlijke Missie",
+    "vijverstofzuigers": "Vijverstofzuigers Uitbreiden",
+    "vijverstofzuigersDesc": "Mijn vijverstofzuiger robotprojecten verder ontwikkelen en uitbreiden, efficiëntie en duurzaamheid verbeteren.",
+    "robotsBouwen": "Meer Robots Bouwen",
+    "robotsBouwenDesc": "Extra robotische oplossingen creëren voor verschillende toepassingen, focus op automatisering en duurzaamheid.",
+    "soloprojecten": "Soloprojecten Afwerken",
+    "soloprojectenDesc": "Ontwikkeling van Parksports en Immogen projecten afronden, ze naar volledige voltooiing brengen.",
+    "parksportsCommunity": "Parksports Community Bouwen",
+    "parksportsCommunityDesc": "Een community rond het Parksports project creëren en laten groeien, gebruikers en bijdragers betrekken.",
+    "immogenSamenwerkers": "Immogen Samenwerkers Vinden",
+    "immogenSamenwerkersDesc": "Teamleden identificeren en onboarden om te helpen bij de ontwikkeling en schaalvergroting van het Immogen project.",
+    "properheidAarde": "Betekenis voor Properheid Aarde",
+    "properheidAardeDesc": "Een betekenisvolle bijdrage leveren aan het schoonhouden van onze planeet door technologie en innovatie.",
+    "ecologischePlaneet": "Meehelpen aan Ecologische Planeet",
+    "ecologischePlaneetDesc": "Werk maken van een duurzamere en ecologischere toekomst door technologische oplossingen.",
+    "aiDrivenBusiness": "Leider AI-gedreven Tech Business",
+    "aiDrivenBusinessDesc": "Een technologiebedrijf vestigen en leiden dat AI gebruikt om innovatieve oplossingen te creëren.",
+    "recognitionNaam": "Recognition & Naam Achterlaten",
+    "recognitionNaamDesc": "Een erkende naam opbouwen en een blijvende erfenis nalaten in de technologie- en duurzaamheidsruimte.",
+    "duurzaamheid": "Duurzaamheid Eerst",
+    "duurzaamheidDesc": "Milieuverantwoordelijkheid prioriteit geven in alle technologische oplossingen en projecten.",
+    "innovatie": "Innovatie Gedreven",
+    "innovatieDesc": "Altijd de grenzen verleggen van wat mogelijk is met technologie en creatief probleemoplossen.",
+    "kwaliteit": "Kwaliteit boven Kwaliteit",
+    "kwaliteitDesc": "Focus op het creëren van betekenisvolle, goed gemaakte oplossingen die echt het verschil maken.",
+    "visionTitle": "Mijn Visie voor de Toekomst",
+    "visionDescription": "Ik zie een toekomst voor me waar technologie naadloos menselijke creativiteit en productiviteit versterkt terwijl we onze planeet behouden. Door cutting-edge ontwikkelingspraktijken te combineren met een diep begrip van duurzaamheid, streef ik ernaar digitale ervaringen te creëren die niet alleen problemen oplossen maar inspireren en bijdragen aan een betere wereld. Mijn doel is om aan de frontlinie van deze transformatie te staan, bruggen te bouwen tussen complexe technologie, intuïtieve gebruikerservaringen en milieurechtvaardigheid.",
+    "focused": "Gefocust",
+    "ambitious": "Ambitieus",
+    "passionate": "Gepassioneerd"
+  },
+  "contact": {
+    "title": "Neem Contact Op",
+    "subtitle": "Laten we je volgende project bespreken",
+    "description": "Ik ben altijd geïnteresseerd in nieuwe kansen en spannende projecten. Of je nu een vraag hebt of gewoon hallo wilt zeggen, neem gerust contact op!",
+    "name": "Naam",
+    "email": "E-mail",
+    "message": "Bericht",
+    "send": "Bericht Versturen",
+    "location": "Gent, België",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Telefoon",
+    "socialLabel": "Sociale Media"
+  },
+  "footer": {
+    "description": "De toekomst bouwen, regel voor regel code.",
+    "rights": "Alle rechten voorbehouden.",
+    "madeWith": "Gemaakt met ❤️ en ☕"
+  }
+}
