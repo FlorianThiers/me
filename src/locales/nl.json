@@ -47,17 +47,53 @@
     "qualityCode": "Kwaliteitscode",
     "summary": "Voortdurend mijn vaardigheden uitbreiden en op de hoogte blijven van de nieuwste technologieën. Gepassioneerd over het creëren van efficiënte, schaalbare en onderhoudbare oplossingen met focus op duurzaamheid en AI-integratie."
   },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Uitgelichte Projecten",
+    "viewProject": "Bekijk Project",
+    "technologies": "Gebruikte Technologieën"
+  },
   "timeline": {
     "title": "Mijn Reis",
     "skillsEvolution": "Vaardigheden Evolutie Door de Tijd",
     "readyForNextChapter": "Klaar voor het Volgende Hoofdstuk",
     "nextChapterDescription": "Mijn reis in technologie gaat door met een passie voor innovatie, duurzaamheid en groei. Altijd enthousiast om nieuwe uitdagingen aan te gaan en bij te dragen aan betekenisvolle projecten die het verschil maken.",
-    "letsWorkTogether": "Laten we samenwerken"
+    "letsWorkTogether": "Laten we samenwerken",
+    "events": {
+      "event1": {
+        "title": "Bestuurder LifeGroup + ElectroStock",
+        "company": "LifeGroup & ElectroStock",
+        "location": "België",
+        "description": "Eerste jaar werken als bestuurder van LifeGroup en werk voor ElectroStock. Combineren van programmeerervaring met bestuursverantwoordelijkheden.",
+        "achievements": ["Bestuur van lifeGroup", "Werk voor ElectroStock", "Combinatie tech & bestuur"]
+      },
+      "event2": {
+        "title": "Web Development Opleiding",
+        "company": "Web Development Diploma",
+        "location": "België",
+        "description": "4 jaar webdevelopment opleiding afgerond met diploma. Focus op moderne webtechnologieën en praktische projecten.",
+        "achievements": ["Diploma behaald", "Moderne webtechnologieën", "Praktische projecten"]
+      },
+      "event3": {
+        "title": "Plantechnische Wetenschappen",
+        "company": "Plantechnische Wetenschappen Diploma",
+        "location": "België",
+        "description": "2 jaar opleiding in plantentechnische wetenschappen afgerond met diploma. Focus op duurzaamheid en technologie.",
+        "achievements": ["Diploma behaald", "Duurzaamheid", "Technologie"]
+      },
+      "event4": {
+        "title": "Start als Programmeur",
+        "company": "Eerste Programmeerervaring",
+        "location": "België",
+        "description": "Begonnen met programmeren in het middelbaar. Eerste stappen in de wereld van software ontwikkeling.",
+        "achievements": ["Diploma behaald", "Basis vaardigheden", "Passie ontdekt"]
+      }
+    }
   },
   "goals": {
     "title": "Doelen & Visie",
     "subtitle": "Een duurzame toekomst bouwen door technologie",
-    "shortTerm": "Korte Termijn Doelen (6-12 maanden)",
+    "shortTerm": "Korte Termijn Doelen (6-36 maanden)",
     "longTerm": "Lange Termijn Visie (3-10 jaar)",
     "mission": "Persoonlijke Missie",
     "vijverstofzuigers": "Vijverstofzuigers Uitbreiden",
@@ -88,7 +124,13 @@
     "visionDescription": "Ik zie een toekomst voor me waar technologie naadloos menselijke creativiteit en productiviteit versterkt terwijl we onze planeet behouden. Door cutting-edge ontwikkelingspraktijken te combineren met een diep begrip van duurzaamheid, streef ik ernaar digitale ervaringen te creëren die niet alleen problemen oplossen maar inspireren en bijdragen aan een betere wereld. Mijn doel is om aan de frontlinie van deze transformatie te staan, bruggen te bouwen tussen complexe technologie, intuïtieve gebruikerservaringen en milieurechtvaardigheid.",
     "focused": "Gefocust",
     "ambitious": "Ambitieus",
-    "passionate": "Gepassioneerd"
+    "passionate": "Gepassioneerd",
+    "timeline": {
+      "shortTerm": "6-12 maanden",
+      "longTerm": "3-5 jaar",
+      "longTermExtended": "5-7 jaar",
+      "longTermExtended2": "5-10 jaar"
+    }
   },
   "contact": {
     "title": "Neem Contact Op",

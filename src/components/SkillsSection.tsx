@@ -147,7 +147,7 @@ export const SkillsSection: React.FC = () => {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-16">
           {skillCategories.map((category, categoryIndex) => {
             const colorClasses = getColorClasses(category.color);
             return (
@@ -216,7 +216,7 @@ export const SkillsSection: React.FC = () => {
           </h3>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {additionalSkills.map((skill, index) => (
             <motion.div
               key={skill.name}
@@ -250,16 +250,16 @@ export const SkillsSection: React.FC = () => {
           className="mt-16 text-center"
         >
           <div className="bg-gradient-to-r from-neon-green/20 to-neon-blue/20 rounded-2xl p-8 border border-neon-green/30">
-            <div className="flex justify-center space-x-8 mb-6">
-              <div className="flex items-center space-x-2">
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-6">
+              <div className="flex items-center justify-center space-x-2">
                 <TrendingUp className="w-6 h-6 text-neon-green" />
                 <span className="text-white font-medium">{t('skills.alwaysLearning')}</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-center space-x-2">
                 <Zap className="w-6 h-6 text-neon-blue" />
                 <span className="text-white font-medium">{t('skills.fastDevelopment')}</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-center space-x-2">
                 <Shield className="w-6 h-6 text-neon-pink" />
                 <span className="text-white font-medium">{t('skills.qualityCode')}</span>
               </div>

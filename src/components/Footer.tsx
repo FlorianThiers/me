@@ -58,28 +58,28 @@ export const Footer: React.FC = () => {
         <div className="absolute bottom-10 right-20 w-80 h-80 bg-neon-blue rounded-full blur-3xl" />
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10 px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="py-8 sm:py-12 lg:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
             {/* Brand Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="lg:col-span-2"
+              className="sm:col-span-2 lg:col-span-2 pr-0 lg:pr-8"
             >
-              <h3 className="text-2xl font-bold neon-text mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold neon-text mb-3 sm:mb-4 text-center sm:text-left">
                 Portfolio
               </h3>
-              <p className="text-white/70 mb-6 max-w-md">
+              <p className="text-white/70 mb-4 sm:mb-6 max-w-md text-sm sm:text-base text-center sm:text-left mx-auto sm:mx-0">
                 Creative developer passionate about building innovative digital experiences. 
                 Specializing in modern web technologies and interactive design.
               </p>
               
               {/* Social Links */}
-              <div className="flex space-x-4">
+              <div className="flex space-x-3 sm:space-x-4 justify-center sm:justify-start">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.name}
@@ -91,9 +91,9 @@ export const Footer: React.FC = () => {
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.1, y: -3 }}
-                    className={`w-10 h-10 bg-dark-bg border border-white/20 rounded-lg flex items-center justify-center text-white/70 ${social.color} transition-all duration-300 hover:border-neon-green/50`}
+                    className={`w-9 h-9 sm:w-10 sm:h-10 bg-dark-bg border border-white/20 rounded-lg flex items-center justify-center text-white/70 ${social.color} transition-all duration-300 hover:border-neon-green/50`}
                   >
-                    <social.icon size={20} />
+                    <social.icon size={18} className="sm:w-5 sm:h-5" />
                   </motion.a>
                 ))}
               </div>
@@ -105,9 +105,10 @@ export const Footer: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
+              className="px-0 lg:px-4"
             >
-              <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-              <ul className="space-y-2">
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 text-center sm:text-left">Quick Links</h4>
+              <ul className="space-y-1 sm:space-y-2 text-center sm:text-left">
                 {quickLinks.map((link, index) => (
                   <motion.li
                     key={link.name}
@@ -133,9 +134,10 @@ export const Footer: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
+              className="pl-0 lg:pl-4"
             >
-              <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
-              <div className="space-y-2 text-sm">
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 text-center sm:text-left">Contact</h4>
+              <div className="space-y-2 text-xs sm:text-sm text-center sm:text-left">
                 <p className="text-white/70">
                   <span className="text-neon-green">Email:</span><br />
                   florthiers@gmail.com
@@ -159,30 +161,30 @@ export const Footer: React.FC = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="border-t border-white/10 py-6"
+          className="border-t border-white/10 py-4 sm:py-6"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 gap-4">
             {/* Copyright */}
-            <div className="text-white/60 text-sm">
+            <div className="text-white/60 text-xs sm:text-sm text-center sm:text-left">
               © 2024 Portfolio. {t('footer.rights')}
             </div>
 
             {/* Made with Love */}
-            <div className="flex items-center space-x-2 text-white/60 text-sm">
+            <div className="flex items-center space-x-2 text-white/60 text-xs sm:text-sm">
               <span>{t('footer.madeWith')}</span>
-              <Heart className="w-4 h-4 text-neon-pink animate-pulse" />
-              <Coffee className="w-4 h-4 text-neon-yellow" />
+              <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-neon-pink animate-pulse" />
+              <Coffee className="w-3 h-3 sm:w-4 sm:h-4 text-neon-yellow" />
             </div>
 
             {/* Back to Top */}
             <motion.button
               onClick={() => scrollToSection('home')}
-              className="text-white/60 hover:text-neon-green transition-colors duration-200 text-sm flex items-center space-x-2"
+              className="text-white/60 hover:text-neon-green transition-colors duration-200 text-xs sm:text-sm flex items-center space-x-1 sm:space-x-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <span>Back to Top</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
               </svg>
             </motion.button>

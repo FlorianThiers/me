@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '../config/emailjs';
 import { 
   Mail, 
   Phone, 
@@ -23,6 +25,11 @@ export const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  // EmailJS initialisatie
+  useEffect(() => {
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+  }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -34,21 +41,39 @@ export const ContactSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
     
-    // Simuleer form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    if (formData.email.includes('@')) {
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } else {
+    try {
+      // EmailJS configuratie
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: 'Florian Thiers'
+      };
+
+      // Verstuur email via EmailJS
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
       setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      // Reset status na 5 seconden
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     }
-    
-    setIsSubmitting(false);
-    
-    // Reset status na 5 seconden
-    setTimeout(() => setSubmitStatus('idle'), 5000);
   };
 
   const contactInfo = [
@@ -225,7 +250,7 @@ export const ContactSection: React.FC = () => {
                   className="flex items-center space-x-2 text-red-400 bg-red-400/20 p-3 rounded-lg"
                 >
                   <AlertCircle size={20} />
-                  <span>Something went wrong. Please try again.</span>
+                  <span>Failed to send message. Please check your connection and try again.</span>
                 </motion.div>
               )}
             </form>

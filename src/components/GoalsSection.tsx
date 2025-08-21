@@ -21,40 +21,40 @@ export const GoalsSection: React.FC = () => {
 
   const shortTermGoals = [
     {
-      icon: Bot,
-      title: t('goals.vijverstofzuigers'),
-      description: t('goals.vijverstofzuigersDesc'),
-      timeline: '6-12 maanden',
-      color: 'neon-blue'
-    },
-    {
-      icon: Code2,
-      title: t('goals.robotsBouwen'),
-      description: t('goals.robotsBouwenDesc'),
-      timeline: '6-12 maanden',
-      color: 'neon-green'
-    },
-    {
-      icon: Users,
-      title: t('goals.soloprojecten'),
-      description: t('goals.soloprojectenDesc'),
-      timeline: '6-12 maanden',
-      color: 'neon-pink'
-    },
-    {
       icon: Users,
       title: t('goals.parksportsCommunity'),
       description: t('goals.parksportsCommunityDesc'),
-      timeline: '6-12 maanden',
+      timeline: t('goals.timeline.shortTerm'),
       color: 'neon-yellow'
     },
     {
       icon: Users,
       title: t('goals.immogenSamenwerkers'),
       description: t('goals.immogenSamenwerkersDesc'),
-      timeline: '6-12 maanden',
+      timeline: t('goals.timeline.shortTerm'),
       color: 'neon-purple'
-    }
+    },
+    {
+      icon: Bot,
+      title: t('goals.vijverstofzuigers'),
+      description: t('goals.vijverstofzuigersDesc'),
+      timeline: t('goals.timeline.shortTerm'),
+      color: 'neon-blue'
+    },
+    {
+      icon: Users,
+      title: t('goals.soloprojecten'),
+      description: t('goals.soloprojectenDesc'),
+      timeline: t('goals.timeline.shortTerm'),
+      color: 'neon-pink'
+    },
+    {
+      icon: Code2,
+      title: t('goals.robotsBouwen'),
+      description: t('goals.robotsBouwenDesc'),
+      timeline: t('goals.timeline.shortTerm'),
+      color: 'neon-green'
+    },
   ];
 
   const longTermGoals = [
@@ -62,28 +62,28 @@ export const GoalsSection: React.FC = () => {
       icon: Leaf,
       title: t('goals.properheidAarde'),
       description: t('goals.properheidAardeDesc'),
-      timeline: '3-5 jaar',
+      timeline: t('goals.timeline.longTerm'),
       color: 'neon-green'
     },
     {
       icon: Globe,
       title: t('goals.ecologischePlaneet'),
       description: t('goals.ecologischePlaneetDesc'),
-      timeline: '5-7 jaar',
+      timeline: t('goals.timeline.longTermExtended'),
       color: 'neon-blue'
     },
     {
       icon: Lightbulb,
       title: t('goals.aiDrivenBusiness'),
       description: t('goals.aiDrivenBusinessDesc'),
-      timeline: '5-7 jaar',
+      timeline: t('goals.timeline.longTermExtended'),
       color: 'neon-yellow'
     },
     {
       icon: Award,
       title: t('goals.recognitionNaam'),
       description: t('goals.recognitionNaamDesc'),
-      timeline: '5-10 jaar',
+      timeline: t('goals.timeline.longTermExtended2'),
       color: 'neon-pink'
     }
   ];
@@ -143,7 +143,7 @@ export const GoalsSection: React.FC = () => {
             {t('goals.shortTerm')}
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {shortTermGoals.map((goal, index) => (
               <motion.div
                 key={goal.title}
@@ -191,7 +191,7 @@ export const GoalsSection: React.FC = () => {
             {t('goals.longTerm')}
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {longTermGoals.map((goal, index) => (
               <motion.div
                 key={goal.title}
@@ -239,7 +239,7 @@ export const GoalsSection: React.FC = () => {
             {t('goals.mission')}
           </h3>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {personalMission.map((mission, index) => (
               <motion.div
                 key={mission.title}
@@ -281,16 +281,16 @@ export const GoalsSection: React.FC = () => {
               {t('goals.visionDescription')}
             </p>
             
-            <div className="mt-8 flex justify-center space-x-6">
-              <div className="flex items-center space-x-2 text-neon-green">
+            <div className="mt-8 flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-6">
+              <div className="flex items-center justify-center space-x-2 text-neon-green">
                 <Target className="w-5 h-5" />
                 <span className="font-medium">{t('goals.focused')}</span>
               </div>
-              <div className="flex items-center space-x-2 text-neon-blue">
+              <div className="flex items-center justify-center space-x-2 text-neon-blue">
                 <Rocket className="w-5 h-5" />
                 <span className="font-medium">{t('goals.ambitious')}</span>
               </div>
-              <div className="flex items-center space-x-2 text-neon-pink">
+              <div className="flex items-center justify-center space-x-2 text-neon-pink">
                 <Heart className="w-5 h-5" />
                 <span className="font-medium">{t('goals.passionate')}</span>
               </div>

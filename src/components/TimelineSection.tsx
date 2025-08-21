@@ -10,46 +10,46 @@ export const TimelineSection: React.FC = () => {
     {
       id: 1,
       year: '2025-heden',
-      title: 'Bestuurder LifeGroup + ElectroStock',
-      company: 'LifeGroup & ElectroStock',
-      location: 'België',
-      description: 'Eerste jaar werken als bestuurder van LifeGroup en werk voor ElectroStock. Combineren van programmeerervaring met bestuursverantwoordelijkheden.',
+      title: t('timeline.events.event1.title'),
+      company: t('timeline.events.event1.company'),
+      location: t('timeline.events.event1.location'),
+      description: t('timeline.events.event1.description'),
       icon: Users,
       color: 'neon-green',
-      achievements: ['Bestuur van lifeGroup', 'Werk voor ElectroStock', 'Combinatie tech & bestuur']
+      achievements: t('timeline.events.event1.achievements', { returnObjects: true }) as string[]
     },
     {
       id: 2,
       year: '2021-2025',
-      title: 'Web Development Opleiding',
-      company: 'Web Development Diploma',
-      location: 'België',
-      description: '4 jaar webdevelopment opleiding afgerond met diploma. Focus op moderne webtechnologieën en praktische projecten.',
+      title: t('timeline.events.event2.title'),
+      company: t('timeline.events.event2.company'),
+      location: t('timeline.events.event2.location'),
+      description: t('timeline.events.event2.description'),
       icon: GraduationCap,
       color: 'neon-blue',
-      achievements: ['Diploma behaald', 'Moderne webtechnologieën', 'Praktische projecten']
+      achievements: t('timeline.events.event2.achievements', { returnObjects: true }) as string[]
     },
     {
       id: 3,
       year: '2019-2020',
-      title: 'Plantechnische Wetenschappen',
-      company: 'Plantechnische Wetenschappen Diploma',
-      location: 'België',
-      description: '2 jaar opleiding in plantentechnische wetenschappen afgerond met diploma. Focus op duurzaamheid en technologie.',
+      title: t('timeline.events.event3.title'),
+      company: t('timeline.events.event3.company'),
+      location: t('timeline.events.event3.location'),
+      description: t('timeline.events.event3.description'),
       icon: Leaf,
       color: 'neon-yellow',
-      achievements: ['Diploma behaald', 'Duurzaamheid', 'Technologie']
+      achievements: t('timeline.events.event3.achievements', { returnObjects: true }) as string[]
     },
     {
       id: 4,
       year: '2018',
-      title: 'Start als Programmeur',
-      company: 'Eerste Programmeerervaring',
-      location: 'België',
-      description: 'Begonnen met programmeren in het middelbaar. Eerste stappen in de wereld van software ontwikkeling.',
+      title: t('timeline.events.event4.title'),
+      company: t('timeline.events.event4.company'),
+      location: t('timeline.events.event4.location'),
+      description: t('timeline.events.event4.description'),
       icon: Code,
       color: 'neon-pink',
-      achievements: ['Eerste programmeerervaring', 'Basis vaardigheden', 'Passie ontdekt']
+      achievements: t('timeline.events.event4.achievements', { returnObjects: true }) as string[]
     }
   ];
 
@@ -87,7 +87,7 @@ export const TimelineSection: React.FC = () => {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-neon-green via-neon-blue to-neon-pink" />
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-neon-green via-neon-blue to-neon-pink hidden sm:block" />
 
           {/* Timeline Events */}
           <div className="space-y-12">
@@ -98,12 +98,12 @@ export const TimelineSection: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                className={`relative flex flex-col sm:flex-row items-center ${
+                  index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
                 }`}
               >
                 {/* Content */}
-                <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
+                <div className={`w-full sm:w-5/12 ${index % 2 === 0 ? 'sm:pr-8 sm:text-right' : 'sm:pl-8 sm:text-left'}`}>
                   <div className="bg-dark-secondary rounded-xl p-6 border border-white/10 hover:border-neon-green/50 transition-all duration-300 card-hover">
                     {/* Year Badge */}
                     <div className={`inline-block px-3 py-1 bg-${event.color}/20 text-${event.color} text-sm font-bold rounded-full mb-3`}>
@@ -145,7 +145,7 @@ export const TimelineSection: React.FC = () => {
                 </div>
 
                 {/* Timeline Dot */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-dark-bg border-4 border-neon-green rounded-full z-10" />
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-dark-bg border-4 border-neon-green rounded-full z-10 hidden sm:block" />
               </motion.div>
             ))}
           </div>
@@ -163,7 +163,7 @@ export const TimelineSection: React.FC = () => {
             {t('timeline.skillsEvolution')}
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {skillsEvolution.map((skill, index) => (
               <motion.div
                 key={skill.skill}

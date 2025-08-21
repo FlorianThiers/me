@@ -69,36 +69,38 @@ const fragmentShader = `
   }
   
   void main() {
-    vec2 uv = (gl_FragCoord.xy - 0.5 * resolution.xy) / min(resolution.y, resolution.x);
+    vec2 uv = (gl_FragCoord.xy - 0.5 * resolution.xy) / resolution.y;
     
     // Pas zoom level toe
     uv *= zoomLevel;
     
-    // Verschuif naar het gekozen centrum
+    // Verschuif naar het gekozen centrum (Elephant Valley)
     uv += vec2(centerX, centerY);
     
-    // Zoom effect voor meer detail - gebruik zoomSpeed uniform
-    float scale = 1.0 + zoomSpeed * sin(time * 0.3);
-    uv *= scale;
+    // Zoom effect rond de Elephant Valley coördinaten (zeer subtiel om vervorming te voorkomen)
+    vec2 valleyCenter = vec2(centerX, centerY);
+    float distanceFromValley = length(uv - valleyCenter);
+    float zoomEffect = 1.0 + zoomSpeed * sin(time * 0.3) * exp(-distanceFromValley * 0.1);
+    uv = valleyCenter + (uv - valleyCenter) * zoomEffect;
     
-    // Rotatie voor beweging - gebruik rotationSpeed uniform
+    // Rotatie rond de Elephant Valley (niet rond het scherm centrum)
     float angle = time * rotationSpeed;
     mat2 rot = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
-    uv = rot * uv;
+    uv = valleyCenter + rot * (uv - valleyCenter);
     
     // Bereken Mandelbrot kleur
     vec3 color = mandelbrot(uv);
     
     // Voeg glow effect toe - gebruik glowIntensity uniform
-    float glow = glowIntensity / (1.0 + length(uv) * 3.0);
-    color += glow * vec3(0.1, 0.4, 0.6);
+    float glow = glowIntensity / (1.0 + length(uv) * 2.0);
+    color += glow * vec3(0.2, 0.5, 0.7);
     
     // Voeg dynamische kleurvariatie toe
-    color += 0.1 * sin(time * colorSpeed * 2.0) * vec3(0.8, 0.4, 0.6);
+    color += 0.05 * sin(time * colorSpeed * 2.0) * vec3(0.8, 0.4, 0.6);
     
-    // Verbeter contrast en helderheid
-    color = pow(color, vec3(0.8));
-    color *= 1.2;
+    // Verbeter contrast en helderheid voor betere leesbaarheid
+    color = pow(color, vec3(0.7));
+    color *= 0.9;
     
     gl_FragColor = vec4(color, 1.0);
   }
@@ -108,8 +110,8 @@ export const MandelbrotBackground: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const { size } = useThree();
 
-  // Maak plane geometry en material aan met useMemo
-  const geometry = useMemo(() => new THREE.PlaneGeometry(4, 4), []);
+  // Maak plane geometry en material aan met useMemo - groter voor mobiele compatibiliteit
+  const geometry = useMemo(() => new THREE.PlaneGeometry(6, 6), []);
   const material = useMemo(() => {
     const mat = new THREE.ShaderMaterial({
       vertexShader,
@@ -126,9 +128,9 @@ export const MandelbrotBackground: React.FC = () => {
         rotationSpeed: { value: 0.08 },
         colorSpeed: { value: 0.8 },
         glowIntensity: { value: 0.2 },
-        centerX: { value: -0.5 },
-        centerY: { value: 0.0 },
-        zoomLevel: { value: 1.2 },
+        centerX: { value: -1 }, // Elephant Valley X coordinate
+        centerY: { value: 0.1127 },  // Elephant Valley Y coordinate
+        zoomLevel: { value: 1.5 },   // Zoom level for Elephant Valley view
       },
       transparent: true,
       depthTest: false,
@@ -144,10 +146,43 @@ export const MandelbrotBackground: React.FC = () => {
       material.uniforms.resolution.value.set(size.width, size.height);
       
       // Animate parameters directly in the shader uniforms
-      material.uniforms.zoomSpeed.value = 1.05 + 0.05 * Math.sin(state.clock.elapsedTime * 0.1);
-      material.uniforms.rotationSpeed.value = 0.08 + 0.02 * Math.sin(state.clock.elapsedTime * 0.02);
+      material.uniforms.zoomSpeed.value = 2 + 0.5 * Math.sin(state.clock.elapsedTime * 0.1); // Simple zoom animation
+      material.uniforms.rotationSpeed.value = 0.05 + 0.02 * Math.sin(state.clock.elapsedTime * 0.02); // Rotation around valley
       material.uniforms.colorSpeed.value = 0.8 + 0.2 * Math.sin(state.clock.elapsedTime * 0.005);
       material.uniforms.glowIntensity.value = 0.2 + 0.1 * Math.sin(state.clock.elapsedTime * 0.08);
+      
+      // Animate center movement to create "breathing" effect around famous Mandelbrot locations
+      const currentTime = state.clock.elapsedTime;
+      
+      // Famous Mandelbrot locations to cycle through
+      const locations = [
+        { x: -0.7453, y: 0.1127, name: "Elephant Valley" },
+        { x: -0.8, y: 0.156, name: "Seahorse Valley" },
+        { x: -0.16, y: 1.0405, name: "Lightning" },
+        { x: -1.25066, y: 0.02012, name: "Misiurewicz Point" },
+        { x: -0.745428, y: 0.113009, name: "Elephant Valley Deep" },
+        { x: -0.7269, y: 0.1889, name: "Spiral" },
+        { x: 0.28, y: 0.008, name: "Mini Mandelbrot" }
+      ];
+      
+      // Calculate which location we should be at (changes every 10 seconds)
+      const locationIndex = Math.floor(currentTime / 10) % locations.length;
+      const nextLocationIndex = (locationIndex + 1) % locations.length;
+      const transitionProgress = (currentTime % 10) / 10; // 0 to 1 over 10 seconds
+      
+      // Smooth transition between locations using cosine interpolation
+      const smoothTransition = (1 - Math.cos(transitionProgress * Math.PI)) / 2;
+      
+      const currentLocation = locations[locationIndex];
+      const nextLocation = locations[nextLocationIndex];
+      
+      // Interpolate between current and next location
+      const targetX = currentLocation.x + (nextLocation.x - currentLocation.x) * smoothTransition;
+      const targetY = currentLocation.y + (nextLocation.y - currentLocation.y) * smoothTransition;
+      
+      // Add subtle breathing movement on top of the location transitions
+      material.uniforms.centerX.value = targetX + 0.001 * Math.sin(currentTime * 0.02);
+      material.uniforms.centerY.value = targetY + 0.0005 * Math.cos(currentTime * 0.03);
       
       // Randomize colors over time for dynamic color changes
       const time = state.clock.elapsedTime;

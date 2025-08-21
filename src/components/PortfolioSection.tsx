@@ -9,63 +9,63 @@ export const PortfolioSection: React.FC = () => {
   const projects = [
     {
       id: 1,
-      title: 'ParkSports',
-      description: 'Community platform for sports enthusiasts. Built with modern web technologies and focused on user engagement and community building.',
-      image: '🏃‍♂️',
-      technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
+      title: 'Portfolio Website',
+      description: 'Interactive portfolio website with animated Mandelbrot background, built with React, TypeScript, and Three.js. Features dynamic color-changing fractals and smooth animations.',
+      image: '/projects/portfolio.png',
+      technologies: ['React', 'TypeScript', 'Three.js', 'Tailwind CSS'],
       github: 'https://github.com/FlorianThiers',
-      live: '#',
-      category: 'Full-Stack'
+      live: 'https://florian-tau.vercel.app/',
+      category: 'Portfolio'
     },
     {
       id: 2,
-      title: 'ImmoGen',
-      description: 'AI-driven real estate platform combining machine learning with property management. Built with Python and modern web technologies.',
-      image: '🏠',
-      technologies: ['Python', 'FastAPI', 'React', 'Machine Learning'],
+      title: 'ParkSports Community',
+      description: 'Community platform for slackline and parksports enthusiasts. Features spot discovery, events, community interaction, and learning resources. Built with modern web technologies.',
+      image: '/projects/parksports.png',
+      technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
       github: 'https://github.com/FlorianThiers',
-      live: '#',
-      category: 'AI/ML'
+      live: 'https://www.parksports.space/',
+      category: 'Full-Stack'
     },
     {
       id: 3,
       title: 'Vijverstofzuiger Robot',
-      description: 'IoT-powered pool cleaning robot with AI integration. Combines hardware engineering with smart software solutions.',
-      image: '🤖',
+      description: 'IoT-powered pool cleaning robot with AI integration. Combines hardware engineering with smart software solutions for automated pool maintenance.',
+      image: '/projects/vijverstofzuigers.png',
       technologies: ['Python', 'IoT', 'AI', 'Hardware'],
       github: 'https://github.com/FlorianThiers',
-      live: '#',
+      live: 'https://vijverstofzuiger.vercel.app/',
       category: 'IoT/Robotics'
     },
     {
       id: 4,
-      title: 'HighlineHeaven',
-      description: 'Webpage for slackliners built with JavaScript. Focus on performance and user experience for the slacklining community.',
-      image: '🧗‍♂️',
-      technologies: ['JavaScript', 'HTML', 'CSS', 'Performance'],
-      github: 'https://github.com/FlorianThiers/HighlineHeaven',
-      live: '#',
-      category: 'Web Development'
+      title: 'ImmoGen',
+      description: 'AI-driven real estate platform combining machine learning with property management. Advanced property analysis and management system.',
+      image: '/projects/immogen.png',
+      technologies: ['Python', 'FastAPI', 'React', 'Machine Learning'],
+      github: 'https://github.com/FlorianThiers',
+      live: 'https://immo-gen-olive.vercel.app/',
+      category: 'AI/ML'
     },
     {
       id: 5,
       title: 'Jump-Thrs Game',
-      description: 'My first game development project. A fun and engaging game built with JavaScript and modern web technologies.',
-      image: '🎮',
+      description: 'Interactive web-based game with engaging gameplay mechanics. My first game development project showcasing creative programming and user experience design.',
+      image: '/projects/jump.png',
       technologies: ['JavaScript', 'Game Development', 'HTML5', 'CSS3'],
       github: 'https://github.com/FlorianThiers/jump-thrs',
-      live: '#',
+      live: 'https://jump-thrs.vercel.app/',
       category: 'Game Development'
     },
     {
       id: 6,
-      title: 'Portfolio Website',
-      description: 'Interactive portfolio website with Mandelbrot background, built with React, TypeScript, and Three.js.',
-      image: '💻',
-      technologies: ['React', 'TypeScript', 'Three.js', 'Tailwind CSS'],
+      title: '3D Room Experience',
+      description: 'Immersive 3D room experience with interactive storytelling elements. Features atmospheric design, animations, and narrative progression through a mysterious room.',
+      image: '/projects/room.png',
+      technologies: ['Three.js', 'JavaScript', 'WebGL', '3D Modeling'],
       github: 'https://github.com/FlorianThiers',
-      live: '#',
-      category: 'Portfolio'
+      live: 'https://3-d-room-six.vercel.app/',
+      category: 'Web Development'
     }
   ];
 
@@ -107,8 +107,12 @@ export const PortfolioSection: React.FC = () => {
             >
               <div className="bg-dark-secondary rounded-xl overflow-hidden border border-white/10 hover:border-neon-green/50 transition-all duration-300 card-hover">
                 {/* Project Image */}
-                <div className="h-48 bg-gradient-to-br from-neon-green/20 to-neon-blue/20 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-300">
-                  {project.image}
+                <div className="h-48 bg-gradient-to-br from-neon-green/20 to-neon-blue/20 overflow-hidden group-hover:scale-110 transition-transform duration-300">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 {/* Project Content */}

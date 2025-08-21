@@ -41,17 +41,53 @@
     "qualityCode": "Quality Code",
     "summary": "Continuously expanding my skill set and staying up-to-date with the latest technologies. Passionate about creating efficient, scalable, and maintainable solutions with a focus on sustainability and AI integration."
   },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Featured Projects",
+    "viewProject": "View Project",
+    "technologies": "Technologies Used"
+  },
   "timeline": {
     "title": "My Journey",
     "skillsEvolution": "Skills Evolution Over Time",
     "readyForNextChapter": "Ready for the Next Chapter",
     "nextChapterDescription": "My journey in technology continues with a passion for innovation, sustainability, and growth. Always excited to take on new challenges and contribute to meaningful projects that make a difference.",
-    "letsWorkTogether": "Let's Work Together"
+    "letsWorkTogether": "Let's Work Together",
+    "events": {
+      "event1": {
+        "title": "Board Member LifeGroup + ElectroStock",
+        "company": "LifeGroup & ElectroStock",
+        "location": "Belgium",
+        "description": "First year working as board member of LifeGroup and work for ElectroStock. Combining programming experience with board responsibilities.",
+        "achievements": ["Board of lifeGroup", "Work for ElectroStock", "Tech & board combination"]
+      },
+      "event2": {
+        "title": "Web Development Education",
+        "company": "Web Development Diploma",
+        "location": "Belgium",
+        "description": "4 years of web development education completed with diploma. Focus on modern web technologies and practical projects.",
+        "achievements": ["Diploma obtained", "Modern web technologies", "Practical projects"]
+      },
+      "event3": {
+        "title": "Plant Technical Sciences",
+        "company": "Plant Technical Sciences Diploma",
+        "location": "Belgium",
+        "description": "2 years of education in plant technical sciences completed with diploma. Focus on sustainability and technology.",
+        "achievements": ["Diploma obtained", "Sustainability", "Technology"]
+      },
+      "event4": {
+        "title": "Start as Programmer",
+        "company": "First Programming Experience",
+        "location": "Belgium",
+        "description": "Started programming in high school. First steps in the world of software development.",
+        "achievements": ["First programming experience", "Basic skills", "Passion discovered"]
+      }
+    }
   },
   "goals": {
     "title": "Goals & Vision",
     "subtitle": "Building a sustainable future through technology",
-    "shortTerm": "Short Term Goals (6-12 months)",
+    "shortTerm": "Short Term Goals (6-36 months)",
     "longTerm": "Long Term Vision (3-10 years)",
     "mission": "Personal Mission",
     "vijverstofzuigers": "Expand Pool Cleaners",
@@ -82,7 +118,13 @@
     "visionDescription": "I envision a future where technology seamlessly enhances human creativity and productivity while preserving our planet. By combining cutting-edge development practices with a deep understanding of sustainability, I aim to create digital experiences that not only solve problems but inspire and contribute to a better world. My goal is to be at the forefront of this transformation, building bridges between complex technology, intuitive user experiences, and environmental responsibility.",
     "focused": "Focused",
     "ambitious": "Ambitious",
-    "passionate": "Passionate"
+    "passionate": "Passionate",
+    "timeline": {
+      "shortTerm": "6-12 months",
+      "longTerm": "3-5 years",
+      "longTermExtended": "5-7 years",
+      "longTermExtended2": "5-10 years"
+    }
   },
   "contact": {
     "title": "Get In Touch",

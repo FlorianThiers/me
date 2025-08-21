@@ -31,10 +31,10 @@ function App() {
   return (
     <div className="App relative">
       {/* Mandelbrot Achtergrond - Volledig scherm */}
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 -z-10 w-full h-full">
         <Canvas
           camera={{ position: [0, 0, 1], fov: 75 }}
-          style={{ background: 'transparent' }}
+          style={{ background: 'transparent', width: '100%', height: '100%' }}
         >
           <MandelbrotBackground />
         </Canvas>
