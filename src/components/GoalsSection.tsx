@@ -38,21 +38,21 @@ export const GoalsSection: React.FC = () => {
       icon: Bot,
       title: t('goals.vijverstofzuigers'),
       description: t('goals.vijverstofzuigersDesc'),
-      timeline: t('goals.timeline.shortTerm'),
+      timeline: t('goals.timeline.shortTermExtended'),
       color: 'neon-blue'
     },
     {
       icon: Users,
       title: t('goals.soloprojecten'),
       description: t('goals.soloprojectenDesc'),
-      timeline: t('goals.timeline.shortTerm'),
+      timeline: t('goals.timeline.shortTermExtended'),
       color: 'neon-pink'
     },
     {
       icon: Code2,
       title: t('goals.robotsBouwen'),
       description: t('goals.robotsBouwenDesc'),
-      timeline: t('goals.timeline.shortTerm'),
+      timeline: t('goals.timeline.shortTermExtended2'),
       color: 'neon-green'
     },
   ];

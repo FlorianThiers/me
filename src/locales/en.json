@@ -121,9 +121,11 @@
     "passionate": "Passionate",
     "timeline": {
       "shortTerm": "6-12 months",
+      "shortTermExtended": "1-2 year",
+      "shortTermExtended2": "2-3 years",
       "longTerm": "3-5 years",
       "longTermExtended": "5-7 years",
-      "longTermExtended2": "5-10 years"
+      "longTermExtended2": "7-10 years"
     }
   },
   "contact": {
