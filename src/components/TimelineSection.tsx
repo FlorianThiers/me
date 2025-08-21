@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Briefcase, GraduationCap, Award, Rocket, Code, Globe, Users, Building, Leaf } from 'lucide-react';
+import { MapPin, GraduationCap, Code, Users, Leaf } from 'lucide-react';
 
 export const TimelineSection: React.FC = () => {
   const { t } = useTranslation();

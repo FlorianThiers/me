@@ -1,18 +1,14 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { 
-  Code2, 
-  Globe, 
-  Database, 
-  Wrench, 
-  TrendingUp,
+import {
+  Code,
+  Database,
+  Globe,
+  Wrench,
   Zap,
-  Shield,
-  Smartphone,
-  Brain,
-  TestTube,
-  Gauge
+  TrendingUp,
+  Shield
 } from 'lucide-react';
 
 export const SkillsSection: React.FC = () => {
@@ -22,7 +18,7 @@ export const SkillsSection: React.FC = () => {
     {
       id: 'languages',
       title: t('skills.languages'),
-      icon: Code2,
+      icon: Code,
       color: 'neon-orange',
       skills: [
         { name: 'JavaScript', level: 88, icon: '🟨' },
@@ -52,7 +48,7 @@ export const SkillsSection: React.FC = () => {
     {
       id: 'backend',
       title: t('skills.backend'),
-      icon: Code2,
+      icon: Code,
       color: 'neon-green',
       skills: [
         { name: 'Python', level: 85, icon: '🐍' },

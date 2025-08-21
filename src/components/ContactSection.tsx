@@ -9,7 +9,6 @@ import {
   Github, 
   Linkedin, 
   Twitter,
-  MessageCircle,
   CheckCircle,
   AlertCircle
 } from 'lucide-react';

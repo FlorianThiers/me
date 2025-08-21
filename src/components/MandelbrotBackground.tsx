@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -25,6 +25,9 @@ const fragmentShader = `
   uniform float rotationSpeed;
   uniform float colorSpeed;
   uniform float glowIntensity;
+  uniform float centerX;
+  uniform float centerY;
+  uniform float zoomLevel;
   
   varying vec2 vUv;
   
@@ -68,6 +71,12 @@ const fragmentShader = `
   void main() {
     vec2 uv = (gl_FragCoord.xy - 0.5 * resolution.xy) / min(resolution.y, resolution.x);
     
+    // Pas zoom level toe
+    uv *= zoomLevel;
+    
+    // Verschuif naar het gekozen centrum
+    uv += vec2(centerX, centerY);
+    
     // Zoom effect voor meer detail - gebruik zoomSpeed uniform
     float scale = 1.0 + zoomSpeed * sin(time * 0.3);
     uv *= scale;
@@ -95,30 +104,12 @@ const fragmentShader = `
   }
 `;
 
-interface MandelbrotBackgroundProps {
-  intensity?: number;
-  params?: {
-    iterations: number;
-    zoom: number;
-    rotation: number;
-    colorSpeed: number;
-    glowIntensity: number;
-    color1: string;
-    color2: string;
-    color3: string;
-    color4: string;
-  };
-}
-
-export const MandelbrotBackground: React.FC<MandelbrotBackgroundProps> = ({ 
-  intensity = 1.0,
-  params
-}) => {
+export const MandelbrotBackground: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const { size } = useThree();
 
   // Maak plane geometry en material aan met useMemo
-  const geometry = useMemo(() => new THREE.PlaneGeometry(4, 4), []); // Groter voor volledig scherm
+  const geometry = useMemo(() => new THREE.PlaneGeometry(4, 4), []);
   const material = useMemo(() => {
     const mat = new THREE.ShaderMaterial({
       vertexShader,
@@ -126,74 +117,56 @@ export const MandelbrotBackground: React.FC<MandelbrotBackgroundProps> = ({
       uniforms: {
         time: { value: 0.0 },
         resolution: { value: new THREE.Vector2() },
-        color1: { value: new THREE.Color(0x00ff88) }, // Neon groen
+        color1: { value: new THREE.Color(0x000ff0) }, // Neon groen
         color2: { value: new THREE.Color(0xff0088) }, // Neon roze
         color3: { value: new THREE.Color(0x0088ff) }, // Neon blauw
         color4: { value: new THREE.Color(0x8800ff) }, // Neon paars
-        iterations: { value: 200 },
-        zoomSpeed: { value: 0.05 },
-        rotationSpeed: { value: 0.05 },
-        colorSpeed: { value: 0.3 },
-        glowIntensity: { value: 0.15 },
+        iterations: { value: 150 },
+        zoomSpeed: { value: 1 },
+        rotationSpeed: { value: 0.08 },
+        colorSpeed: { value: 0.8 },
+        glowIntensity: { value: 0.2 },
+        centerX: { value: -0.5 },
+        centerY: { value: 0.0 },
+        zoomLevel: { value: 1.2 },
       },
       transparent: true,
       depthTest: false,
       depthWrite: false,
     });
     
-    // Zorg ervoor dat uniforms kunnen worden bijgewerkt
-    mat.uniformsNeedUpdate = true;
-    
-    // Log de initial uniforms
-    console.log('Material created with uniforms:', mat.uniforms);
-    
     return mat;
   }, []);
-
-  // Update material uniforms wanneer params veranderen
-  useEffect(() => {
-    if (material && params) {
-      console.log('Updating Mandelbrot params:', params); // Debug log
-      console.log('Current material uniforms before update:', material.uniforms); // Debug log
-      
-      // Update alle uniforms
-      material.uniforms.iterations.value = params.iterations;
-      material.uniforms.zoomSpeed.value = params.zoom;
-      material.uniforms.rotationSpeed.value = params.rotation;
-      material.uniforms.colorSpeed.value = params.colorSpeed;
-      material.uniforms.glowIntensity.value = params.glowIntensity;
-      
-      // Update kleuren van control panel - zorg ervoor dat ze correct worden geparsed
-      try {
-        material.uniforms.color1.value.set(params.color1);
-        material.uniforms.color2.value.set(params.color2);
-        material.uniforms.color3.value.set(params.color3);
-        material.uniforms.color4.value.set(params.color4);
-        
-        console.log('Colors updated successfully:', {
-          color1: params.color1,
-          color2: params.color2,
-          color3: params.color3,
-          color4: params.color4
-        });
-      } catch (error) {
-        console.error('Error setting colors:', error);
-      }
-      
-      // Force material update
-      material.needsUpdate = true;
-      
-      // Force uniform update
-      material.uniformsNeedUpdate = true;
-      
-      console.log('Material updated, uniforms after update:', material.uniforms);
-    }
-  }, [material, params]);
 
   useFrame((state) => {
     if (material) {
       material.uniforms.time.value = state.clock.elapsedTime;
       material.uniforms.resolution.value.set(size.width, size.height);
+      
+      // Animate parameters directly in the shader uniforms
+      material.uniforms.zoomSpeed.value = 1.05 + 0.05 * Math.sin(state.clock.elapsedTime * 0.1);
+      material.uniforms.rotationSpeed.value = 0.08 + 0.02 * Math.sin(state.clock.elapsedTime * 0.02);
+      material.uniforms.colorSpeed.value = 0.8 + 0.2 * Math.sin(state.clock.elapsedTime * 0.005);
+      material.uniforms.glowIntensity.value = 0.2 + 0.1 * Math.sin(state.clock.elapsedTime * 0.08);
+      
+      // Randomize colors over time for dynamic color changes
+      const time = state.clock.elapsedTime;
+      
+      // Color 1 - cycles through different neon colors
+      const hue1 = (time * 0.1) % 1.0;
+      material.uniforms.color1.value.setHSL(hue1, 1.0, 0.5);
+      
+      // Color 2 - different cycle speed
+      const hue2 = (time * 0.15 + 0.33) % 1.0;
+      material.uniforms.color2.value.setHSL(hue2, 1.0, 0.5);
+      
+      // Color 3 - another cycle speed
+      const hue3 = (time * 0.12 + 0.66) % 1.0;
+      material.uniforms.color3.value.setHSL(hue3, 1.0, 0.5);
+      
+      // Color 4 - different cycle speed
+      const hue4 = (time * 0.18 + 0.5) % 1.0;
+      material.uniforms.color4.value.setHSL(hue4, 1.0, 0.5);
     }
   });
 

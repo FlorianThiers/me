@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Globe } from 'lucide-react';
+import { Github, Globe } from 'lucide-react';
 
 export const PortfolioSection: React.FC = () => {
   const { t } = useTranslation();
@@ -68,8 +68,6 @@ export const PortfolioSection: React.FC = () => {
       category: 'Portfolio'
     }
   ];
-
-  const categories = ['All', 'Full-Stack', 'AI/ML', 'IoT/Robotics', 'Web Development', 'Game Development', 'Portfolio'];
 
   return (
     <section id="portfolio" className="section-padding bg-dark-bg relative overflow-hidden">
