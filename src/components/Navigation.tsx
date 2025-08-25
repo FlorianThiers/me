@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Globe, Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 interface NavigationProps {
   onLanguageChange: (lang: string) => void;
@@ -15,6 +16,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   // Scroll effect voor navigatie
   useEffect(() => {
@@ -26,15 +28,6 @@ export const Navigation: React.FC<NavigationProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Smooth scroll naar sectie
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
-    }
-  };
-
   // Taal wijzigen
   const handleLanguageChange = (lang: string) => {
     onLanguageChange(lang);
@@ -42,13 +35,11 @@ export const Navigation: React.FC<NavigationProps> = ({
   };
 
   const navItems = [
-    { id: 'home', label: t('nav.home') },
-    { id: 'about', label: t('nav.about') },
-    { id: 'portfolio', label: t('nav.portfolio') },
-    { id: 'skills', label: t('nav.skills') },
-    { id: 'timeline', label: t('nav.timeline') },
-    { id: 'goals', label: t('nav.goals') },
-    { id: 'contact', label: t('nav.contact') },
+    { path: '/portfolio', label: t('nav.portfolio') },
+    { path: '/skills', label: t('nav.skills') },
+    { path: '/journey', label: t('nav.journey') },
+    { path: '/goals', label: t('nav.goals') },
+    { path: '/interests', label: t('nav.interests') },
   ];
 
   return (
@@ -68,22 +59,28 @@ export const Navigation: React.FC<NavigationProps> = ({
           <motion.div
             className="text-2xl font-bold neon-text cursor-pointer"
             whileHover={{ scale: 1.05 }}
-            onClick={() => scrollToSection('home')}
           >
-            Florian Thiers
+            <Link to="/" className="text-inherit no-underline">
+              Florian Thiers
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                className="text-white/80 hover:text-neon-green transition-colors duration-200 font-medium"
+              <motion.div
+                key={item.path}
                 whileHover={{ scale: 1.05 }}
-                onClick={() => scrollToSection(item.id)}
               >
-                {item.label}
-              </motion.button>
+                <Link
+                  to={item.path}
+                  className={`text-white/80 hover:text-neon-green transition-colors duration-200 font-medium ${
+                    location.pathname === item.path ? 'text-neon-green' : ''
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </motion.div>
             ))}
           </div>
 
@@ -140,13 +137,16 @@ export const Navigation: React.FC<NavigationProps> = ({
         >
           <div className="py-4 space-y-2">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                className="block w-full text-left px-4 py-2 text-white/80 hover:text-neon-green hover:bg-white/5 rounded-lg transition-all duration-200"
-                onClick={() => scrollToSection(item.id)}
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`block w-full text-left px-4 py-2 text-white/80 hover:text-neon-green hover:bg-white/5 rounded-lg transition-all duration-200 ${
+                  location.pathname === item.path ? 'text-neon-green bg-white/10' : ''
+                }`}
+                onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </div>
         </motion.div>

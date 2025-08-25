@@ -1,12 +1,10 @@
 {
   "nav": {
-    "home": "Home",
-    "about": "About",
     "portfolio": "Portfolio",
     "skills": "Skills",
-    "timeline": "Journey",
+    "journey": "Journey",
     "goals": "Goals",
-    "contact": "Contact"
+    "interests": "Interests"
   },
   "hero": {
     "title": "Hi, I'm Flor",

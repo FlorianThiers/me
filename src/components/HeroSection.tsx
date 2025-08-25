@@ -16,9 +16,17 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section 
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      aria-label="Hero Section - Welcome to Florian's Portfolio"
+    >
       {/* Mandelbrot Achtergrond */}
-      <div className="absolute inset-0 z-0">
+      <div 
+        className="absolute inset-0 z-0"
+        aria-hidden="true"
+        role="presentation"
+      >
         <Canvas
           camera={{ position: [0, 0, 1] }}
           style={{ background: 'transparent' }}
@@ -28,7 +36,11 @@ export const HeroSection: React.FC = () => {
       </div>
 
       {/* Overlay voor betere leesbaarheid - Verminderd zodat achtergrond zichtbaar is */}
-      <div className="absolute inset-0 bg-gradient-to-b from-dark-bg/20 via-dark-bg/10 to-dark-bg/40 z-10" />
+      <div 
+        className="absolute inset-0 bg-gradient-to-b from-dark-bg/20 via-dark-bg/10 to-dark-bg/40 z-10"
+        aria-hidden="true"
+        role="presentation"
+      />
 
       {/* Content */}
       <div className="relative z-20 container-custom text-center px-4">
@@ -77,16 +89,15 @@ export const HeroSection: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToNext}
+            aria-label={`${t('hero.cta')} - Navigate to About section`}
           >
             {t('hero.cta')}
           </motion.button>
 
           {/* Sociale Media Links */}
-          <motion.div
+          <nav
             className="flex justify-center space-x-6 mt-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            aria-label="Social Media Links"
           >
             <motion.a
               href="https://github.com/FlorianThiers"
@@ -94,8 +105,10 @@ export const HeroSection: React.FC = () => {
               rel="noopener noreferrer"
               className="text-white/70 hover:text-neon-green transition-colors duration-200"
               whileHover={{ scale: 1.2, y: -5 }}
+              aria-label="Visit Florian's GitHub profile"
+              title="GitHub Profile"
             >
-              <Github size={28} />
+              <Github size={28} aria-hidden="true" />
             </motion.a>
             <motion.a
               href="https://www.linkedin.com/in/florian-thiers-2908ba305/"
@@ -103,17 +116,21 @@ export const HeroSection: React.FC = () => {
               rel="noopener noreferrer"
               className="text-white/70 hover:text-neon-blue transition-colors duration-200"
               whileHover={{ scale: 1.2, y: -5 }}
+              aria-label="Visit Florian's LinkedIn profile"
+              title="LinkedIn Profile"
             >
-              <Linkedin size={28} />
+              <Linkedin size={28} aria-hidden="true" />
             </motion.a>
             <motion.a
               href="mailto:florthiers@gmail.com"
               className="text-white/70 hover:text-neon-pink transition-colors duration-200"
               whileHover={{ scale: 1.2, y: -5 }}
+              aria-label="Send email to Florian"
+              title="Email Florian"
             >
-              <Mail size={28} />
+              <Mail size={28} aria-hidden="true" />
             </motion.a>
-          </motion.div>
+          </nav>
         </motion.div>
 
         {/* Scroll Indicator */}
@@ -128,16 +145,30 @@ export const HeroSection: React.FC = () => {
             className="text-white/60 hover:text-neon-green transition-colors duration-200"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
+            aria-label="Scroll to next section"
+            title="Scroll down"
           >
-            <ChevronDown size={32} />
+            <ChevronDown size={32} aria-hidden="true" />
           </motion.button>
         </motion.div>
       </div>
 
       {/* Decoratieve elementen */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-neon-green/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-neon-blue/10 rounded-full blur-3xl animate-pulse delay-1000" />
-      <div className="absolute top-1/2 left-20 w-24 h-24 bg-neon-pink/10 rounded-full blur-3xl animate-pulse delay-500" />
+      <div 
+        className="absolute top-20 left-10 w-32 h-32 bg-neon-green/10 rounded-full blur-3xl animate-pulse"
+        aria-hidden="true"
+        role="presentation"
+      />
+      <div 
+        className="absolute bottom-20 right-10 w-40 h-40 bg-neon-blue/10 rounded-full blur-3xl animate-pulse delay-1000"
+        aria-hidden="true"
+        role="presentation"
+      />
+      <div 
+        className="absolute top-1/2 left-20 w-24 h-24 bg-neon-pink/10 rounded-full blur-3xl animate-pulse delay-500"
+        aria-hidden="true"
+        role="presentation"
+      />
     </section>
   );
 };

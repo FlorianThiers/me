@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Github, Linkedin, Twitter, Mail, Heart, Coffee } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -34,21 +35,13 @@ export const Footer: React.FC = () => {
   ];
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Timeline', href: '#timeline' },
-    { name: 'Goals', href: '#goals' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: '/' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Skills', href: '/skills' },
+    { name: 'Journey', href: '/journey' },
+    { name: 'Goals', href: '/goals' },
+    { name: 'Interests', href: '/interests' }
   ];
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <footer className="bg-dark-secondary border-t border-white/10 relative overflow-hidden">
@@ -117,12 +110,12 @@ export const Footer: React.FC = () => {
                     transition={{ duration: 0.3, delay: 0.2 + index * 0.05 }}
                     viewport={{ once: true }}
                   >
-                    <button
-                      onClick={() => scrollToSection(link.href.substring(1))}
-                      className="text-white/70 hover:text-neon-green transition-colors duration-200 text-sm"
+                    <Link
+                      to={link.href}
+                      className="text-white/70 hover:text-neon-green transition-colors duration-200 text-sm block"
                     >
                       {link.name}
-                    </button>
+                    </Link>
                   </motion.li>
                 ))}
               </ul>
@@ -166,7 +159,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 gap-4">
             {/* Copyright */}
             <div className="text-white/60 text-xs sm:text-sm text-center sm:text-left">
-              © 2024 Portfolio. {t('footer.rights')}
+              © 2025 Florian Thiers. {t('footer.rights')}
             </div>
 
             {/* Made with Love */}
@@ -177,17 +170,20 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Back to Top */}
-            <motion.button
-              onClick={() => scrollToSection('home')}
-              className="text-white/60 hover:text-neon-green transition-colors duration-200 text-xs sm:text-sm flex items-center space-x-1 sm:space-x-2"
+            <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span>Back to Top</span>
-              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-              </svg>
-            </motion.button>
+              <Link
+                to="/"
+                className="text-white/60 hover:text-neon-green transition-colors duration-200 text-xs sm:text-sm flex items-center space-x-1 sm:space-x-2"
+              >
+                <span>Back to Top</span>
+                <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
       </div>

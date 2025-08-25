@@ -1,21 +1,41 @@
 import { useState, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './i18n';
 import { MandelbrotBackground } from './components/MandelbrotBackground';
 import { Navigation } from './components/Navigation';
-import { HeroSection } from './components/HeroSection';
-import { AboutSection } from './components/AboutSection';
-import { SkillsSection } from './components/SkillsSection';
-import { PortfolioSection } from './components/PortfolioSection';
-import { TimelineSection } from './components/TimelineSection';
-import { GoalsSection } from './components/GoalsSection';
-import { ContactSection } from './components/ContactSection';
+import { HomePage } from './pages/HomePage';
+import { PortfolioPage } from './pages/PortfolioPage';
+import { SkillsPage } from './pages/SkillsPage';
+import { JourneyPage } from './pages/JourneyPage';
+import { GoalsPage } from './pages/GoalsPage';
+import { InterestsPage } from './pages/InterestsPage';
+import { MindComputerPage } from './pages/MindComputerPage';
+import { CarlJungPage } from './pages/philosophers/CarlJungPage';
+import { WilliamJamesPage } from './pages/philosophers/WilliamJamesPage';
+import { SigmundFreudPage } from './pages/philosophers/SigmundFreudPage';
+import { AlanTuringPage } from './pages/philosophers/AlanTuringPage';
+import { ItzhakBentovPage } from './pages/philosophers/ItzhakBentovPage';
+import { SubstancesPage } from './pages/topics/SubstancesPage';
+import { MeditationPage } from './pages/topics/MeditationPage';
+import { QuantumPage } from './pages/topics/QuantumPage';
+import { AIConsciousnessPage } from './pages/topics/AIConsciousnessPage';
+import { NeuralNetworksPage } from './pages/topics/NeuralNetworksPage';
+import { ConsciousnessExpansionPage } from './pages/topics/ConsciousnessExpansionPage';
+import { MusicPage } from './pages/MusicPage';
+import { SportsPage } from './pages/SportsPage';
+import { DapoFlowStarPage } from './pages/sports/DapoFlowStarPage';
+import { DancingPage } from './pages/sports/DancingPage';
 import { Footer } from './components/Footer';
+import { Canvas } from '@react-three/fiber';
+import { ScrollToTop } from './components/ScrollToTop';
+import { ScrollToTopButton } from './components/ScrollToTopButton';
 
 function App() {
   const { i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState('en');
+
+
 
   // Taal wijzigen
   const handleLanguageChange = (lang: string) => {
@@ -28,38 +48,63 @@ function App() {
     setCurrentLanguage(i18n.language);
   }, [i18n.language]);
 
+
+
   return (
-    <div className="App relative">
-      {/* Mandelbrot Achtergrond - Volledig scherm */}
-      <div className="fixed inset-0 -z-10 w-full h-full">
-        <Canvas
-          camera={{ position: [0, 0, 1], fov: 75 }}
-          style={{ background: 'transparent', width: '100%', height: '100%' }}
-        >
-          <MandelbrotBackground />
-        </Canvas>
+    <Router>
+      <ScrollToTop />
+      <div className="App relative">
+        {/* Mandelbrot Achtergrond - Volledig scherm */}
+        <div className="fixed inset-0 -z-10 w-full h-full">
+          <Canvas
+            camera={{ position: [0, 0, 1], fov: 75 }}
+            style={{ background: 'transparent', width: '100%', height: '100%' }}
+          >
+            <MandelbrotBackground />
+          </Canvas>
+        </div>
+
+        {/* Navigation */}
+        <Navigation 
+          onLanguageChange={handleLanguageChange}
+          currentLanguage={currentLanguage}
+        />
+
+        {/* Main Content */}
+        <main className="relative z-10">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/skills" element={<SkillsPage />} />
+            <Route path="/journey" element={<JourneyPage />} />
+            <Route path="/goals" element={<GoalsPage />} />
+            <Route path="/interests" element={<InterestsPage />} />
+            <Route path="/mind-computer" element={<MindComputerPage />} />
+            <Route path="/philosopher/carl-jung" element={<CarlJungPage />} />
+            <Route path="/philosopher/william-james" element={<WilliamJamesPage />} />
+            <Route path="/philosopher/sigmund-freud" element={<SigmundFreudPage />} />
+            <Route path="/philosopher/alan-turing" element={<AlanTuringPage />} />
+            <Route path="/philosopher/itzhak-bentov" element={<ItzhakBentovPage />} />
+            <Route path="/topics/substances" element={<SubstancesPage />} />
+            <Route path="/topics/meditation" element={<MeditationPage />} />
+            <Route path="/topics/quantum" element={<QuantumPage />} />
+            <Route path="/topics/ai-consciousness" element={<AIConsciousnessPage />} />
+            <Route path="/topics/neural-networks" element={<NeuralNetworksPage />} />
+            <Route path="/topics/consciousness-expansion" element={<ConsciousnessExpansionPage />} />
+            <Route path="/music" element={<MusicPage />} />
+            <Route path="/sports" element={<SportsPage />} />
+            <Route path="/sports/dapo-flow-star" element={<DapoFlowStarPage />} />
+            <Route path="/sports/dancing" element={<DancingPage />} />
+          </Routes>
+        </main>
+
+        {/* Footer */}
+        <Footer />
+        
+        {/* Scroll to Top Button */}
+        <ScrollToTopButton />
       </div>
-
-      {/* Navigation */}
-      <Navigation 
-        onLanguageChange={handleLanguageChange}
-        currentLanguage={currentLanguage}
-      />
-
-      {/* Main Content */}
-      <main className="relative z-10">
-        <HeroSection />
-        <AboutSection />
-        <PortfolioSection />
-        <SkillsSection />
-        <TimelineSection />
-        <GoalsSection />
-        <ContactSection />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </Router>
   );
 }
 

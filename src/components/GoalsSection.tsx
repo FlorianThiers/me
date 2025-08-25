@@ -297,6 +297,32 @@ export const GoalsSection: React.FC = () => {
             </div>
           </div>
         </motion.div>
+
+         {/* Call to Action */}
+         <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <p className="text-white/70 mb-6 text-lg">
+            Interested in working together? Let's discuss your next project!
+          </p>
+          <motion.button
+            className="bg-gradient-to-r from-neon-green to-neon-blue text-dark-bg font-bold py-3 px-8 rounded-full hover:shadow-2xl hover:shadow-neon-green/30 transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            Get In Touch
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

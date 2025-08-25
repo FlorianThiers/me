@@ -22,9 +22,17 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="section-padding bg-dark-secondary relative overflow-hidden">
+    <section 
+      id="about" 
+      className="section-padding bg-dark-secondary relative overflow-hidden"
+      aria-labelledby="about-title"
+    >
       {/* Decoratieve achtergrond elementen */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5">
+      <div 
+        className="absolute top-0 left-0 w-full h-full opacity-5"
+        aria-hidden="true"
+        role="presentation"
+      >
         <div className="absolute top-20 left-20 w-64 h-64 bg-neon-green rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-neon-blue rounded-full blur-3xl" />
       </div>
@@ -37,7 +45,7 @@ export const AboutSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 neon-text">
+          <h2 id="about-title" className="text-4xl md:text-5xl font-bold mb-6 neon-text">
             {t('about.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-neon-green to-neon-blue mx-auto rounded-full" />
@@ -56,11 +64,18 @@ export const AboutSection: React.FC = () => {
               <div className="w-80 h-80 mx-auto rounded-full overflow-hidden border-2 border-neon-green/30 shadow-2xl shadow-neon-green/20">
                 <img 
                   src="/me.jpg" 
-                  alt="Flor - Full-Stack Developer" 
+                  alt="Florian Thiers - Full Stack Developer en Software Engineer" 
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  width="320"
+                  height="320"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-neon-pink/20 rounded-full border border-neon-pink/30 animate-pulse" />
+              <div 
+                className="absolute -bottom-4 -right-4 w-20 h-20 bg-neon-pink/20 rounded-full border border-neon-pink/30 animate-pulse"
+                aria-hidden="true"
+                role="presentation"
+              />
             </div>
 
             <p className="text-lg text-white/80 leading-relaxed mb-6">
@@ -68,7 +83,7 @@ export const AboutSection: React.FC = () => {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6" role="list" aria-label="Experience Statistics">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -77,9 +92,10 @@ export const AboutSection: React.FC = () => {
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   viewport={{ once: true }}
                   className="text-center p-4 glass-effect rounded-lg"
+                  role="listitem"
                 >
-                  <stat.icon className="w-8 h-8 text-neon-green mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-neon-green">{stat.value}</div>
+                  <stat.icon className="w-8 h-8 text-neon-green mx-auto mb-2" aria-hidden="true" />
+                  <div className="text-2xl font-bold text-neon-green" aria-label={`${stat.value} ${stat.label}`}>{stat.value}</div>
                   <div className="text-sm text-white/60">{stat.label}</div>
                 </motion.div>
               ))}
@@ -97,7 +113,7 @@ export const AboutSection: React.FC = () => {
               {t('about.skills')}
             </h3>
 
-            <div className="space-y-6">
+            <div className="space-y-6" role="list" aria-label="Technical Skills">
               {skills.map((skill, index) => (
                 <motion.div
                   key={skill.name}
@@ -105,6 +121,7 @@ export const AboutSection: React.FC = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                   viewport={{ once: true }}
+                  role="listitem"
                 >
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-white font-medium">{skill.name}</span>
@@ -115,9 +132,16 @@ export const AboutSection: React.FC = () => {
                       skill.color === 'neon-yellow' ? 'text-yellow-500' :
                       skill.color === 'neon-purple' ? 'text-purple-500' :
                       'text-blue-500'
-                    }`}>{skill.level}%</span>
+                    }`} aria-label={`${skill.name} skill level: ${skill.level}%`}>{skill.level}%</span>
                   </div>
-                  <div className="w-full bg-white/10 rounded-full h-3 overflow-hidden">
+                  <div 
+                    className="w-full bg-white/10 rounded-full h-3 overflow-hidden"
+                    role="progressbar"
+                    aria-valuenow={skill.level}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label={`${skill.name} skill progress: ${skill.level}%`}
+                  >
                     <motion.div
                       className={`h-full rounded-full ${
                         skill.color === 'neon-blue' ? 'bg-blue-500' :
@@ -142,21 +166,21 @@ export const AboutSection: React.FC = () => {
               <h4 className="text-lg font-semibold text-neon-green mb-3">
                 {t('about.whatDrivesMe')}
               </h4>
-              <ul className="space-y-2 text-white/80">
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-neon-green rounded-full" />
+              <ul className="space-y-2 text-white/80" role="list" aria-label="What drives me">
+                <li className="flex items-center space-x-2" role="listitem">
+                  <div className="w-2 h-2 bg-neon-green rounded-full" aria-hidden="true" />
                   <span>{t('about.drive1')}</span>
                 </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-neon-blue rounded-full" />
+                <li className="flex items-center space-x-2" role="listitem">
+                  <div className="w-2 h-2 bg-neon-blue rounded-full" aria-hidden="true" />
                   <span>{t('about.drive2')}</span>
                 </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-neon-pink rounded-full" />
+                <li className="flex items-center space-x-2" role="listitem">
+                  <div className="w-2 h-2 bg-neon-pink rounded-full" aria-hidden="true" />
                   <span>{t('about.drive3')}</span>
                 </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-neon-yellow rounded-full" />
+                <li className="flex items-center space-x-2" role="listitem">
+                  <div className="w-2 h-2 bg-neon-yellow rounded-full" aria-hidden="true" />
                   <span>{t('about.drive4')}</span>
                 </li>
               </ul>
