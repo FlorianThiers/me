@@ -327,3 +327,4 @@ export const GoalsSection: React.FC = () => {
     </section>
   );
 };
+

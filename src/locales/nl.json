@@ -150,5 +150,41 @@
     "description": "De toekomst bouwen, regel voor regel code.",
     "rights": "Alle rechten voorbehouden.",
     "madeWith": "Gemaakt met ❤️ en ☕"
+  },
+  "interests": {
+    "meditation": {
+      "title": "Meditatie",
+      "description": "Ik beoefen regelmatig meditatie om mijn geest te kalmeren, focus te verbeteren en innerlijke rust te vinden. Dit helpt me ook in mijn creatieve werk.",
+      "details": ["Mindfulness", "Vipassana", "Ademhalingstechnieken", "Mentale Helderheid", "Stressvermindering"]
+    },
+    "cultivation": {
+      "title": "Cultivatie",
+      "description": "Ik ben gepassioneerd over het kweken van planten en het verbinden met de natuur. Van kamerplanten tot moestuin - ik vind rust in het verzorgen van levende wezens.",
+      "details": ["Kamerplanten", "Tuinieren", "Duurzaamheid", "Plantenverzorging", "Natuurverbinding"]
+    },
+    "cooking": {
+      "title": "Koken",
+      "description": "Koken is voor mij een creatieve uitlaatklep en een manier om te experimenteren met smaken en technieken. Ik geniet van het proces van het maken van gezonde, lekkere maaltijden.",
+      "details": ["Gezond Koken", "Smaakexperimenten", "Kooktechnieken", "Maaltijdplanning", "Voeding"]
+    }
+  },
+  "cultivation": {
+    "title": "Cultivatie & Kweken",
+    "subtitle": "Van kamerplanten tot geautomatiseerde kweeksystemen",
+    "description": "Van kamerplanten tot geautomatiseerde kweeksystemen - ontdek mijn passie voor het kweken en verzorgen van planten. Een combinatie van traditionele teelt en moderne technologie.",
+    "philosophy": {
+      "title": "Waarom Cultivatie?",
+      "description": "Het kweken van planten is meer dan alleen een hobby - het is een manier om verbinding te maken met de natuur, te leren over duurzaamheid, en technologie te gebruiken om groei te optimaliseren. Elke plant heeft zijn eigen behoeften en uitdagingen, wat het een perfecte combinatie maakt van wetenschap, kunst en geduld."
+    }
+  },
+  "cooking": {
+    "title": "Koken & Culinaire Kunsten",
+    "subtitle": "Van snelle weeknight maaltijden tot experimentele fusion cuisine",
+    "description": "Van snelle weeknight maaltijden tot experimentele fusion cuisine - ontdek mijn passie voor koken en het creëren van heerlijke gerechten. Een mix van traditionele technieken en moderne innovatie.",
+    "philosophy": {
+      "title": "Mijn Kookfilosofie",
+      "description": "Koken is voor mij een creatieve uitlaatklep en een manier om te experimenteren met smaken, texturen en technieken. Ik geloof in het gebruik van verse, seizoensgebonden ingrediënten en het respecteren van traditionele bereidingswijzen, terwijl ik ook ruimte laat voor innovatie en experiment."
+    }
   }
 }
+

@@ -154,3 +154,4 @@ export const Navigation: React.FC<NavigationProps> = ({
     </motion.nav>
   );
 };
+

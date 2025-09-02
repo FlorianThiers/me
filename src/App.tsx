@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './i18n';
-import { MandelbrotBackground } from './components/MandelbrotBackground';
 import { Navigation } from './components/Navigation';
 import { HomePage } from './pages/HomePage';
 import { PortfolioPage } from './pages/PortfolioPage';
@@ -26,8 +25,9 @@ import { MusicPage } from './pages/MusicPage';
 import { SportsPage } from './pages/SportsPage';
 import { DapoFlowStarPage } from './pages/sports/DapoFlowStarPage';
 import { DancingPage } from './pages/sports/DancingPage';
+import { CultivationPage } from './pages/CultivationPage';
+import { CookingPage } from './pages/CookingPage';
 import { Footer } from './components/Footer';
-import { Canvas } from '@react-three/fiber';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollToTopButton } from './components/ScrollToTopButton';
 
@@ -54,16 +54,6 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="App relative">
-        {/* Mandelbrot Achtergrond - Volledig scherm */}
-        <div className="fixed inset-0 -z-10 w-full h-full">
-          <Canvas
-            camera={{ position: [0, 0, 1], fov: 75 }}
-            style={{ background: 'transparent', width: '100%', height: '100%' }}
-          >
-            <MandelbrotBackground />
-          </Canvas>
-        </div>
-
         {/* Navigation */}
         <Navigation 
           onLanguageChange={handleLanguageChange}
@@ -95,6 +85,8 @@ function App() {
             <Route path="/sports" element={<SportsPage />} />
             <Route path="/sports/dapo-flow-star" element={<DapoFlowStarPage />} />
             <Route path="/sports/dancing" element={<DancingPage />} />
+            <Route path="/cultivation" element={<CultivationPage />} />
+            <Route path="/cooking" element={<CookingPage />} />
           </Routes>
         </main>
 

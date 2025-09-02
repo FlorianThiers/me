@@ -1,17 +1,31 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity } from 'lucide-react';
+import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat } from 'lucide-react';
 
 export const InterestsPage: React.FC = () => {
 
   const interests = [
     {
-      icon: <Music className="w-8 h-8" />,
-      title: 'Music',
-      description: 'I have a deep passion for music, both listening and creating. I enjoy exploring various genres and experimenting with digital music production.',
-      details: ['Electronic Music', 'Jazz', 'Classical', 'Digital Audio Workstations', 'Sound Design'],
-      link: '/music'
+      icon: <Brain className="w-8 h-8" />,
+      title: 'Meditation',
+      description: 'Ik beoefen regelmatig meditatie om mijn geest te kalmeren, focus te verbeteren en innerlijke rust te vinden. Dit helpt me ook in mijn creatieve werk.',
+      details: ['Mindfulness', 'Vipassana', 'Breathing Techniques', 'Mental Clarity', 'Stress Reduction'],
+      link: '/topics/meditation'
+    },
+    {
+      icon: <Leaf className="w-8 h-8" />,
+      title: 'Cultivation',
+      description: 'Ik ben gepassioneerd over het kweken van planten en het verbinden met de natuur. Van kamerplanten tot moestuin - ik vind rust in het verzorgen van levende wezens.',
+      details: ['Indoor Plants', 'Gardening', 'Sustainability', 'Plant Care', 'Nature Connection'],
+      link: '/cultivation'
+    },
+    {
+      icon: <ChefHat className="w-8 h-8" />,
+      title: 'Cooking',
+      description: 'Koken is voor mij een creatieve uitlaatklep en een manier om te experimenteren met smaken en technieken. Ik geniet van het proces van het maken van gezonde, lekkere maaltijden.',
+      details: ['Healthy Cooking', 'Flavor Experimentation', 'Culinary Techniques', 'Meal Planning', 'Nutrition'],
+      link: '/cooking'
     },
     {
       icon: <Users className="w-8 h-8" />,
@@ -26,6 +40,13 @@ export const InterestsPage: React.FC = () => {
       description: 'Ik ben gepassioneerd over outdoor sporten en avontuur. Van slacklinen en boulderen tot snowboarden en surfen - ik hou van de uitdaging en vrijheid die deze sporten bieden.',
       details: ['Slacklining', 'Boulderen', 'Snowboarden', 'Surfen', 'Dagelijkse Training'],
       link: '/sports'
+    },
+    {
+      icon: <Music className="w-8 h-8" />,
+      title: 'Music',
+      description: 'I have a deep passion for music, both listening and creating. I enjoy exploring various genres and experimenting with digital music production.',
+      details: ['Electronic Music', 'Jazz', 'Classical', 'Digital Audio Workstations', 'Sound Design'],
+      link: '/music'
     },
     {
       icon: <BookOpen className="w-8 h-8" />,
@@ -57,6 +78,7 @@ export const InterestsPage: React.FC = () => {
       description: 'Gaming has been a significant part of my life, inspiring my interest in technology and interactive experiences.',
       details: ['Strategy Games', 'RPGs', 'Indie Games', 'Game Development', 'Virtual Reality']
     },
+    
   ];
 
   return (
@@ -110,7 +132,10 @@ export const InterestsPage: React.FC = () => {
                       <span className="inline-flex items-center text-neon-green text-sm font-medium group-hover:text-neon-blue transition-colors duration-300">
                         {interest.title === 'Music' ? 'Verken Live Coding & Muziek' : 
                          interest.title === 'Filosofie & Bewustzijn' ? 'Verken Filosofen & Denkers' :
-                         interest.title === 'Sports & Adventure' ? 'Verken Sporten & Avontuur' : 'Verken'}
+                         interest.title === 'Sports & Adventure' ? 'Verken Sporten & Avontuur' :
+                         interest.title === 'Meditation' ? 'Verken Meditatie & Mindfulness' :
+                         interest.title === 'Cultivation' ? 'Verken Kweekprojecten' :
+                         interest.title === 'Cooking' ? 'Verken Recepten & Gerechten' : 'Verken'}
                         <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>

@@ -143,5 +143,41 @@
     "description": "Building the future, one line of code at a time.",
     "rights": "All rights reserved.",
     "madeWith": "Made with ❤️ and ☕"
+  },
+  "interests": {
+    "meditation": {
+      "title": "Meditation",
+      "description": "I regularly practice meditation to calm my mind, improve focus, and find inner peace. This also helps me in my creative work.",
+      "details": ["Mindfulness", "Vipassana", "Breathing Techniques", "Mental Clarity", "Stress Reduction"]
+    },
+    "cultivation": {
+      "title": "Cultivation",
+      "description": "I'm passionate about growing plants and connecting with nature. From houseplants to vegetable gardens - I find peace in caring for living beings.",
+      "details": ["Indoor Plants", "Gardening", "Sustainability", "Plant Care", "Nature Connection"]
+    },
+    "cooking": {
+      "title": "Cooking",
+      "description": "Cooking is a creative outlet for me and a way to experiment with flavors and techniques. I enjoy the process of making healthy, delicious meals.",
+      "details": ["Healthy Cooking", "Flavor Experimentation", "Culinary Techniques", "Meal Planning", "Nutrition"]
+    }
+  },
+  "cultivation": {
+    "title": "Cultivation & Growing",
+    "subtitle": "From houseplants to automated growing systems",
+    "description": "From houseplants to automated growing systems - discover my passion for growing and caring for plants. A combination of traditional cultivation and modern technology.",
+    "philosophy": {
+      "title": "Why Cultivation?",
+      "description": "Growing plants is more than just a hobby - it's a way to connect with nature, learn about sustainability, and use technology to optimize growth. Each plant has its own needs and challenges, making it a perfect combination of science, art and patience."
+    }
+  },
+  "cooking": {
+    "title": "Cooking & Culinary Arts",
+    "subtitle": "From quick weeknight meals to experimental fusion cuisine",
+    "description": "From quick weeknight meals to experimental fusion cuisine - discover my passion for cooking and creating delicious dishes. A mix of traditional techniques and modern innovation.",
+    "philosophy": {
+      "title": "My Cooking Philosophy",
+      "description": "Cooking is a creative outlet for me and a way to experiment with flavors, textures and techniques. I believe in using fresh, seasonal ingredients and respecting traditional preparation methods, while also leaving room for innovation and experiment."
+    }
   }
 }
+
