@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ChefHat, Heart, Star, Clock, Users, Utensils, Flame, Leaf, Zap } from 'lucide-react';
+import { ArrowLeft, Heart, Star, Clock, Users, Utensils, Flame, Leaf, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const CookingPage: React.FC = () => {

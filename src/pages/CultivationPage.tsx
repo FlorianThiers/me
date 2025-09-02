@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Leaf, Home, Tent, TreePine, Circle, Cpu, Thermometer, Droplets, Sun, Zap } from 'lucide-react';
+import { ArrowLeft, Home, Tent, TreePine, Circle, Cpu, Thermometer, Droplets, Sun, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const CultivationPage: React.FC = () => {
