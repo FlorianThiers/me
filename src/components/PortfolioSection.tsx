@@ -29,13 +29,13 @@ export const PortfolioSection: React.FC = () => {
     },
     {
       id: 3,
-      title: 'Vijverstofzuiger Robot',
-      description: 'IoT-powered pool cleaning robot with AI integration. Combines hardware engineering with smart software solutions for automated pool maintenance.',
+      title: 'Vijverstofzuigers Website',
+      description: 'Professional website for pool cleaning services with modern React frontend and Supabase backend. Features dynamic content management, contact forms, and responsive design.',
       image: '/projects/vijverstofzuigers.png',
-      technologies: ['Python', 'IoT', 'AI', 'Hardware'],
+      technologies: ['React', 'TypeScript', 'Supabase', 'Tailwind CSS'],
       github: 'https://github.com/FlorianThiers',
       live: 'https://vijverstofzuiger.vercel.app/',
-      category: 'IoT/Robotics'
+      category: 'Full-Stack'
     },
     {
       id: 4,
