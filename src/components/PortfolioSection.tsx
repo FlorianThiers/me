@@ -9,46 +9,16 @@ export const PortfolioSection: React.FC = () => {
   const projects = [
     {
       id: 1,
-      title: 'Portfolio Website',
-      description: 'Interactive portfolio website with animated Mandelbrot background, built with React, TypeScript, and Three.js. Features dynamic color-changing fractals and smooth animations.',
-      image: '/projects/portfolio.png',
-      technologies: ['React', 'TypeScript', 'Three.js', 'Tailwind CSS'],
+      title: '3D Room Experience',
+      description: 'Immersive 3D room experience with interactive storytelling elements. Features atmospheric design, animations, and narrative progression through a mysterious room.',
+      image: '/projects/room.png',
+      technologies: ['Three.js', 'JavaScript', 'WebGL', '3D Modeling'],
       github: 'https://github.com/FlorianThiers',
-      live: 'https://florian-tau.vercel.app/',
-      category: 'Portfolio'
+      live: 'https://3-d-room-six.vercel.app/',
+      category: 'Web Development'
     },
     {
       id: 2,
-      title: 'ParkSports Community',
-      description: 'Community platform for slackline and parksports enthusiasts. Features spot discovery, events, community interaction, and learning resources. Built with modern web technologies.',
-      image: '/projects/parksports.png',
-      technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
-      github: 'https://github.com/FlorianThiers',
-      live: 'https://www.parksports.space/',
-      category: 'Full-Stack'
-    },
-    {
-      id: 3,
-      title: 'Vijverstofzuigers Website',
-      description: 'Professional website for pool cleaning services with modern React frontend and Supabase backend. Features dynamic content management, contact forms, and responsive design.',
-      image: '/projects/vijverstofzuigers.png',
-      technologies: ['React', 'TypeScript', 'Supabase', 'Tailwind CSS'],
-      github: 'https://github.com/FlorianThiers',
-      live: 'https://vijverstofzuiger.vercel.app/',
-      category: 'Full-Stack'
-    },
-    {
-      id: 4,
-      title: 'ImmoGen',
-      description: 'AI-driven real estate platform combining machine learning with property management. Advanced property analysis and management system.',
-      image: '/projects/immogen.png',
-      technologies: ['Python', 'FastAPI', 'React', 'Machine Learning'],
-      github: 'https://github.com/FlorianThiers',
-      live: 'https://immo-gen-olive.vercel.app/',
-      category: 'AI/ML'
-    },
-    {
-      id: 5,
       title: 'Jump-Thrs Game',
       description: 'Interactive web-based game with engaging gameplay mechanics. My first game development project showcasing creative programming and user experience design.',
       image: '/projects/jump.png',
@@ -58,13 +28,53 @@ export const PortfolioSection: React.FC = () => {
       category: 'Game Development'
     },
     {
-      id: 6,
-      title: '3D Room Experience',
-      description: 'Immersive 3D room experience with interactive storytelling elements. Features atmospheric design, animations, and narrative progression through a mysterious room.',
-      image: '/projects/room.png',
-      technologies: ['Three.js', 'JavaScript', 'WebGL', '3D Modeling'],
+      id: 3,
+      title: 'ImmoGen',
+      description: 'AI-driven real estate platform combining machine learning with property management. Advanced property analysis and management system.',
+      image: '/projects/immogen.png',
+      technologies: ['Python', 'FastAPI', 'React', 'Machine Learning'],
       github: 'https://github.com/FlorianThiers',
-      live: 'https://3-d-room-six.vercel.app/',
+      live: 'https://immo-gen-olive.vercel.app/',
+      category: 'AI/ML'
+    },
+    {
+      id: 4,
+      title: 'Vijverstofzuigers Website',
+      description: 'Professional website for pool cleaning services with modern React frontend and Supabase backend. Features dynamic content management, contact forms, and responsive design.',
+      image: '/projects/vijverstofzuigers.png',
+      technologies: ['React', 'TypeScript', 'Supabase', 'Tailwind CSS'],
+      github: 'https://github.com/FlorianThiers',
+      live: 'https://vijverstofzuiger.vercel.app/',
+      category: 'Full-Stack'
+    },
+    {
+      id: 5,
+      title: 'ParkSports Community',
+      description: 'Community platform for slackline and parksports enthusiasts. Features spot discovery, events, community interaction, and learning resources. Built with modern web technologies.',
+      image: '/projects/parksports.png',
+      technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
+      github: 'https://github.com/FlorianThiers',
+      live: 'https://www.parksports.space/',
+      category: 'Full-Stack'
+    },
+    {
+      id: 6,
+      title: 'Portfolio Website',
+      description: 'Interactive portfolio website with animated Mandelbrot background, built with React, TypeScript, and Three.js. Features dynamic color-changing fractals and smooth animations.',
+      image: '/projects/portfolio.png',
+      technologies: ['React', 'TypeScript', 'Three.js', 'Tailwind CSS'],
+      github: 'https://github.com/FlorianThiers',
+      live: 'https://florian-tau.vercel.app/',
+      category: 'Portfolio'
+    },
+    {
+      id: 7,
+      title: 'Corridor - Urban Sport Hub',
+      description: 'One-page website for Corridor, the Urban Sport Hub of Gentbrugge. Features modern design showcasing sports facilities, community activities, and events under the E17 viaduct.',
+      image: '/projects/corridor.png',
+      technologies: ['HTML5', 'Tailwind CSS', 'GSAP', 'Responsive Design'],
+      github: 'https://github.com/FlorianThiers',
+      live: 'https://corridor-blond.vercel.app/',
       category: 'Web Development'
     }
   ];
@@ -96,7 +106,7 @@ export const PortfolioSection: React.FC = () => {
 
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projects.sort((a, b) => b.id - a.id).map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 50 }}
