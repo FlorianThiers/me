@@ -733,8 +733,7 @@ export const MeditationPage: React.FC = () => {
                   Hybride Meditatie Praktijk
                 </h3>
                 <p className="text-white/80 leading-relaxed mb-4">
-                  Ik doe dagelijks minimum 10 minuten meditatie in kleermakerzit. 
-                  Soms naakt na het douchen - het voelt natuurlijker en comfortabeler. 
+                  Ik doe dagelijks minimum 10 minuten meditatie in kleermakerzit.
                   Dit is meestal na een workout of training. Ik laat gedachten en gevoelens binnen sijpelen, observeer ze zonder te reageren.
                 </p>
                 <p className="text-white/80 leading-relaxed mb-4">
