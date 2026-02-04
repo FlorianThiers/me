@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat } from 'lucide-react';
+import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat, Calendar, Home, TrendingUp } from 'lucide-react';
+import { ChakraCalendar } from '../components/ChakraCalendar';
 
 export const InterestsPage: React.FC = () => {
+  const [expandedCard, setExpandedCard] = React.useState<string | null>(null);
 
   const interests = [
     {
@@ -78,7 +80,27 @@ export const InterestsPage: React.FC = () => {
       description: 'Gaming has been a significant part of my life, inspiring my interest in technology and interactive experiences.',
       details: ['Strategy Games', 'RPGs', 'Indie Games', 'Game Development', 'Virtual Reality']
     },
-    
+    {
+      icon: <Calendar className="w-8 h-8" />,
+      title: 'Alternatieve Tijdvisualisatie',
+      description: 'Ik ben gefascineerd door alternatieve manieren om tijd te ervaren. Via een 13-maanden chakra kalender (startend op 26 juli) verken ik hoe energie en bewustzijn samenhangen met onze tijdservaring.',
+      details: ['13-Maanden Kalender', 'Chakra Ritme', 'Bewustzijn & Tijd', 'Energetische Cycli', 'Gregoriaanse Overlay']
+    },
+    {
+      icon: <Home className="w-8 h-8" />,
+      title: 'Tuin & Huis Ontwerpen',
+      description: 'Ontwerp en teken je eigen tuin en huis met verschillende werklagen. Van funderingen tot planten en water - creëer je perfecte ruimte.',
+      details: ['2D Ontwerp', 'Werklagen', 'Planten Planning', 'Water Systemen', 'Lokaal Opslaan'],
+      link: '/garden-designer'
+    },
+    {
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: 'Beleggen',
+      description: 'Ik volg hoe inflatie mijn geld beïnvloedt en analyseer hoe verschillende investeringen presteren ten opzichte van inflatie. Van tech-aandelen tot goud - ik leer over financiële markten en vermogensopbouw.',
+      details: ['Inflatie Tracking', 'Aandelen', 'Goud', 'Cryptocurrency', 'Vermogensopbouw'],
+      link: '/beleggen'
+    },
+
   ];
 
   return (
@@ -112,11 +134,11 @@ export const InterestsPage: React.FC = () => {
                         {interest.title}
                       </h3>
                     </div>
-                    
+
                     <p className="text-white/70 mb-4 leading-relaxed">
                       {interest.description}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-2 mb-4">
                       {interest.details.map((detail) => (
                         <span
@@ -127,15 +149,17 @@ export const InterestsPage: React.FC = () => {
                         </span>
                       ))}
                     </div>
-                    
+
                     <div className="text-center">
                       <span className="inline-flex items-center text-neon-green text-sm font-medium group-hover:text-neon-blue transition-colors duration-300">
-                        {interest.title === 'Music' ? 'Verken Live Coding & Muziek' : 
+                        {interest.title === 'Music' ? 'Verken Live Coding & Muziek' :
                          interest.title === 'Filosofie & Bewustzijn' ? 'Verken Filosofen & Denkers' :
                          interest.title === 'Sports & Adventure' ? 'Verken Sporten & Avontuur' :
                          interest.title === 'Meditation' ? 'Verken Meditatie & Mindfulness' :
                          interest.title === 'Cultivation' ? 'Verken Kweekprojecten' :
-                         interest.title === 'Cooking' ? 'Verken Recepten & Gerechten' : 'Verken'}
+                         interest.title === 'Cooking' ? 'Verken Recepten & Gerechten' :
+                         interest.title === 'Tuin & Huis Ontwerpen' ? 'Start Ontwerper' :
+                         interest.title === 'Beleggen' ? 'Verken Inflatie & Investeringen' : 'Verken'}
                         <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -144,29 +168,97 @@ export const InterestsPage: React.FC = () => {
                   </Link>
                 ) : (
                   <div className="block bg-dark-secondary/50 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-neon-green/50 transition-all duration-300 group">
-                    <div className="flex items-center mb-4">
-                      <div className="text-neon-green mr-3 group-hover:scale-110 transition-transform duration-300">
-                        {interest.icon}
-                      </div>
-                      <h3 className="text-xl font-bold text-white">
-                        {interest.title}
-                      </h3>
-                    </div>
-                    
-                    <p className="text-white/70 mb-4 leading-relaxed">
-                      {interest.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {interest.details.map((detail) => (
-                        <span
-                          key={detail}
-                          className="px-2 py-1 bg-neon-green/20 text-neon-green rounded-full text-xs font-medium border border-neon-green/30"
+                    {interest.title === 'Alternatieve Tijdvisualisatie' ? (
+                      // Special expandable card for Chakra Calendar
+                      <>
+                        <div
+                          className="cursor-pointer"
+                          onClick={() => setExpandedCard(expandedCard === interest.title ? null : interest.title)}
                         >
-                          {detail}
-                        </span>
-                      ))}
-                    </div>
+                          <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center">
+                              <div className="text-neon-green mr-3 group-hover:scale-110 transition-transform duration-300">
+                                {interest.icon}
+                              </div>
+                              <h3 className="text-xl font-bold text-white">
+                                {interest.title}
+                              </h3>
+                            </div>
+                            <div className="text-neon-green">
+                              <svg
+                                className={`w-5 h-5 transition-transform duration-300 ${expandedCard === interest.title ? 'rotate-180' : ''}`}
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </div>
+                          </div>
+
+                          <p className="text-white/70 mb-4 leading-relaxed">
+                            {interest.description}
+                          </p>
+
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {interest.details.map((detail) => (
+                              <span
+                                key={detail}
+                                className="px-2 py-1 bg-neon-green/20 text-neon-green rounded-full text-xs font-medium border border-neon-green/30"
+                              >
+                                {detail}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="text-center">
+                            <span className="inline-flex items-center text-neon-green text-sm font-medium">
+                              {expandedCard === interest.title ? 'Klik om te sluiten' : 'Klik om kalender te bekijken'}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Expanded Chakra Calendar */}
+                        {expandedCard === interest.title && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-6 pt-6 border-t border-white/10"
+                          >
+                            <ChakraCalendar />
+                          </motion.div>
+                        )}
+                      </>
+                    ) : (
+                      // Regular non-expandable card
+                      <>
+                        <div className="flex items-center mb-4">
+                          <div className="text-neon-green mr-3 group-hover:scale-110 transition-transform duration-300">
+                            {interest.icon}
+                          </div>
+                          <h3 className="text-xl font-bold text-white">
+                            {interest.title}
+                          </h3>
+                        </div>
+
+                        <p className="text-white/70 mb-4 leading-relaxed">
+                          {interest.description}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {interest.details.map((detail) => (
+                            <span
+                              key={detail}
+                              className="px-2 py-1 bg-neon-green/20 text-neon-green rounded-full text-xs font-medium border border-neon-green/30"
+                            >
+                              {detail}
+                            </span>
+                          ))}
+                        </div>
+                      </>
+                    )}
                   </div>
                 )}
               </motion.div>
@@ -191,9 +283,9 @@ export const InterestsPage: React.FC = () => {
                The Mind as a Computer
              </h2>
              <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed mb-8">
-               One of my fascinations lies in understanding how the human mind processes information 
-               like a computer, and how we can visualize these complex cognitive processes. This 
-               intersection of psychology, technology, and visualization drives my approach to 
+               One of my fascinations lies in understanding how the human mind processes information
+               like a computer, and how we can visualize these complex cognitive processes. This
+               intersection of psychology, technology, and visualization drives my approach to
                creating intuitive user experiences.
              </p>
              <motion.div
@@ -208,6 +300,7 @@ export const InterestsPage: React.FC = () => {
                </Link>
              </motion.div>
            </div>
+
         </div>
       </div>
     </div>

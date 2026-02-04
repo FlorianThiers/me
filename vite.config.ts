@@ -15,7 +15,7 @@ export default defineConfig({
         }
       }
     },
-    chunkSizeWarningLimit: 1000
+    chunkSizeWarningLimit: 1200  // Three.js is large but acceptable for this use case
   },
   server: {
     headers: {
@@ -23,6 +23,20 @@ export default defineConfig({
       'X-Frame-Options': 'DENY',
       'X-XSS-Protection': '1; mode=block',
       'Referrer-Policy': 'strict-origin-when-cross-origin'
+    },
+    proxy: {
+      '/api/fred': {
+        target: 'https://api.stlouisfed.org/fred',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/fred/, ''),
+        secure: true
+      },
+      '/api/yahoo': {
+        target: 'https://query1.finance.yahoo.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/yahoo/, ''),
+        secure: true
+      }
     }
   }
 })

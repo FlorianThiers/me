@@ -27,6 +27,8 @@ import { DapoFlowStarPage } from './pages/sports/DapoFlowStarPage';
 import { DancingPage } from './pages/sports/DancingPage';
 import { CultivationPage } from './pages/CultivationPage';
 import { CookingPage } from './pages/CookingPage';
+import { GardenDesignPage } from './pages/GardenDesignPage';
+import { BeleggenPage } from './pages/BeleggenPage';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollToTopButton } from './components/ScrollToTopButton';
@@ -87,6 +89,8 @@ function App() {
             <Route path="/sports/dancing" element={<DancingPage />} />
             <Route path="/cultivation" element={<CultivationPage />} />
             <Route path="/cooking" element={<CookingPage />} />
+            <Route path="/garden-designer" element={<GardenDesignPage />} />
+            <Route path="/beleggen" element={<BeleggenPage />} />
           </Routes>
         </main>
 

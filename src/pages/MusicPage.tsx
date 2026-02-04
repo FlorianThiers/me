@@ -44,7 +44,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
   const [visualizerData, setVisualizerData] = useState<number[]>([]);
   const audioContextRef = useRef<AudioContext | null>(null);
 
-  const loopIntervalRef = useRef<number | null>(null);
+  const loopIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const currentBpmRef = useRef(120); // For real-time BPM changes
   const animationFrameRef = useRef<number | undefined>(undefined);
 
