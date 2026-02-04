@@ -735,6 +735,8 @@ export const MindComputerPage: React.FC = () => {
                                 alt="Mind as Computer Schema - Volledig Overzicht"
                                 className="max-w-full h-auto rounded-lg shadow-2xl border border-white/10 bg-white p-4"
                                 style={{ maxHeight: '600px' }}
+                                loading="lazy"
+                                decoding="async"
                             />
                         </div>
                     </motion.div>

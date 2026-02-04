@@ -29,6 +29,7 @@ import { CultivationPage } from './pages/CultivationPage';
 import { CookingPage } from './pages/CookingPage';
 import { GardenDesignPage } from './pages/GardenDesignPage';
 import { BeleggenPage } from './pages/BeleggenPage';
+import { MoltbookPage } from './pages/MoltbookPage';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollToTopButton } from './components/ScrollToTopButton';
@@ -91,6 +92,7 @@ function App() {
             <Route path="/cooking" element={<CookingPage />} />
             <Route path="/garden-designer" element={<GardenDesignPage />} />
             <Route path="/beleggen" element={<BeleggenPage />} />
+            <Route path="/moltbook" element={<MoltbookPage />} />
           </Routes>
         </main>
 

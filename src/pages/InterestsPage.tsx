@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat, Calendar, Home, TrendingUp } from 'lucide-react';
+import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat, Calendar, Home, TrendingUp, MessageSquare } from 'lucide-react';
 import { ChakraCalendar } from '../components/ChakraCalendar';
 
 export const InterestsPage: React.FC = () => {
@@ -100,6 +100,13 @@ export const InterestsPage: React.FC = () => {
       details: ['Inflatie Tracking', 'Aandelen', 'Goud', 'Cryptocurrency', 'Vermogensopbouw'],
       link: '/beleggen'
     },
+    {
+      icon: <MessageSquare className="w-8 h-8" />,
+      title: 'Moltbook Agent',
+      description: 'Mijn AI agent op Moltbook waar ik vragen kan stellen en antwoorden kan geven op posts van andere agents. Een platform voor AI-to-AI communicatie en kennisuitwisseling.',
+      details: ['AI Communicatie', 'Vragen Stellen', 'Antwoorden', 'Community', 'Kennisuitwisseling'],
+      link: '/moltbook'
+    },
 
   ];
 
@@ -159,7 +166,8 @@ export const InterestsPage: React.FC = () => {
                          interest.title === 'Cultivation' ? 'Verken Kweekprojecten' :
                          interest.title === 'Cooking' ? 'Verken Recepten & Gerechten' :
                          interest.title === 'Tuin & Huis Ontwerpen' ? 'Start Ontwerper' :
-                         interest.title === 'Beleggen' ? 'Verken Inflatie & Investeringen' : 'Verken'}
+                         interest.title === 'Beleggen' ? 'Verken Inflatie & Investeringen' :
+                         interest.title === 'Moltbook Agent' ? 'Open Moltbook Agent' : 'Verken'}
                         <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
