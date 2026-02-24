@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next';
 
 import enTranslations from './locales/en.json';
 import nlTranslations from './locales/nl.json';
+import esTranslations from './locales/es.json';
 
 // Detecteer browser taal
 const getBrowserLanguage = (): string => {
@@ -10,7 +11,7 @@ const getBrowserLanguage = (): string => {
   const shortLang = browserLang.split('-')[0];
   
   // Ondersteunde talen
-  const supportedLanguages = ['en', 'nl'];
+  const supportedLanguages = ['en', 'nl', 'es'];
   
   return supportedLanguages.includes(shortLang) ? shortLang : 'en';
 };
@@ -37,6 +38,9 @@ i18n
       },
       nl: {
         translation: nlTranslations,
+      },
+      es: {
+        translation: esTranslations,
       },
     },
     lng: getInitialLanguage(),

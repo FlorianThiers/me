@@ -2,18 +2,20 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Play, Square, RotateCcw, Volume2, Music, Mic, Guitar, Piano, Headphones, Code, Zap, Maximize2, Minimize2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const MusicPage: React.FC = () => {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLooping, setIsLooping] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isWaitingForLoop, setIsWaitingForLoop] = useState(false);
   const [pendingCodeExecution, setPendingCodeExecution] = useState<{ patterns: any, soundParams: any } | null>(null);
-  const [currentCode, setCurrentCode] = useState(`// 🎵 Algorave Live Coding
-// Maak je eigen beats en loops!
-// Gebruik 1 voor een hit, 0 voor stilte
+  const getDefaultCode = () => `// 🎵 ${t('music.codeComments.header')}
+// ${t('music.codeComments.makeBeats')}
+// ${t('music.codeComments.usePattern')}
 
-// Sound Design Parameters
+// ${t('music.codeComments.soundDesign')}
 kick_freq: 60      // Frequency in Hz
 kick_dur: 0.1      // Duration in seconds
 kick_type: "sine"  // Waveform: sine, square, triangle, sawtooth
@@ -30,15 +32,17 @@ bass_freq: 40
 bass_dur: 0.2
 bass_type: "sawtooth"
 
-// Patterns
+// ${t('music.codeComments.patterns')}
 kick: [1, 0, 1, 0, 1, 0, 1, 0]
 snare: [0, 0, 1, 0, 0, 0, 1, 0]
 hihat: [1, 1, 1, 1, 1, 1, 1, 1]
 bass: [1, 0, 0, 1, 0, 0, 1, 0]
 
-// Klik op "Execute" om je eigen patronen af te spelen!
-// Gebruik Ctrl+S om te saven, Ctrl+Enter om uit te voeren`);
-  const [output, setOutput] = useState('🎵 Ready to create music...');
+// ${t('music.codeComments.clickExecute')}
+// ${t('music.codeComments.useShortcuts')}`;
+  
+  const [currentCode, setCurrentCode] = useState(getDefaultCode());
+  const [output, setOutput] = useState(`🎵 ${t('music.outputMessages.ready')}`);
   const [bpm, setBpm] = useState(120);
   const [currentBeat, setCurrentBeat] = useState(0);
   const [visualizerData, setVisualizerData] = useState<number[]>([]);
@@ -73,18 +77,18 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
             e.preventDefault();
             if (!isWaitingForLoop) {
               executeCode();
-              setOutput('🎵 Code executed via Ctrl+S shortcut!');
+              setOutput(`🎵 ${t('music.outputMessages.codeExecutedCtrlS')}`);
             } else {
-              setOutput('🎵 Please wait for current loop to finish...');
+              setOutput(`🎵 ${t('music.outputMessages.pleaseWait')}`);
             }
             break;
           case 'Enter':
             e.preventDefault();
             if (!isWaitingForLoop) {
               executeCode();
-              setOutput('🎵 Code executed via Ctrl+Enter shortcut!');
+              setOutput(`🎵 ${t('music.outputMessages.codeExecutedCtrlEnter')}`);
             } else {
-              setOutput('🎵 Please wait for current loop to finish...');
+              setOutput(`🎵 ${t('music.outputMessages.pleaseWait')}`);
             }
             break;
         }
@@ -126,7 +130,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
     if (!audioContextRef.current) return;
 
     setIsPlaying(true);
-    setOutput('🎵 Playing pattern...');
+    setOutput(`🎵 ${t('music.outputMessages.playing')}`);
     startVisualizer();
 
     const playOnePattern = () => {
@@ -179,7 +183,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
       const patternDuration = (8 * 60) / currentBpmRef.current;
       setTimeout(() => {
         setIsPlaying(false);
-        setOutput('🎵 Pattern finished! Try editing the code above.');
+        setOutput(`🎵 ${t('music.outputMessages.finished')}`);
         stopVisualizer();
       }, patternDuration * 1000);
     }
@@ -239,45 +243,17 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
   const stopPlayback = () => {
     // If there's pending code execution, it will be handled in the next loop iteration
     if (isWaitingForLoop && pendingCodeExecution) {
-      setOutput('🎵 Pending code will execute at next loop iteration...');
+      setOutput(`🎵 ${t('music.outputMessages.pendingCode')}`);
     } else {
       stopAudioOnly();
-      setOutput('🎵 Playback stopped.');
+      setOutput(`🎵 ${t('music.outputMessages.stopped')}`);
     }
   };
 
   // Reset code
   const resetCode = () => {
-    setCurrentCode(`// 🎵 Algorave Live Coding
-// Maak je eigen beats en loops!
-// Gebruik 1 voor een hit, 0 voor stilte
-
-// Sound Design Parameters
-kick_freq: 60      // Frequency in Hz
-kick_dur: 0.1      // Duration in seconds
-kick_type: "sine"  // Waveform: sine, square, triangle, sawtooth
-
-snare_freq: 200
-snare_dur: 0.1
-snare_type: "triangle"
-
-hihat_freq: 800
-hihat_dur: 0.05
-hihat_type: "square"
-
-bass_freq: 40
-bass_dur: 0.2
-bass_type: "sawtooth"
-
-// Patterns
-kick: [1, 0, 1, 0, 1, 0, 1, 0]
-snare: [0, 0, 1, 0, 0, 0, 1, 0]
-hihat: [1, 1, 1, 1, 1, 1, 1, 1]
-bass: [1, 0, 0, 1, 0, 0, 1, 0]
-
-// Klik op "Execute" om je eigen patronen af te spelen!
-// Gebruik Ctrl+S om te saven, Ctrl+Enter om uit te voeren`);
-    setOutput('🎵 Code reset! Ready to create new music...');
+    setCurrentCode(getDefaultCode());
+    setOutput(`🎵 ${t('music.outputMessages.reset')}`);
     
     // Also reset loop state and visualizer
     setIsLooping(false);
@@ -290,7 +266,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
 
   // Parse and execute code
   const executeCode = () => {
-    setOutput('🎵 Parsing code...');
+    setOutput(`🎵 ${t('music.outputMessages.parsing')}`);
     
     try {
       // Parse the code to extract patterns and sound parameters
@@ -299,19 +275,19 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
       if (result && result.patterns) {
         // Check if currently playing and looping
         if (isPlaying && isLooping) {
-          setOutput('🎵 Waiting for current loop to finish...');
+          setOutput(`🎵 ${t('music.outputMessages.waitingLoop')}`);
           setIsWaitingForLoop(true);
           setPendingCodeExecution(result);
         } else {
           // Not looping, execute immediately
-          setOutput('🎵 Code parsed successfully! Playing custom patterns...');
+          setOutput(`🎵 ${t('music.outputMessages.parsed')}`);
           playCustomPattern(result.patterns, result.soundParams);
         }
       } else {
-        setOutput('🎵 Error: Could not parse patterns. Check your syntax.');
+        setOutput(`🎵 ${t('music.outputMessages.error')}`);
       }
     } catch (error) {
-      setOutput(`🎵 Error parsing code: ${error}`);
+      setOutput(`🎵 ${t('music.outputMessages.errorParsing')} ${error}`);
     }
   };
 
@@ -377,7 +353,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
     
     setIsPlaying(true);
     startVisualizer();
-    setOutput('🎵 Playing custom patterns...');
+    setOutput(`🎵 ${t('music.outputMessages.playingCustom')}`);
 
     const maxBeats = Math.max(...Object.values(patterns).map(p => p.length));
 
@@ -463,7 +439,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
             });
           });
           
-          setOutput('🎵 New code executed at next loop iteration!');
+          setOutput(`🎵 ${t('music.outputMessages.newCode')}`);
         } else {
           // Play current pattern normally
           playOneCustomPattern();
@@ -474,7 +450,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
       const patternDuration = (maxBeats * 60) / currentBpmRef.current;
       setTimeout(() => {
         setIsPlaying(false);
-        setOutput('🎵 Custom pattern finished! Try editing the code above.');
+        setOutput(`🎵 ${t('music.outputMessages.customFinished')}`);
         stopVisualizer();
       }, patternDuration * 1000);
     }
@@ -483,13 +459,13 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
   // Toggle loop
   const toggleLoop = () => {
     setIsLooping(!isLooping);
-    setOutput(isLooping ? '🎵 Loop disabled' : '🎵 Loop enabled - pattern will repeat continuously');
+    setOutput(isLooping ? `🎵 ${t('music.outputMessages.loopDisabled')}` : `🎵 ${t('music.outputMessages.loopEnabled')}`);
   };
 
   // Toggle fullscreen
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
-    setOutput(isFullscreen ? '🎵 Exited fullscreen mode' : '🎵 Entered fullscreen mode');
+    setOutput(isFullscreen ? `🎵 ${t('music.outputMessages.exitedFullscreen')}` : `🎵 ${t('music.outputMessages.enteredFullscreen')}`);
   };
 
   // Handle BPM changes
@@ -562,9 +538,9 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
           }, newPatternDuration * 1000);
         }
       
-      setOutput(`🎵 BPM changed to ${newBpm} - loop restarted with new tempo!`);
+      setOutput(`🎵 ${t('music.outputMessages.bpmChanged')} ${newBpm} - loop restarted with new tempo!`);
     } else {
-      setOutput(`🎵 BPM set to ${newBpm}`);
+      setOutput(`🎵 ${t('music.outputMessages.bpmSet')} ${newBpm}`);
     }
   };
 
@@ -613,11 +589,10 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
           className="text-center mb-16"
         >
           <h1 className="text-5xl font-bold text-white mb-6">
-            🎵 Muziek & Live Coding
+            {t('music.title')}
           </h1>
           <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
-            Verken de wereld van muziekproductie, live coding en algoritmische compositie. 
-            Van traditionele instrumenten tot cutting-edge algorave technologie.
+            {t('music.subtitle')}
           </p>
         </motion.div>
 
@@ -633,7 +608,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
             className="inline-flex items-center space-x-2 text-neon-green hover:text-neon-blue transition-colors duration-300 text-lg font-medium"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span>Terug naar Home</span>
+            <span>{t('music.backToHome')}</span>
           </Link>
         </motion.div>
 
@@ -648,11 +623,11 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-white flex items-center">
                 <Code className="w-6 h-6 mr-3 text-neon-green" />
-                Algorave Live Coding Panel
+                {t('music.liveCodingPanel')}
               </h2>
                              <div className="flex items-center space-x-4">
                  <div className="flex items-center space-x-2">
-                   <label className="text-white/70 text-sm">BPM:</label>
+                   <label className="text-white/70 text-sm">{t('music.bpm')}</label>
                    <input
                      type="range"
                      min="60"
@@ -668,7 +643,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                  <button
                    onClick={toggleFullscreen}
                    className="flex items-center space-x-2 bg-neon-purple hover:bg-neon-purple/80 text-white px-3 py-2 rounded-lg font-medium transition-all duration-300"
-                   title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+                   title={isFullscreen ? t('music.exitFullscreen') : t('music.fullscreen')}
                  >
                    {isFullscreen ? (
                      <Minimize2 className="w-4 h-4" />
@@ -676,7 +651,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                      <Maximize2 className="w-4 h-4" />
                    )}
                    <span className="hidden sm:inline">
-                     {isFullscreen ? "Exit" : "Fullscreen"}
+                     {isFullscreen ? t('music.exit') : t('music.fullscreen')}
                    </span>
                  </button>
                </div>
@@ -688,7 +663,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                  {/* Beat Grid Visualizer */}
                  <div className="mb-4">
                    <div className="flex items-center space-x-2 mb-2">
-                     <span className="text-white/70 text-sm">Beat Grid:</span>
+                     <span className="text-white/70 text-sm">{t('music.beatGrid')}</span>
                      <div className="flex space-x-1">
                        {Array.from({ length: 8 }, (_, i) => (
                          <div
@@ -707,7 +682,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                  {/* Sound Wave Visualizer */}
                  <div className="mb-4">
                    <div className="flex items-center space-x-2 mb-2">
-                     <span className="text-white/70 text-sm">Sound Waves:</span>
+                     <span className="text-white/70 text-sm">{t('music.soundWaves')}</span>
                    </div>
                    <div className="flex items-end space-x-1 h-16">
                      {visualizerData.map((height, i) => (
@@ -774,7 +749,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                                    {/* Pattern Blocks */}
                   <div className="mt-4">
                     <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-white/70 text-sm">Pattern Blocks:</span>
+                      <span className="text-white/70 text-sm">{t('music.patternBlocks')}</span>
                     </div>
                     <div className="grid grid-cols-4 gap-2">
                       {['Kick', 'Snare', 'HiHat', 'Bass'].map((instrument, i) => (
@@ -803,13 +778,13 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                   {/* Sound Design Info */}
                   <div className="mt-4 p-3 bg-neon-green/10 border border-neon-green/20 rounded-lg">
                     <div className="text-center mb-2">
-                      <span className="text-neon-green text-sm font-medium">🎛️ Sound Design Tips</span>
+                      <span className="text-neon-green text-sm font-medium">{t('music.soundDesignTips')}</span>
                     </div>
                     <div className="text-xs text-white/70 space-y-1">
-                      <div>• <strong>Frequency:</strong> 20-20000 Hz (bass: 20-200, treble: 2000+)</div>
-                      <div>• <strong>Duration:</strong> 0.01-1.0 seconds (kicks: 0.1, hihats: 0.05)</div>
-                      <div>• <strong>Waveforms:</strong> sine (smooth), square (harsh), triangle (warm), sawtooth (bright)</div>
-                      <div>• <strong>Shortcuts:</strong> Ctrl+S of Ctrl+Enter om code uit te voeren</div>
+                      <div>• <strong>{t('music.frequency')}</strong> 20-20000 Hz (bass: 20-200, treble: 2000+)</div>
+                      <div>• <strong>{t('music.duration')}</strong> 0.01-1.0 seconds (kicks: 0.1, hihats: 0.05)</div>
+                      <div>• <strong>{t('music.waveforms')}</strong> sine (smooth), square (harsh), triangle (warm), sawtooth (bright)</div>
+                      <div>• <strong>{t('music.shortcuts')}</strong> Ctrl+S of Ctrl+Enter om code uit te voeren</div>
                     </div>
                   </div>
                </div>
@@ -823,58 +798,58 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                    disabled={isPlaying}
                    className="flex items-center space-x-2 bg-neon-green hover:bg-neon-green/80 disabled:opacity-50 text-dark-bg px-4 py-2 rounded-lg font-medium transition-all duration-300"
                  >
-                   <Play className="w-4 h-4" />
-                   <span>Play Pattern</span>
-                 </button>
-                 <button
-                   onClick={stopPlayback}
-                   className="flex items-center space-x-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
-                 >
-                   <Square className="w-4 h-4" />
-                   <span>Stop</span>
-                 </button>
-                 <button
-                   onClick={toggleLoop}
-                   className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                     isLooping 
-                       ? 'bg-neon-purple hover:bg-neon-purple/80 text-white' 
-                       : 'bg-gray-600 hover:bg-gray-700 text-white'
-                   }`}
-                 >
-                   <RotateCcw className="w-4 h-4" />
-                   <span>{isLooping ? 'Loop On' : 'Loop Off'}</span>
-                 </button>
-                 <button
-                   onClick={executeCode}
-                   disabled={isWaitingForLoop}
-                   className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                     isWaitingForLoop 
-                       ? 'bg-orange-500 cursor-not-allowed opacity-70' 
-                       : 'bg-neon-blue hover:bg-neon-blue/80'
-                   } text-white`}
-                 >
-                   <Zap className="w-4 h-4" />
-                   <span>{isWaitingForLoop ? 'Waiting...' : 'Execute'}</span>
-                 </button>
-                 <button
-                   onClick={resetCode}
-                   className="flex items-center space-x-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
-                 >
-                   <RotateCcw className="w-4 h-4" />
-                   <span>Reset</span>
-                 </button>
-                 
-                 {/* Fullscreen Close Button (only visible in fullscreen) */}
-                 {isFullscreen && (
-                   <button
-                     onClick={toggleFullscreen}
-                     className="flex items-center space-x-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
-                     title="Exit Fullscreen"
-                   >
-                     <Minimize2 className="w-4 h-4" />
-                     <span>Exit Fullscreen</span>
-                   </button>
-                 )}
+                  <Play className="w-4 h-4" />
+                  <span>{t('music.playPattern')}</span>
+                </button>
+                <button
+                  onClick={stopPlayback}
+                  className="flex items-center space-x-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
+                >
+                  <Square className="w-4 h-4" />
+                  <span>{t('music.stop')}</span>
+                </button>
+                <button
+                  onClick={toggleLoop}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                    isLooping 
+                      ? 'bg-neon-purple hover:bg-neon-purple/80 text-white' 
+                      : 'bg-gray-600 hover:bg-gray-700 text-white'
+                  }`}
+                >
+                  <RotateCcw className="w-4 h-4" />
+                  <span>{isLooping ? t('music.loopOn') : t('music.loopOff')}</span>
+                </button>
+                <button
+                  onClick={executeCode}
+                  disabled={isWaitingForLoop}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                    isWaitingForLoop 
+                      ? 'bg-orange-500 cursor-not-allowed opacity-70' 
+                      : 'bg-neon-blue hover:bg-neon-blue/80'
+                  } text-white`}
+                >
+                  <Zap className="w-4 h-4" />
+                  <span>{isWaitingForLoop ? t('music.waiting') : t('music.execute')}</span>
+                </button>
+                <button
+                  onClick={resetCode}
+                  className="flex items-center space-x-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                  <span>{t('music.reset')}</span>
+                </button>
+                
+                {/* Fullscreen Close Button (only visible in fullscreen) */}
+                {isFullscreen && (
+                  <button
+                    onClick={toggleFullscreen}
+                    className="flex items-center space-x-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-300"
+                    title={t('music.exitFullscreen')}
+                  >
+                    <Minimize2 className="w-4 h-4" />
+                    <span>{t('music.exitFullscreen')}</span>
+                  </button>
+                )}
                </div>
              </div>
 
@@ -882,7 +857,7 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
             <div className="bg-dark-bg rounded-lg p-4 border border-white/10">
               <div className="flex items-center space-x-2 mb-2">
                 <Volume2 className="w-4 h-4 text-neon-green" />
-                <span className="text-white/70 text-sm">Output:</span>
+                <span className="text-white/70 text-sm">{t('music.output')}</span>
               </div>
               <div className="text-green-400 font-mono text-sm">
                 {output}
@@ -900,11 +875,10 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-6">
-              🎼 Muzikale Vaardigheden
+              {t('music.musicSkills')}
             </h2>
             <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              Van traditionele instrumenten tot moderne productiesoftware - 
-              ontdek de verschillende aspecten van muziekcreatie.
+              {t('music.skillsSubtitle')}
             </p>
           </div>
 
@@ -921,24 +895,18 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                   <Music className="w-12 h-12" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon-green transition-colors duration-300">
-                  DAW Software
+                  {t('music.dawSoftware.title')}
                 </h3>
                 <p className="text-white/70 text-sm leading-relaxed mb-4">
-                  Professionele muziekproductie met FL Studio, Ableton Live en andere digitale audio workstations.
+                  {t('music.dawSoftware.description')}
                 </p>
                 <div className="space-y-2 text-left">
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-green rounded-full"></span>
-                    <span>FL Studio - Beat making & arrangement</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                    <span>Ableton Live - Live performance & looping</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-purple rounded-full"></span>
-                    <span>Logic Pro - Professional recording</span>
-                  </div>
+                  {(t('music.dawSoftware.items', { returnObjects: true }) as string[]).map((item, idx) => (
+                    <div key={idx} className="flex items-center space-x-2 text-sm text-white/80">
+                      <span className={`w-2 h-2 ${idx === 0 ? 'bg-neon-green' : idx === 1 ? 'bg-neon-blue' : 'bg-neon-purple'} rounded-full`}></span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -955,24 +923,18 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                   <Piano className="w-12 h-12" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon-green transition-colors duration-300">
-                  Analog & Hardware
+                  {t('music.analogHardware.title')}
                 </h3>
                 <p className="text-white/70 text-sm leading-relaxed mb-4">
-                  Warme analoge geluiden en hands-on hardware synthesizers voor authentieke muziekproductie.
+                  {t('music.analogHardware.description')}
                 </p>
                 <div className="space-y-2 text-left">
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-green rounded-full"></span>
-                    <span>Analog synthesizers & modules</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                    <span>Hardware drum machines</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-purple rounded-full"></span>
-                    <span>Vintage effect processors</span>
-                  </div>
+                  {(t('music.analogHardware.items', { returnObjects: true }) as string[]).map((item, idx) => (
+                    <div key={idx} className="flex items-center space-x-2 text-sm text-white/80">
+                      <span className={`w-2 h-2 ${idx === 0 ? 'bg-neon-green' : idx === 1 ? 'bg-neon-blue' : 'bg-neon-purple'} rounded-full`}></span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -989,24 +951,18 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                   <Guitar className="w-12 h-12" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon-green transition-colors duration-300">
-                  Acoustic & Live
+                  {t('music.acousticLive.title')}
                 </h3>
                 <p className="text-white/70 text-sm leading-relaxed mb-4">
-                  Traditionele instrumenten en live jamming voor organische muziekcreatie en performance.
+                  {t('music.acousticLive.description')}
                 </p>
                 <div className="space-y-2 text-left">
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-green rounded-full"></span>
-                    <span>Guitar & bass playing</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                    <span>Live jamming & improvisatie</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-purple rounded-full"></span>
-                    <span>Acoustic percussion</span>
-                  </div>
+                  {(t('music.acousticLive.items', { returnObjects: true }) as string[]).map((item, idx) => (
+                    <div key={idx} className="flex items-center space-x-2 text-sm text-white/80">
+                      <span className={`w-2 h-2 ${idx === 0 ? 'bg-neon-green' : idx === 1 ? 'bg-neon-blue' : 'bg-neon-purple'} rounded-full`}></span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -1023,24 +979,18 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                   <Mic className="w-12 h-12" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon-green transition-colors duration-300">
-                  Vocals & Sound Design
+                  {t('music.vocalsSoundDesign.title')}
                 </h3>
                 <p className="text-white/70 text-sm leading-relaxed mb-4">
-                  Vocale technieken en creatieve sound design voor unieke muzikale texturen.
+                  {t('music.vocalsSoundDesign.description')}
                 </p>
                 <div className="space-y-2 text-left">
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-green rounded-full"></span>
-                    <span>Vocal recording & processing</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                    <span>Sound design & synthesis</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-purple rounded-full"></span>
-                    <span>Creative audio manipulation</span>
-                  </div>
+                  {(t('music.vocalsSoundDesign.items', { returnObjects: true }) as string[]).map((item, idx) => (
+                    <div key={idx} className="flex items-center space-x-2 text-sm text-white/80">
+                      <span className={`w-2 h-2 ${idx === 0 ? 'bg-neon-green' : idx === 1 ? 'bg-neon-blue' : 'bg-neon-purple'} rounded-full`}></span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -1057,24 +1007,18 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                   <Code className="w-12 h-12" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon-green transition-colors duration-300">
-                  Live Coding & Algorave
+                  {t('music.liveCodingAlgorave.title')}
                 </h3>
                 <p className="text-white/70 text-sm leading-relaxed mb-4">
-                  Algoritmische muziekcreatie en live coding voor experimentele elektronische muziek.
+                  {t('music.liveCodingAlgorave.description')}
                 </p>
                 <div className="space-y-2 text-left">
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-green rounded-full"></span>
-                    <span>Algorithmic composition</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                    <span>Live coding performance</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-purple rounded-full"></span>
-                    <span>Generative music systems</span>
-                  </div>
+                  {(t('music.liveCodingAlgorave.items', { returnObjects: true }) as string[]).map((item, idx) => (
+                    <div key={idx} className="flex items-center space-x-2 text-sm text-white/80">
+                      <span className={`w-2 h-2 ${idx === 0 ? 'bg-neon-green' : idx === 1 ? 'bg-neon-blue' : 'bg-neon-purple'} rounded-full`}></span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -1091,24 +1035,18 @@ bass: [1, 0, 0, 1, 0, 0, 1, 0]
                   <Headphones className="w-12 h-12" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon-green transition-colors duration-300">
-                  Theory & Production
+                  {t('music.theoryProduction.title')}
                 </h3>
                 <p className="text-white/70 text-sm leading-relaxed mb-4">
-                  Muziektheorie, arrangement en professionele productietechnieken.
+                  {t('music.theoryProduction.description')}
                 </p>
                 <div className="space-y-2 text-left">
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-green rounded-full"></span>
-                    <span>Music theory & composition</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-blue rounded-full"></span>
-                    <span>Arrangement & orchestration</span>
-                  </div>
-                  <div className="flex items-center space-x-2 text-sm text-white/80">
-                    <span className="w-2 h-2 bg-neon-purple rounded-full"></span>
-                    <span>Mixing & mastering</span>
-                  </div>
+                  {(t('music.theoryProduction.items', { returnObjects: true }) as string[]).map((item, idx) => (
+                    <div key={idx} className="flex items-center space-x-2 text-sm text-white/80">
+                      <span className={`w-2 h-2 ${idx === 0 ? 'bg-neon-green' : idx === 1 ? 'bg-neon-blue' : 'bg-neon-purple'} rounded-full`}></span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </motion.div>

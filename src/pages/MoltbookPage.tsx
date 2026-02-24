@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { 
   ArrowLeft, 
   Send, 
@@ -34,6 +35,7 @@ import {
 import { getMoltbookApiKey, saveMoltbookApiKey } from '../config/moltbook';
 
 export const MoltbookPage: React.FC = () => {
+  const { t } = useTranslation();
   const [apiKey, setApiKey] = useState<string>('');
   const [showApiKey, setShowApiKey] = useState(false);
   const [isConfigured, setIsConfigured] = useState(false);
@@ -119,7 +121,7 @@ export const MoltbookPage: React.FC = () => {
     const response = await updateAgentProfile(newAgentName.trim());
     
     if (response.success && response.data) {
-      setSuccess(`Naam succesvol gewijzigd naar "${newAgentName.trim()}"!`);
+      setSuccess(`${t('moltbook.nameUpdated')} "${newAgentName.trim()}"!`);
       setAgentProfile(response.data.agent);
       setAgentName(response.data.agent.name);
       setIsEditingName(false);
@@ -130,8 +132,8 @@ export const MoltbookPage: React.FC = () => {
       setTimeout(() => setSuccess(null), 3000);
     } else {
       // Show helpful error message with link to website
-      const errorMsg = response.error || 'Fout bij het wijzigen van de naam';
-      setError(`${errorMsg} Je kunt de naam wijzigen via de Moltbook website: https://www.moltbook.com/u/${agentName}`);
+      const errorMsg = response.error || t('moltbook.errorUpdatingName');
+      setError(`${errorMsg} ${t('moltbook.changeNameOnWebsite')} https://www.moltbook.com/u/${agentName}`);
     }
 
     setIsUpdatingName(false);
@@ -400,7 +402,7 @@ export const MoltbookPage: React.FC = () => {
     setIsAutoReplying(true);
     setError(null);
     setSuccess(null);
-    setAutoReplyProgress('Laden van eigen posts...');
+    setAutoReplyProgress(t('moltbook.loadingOwnPosts'));
 
     try {
       // Get own posts
@@ -411,13 +413,13 @@ export const MoltbookPage: React.FC = () => {
       }
 
       const myPosts = myPostsResponse.data.posts;
-      setAutoReplyProgress(`Gevonden ${myPosts.length} eigen posts. Controleren op nieuwe comments...`);
+      setAutoReplyProgress(`${t('moltbook.foundOwnPosts')} ${myPosts.length} ${t('moltbook.ownPosts')}`);
 
       let repliedCount = 0;
       let skippedCount = 0;
 
       for (const post of myPosts) {
-        setAutoReplyProgress(`Controleren post: "${post.title.substring(0, 30)}..."`);
+        setAutoReplyProgress(`${t('moltbook.checkingPost')} "${post.title.substring(0, 30)}..."`);
         
         // Get comments for this post
         const commentsResponse = await getComments(post.id, 'new');
@@ -446,7 +448,7 @@ export const MoltbookPage: React.FC = () => {
           });
 
           if (!weReplied) {
-            setAutoReplyProgress(`Reageren op comment van ${comment.author?.name || 'unknown'}...`);
+            setAutoReplyProgress(`${t('moltbook.replyingTo')} ${comment.author?.name || 'unknown'}...`);
             
             // Generate a context-aware response based on comment content
             let responseText = '';
@@ -484,7 +486,7 @@ export const MoltbookPage: React.FC = () => {
             } else {
               skippedCount++;
               if (replyResponse.error?.includes('429') || replyResponse.error?.includes('rate limit')) {
-                setAutoReplyProgress('Rate limit bereikt. Wacht even...');
+                setAutoReplyProgress(t('moltbook.rateLimitReached'));
                 await new Promise(resolve => setTimeout(resolve, 30000));
               }
             }
@@ -526,14 +528,14 @@ export const MoltbookPage: React.FC = () => {
             className="inline-flex items-center text-neon-green hover:text-neon-blue transition-colors duration-300 mb-4"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
-            Terug naar Interesses
+            {t('moltbook.backToInterests')}
           </Link>
           
           <h1 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-neon-green to-neon-blue bg-clip-text text-transparent">
-            Moltbook Agent
+            {t('moltbook.title')}
           </h1>
           <p className="text-white/70 text-lg">
-            Stel vragen en beantwoord posts van andere agents
+            {t('moltbook.subtitle')}
           </p>
         </div>
 
@@ -546,10 +548,10 @@ export const MoltbookPage: React.FC = () => {
           >
             <div className="flex items-center mb-4">
               <Settings className="w-6 h-6 text-neon-green mr-3" />
-              <h2 className="text-2xl font-bold">API Key Configuratie</h2>
+              <h2 className="text-2xl font-bold">{t('moltbook.apiKeyConfiguration')}</h2>
             </div>
             <p className="text-white/70 mb-4">
-              Voer je Moltbook API key in om te beginnen. Je kunt deze vinden in je credentials bestand.
+              {t('moltbook.enterApiKey')}
             </p>
             <div className="flex gap-4">
               <div className="flex-1 relative">
@@ -571,7 +573,7 @@ export const MoltbookPage: React.FC = () => {
                 onClick={handleSaveApiKey}
                 className="px-6 py-3 bg-neon-green hover:bg-neon-blue text-dark-primary font-semibold rounded-lg transition-colors duration-300"
               >
-                Opslaan
+                {t('moltbook.save')}
               </button>
             </div>
           </motion.div>
@@ -595,7 +597,7 @@ export const MoltbookPage: React.FC = () => {
                         value={newAgentName}
                         onChange={(e) => setNewAgentName(e.target.value)}
                         className="px-3 py-1 bg-dark-primary/50 border border-white/10 rounded-lg text-white focus:outline-none focus:border-neon-green transition-colors"
-                        placeholder="Nieuwe naam"
+                        placeholder={t('moltbook.newName')}
                         disabled={isUpdatingName}
                       />
                       <button
@@ -603,7 +605,7 @@ export const MoltbookPage: React.FC = () => {
                         disabled={isUpdatingName || !newAgentName.trim() || newAgentName.trim() === agentName}
                         className="px-3 py-1 bg-neon-green hover:bg-neon-blue text-dark-primary font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                       >
-                        {isUpdatingName ? 'Opslaan...' : 'Opslaan'}
+                        {isUpdatingName ? t('moltbook.saving') : t('moltbook.save')}
                       </button>
                       <button
                         onClick={() => {
@@ -613,16 +615,16 @@ export const MoltbookPage: React.FC = () => {
                         disabled={isUpdatingName}
                         className="px-3 py-1 bg-dark-primary/50 hover:bg-dark-primary border border-white/10 rounded-lg transition-colors disabled:opacity-50 text-sm"
                       >
-                        Annuleren
+                        {t('moltbook.cancel')}
                       </button>
                     </div>
                   ) : (
                     <div>
                       <h3 className="text-xl font-bold">{agentProfile.name}</h3>
                       <p className="text-white/70 text-sm">
-                        Karma: {agentProfile.karma} • 
-                        Volgers: {agentProfile.follower_count} • 
-                        Volgend: {agentProfile.following_count}
+                        {t('moltbook.karma')}: {agentProfile.karma} • 
+                        {t('moltbook.followers')}: {agentProfile.follower_count} • 
+                        {t('moltbook.following')}: {agentProfile.following_count}
                       </p>
                     </div>
                   )}
@@ -634,7 +636,7 @@ export const MoltbookPage: React.FC = () => {
                     onClick={() => setIsEditingName(true)}
                     className="px-3 py-1 bg-dark-primary/50 hover:bg-dark-primary border border-white/10 rounded-lg transition-colors text-sm"
                   >
-                    Naam wijzigen
+                    {t('moltbook.changeName')}
                   </button>
                 )}
                 <a
@@ -643,7 +645,7 @@ export const MoltbookPage: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-neon-green hover:text-neon-blue transition-colors flex items-center"
                 >
-                  Profiel <ExternalLink className="w-4 h-4 ml-1" />
+                  {t('moltbook.profile')} <ExternalLink className="w-4 h-4 ml-1" />
                 </a>
               </div>
             </div>
@@ -698,7 +700,7 @@ export const MoltbookPage: React.FC = () => {
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-2xl font-bold flex items-center">
                   <Send className="w-6 h-6 text-neon-green mr-3" />
-                  Stel een Vraag
+                  {t('moltbook.askQuestion')}
                 </h2>
                 <div className="flex gap-2">
                   <button
@@ -708,7 +710,7 @@ export const MoltbookPage: React.FC = () => {
                     title="Genereer een AI post"
                   >
                     <Bot className="w-4 h-4" />
-                    {isGeneratingPost ? 'Genereren...' : 'AI Post'}
+                    {isGeneratingPost ? t('moltbook.generatePost') : t('moltbook.aiPost')}
                   </button>
                 </div>
               </div>
@@ -736,7 +738,7 @@ export const MoltbookPage: React.FC = () => {
                 
                 <div>
                   <label className="block text-sm font-medium text-white/70 mb-2">
-                    Titel
+                    {t('moltbook.titleLabel')}
                   </label>
                   <input
                     type="text"
@@ -749,7 +751,7 @@ export const MoltbookPage: React.FC = () => {
                 
                 <div>
                   <label className="block text-sm font-medium text-white/70 mb-2">
-                    Inhoud
+                    {t('moltbook.content')}
                   </label>
                   <textarea
                     value={postContent}
@@ -768,12 +770,12 @@ export const MoltbookPage: React.FC = () => {
                   {isCreatingPost ? (
                     <>
                       <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                      Posten...
-                    </>
+                      {t('moltbook.posting')}
+                    </> 
                   ) : (
                     <>
                       <Send className="w-5 h-5 mr-2" />
-                      Post Vraag
+                      {t('moltbook.send')}
                     </>
                   )}
                 </button>
@@ -790,7 +792,7 @@ export const MoltbookPage: React.FC = () => {
                 <div className="flex items-center gap-4">
                   <h2 className="text-2xl font-bold flex items-center">
                     <MessageSquare className="w-6 h-6 text-neon-green mr-3" />
-                    Posts
+                    {t('moltbook.posts')}
                   </h2>
                   {/* View Tabs */}
                   <div className="flex gap-2 bg-dark-primary/50 rounded-lg p-1">
@@ -802,7 +804,7 @@ export const MoltbookPage: React.FC = () => {
                           : 'text-white/70 hover:text-white'
                       }`}
                     >
-                      Alle Posts
+                      {t('moltbook.allPosts')}
                     </button>
                     <button
                       onClick={() => setPostsView('my')}
@@ -812,7 +814,7 @@ export const MoltbookPage: React.FC = () => {
                           : 'text-white/70 hover:text-white'
                       }`}
                     >
-                      Mijn Posts
+                      {t('moltbook.myPosts')}
                     </button>
                   </div>
                 </div>
@@ -824,9 +826,9 @@ export const MoltbookPage: React.FC = () => {
                     }}
                     className="px-4 py-2 bg-dark-primary/50 border border-white/10 rounded-lg text-white focus:outline-none focus:border-neon-green transition-colors"
                   >
-                    <option value="new">Nieuwste</option>
-                    <option value="hot">Populair</option>
-                    <option value="top">Top</option>
+                    <option value="new">{t('moltbook.sort.new')}</option>
+                    <option value="hot">{t('moltbook.sort.hot')}</option>
+                    <option value="top">{t('moltbook.sort.top')}</option>
                   </select>
                   <button
                     onClick={loadPosts}
@@ -844,7 +846,7 @@ export const MoltbookPage: React.FC = () => {
                       title="Automatisch reageren op alle nieuwe comments"
                     >
                       <Zap className="w-4 h-4" />
-                      {isAutoReplying ? 'Bezig...' : 'Auto-Reply'}
+                      {isAutoReplying ? t('moltbook.working') : t('moltbook.autoReply')}
                     </button>
                   )}
                 </div>
@@ -856,7 +858,7 @@ export const MoltbookPage: React.FC = () => {
                 </div>
               ) : posts.length === 0 ? (
                 <div className="text-center py-12 text-white/70">
-                  Geen posts gevonden
+                  {t('moltbook.noPosts')}
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -877,13 +879,13 @@ export const MoltbookPage: React.FC = () => {
                           </div>
                           <p className="text-white/70 mb-3">{post.content}</p>
                           <div className="flex items-center gap-4 text-sm text-white/50">
-                            <span>Door: {post.author.name}</span>
+                            <span>{t('moltbook.by')}: {post.author.name}</span>
                             <span>•</span>
                             <span>{formatDate(post.created_at)}</span>
                             <span>•</span>
                             <span>👍 {post.upvotes} 👎 {post.downvotes}</span>
                             <span>•</span>
-                            <span>{post.comment_count} reacties</span>
+                            <span>{post.comment_count} {t('moltbook.comments')}</span>
                           </div>
                         </div>
                         <a
@@ -902,7 +904,7 @@ export const MoltbookPage: React.FC = () => {
                         className="w-full mt-4 px-4 py-2 bg-dark-secondary/50 hover:bg-dark-secondary border border-white/10 rounded-lg transition-colors flex items-center justify-between"
                       >
                         <span className="text-neon-green">
-                          {expandedPostId === post.id ? 'Verberg' : 'Bekijk'} Reacties
+                          {expandedPostId === post.id ? t('moltbook.hide') : t('moltbook.view')} {t('moltbook.comments')}
                         </span>
                         {expandedPostId === post.id ? (
                           <ChevronUp className="w-5 h-5 text-neon-green" />
@@ -962,7 +964,7 @@ export const MoltbookPage: React.FC = () => {
                                         [post.id]: e.target.value
                                       }))
                                     }
-                                    placeholder="Schrijf je antwoord..."
+                                    placeholder={t('moltbook.writeAnswer')}
                                     rows={3}
                                     className="w-full px-4 py-2 bg-dark-primary/50 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-neon-green transition-colors resize-none"
                                   />
@@ -974,12 +976,12 @@ export const MoltbookPage: React.FC = () => {
                                     {isPostingComment[post.id] ? (
                                       <>
                                         <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                        Posten...
-                                      </>
+                                        {t('moltbook.posting')}
+                                      </> 
                                     ) : (
                                       <>
                                         <Send className="w-4 h-4 mr-2" />
-                                        Post Antwoord
+                                        {t('moltbook.postAnswer')}
                                       </>
                                     )}
                                   </button>

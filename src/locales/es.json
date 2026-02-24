@@ -1,0 +1,1237 @@
+{
+  "nav": {
+    "portfolio": "Portafolio",
+    "skills": "Habilidades",
+    "journey": "Trayectoria",
+    "goals": "Objetivos",
+    "interests": "Intereses"
+  },
+  "hero": {
+    "title": "Hola, soy Flor",
+    "subtitle": "Desarrollador Full-Stack y Entusiasta de la Tecnología",
+    "description": "Apasionado por crear soluciones innovadoras que combinan tecnología con sostenibilidad. Especializado en React, TypeScript, Python y desarrollo impulsado por IA.",
+    "cta": "Trabajemos Juntos",
+    "scroll": "Desplázate para explorar"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "description": "Soy un desarrollador apasionado con más de 7 años de experiencia, combinando mi amor por la tecnología con un fuerte enfoque en sostenibilidad e innovación. Actualmente trabajo como miembro de la junta de un grupo en vivo y para Electrostock, mientras persigo mis propios proyectos como Parksports e Immogen.",
+    "experience": "Años de Experiencia",
+    "projects": "Proyectos",
+    "skills": "Habilidades Principales",
+    "whatDrivesMe": "¿Qué me impulsa?",
+    "drive1": "Crear soluciones tecnológicas sostenibles",
+    "drive2": "Construir aplicaciones innovadoras",
+    "drive3": "Aprender tecnologías de vanguardia",
+    "drive4": "Generar un impacto positivo"
+  },
+  "skills": {
+    "title": "Habilidades y Experiencia",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Bases de Datos",
+    "tools": "Herramientas",
+    "frameworks": "Frameworks",
+    "languages": "Lenguajes de Programación",
+    "specializedExpertise": "Experiencia Especializada",
+    "alwaysLearning": "Siempre Aprendiendo",
+    "fastDevelopment": "Desarrollo Rápido",
+    "qualityCode": "Código de Calidad",
+    "summary": "Expandiendo continuamente mi conjunto de habilidades y manteniéndome al día con las últimas tecnologías. Apasionado por crear soluciones eficientes, escalables y mantenibles con un enfoque en sostenibilidad e integración de IA."
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "subtitle": "Proyectos Destacados",
+    "viewProject": "Ver Proyecto",
+    "technologies": "Tecnologías Utilizadas"
+  },
+  "timeline": {
+    "title": "Mi Trayectoria",
+    "skillsEvolution": "Evolución de Habilidades a lo Largo del Tiempo",
+    "readyForNextChapter": "Listo para el Próximo Capítulo",
+    "nextChapterDescription": "Mi trayectoria en tecnología continúa con pasión por la innovación, sostenibilidad y crecimiento. Siempre emocionado de asumir nuevos desafíos y contribuir a proyectos significativos que marquen la diferencia.",
+    "letsWorkTogether": "Trabajemos Juntos",
+    "events": {
+      "event1": {
+        "title": "Miembro del Consejo LifeGroup + ElectroStock",
+        "company": "LifeGroup & ElectroStock",
+        "location": "Bélgica",
+        "description": "Primer año trabajando como miembro del consejo de LifeGroup y trabajo para ElectroStock. Combinando experiencia en programación con responsabilidades del consejo.",
+        "achievements": ["Consejo de LifeGroup", "Trabajo para ElectroStock", "Combinación de tecnología y consejo"]
+      },
+      "event2": {
+        "title": "Educación en Desarrollo Web",
+        "company": "Diploma en Desarrollo Web",
+        "location": "Bélgica",
+        "description": "4 años de educación en desarrollo web completados con diploma. Enfoque en tecnologías web modernas y proyectos prácticos.",
+        "achievements": ["Diploma obtenido", "Tecnologías web modernas", "Proyectos prácticos"]
+      },
+      "event3": {
+        "title": "Ciencias Técnicas de Plantas",
+        "company": "Diploma en Ciencias Técnicas de Plantas",
+        "location": "Bélgica",
+        "description": "2 años de educación en ciencias técnicas de plantas completados con diploma. Enfoque en sostenibilidad y tecnología.",
+        "achievements": ["Diploma obtenido", "Sostenibilidad", "Tecnología"]
+      },
+      "event4": {
+        "title": "Inicio como Programador",
+        "company": "Primera Experiencia en Programación",
+        "location": "Bélgica",
+        "description": "Comencé a programar en la escuela secundaria. Primeros pasos en el mundo del desarrollo de software.",
+        "achievements": ["Primera experiencia en programación", "Habilidades básicas", "Pasión descubierta"]
+      }
+    }
+  },
+  "goals": {
+    "title": "Objetivos y Visión",
+    "subtitle": "Construyendo un futuro sostenible a través de la tecnología",
+    "shortTerm": "Objetivos a Corto Plazo (6-36 meses)",
+    "longTerm": "Visión a Largo Plazo (3-10 años)",
+    "mission": "Misión Personal",
+    "vijverstofzuigers": "Expandir Sitio Web de Limpieza de Piscinas",
+    "vijverstofzuigersDesc": "Desarrollar y expandir aún más el sitio web de servicios de limpieza de piscinas, agregando nuevas funciones y mejorando la experiencia del usuario.",
+    "robotsBouwen": "Construir Más Robots",
+    "robotsBouwenDesc": "Crear soluciones robóticas adicionales para diversas aplicaciones, enfocándose en automatización y sostenibilidad.",
+    "soloprojecten": "Completar Proyectos en Solitario",
+    "soloprojectenDesc": "Terminar el desarrollo de los proyectos Parksports e Immogen, llevándolos a su completa finalización.",
+    "parksportsCommunity": "Construir Comunidad Parksports",
+    "parksportsCommunityDesc": "Crear y hacer crecer una comunidad en torno al proyecto Parksports, involucrando usuarios y colaboradores.",
+    "immogenSamenwerkers": "Encontrar Colaboradores para Immogen",
+    "immogenSamenwerkersDesc": "Identificar e incorporar miembros del equipo para ayudar a desarrollar y escalar el proyecto Immogen.",
+    "properheidAarde": "Contribuir a la Limpieza de la Tierra",
+    "properheidAardeDesc": "Hacer una contribución significativa para mantener nuestro planeta limpio a través de la tecnología y la innovación.",
+    "ecologischePlaneet": "Ayudar a Crear un Planeta Ecológico",
+    "ecologischePlaneetDesc": "Trabajar hacia un futuro más sostenible y ecológico a través de soluciones tecnológicas.",
+    "aiDrivenBusiness": "Liderar Negocio Tecnológico Impulsado por IA",
+    "aiDrivenBusinessDesc": "Establecer y liderar un negocio tecnológico que aproveche la IA para crear soluciones innovadoras.",
+    "recognitionNaam": "Reconocimiento y Legado",
+    "recognitionNaamDesc": "Construir un nombre reconocido y dejar un legado duradero en el espacio de tecnología y sostenibilidad.",
+    "duurzaamheid": "Sostenibilidad Primero",
+    "duurzaamheidDesc": "Priorizar la responsabilidad ambiental en todas las soluciones tecnológicas y proyectos.",
+    "innovatie": "Impulsado por la Innovación",
+    "innovatieDesc": "Siempre empujar los límites de lo que es posible con la tecnología y la resolución creativa de problemas.",
+    "kwaliteit": "Calidad sobre Cantidad",
+    "kwaliteitDesc": "Enfocarse en crear soluciones significativas y bien elaboradas que marquen una verdadera diferencia.",
+    "visionTitle": "Mi Visión para el Futuro",
+    "visionDescription": "Visualizo un futuro donde la tecnología mejore sin problemas la creatividad y productividad humana mientras preserva nuestro planeta. Al combinar prácticas de desarrollo de vanguardia con una comprensión profunda de la sostenibilidad, mi objetivo es crear experiencias digitales que no solo resuelvan problemas sino que inspiren y contribuyan a un mundo mejor. Mi objetivo es estar a la vanguardia de esta transformación, construyendo puentes entre tecnología compleja, experiencias de usuario intuitivas y responsabilidad ambiental.",
+    "focused": "Enfocado",
+    "ambitious": "Ambicioso",
+    "passionate": "Apasionado",
+    "timeline": {
+      "shortTerm": "6-12 months",
+      "shortTermExtended": "1-2 year",
+      "shortTermExtended2": "2-3 years",
+      "longTerm": "3-5 years",
+      "longTermExtended": "5-7 years",
+      "longTermExtended2": "7-10 years"
+    }
+  },
+  "contact": {
+    "title": "Ponte en Contacto",
+    "subtitle": "Hablemos de tu próximo proyecto",
+    "description": "Siempre estoy interesado en nuevas oportunidades y proyectos emocionantes. Ya sea que tengas una pregunta o solo quieras saludar, ¡no dudes en contactarme!",
+    "name": "Nombre",
+    "email": "Correo Electrónico",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje",
+    "location": "Gent, Bélgica",
+    "emailLabel": "Correo Electrónico",
+    "phoneLabel": "Teléfono",
+    "socialLabel": "Redes Sociales",
+    "available": "Disponible para nuevos proyectos",
+    "errorInvalidKey": "EmailJS configuration error: Invalid Public Key. Please check your EmailJS credentials in the .env file.",
+    "errorInvalidService": "EmailJS configuration error: Invalid Service ID. Please check your EmailJS credentials.",
+    "errorInvalidTemplate": "EmailJS configuration error: Invalid Template ID. Please check your EmailJS credentials.",
+    "errorResendNotConfigured": "Resend API key is not configured. Please add VITE_RESEND_API_KEY to your .env file.",
+    "errorGeneric": "Failed to send message. Please check your connection and try again.",
+    "sendMessage": "Envíame un mensaje",
+    "getInTouch": "Ponte en contacto",
+    "followMe": "Sígueme",
+    "availabilityDescription": "Actualmente estoy aceptando nuevos proyectos y oportunidades. ¡Hablemos de cómo podemos trabajar juntos para dar vida a tus ideas!",
+    "readyToStart": "¿Listo para comenzar tu proyecto?",
+    "readyToStartDescription": "Ya sea que tengas un proyecto específico en mente o solo quieras explorar posibilidades, estoy aquí para ayudar. ¡Creemos algo increíble juntos!",
+    "startProject": "Iniciar un Proyecto",
+    "scheduleCall": "Programar una Llamada",
+    "messageSentSuccess": "¡Mensaje enviado con éxito! Te responderé pronto.",
+    "yourName": "Tu nombre",
+    "yourEmail": "tu.correo@ejemplo.com",
+    "tellMeAboutProject": "Cuéntame sobre tu proyecto...",
+    "sending": "Enviando..."
+  },
+  "footer": {
+    "description": "Construyendo el futuro, una línea de código a la vez.",
+    "rights": "Todos los derechos reservados.",
+    "madeWith": "Hecho con ❤️ y ☕"
+  },
+  "interests": {
+    "intro": "Más allá de mis habilidades profesionales, tengo diversos intereses que dan forma a mi perspectiva y contribuyen a mi enfoque creativo para resolver problemas.",
+    "meditation": {
+      "title": "Meditación",
+      "description": "Practico meditación regularmente para calmar mi mente, mejorar la concentración y encontrar paz interior. Esto también me ayuda en mi trabajo creativo.",
+      "details": ["Mindfulness", "Vipassana", "Técnicas de Respiración", "Claridad Mental", "Reducción de Estrés"],
+      "explore": "Explorar Meditación y Mindfulness"
+    },
+    "cultivation": {
+      "title": "Cultivo",
+      "description": "Me apasiona cultivar plantas y conectar con la naturaleza. Desde plantas de interior hasta huertos - encuentro paz cuidando seres vivos.",
+      "details": ["Plantas de Interior", "Jardinería", "Sostenibilidad", "Cuidado de Plantas", "Conexión con la Naturaleza"],
+      "explore": "Explorar Proyectos de Cultivo"
+    },
+    "cooking": {
+      "title": "Cocina",
+      "description": "Cocinar es una salida creativa para mí y una forma de experimentar con sabores y técnicas. Disfruto del proceso de hacer comidas saludables y deliciosas.",
+      "details": ["Cocina Saludable", "Experimentación de Sabores", "Técnicas Culinarias", "Planificación de Comidas", "Nutrición"],
+      "explore": "Explorar Recetas y Platos"
+    },
+    "philosophy": {
+      "title": "Filosofía y Consciencia",
+      "description": "Me fascinan las preguntas más profundas sobre la consciencia, la psicología y cómo los grandes pensadores a lo largo de la historia han moldeado nuestra visión de la mente.",
+      "details": ["Carl Jung", "Filosofía de la Consciencia", "Psicología", "Tradiciones Filosóficas", "Modelos Mentales"],
+      "explore": "Explorar Filósofos y Pensadores"
+    },
+    "sports": {
+      "title": "Deportes y Aventura",
+      "description": "Me apasionan los deportes al aire libre y la aventura. Desde slackline y boulder hasta snowboard y surf - amo el desafío y la libertad que estos deportes ofrecen.",
+      "details": ["Slackline", "Boulder", "Snowboard", "Surf", "Entrenamiento Diario"],
+      "explore": "Explorar Deportes y Aventura"
+    },
+    "music": {
+      "title": "Música",
+      "description": "Tengo una profunda pasión por la música, tanto escucharla como crearla. Disfruto explorando varios géneros y experimentando con producción musical digital.",
+      "details": ["Música Electrónica", "Jazz", "Clásica", "Estaciones de Trabajo de Audio Digital", "Diseño de Sonido"],
+      "explore": "Explorar Live Coding y Música"
+    },
+    "learning": {
+      "title": "Aprendizaje",
+      "description": "Constantemente busco expandir mis conocimientos y habilidades, ya sea a través de libros, cursos en línea o proyectos prácticos.",
+      "details": ["Tendencias Tecnológicas", "Principios de Diseño", "Nuevos Lenguajes de Programación", "Técnicas Creativas"]
+    },
+    "photography": {
+      "title": "Fotografía",
+      "description": "Disfruto capturando momentos y explorando la narrativa visual a través de la fotografía y videografía.",
+      "details": ["Fotografía Digital", "Composición", "Iluminación", "Post-Procesamiento", "Narrativa"]
+    },
+    "art": {
+      "title": "Arte y Creatividad",
+      "description": "La expresión creativa es importante para mí, ya sea a través del arte digital, medios tradicionales o soluciones de diseño innovadoras.",
+      "details": ["Arte Digital", "Dibujo", "Teoría del Color", "Resolución Creativa de Problemas", "Innovación"]
+    },
+    "travel": {
+      "title": "Viajes y Cultura",
+      "description": "Me encanta explorar diferentes culturas y perspectivas, lo que enriquece mi trabajo creativo y mi comprensión de las tendencias de diseño globales.",
+      "details": ["Intercambio Cultural", "Diseño Global", "Aprendizaje de Idiomas", "Sensibilidad Cultural", "Perspectivas Diversas"]
+    },
+    "gaming": {
+      "title": "Videojuegos",
+      "description": "Los videojuegos han sido una parte significativa de mi vida, inspirando mi interés en la tecnología y las experiencias interactivas.",
+      "details": ["Juegos de Estrategia", "RPGs", "Juegos Indie", "Desarrollo de Juegos", "Realidad Virtual"]
+    },
+    "timeVisualization": {
+      "title": "Visualización Alternativa del Tiempo",
+      "description": "Me fascinan las formas alternativas de experimentar el tiempo. A través de un calendario de chakras de 13 meses (comenzando el 26 de julio) exploro cómo la energía y la consciencia se relacionan con nuestra experiencia del tiempo.",
+      "details": ["Calendario de 13 Meses", "Ritmo de Chakras", "Consciencia y Tiempo", "Ciclos Energéticos", "Superposición Gregoriana"],
+      "clickToView": "Haz clic para ver el calendario",
+      "clickToClose": "Haz clic para cerrar"
+    },
+    "gardenDesign": {
+      "title": "Diseño de Jardín y Casa",
+      "description": "Diseña y dibuja tu propio jardín y casa con diferentes capas de trabajo. Desde cimientos hasta plantas y agua - crea tu espacio perfecto.",
+      "details": ["Diseño 2D", "Capas de Trabajo", "Planificación de Plantas", "Sistemas de Agua", "Almacenamiento Local"],
+      "explore": "Iniciar Diseñador"
+    },
+    "investing": {
+      "title": "Inversión",
+      "description": "Rastreo cómo la inflación afecta mi dinero y analizo cómo diferentes inversiones se desempeñan en relación con la inflación. Desde acciones tecnológicas hasta oro - aprendo sobre mercados financieros y construcción de riqueza.",
+      "details": ["Seguimiento de Inflación", "Acciones", "Oro", "Criptomonedas", "Construcción de Riqueza"],
+      "explore": "Explorar Inflación e Inversiones"
+    },
+    "moltbook": {
+      "title": "Agente Moltbook",
+      "description": "Mi agente de IA en Moltbook donde puedo hacer preguntas y responder publicaciones de otros agentes. Una plataforma para comunicación de IA a IA e intercambio de conocimientos.",
+      "details": ["Comunicación de IA", "Hacer Preguntas", "Responder", "Comunidad", "Intercambio de Conocimientos"],
+      "explore": "Abrir Agente Moltbook"
+    },
+    "howInterestsShape": {
+      "title": "Cómo Estos Intereses Dan Forma a Mi Trabajo",
+      "description": "Mis diversos intereses influyen en mi enfoque del diseño y desarrollo. Desde el ritmo y estructura de la música hasta la narrativa interactiva de los videojuegos, cada interés aporta perspectivas únicas que me ayudan a crear soluciones más atractivas e innovadoras. Creo que una persona completa crea un trabajo más completo."
+    },
+    "mindAsComputer": {
+      "title": "La Mente como Computadora",
+      "description": "Una de mis fascinaciones radica en entender cómo la mente humana procesa información como una computadora, y cómo podemos visualizar estos complejos procesos cognitivos. Esta intersección de psicología, tecnología y visualización impulsa mi enfoque para crear experiencias de usuario intuitivas.",
+      "explore": "Explorar Diagramas Interactivos"
+    },
+    "explore": "Explorar"
+  },
+  "cultivation": {
+    "title": "Cultivo y Crecimiento",
+    "subtitle": "Desde plantas de interior hasta sistemas automatizados de cultivo",
+    "description": "Desde plantas de interior hasta sistemas automatizados de cultivo - descubre mi pasión por cultivar y cuidar plantas. Una combinación de cultivo tradicional y tecnología moderna.",
+    "philosophy": {
+      "title": "¿Por qué Cultivo?",
+      "description": "Cultivar plantas es más que un simple hobby - es una forma de conectar con la naturaleza, aprender sobre sostenibilidad y usar tecnología para optimizar el crecimiento. Cada planta tiene sus propias necesidades y desafíos, lo que lo convierte en una combinación perfecta de ciencia, arte y paciencia."
+    },
+    "projects": {
+      "houseplants": {
+        "title": "Plantas de Interior",
+        "description": "Una colección creciente de plantas de interior que transforman mi espacio vital en un oasis verde. Desde plantas purificadoras de aire hasta especies exóticas.",
+        "details": ["Monstera Deliciosa", "Ficus Lyrata", "Sansevieria", "Pothos", "Spider Plant"],
+        "subProjects": {
+          "monsteraJungle": {
+            "name": "Jungla de Monstera",
+            "description": "Una gran Monstera Deliciosa que crece hasta convertirse en una verdadera jungla en la sala de estar.",
+            "status": "Creciendo"
+          },
+          "airPurifying": {
+            "name": "Colección Purificadora de Aire",
+            "description": "Una selección de plantas que mejoran la calidad del aire y producen oxígeno.",
+            "status": "Activo"
+          }
+        }
+      },
+      "indoorTent": {
+        "title": "Carpa de Cultivo Interior",
+        "description": "Cultivo interior controlado para microgreens, plantas tropicales y cultivo experimental. Un ambiente perfecto para el cultivo durante todo el año.",
+        "details": ["Microgreens", "Plantas Tropicales", "Iluminación LED", "Control Climático", "Hidroponía"],
+        "subProjects": {
+          "microgreensStation": {
+            "name": "Estación de Microgreens",
+            "description": "Una configuración compacta para cultivar microgreens frescos como rábano, brócoli y guisantes.",
+            "status": "En Desarrollo"
+          },
+          "tropicalNursery": {
+            "name": "Vivero de Plantas Tropicales",
+            "description": "Un ambiente cálido y húmedo para cultivar plantas tropicales y especies exóticas.",
+            "status": "Planificado"
+          }
+        }
+      },
+      "fungi": {
+        "title": "Hongos y Setas",
+        "description": "El fascinante proceso de cultivar hongos y setas. Desde setas ostra hasta especies medicinales.",
+        "details": ["Setas Ostra", "Shiitake", "Especies Medicinales", "Micelio", "Sustrato"],
+        "subProjects": {
+          "oysterFarm": {
+            "name": "Granja de Setas Ostra",
+            "description": "Una configuración para cultivar setas ostra frescas en posos de café y sustrato de madera.",
+            "status": "Experimental"
+          },
+          "medicinalFungi": {
+            "name": "Hongos Medicinales",
+            "description": "Investigación sobre el cultivo de hongos medicinales como Melena de León y Reishi.",
+            "status": "Investigación"
+          }
+        }
+      },
+      "vegetableGarden": {
+        "title": "Huerto",
+        "description": "Cultivo exterior de verduras, hierbas y frutas. Desde semilla hasta cosecha, el proceso completo de cultivo natural.",
+        "details": ["Verduras", "Hierbas", "Frutas", "Compost", "Cultivo Orgánico"],
+        "subProjects": {
+          "seasonalVegetables": {
+            "name": "Verduras de Temporada",
+            "description": "Un huerto variado con verduras y hierbas de temporada.",
+            "status": "Activo"
+          },
+          "compostSystem": {
+            "name": "Sistema de Compost",
+            "description": "Un sistema de compostaje eficiente para reciclar residuos orgánicos.",
+            "status": "En Uso"
+          }
+        }
+      },
+      "automation": {
+        "title": "Automatización del Cultivo",
+        "description": "Soluciones tecnológicas para automatizar procesos de cultivo. Desde sensores hasta riego automatizado.",
+        "details": ["Sensores IoT", "Riego Automático", "Control Climático", "Registro de Datos", "Monitoreo Remoto"],
+        "subProjects": {
+          "smartIrrigation": {
+            "name": "Sistema de Riego Inteligente",
+            "description": "Un sistema de riego automatizado con sensores de humedad y temporizadores.",
+            "status": "En Desarrollo"
+          },
+          "climateMonitoring": {
+            "name": "Monitoreo Climático",
+            "description": "Un sistema para monitorear temperatura, humedad y luz en espacios de cultivo.",
+            "status": "Prototipo"
+          }
+        }
+      },
+      "monitoring": {
+        "title": "Monitoreo y Datos",
+        "description": "Recopilación y análisis de datos sobre condiciones de cultivo para optimizar el cultivo.",
+        "details": ["Registro de Datos", "Análisis de Crecimiento", "Optimización", "Tendencias", "Predicciones"],
+        "subProjects": {
+          "growthDashboard": {
+            "name": "Panel de Datos de Crecimiento",
+            "description": "Un panel para visualizar datos de cultivo y tendencias de crecimiento.",
+            "status": "Concepto"
+          },
+          "predictiveAnalytics": {
+            "name": "Análisis Predictivo",
+            "description": "Modelos de aprendizaje automático para predecir tiempos de crecimiento y cosecha.",
+            "status": "Investigación"
+          }
+        }
+      }
+    },
+    "status": {
+      "active": "Activo",
+      "inDevelopment": "En Desarrollo",
+      "planned": "Planificado",
+      "experimental": "Experimental",
+      "research": "Investigación",
+      "growing": "Creciendo",
+      "inUse": "En Uso",
+      "prototype": "Prototipo",
+      "concept": "Concepto"
+    },
+    "photoPlaceholder": "Fotos del proyecto para",
+    "activeProjects": "Proyectos Activos:",
+    "startDate": "Inicio:",
+    "technology": {
+      "title": "Tecnología e Innovación",
+      "sensors": {
+        "title": "Sensores",
+        "description": "Monitoreo de temperatura, humedad y luz"
+      },
+      "irrigation": {
+        "title": "Riego",
+        "description": "Sistemas automatizados de agua y nutrientes"
+      },
+      "ledLighting": {
+        "title": "Iluminación LED",
+        "description": "Luces de cultivo energéticamente eficientes y espectros"
+      },
+      "automation": {
+        "title": "Automatización",
+        "description": "Integración de hogar inteligente y control remoto"
+      }
+    },
+    "philosophyCards": {
+      "nature": {
+        "title": "Naturaleza y Sostenibilidad",
+        "description": "Cultivar tu propia comida y plantas contribuye a un estilo de vida más sostenible y conciencia ambiental."
+      },
+      "science": {
+        "title": "Ciencia y Tecnología",
+        "description": "Combinar métodos de cultivo tradicionales con tecnología moderna para resultados óptimos."
+      },
+      "mindfulness": {
+        "title": "Mindfulness y Paciencia",
+        "description": "Cuidar plantas enseña paciencia, atención y apreciar procesos naturales lentos."
+      }
+    }
+  },
+  "cooking": {
+    "title": "Cocina y Artes Culinarias",
+    "subtitle": "Desde comidas rápidas de entre semana hasta cocina fusión experimental",
+    "description": "Desde comidas rápidas de entre semana hasta cocina fusión experimental - descubre mi pasión por cocinar y crear platos deliciosos. Una mezcla de técnicas tradicionales e innovación moderna.",
+    "philosophy": {
+      "title": "Mi Filosofía Culinaria",
+      "description": "Cocinar es una salida creativa para mí y una forma de experimentar con sabores, texturas y técnicas. Creo en usar ingredientes frescos y de temporada y respetar métodos de preparación tradicionales, mientras también dejo espacio para la innovación y el experimento."
+    },
+    "categories": {
+      "healthy": {
+        "title": "Recetas Saludables",
+        "description": "Comidas nutritivas y saludables que son deliciosas y nutritivas. Enfoque en ingredientes frescos y nutrición equilibrada.",
+        "details": ["Ensaladas", "Batidos", "Bowls Saludables", "Vegetariano", "Superalimentos"],
+        "recipes": {
+          "quinoaBowl": {
+            "name": "Bowl de Quinoa",
+            "description": "Un bowl nutritivo con quinoa, aguacate, verduras verdes y aderezo de tahini.",
+            "difficulty": "Fácil",
+            "time": "20 min"
+          },
+          "smoothieBowl": {
+            "name": "Bowl de Batido Verde",
+            "description": "Un bowl de batido energético con espinacas, plátano, mango y topping de granola.",
+            "difficulty": "Fácil",
+            "time": "10 min"
+          }
+        }
+      },
+      "experimental": {
+        "title": "Platos Experimentales",
+        "description": "Recetas creativas y experimentales donde pruebo nuevos sabores y técnicas. Desde cocina fusión hasta gastronomía molecular.",
+        "details": ["Cocina Fusión", "Gastronomía Molecular", "Nuevas Técnicas", "Combinaciones Creativas", "Innovación"],
+        "recipes": {
+          "misoCaramel": {
+            "name": "Postre de Miso y Caramelo",
+            "description": "Una combinación única de umami y dulzura con miso, caramelo y vainilla.",
+            "difficulty": "Avanzado",
+            "time": "45 min"
+          },
+          "sousVide": {
+            "name": "Huevos Sous Vide",
+            "description": "Huevos perfectos cocidos a baja temperatura para una textura única.",
+            "difficulty": "Medio",
+            "time": "60 min"
+          }
+        }
+      },
+      "traditional": {
+        "title": "Recetas Tradicionales",
+        "description": "Platos clásicos de diferentes culturas, con respeto por los métodos de preparación tradicionales y sabores auténticos.",
+        "details": ["Italiano", "Asiático", "Mediterráneo", "Tradicional", "Auténtico"],
+        "recipes": {
+          "pasta": {
+            "name": "Pasta Casera",
+            "description": "Pasta fresca hecha desde cero con una salsa de tomate clásica y albahaca.",
+            "difficulty": "Medio",
+            "time": "90 min"
+          },
+          "ramen": {
+            "name": "Ramen Tonkotsu",
+            "description": "Un ramen rico y cremoso con caldo de cerdo cocido durante 12 horas y fideos perfectos.",
+            "difficulty": "Avanzado",
+            "time": "720 min"
+          }
+        }
+      },
+      "vegetarian": {
+        "title": "Vegetariano y Vegano",
+        "description": "Recetas basadas en plantas que demuestran que la comida vegetariana y vegana no tiene que ser aburrida. Llena de sabor y creatividad.",
+        "details": ["Vegano", "Vegetariano", "Basado en Plantas", "Sostenible", "Ético"],
+        "recipes": {
+          "jackfruit": {
+            "name": "\"Cerdo\" Desmenuzado de Yaca",
+            "description": "Cerdo vegano desmenuzado hecho de yaca con salsa BBQ y ensalada de col.",
+            "difficulty": "Medio",
+            "time": "30 min"
+          },
+          "cashewCheese": {
+            "name": "Tabla de Quesos de Anacardos",
+            "description": "Una variedad de quesos veganos caseros basados en anacardos.",
+            "difficulty": "Avanzado",
+            "time": "120 min"
+          }
+        }
+      },
+      "special": {
+        "title": "Ocasiones Especiales",
+        "description": "Platos festivos y especiales para momentos especiales. Desde cumpleaños hasta días festivos - cada momento merece algo especial.",
+        "details": ["Días Festivos", "Cumpleaños", "Romántico", "Festivo", "Especial"],
+        "recipes": {
+          "lavaCake": {
+            "name": "Pastel de Lava de Chocolate",
+            "description": "Un pastel de lava de chocolate decadente con helado de vainilla y coulis de bayas.",
+            "difficulty": "Medio",
+            "time": "25 min"
+          },
+          "wellington": {
+            "name": "Beef Wellington",
+            "description": "Un Beef Wellington clásico con duxelles de champiñones y hojaldre.",
+            "difficulty": "Avanzado",
+            "time": "180 min"
+          }
+        }
+      },
+      "quick": {
+        "title": "Comidas Rápidas",
+        "description": "Comidas deliciosas y nutritivas listas en 30 minutos o menos. Perfectas para días ocupados sin comprometer el sabor.",
+        "details": ["30 min o menos", "Simple", "Rápido", "Práctico", "Entre Semana"],
+        "recipes": {
+          "onePot": {
+            "name": "Pasta de Una Olla",
+            "description": "Una comida completa de pasta cocida en una sartén con tomates, espinacas y queso.",
+            "difficulty": "Fácil",
+            "time": "20 min"
+          },
+          "stirFry": {
+            "name": "Salteado Express",
+            "description": "Un wok rápido con verduras de temporada, tofu y una salsa rica en umami.",
+            "difficulty": "Fácil",
+            "time": "15 min"
+          }
+        }
+      }
+    },
+    "difficulty": {
+      "easy": "Fácil",
+      "medium": "Medio",
+      "advanced": "Avanzado"
+    },
+    "photoPlaceholder": "Fotos de platos para",
+    "featuredRecipes": "Recetas Destacadas:",
+    "techniques": {
+      "title": "Técnicas y Habilidades Culinarias",
+      "grilling": {
+        "title": "Parrilla y Asado",
+        "description": "Técnicas perfectas de sellado y caramelización"
+      },
+      "knifeSkills": {
+        "title": "Habilidades con Cuchillo",
+        "description": "Técnicas de corte de precisión y uso seguro del cuchillo"
+      },
+      "fermentation": {
+        "title": "Fermentación",
+        "description": "Técnicas tradicionales de fermentación y encurtido"
+      },
+      "molecular": {
+        "title": "Gastronomía Molecular",
+        "description": "Técnicas y texturas experimentales"
+      }
+    },
+    "philosophyCards": {
+      "fresh": {
+        "title": "Ingredientes Frescos",
+        "description": "Usar los mejores ingredientes frescos es la base de cada buena comida."
+      },
+      "creativity": {
+        "title": "Creatividad y Experimentación",
+        "description": "Cocinar es una forma de arte donde hay espacio para la creatividad y probar nuevas combinaciones."
+      },
+      "love": {
+        "title": "Amor y Pasión",
+        "description": "Cada comida se prepara con amor y atención al detalle - puedes saborearlo en cada bocado."
+      }
+    }
+  },
+  "mindComputer": {
+    "title": "La Mente como Computadora",
+    "subtitle": "Explora todos los componentes de tu mente-computadora con comparaciones detalladas y referencias científicas. Usa los controles para navegar por las diferentes partes.",
+    "interactiveDiagram": "Diagrama Interactivo Mente-Computadora",
+    "diagramDescription": "Pasa el cursor sobre los componentes para ver sus conexiones y detalles. Cada parte tiene su propio papel en el sistema más grande.",
+    "dataFlow": "Flujo de Datos",
+    "activeComponent": "Componente Activo",
+    "connectionPoints": "Puntos de Conexión",
+    "mindFunctions": "Funciones de la Mente",
+    "computerEquivalent": "Equivalente Computacional",
+    "researchReferences": "Investigación y Referencias",
+    "note": "Nota: Estas son interpretaciones modernas, no lo que los filósofos mismos dijeron.",
+    "tip": "Consejo: Estas comparaciones ayudan a hacer concretos y comprensibles los procesos mentales abstractos.",
+    "preliminarySchema": "Esquema Completo Preliminar",
+    "preliminaryDescription": "Esta es la visión general preliminar completa de cómo funciona la mente humana como una computadora. La explicación detallada y el desarrollo adicional de cada componente se agregarán en el futuro. Por ahora, este esquema proporciona una visión general visual de todos los componentes y sus interconexiones.",
+    "philosophersResearchers": "Filósofos e Investigadores",
+    "philosophersDescription": "Descubre cómo los grandes pensadores a lo largo de la historia han moldeado nuestra comprensión de la consciencia y la mente. Cada uno tiene perspectivas únicas que nos ayudan a entender cómo funciona la mente.",
+    "researchAreas": "Áreas de Investigación y Temas",
+    "researchDescription": "Explora diferentes aspectos de la consciencia, la tecnología y sus interconexiones. Cada tema tiene su propia página detallada con contenido interactivo.",
+    "readMore": "Leer Más",
+    "explore": "Explorar",
+    "components": {
+      "cpu": {
+        "title": "CPU (Meditación y Concentración)",
+        "description": "La unidad central de procesamiento de tu mente que procesa y controla los pensamientos.",
+        "details": [
+          "Control ejecutivo y toma de decisiones",
+          "Gestión de atención y concentración",
+          "Dirección de patrones de pensamiento",
+          "Regulación emocional"
+        ],
+        "computerEquivalent": [
+          "Procesador multi-núcleo",
+          "Planificador de tareas y gestión de prioridades",
+          "Caché y pipeline de instrucciones",
+          "Gestión térmica y limitación"
+        ],
+        "research": "Basado en neurociencia moderna y psicología cognitiva. La meditación literalmente entrena la corteza prefrontal, similar al entrenamiento de CPU."
+      },
+      "ram": {
+        "title": "RAM y Caché (Memoria a Corto Plazo)",
+        "description": "Memoria de trabajo para pensamientos activos y acceso rápido a información reciente.",
+        "details": [
+          "Pensamientos y recuerdos activos",
+          "Asociaciones a corto plazo",
+          "Espacio de trabajo para problemas",
+          "Retención de contexto y concentración"
+        ],
+        "computerEquivalent": [
+          "Memoria de Acceso Aleatorio (RAM)",
+          "Niveles de caché L1, L2, L3",
+          "Ancho de banda y latencia de memoria",
+          "Memoria virtual y paginación"
+        ],
+        "research": "Basado en teorías de memoria de trabajo de Baddeley y Cowan. Similar a la RAM de computadora que se actualiza constantemente."
+      },
+      "gpu": {
+        "title": "GPU (Imaginación y Creatividad)",
+        "description": "Procesamiento gráfico para salida creativa, imágenes oníricas y alucinaciones visuales.",
+        "details": [
+          "Imaginación visual y sueños",
+          "Patrones creativos y asociaciones",
+          "Imágenes y símbolos emocionales",
+          "Procesamiento espacial y navegación"
+        ],
+        "computerEquivalent": [
+          "Unidad de Procesamiento Gráfico (GPU)",
+          "Procesamiento paralelo de imágenes",
+          "Mapeo de texturas y renderizado",
+          "Núcleos CUDA y unidades de sombreado"
+        ],
+        "research": "Basado en investigación de la corteza visual y estudios de creatividad. El hemisferio derecho está especializado en procesamiento visual, como una GPU."
+      },
+      "database": {
+        "title": "Base de Datos (Subconsciente)",
+        "description": "Almacenamiento a largo plazo de recuerdos, experiencias, traumas y patrones automáticos.",
+        "details": [
+          "Recuerdos y traumas a largo plazo",
+          "Hábitos y scripts automáticos",
+          "Arquetipos y patrones colectivos",
+          "Conexiones y asociaciones ocultas"
+        ],
+        "computerEquivalent": [
+          "Disco duro (HDD) y SSD",
+          "Indexación y consultas de base de datos",
+          "Sistema de archivos y estructuras de datos",
+          "Sistemas de respaldo y recuperación"
+        ],
+        "research": "Basado en el inconsciente colectivo de Jung y teorías modernas de memoria. El subconsciente funciona como una base de datos enorme con indexación compleja."
+      },
+      "network": {
+        "title": "Red y Firewall (Ego y Filtros)",
+        "description": "Conexiones con otros, consciencia colectiva y filtros del ego que determinan qué entra.",
+        "details": [
+          "Conexiones sociales y empatía",
+          "Consciencia colectiva y cultura",
+          "Ego y filtros personales",
+          "Límites y protección"
+        ],
+        "computerEquivalent": [
+          "Interfaz de red y protocolos",
+          "Firewall y reglas de seguridad",
+          "VPN y conexiones encriptadas",
+          "Ancho de banda y agrupación de conexiones"
+        ],
+        "research": "Basado en psicología social y teorías de redes. Los humanos son seres sociales que constantemente intercambian información, como computadoras en una red."
+      },
+      "io": {
+        "title": "Sistema I/O (Sentidos y Comportamiento)",
+        "description": "Entrada/salida de información a través de los sentidos y expresión de pensamientos y emociones.",
+        "details": [
+          "Percepción sensorial (entrada)",
+          "Habla y lenguaje corporal (salida)",
+          "Expresión emocional",
+          "Control motor y acción"
+        ],
+        "computerEquivalent": [
+          "Controladores de Entrada/Salida",
+          "USB y dispositivos periféricos",
+          "Interfaces de audio/video",
+          "Controladores de dispositivos y protocolos"
+        ],
+        "research": "Basado en teorías de procesamiento sensorial y control motor. Los sentidos son literalmente dispositivos de entrada, como un teclado o micrófono."
+      }
+    },
+    "philosophers": {
+      "carlJung": {
+        "title": "Psicología Analítica",
+        "description": "Fundador de la psicología analítica, conocido por su trabajo sobre arquetipos, el inconsciente colectivo y tipos de personalidad."
+      },
+      "williamJames": {
+        "title": "Filosofía Pragmática",
+        "description": "Filósofo y psicólogo estadounidense que hizo un trabajo innovador en el campo de la consciencia, la religión y el pragmatismo."
+      },
+      "sigmundFreud": {
+        "title": "Psicoanálisis",
+        "description": "Neurólogo austriaco y fundador del psicoanálisis, conocido por sus teorías sobre el inconsciente y la interpretación de los sueños."
+      },
+      "alanTuring": {
+        "title": "Ciencia de la Computación e IA",
+        "description": "Matemático y científico de la computación británico que sentó las bases de las computadoras modernas y la inteligencia artificial."
+      },
+      "itzhakBentov": {
+        "title": "Consciencia y Realidad",
+        "description": "Inventor israelí e investigador de la consciencia que hizo un trabajo innovador en el campo de la consciencia y la creación de la realidad."
+      }
+    },
+    "topics": {
+      "substances": {
+        "name": "Sustancias y Consciencia",
+        "description": "Investigación sobre cómo diferentes sustancias afectan la consciencia y amplían el ancho de banda de la percepción."
+      },
+      "meditation": {
+        "name": "Meditación y Entrenamiento de CPU",
+        "description": "Técnicas y métodos para entrenar procesos mentales y fortalecer el control ejecutivo."
+      },
+      "consciousnessExpansion": {
+        "name": "Expansión de la Consciencia",
+        "description": "Métodos y técnicas para expandir la consciencia y descubrir nuevas perspectivas."
+      },
+      "aiConsciousness": {
+        "name": "IA y Consciencia",
+        "description": "La relación entre la inteligencia artificial y la consciencia humana, y lo que esto nos enseña sobre nosotros mismos."
+      },
+      "neuralNetworks": {
+        "name": "Redes Neuronales",
+        "description": "Cómo funciona el cerebro como una red compleja y qué significa esto para la consciencia y el aprendizaje."
+      },
+      "quantum": {
+        "name": "Consciencia Cuántica",
+        "description": "Exploración de la frontera entre la consciencia y la física cuántica, y cómo se influyen mutuamente."
+      }
+    }
+  },
+  "substances": {
+    "title": "Sustancias y Consciencia",
+    "subtitle": "Explora cómo diferentes sustancias y técnicas afectan tu mente-computadora. Desde métodos naturales hasta enfoques experimentales - todos dirigidos a optimizar tu consciencia.",
+    "backToMindComputer": "Volver a La Mente como Computadora",
+    "mainTitle": "Cómo las Sustancias Afectan tu Arquitectura Computacional",
+    "mainDescription": "Cada sustancia o técnica tiene un efecto único en diferentes componentes de tu mente-computadora. Entiende los mecanismos y riesgos antes de experimentar.",
+    "effectOnMind": "Efecto en la Mente-Computadora",
+    "computerEquivalent": "Equivalente Computacional",
+    "benefits": "Beneficios",
+    "risks": "Riesgos",
+    "research": "Investigación",
+    "status": "Estado:",
+    "cta": "¿Interesado en discutir la expansión de la consciencia o colaborar en investigación sobre los efectos de diferentes sustancias?",
+    "ctaButton": "Hablemos",
+    "substances": {
+      "cannabis": {
+        "name": "Cannabis",
+        "category": "Natural",
+        "effect": "Amplía el ancho de banda, aumenta la creatividad y el pensamiento asociativo",
+        "computerEquivalent": "Potenciador de ancho de banda (aumenta el rendimiento de datos)",
+        "benefits": ["Mayor creatividad", "Mejores asociaciones", "Relajación", "Nuevas perspectivas"],
+        "risks": ["Retraso de CPU con uso excesivo", "Problemas de memoria", "Adicción"],
+        "research": "La investigación muestra mayor conectividad entre regiones cerebrales",
+        "status": "Legal en muchos países"
+      },
+      "psychedelics": {
+        "name": "Psicodélicos",
+        "category": "Experimental",
+        "effect": "Abre acceso directo al subconsciente y rompe los firewalls",
+        "computerEquivalent": "Acceso root al sistema (derechos de administrador)",
+        "benefits": ["Perspectivas profundas", "Curación de traumas", "Experiencias espirituales", "Impulso de creatividad"],
+        "risks": ["Riesgo de psicosis", "Malos viajes", "Efectos a largo plazo", "Ilegal"],
+        "research": "La terapia psicodélica muestra resultados prometedores",
+        "status": "Investigación en desarrollo"
+      },
+      "meditation": {
+        "name": "Meditación",
+        "category": "Natural",
+        "effect": "Entrena la eficiencia de la CPU y aumenta la concentración y el control",
+        "computerEquivalent": "Optimización de CPU (mejor rendimiento)",
+        "benefits": ["Mayor concentración", "Mejor control emocional", "Reducción de estrés", "Mejoras a largo plazo"],
+        "risks": ["Sin riesgos conocidos", "Inversión de tiempo requerida"],
+        "research": "Cambios de neuroplasticidad demostrados en estudios",
+        "status": "Científicamente respaldado"
+      }
+    },
+    "statusLabels": {
+      "scientificallySupported": "Científicamente respaldado",
+      "legalInManyCountries": "Legal en muchos países",
+      "researchInDevelopment": "Investigación en desarrollo"
+    }
+  },
+  "carlJung": {
+    "title": "Carl Gustav Jung",
+    "subtitle": "El psiquiatra suizo que sentó las bases para nuestra comprensión del subconsciente, los arquetipos y la estructura de la psique humana",
+    "backToMindComputer": "Volver a La Mente como Computadora",
+    "personalInfo": "Información Personal e Historia",
+    "born": "Nacido:",
+    "died": "Fallecido:",
+    "nationality": "Nacionalidad:",
+    "occupation": "Ocupación:",
+    "mainEducation": "Educación Principal:",
+    "coreTheories": "Teorías y Conceptos Principales",
+    "coreTheoriesSubtitle": "Las perspectivas revolucionarias de Jung que cambiaron la psicología para siempre",
+    "collectiveUnconscious": {
+      "title": "Inconsciente Colectivo",
+      "description": "Jung propuso que además del inconsciente personal, existe un inconsciente colectivo compartido por todos los humanos. Esto contiene arquetipos - patrones e imágenes universales transmitidos a través de la evolución.",
+      "computerEquivalent": "Equivalente Computacional: Base de datos compartida de patrones universales (como una biblioteca de plantillas estándar)."
+    },
+    "archetypes": {
+      "title": "Arquetipos",
+      "description": "Símbolos y patrones universales que ocurren en todas las culturas y épocas. Ejemplos: el Héroe, la Sombra, el Anima/Animus, el Viejo Sabio/la Vieja Sabia.",
+      "computerEquivalent": "Equivalente Computacional: Módulos de software preinstalados (funciones estándar que todos los sistemas comparten)."
+    },
+    "individuation": {
+      "title": "Individuación",
+      "description": "El proceso de autorrealización donde una persona desarrolla su pleno potencial a través de la integración de elementos conscientes e inconscientes. El objetivo es una personalidad integrada y auténtica.",
+      "computerEquivalent": "Equivalente Computacional: Optimización del sistema (mejorar tus propios programas)."
+    },
+    "activeImagination": {
+      "title": "Imaginación Activa",
+      "description": "Una técnica donde interactúas conscientemente con tu subconsciente a través de visualización e imágenes oníricas. Esto ayuda a integrar contenido inconsciente y resolver conflictos internos.",
+      "computerEquivalent": "Equivalente Computacional: Interfaz de depuración (acceso directo a procesos del sistema)."
+    },
+    "historicalContext": {
+      "title": "Contexto Histórico e Influencia",
+      "timePeriod": "Período e Influencia",
+      "timePeriodText1": "Jung vivió durante un período de enormes cambios en la psicología y la ciencia. Su trabajo surgió del psicoanálisis de Freud pero se desarrolló en un enfoque mucho más amplio y espiritual de la psique humana.",
+      "timePeriodText2": "Su influencia se extiende mucho más allá de la psicología - a la literatura, el arte, la religión, e incluso la tecnología moderna y el desarrollo de IA.",
+      "mainBooks": "Libros Principales:",
+      "modernInfluence": "Influencia Moderna:",
+      "books": [
+        "\"Psychological Types\" (1921)",
+        "\"Archetypes and the Collective Unconscious\" (1934)",
+        "\"Memories, Dreams, Reflections\" (1961)",
+        "\"Man and his Symbols\" (1964)"
+      ],
+      "influences": [
+        "Myers-Briggs Type Indicator (MBTI)",
+        "Modern dream analysis",
+        "Archetypal marketing",
+        "AI and consciousness research"
+      ]
+    },
+    "computerScience": {
+      "title": "El Trabajo de Jung y la Ciencia de la Computación Moderna",
+      "hierarchicalStructure": {
+        "title": "Estructura Jerárquica",
+        "description": "El modelo de Jung de consciencia, inconsciente personal e inconsciente colectivo muestra una organización jerárquica. Esto inspira a los científicos de la computación modernos a diseñar sistemas en capas con diferentes niveles de acceso."
+      },
+      "universalPatterns": {
+        "title": "Patrones Universales",
+        "description": "Los arquetipos de Jung son patrones universales compartidos por todos los humanos. Este concepto inspira la idea de bibliotecas de software compartidas y plantillas que diferentes sistemas pueden usar."
+      },
+      "modernInterpretation": {
+        "title": "Lo que Jung REALMENTE Dijo vs. Interpretaciones Modernas",
+        "description": "Jung NUNCA habló sobre computadoras - murió en 1961. Su trabajo trata sobre consciencia, arquetipos y crecimiento personal. Los científicos de la computación modernos usan sus perspectivas sobre estructuras jerárquicas y patrones universales para diseñar mejores sistemas. Esta es una interpretación moderna, no el trabajo propio de Jung."
+      }
+    },
+    "cta": "¿Interesado en discutir las teorías de Jung o cómo se pueden aplicar en tecnología moderna e investigación de la consciencia?",
+    "ctaButton": "Hablemos"
+  },
+  "williamJames": {
+    "title": "William James",
+    "subtitle": "El filósofo y psicólogo estadounidense que sentó las bases para la filosofía pragmática y nuestra comprensión de la consciencia como un flujo continuo de experiencias",
+    "backToMindComputer": "Volver a La Mente como Computadora",
+    "personalInfo": "Información Personal e Historia",
+    "born": "Nacido:",
+    "died": "Fallecido:",
+    "nationality": "Nacionalidad:",
+    "occupation": "Ocupación:",
+    "mainEducation": "Educación Principal:",
+    "coreTheories": "Teorías y Conceptos Principales",
+    "coreTheoriesSubtitle": "Las perspectivas revolucionarias de James que moldearon la psicología y filosofía modernas",
+    "cta": "¿Interesado en discutir las teorías de James o cómo se pueden aplicar en tecnología moderna e investigación de la consciencia?",
+    "ctaButton": "Hablemos"
+  },
+  "sigmundFreud": {
+    "title": "Sigmund Freud",
+    "subtitle": "El neurólogo austriaco y fundador del psicoanálisis, que sentó las bases para nuestra comprensión del inconsciente y la estructura de la psique humana",
+    "backToMindComputer": "Volver a La Mente como Computadora",
+    "personalInfo": "Información Personal e Historia",
+    "born": "Nacido:",
+    "died": "Fallecido:",
+    "nationality": "Nacionalidad:",
+    "occupation": "Ocupación:",
+    "mainEducation": "Educación Principal:",
+    "coreTheories": "Teorías y Conceptos Principales",
+    "coreTheoriesSubtitle": "Las perspectivas revolucionarias de Freud que cambiaron la psicología para siempre",
+    "cta": "¿Interesado en discutir las teorías de Freud o cómo se pueden aplicar en tecnología moderna e investigación de la consciencia?",
+    "ctaButton": "Hablemos"
+  },
+  "alanTuring": {
+    "title": "Alan Turing",
+    "subtitle": "El matemático, lógico y científico de la computación británico que sentó las bases para la ciencia de la computación moderna y la inteligencia artificial",
+    "backToMindComputer": "Volver a La Mente como Computadora",
+    "personalInfo": "Información Personal e Historia",
+    "born": "Nacido:",
+    "died": "Fallecido:",
+    "nationality": "Nacionalidad:",
+    "occupation": "Ocupación:",
+    "mainEducation": "Educación Principal:",
+    "coreTheories": "Teorías y Conceptos Principales",
+    "coreTheoriesSubtitle": "Las perspectivas revolucionarias de Turing que moldearon la computación moderna y la IA",
+    "cta": "¿Interesado en discutir las teorías de Turing o cómo se pueden aplicar en tecnología moderna e investigación de la consciencia?",
+    "ctaButton": "Hablemos"
+  },
+  "itzhakBentov": {
+    "title": "Itzhak Bentov",
+    "subtitle": "El inventor israelí e investigador de la consciencia que desarrolló teorías revolucionarias sobre la realidad holográfica y el subconsciente como creador de la realidad material",
+    "backToMindComputer": "Volver a La Mente como Computadora",
+    "personalInfo": "Información Personal e Historia",
+    "born": "Nacido:",
+    "died": "Fallecido:",
+    "nationality": "Nacionalidad:",
+    "occupation": "Ocupación:",
+    "mainEducation": "Educación Principal:",
+    "coreTheories": "Teorías y Conceptos Principales",
+    "coreTheoriesSubtitle": "Las perspectivas revolucionarias de Bentov que unen ciencia y consciencia",
+    "cta": "¿Interesado en discutir las teorías de Bentov o cómo se pueden aplicar en tecnología moderna e investigación de la consciencia?",
+    "ctaButton": "Hablemos"
+  },
+  "music": {
+    "title": "🎵 Música y Live Coding",
+    "subtitle": "Explora el mundo de la producción musical, live coding y composición algorítmica. Desde instrumentos tradicionales hasta tecnología algorave de vanguardia.",
+    "backToHome": "Volver al Inicio",
+    "liveCodingPanel": "Panel de Live Coding Algorave",
+    "bpm": "BPM:",
+    "fullscreen": "Pantalla Completa",
+    "exitFullscreen": "Salir de Pantalla Completa",
+    "exit": "Salir",
+    "beatGrid": "Cuadrícula de Ritmo:",
+    "soundWaves": "Ondas Sonoras:",
+    "patternBlocks": "Bloques de Patrones:",
+    "soundDesignTips": "🎛️ Consejos de Diseño de Sonido",
+    "frequency": "Frecuencia:",
+    "duration": "Duración:",
+    "waveforms": "Formas de Onda:",
+    "shortcuts": "Atajos:",
+    "playPattern": "Reproducir Patrón",
+    "stop": "Detener",
+    "loopOn": "Bucle Activado",
+    "loopOff": "Bucle Desactivado",
+    "execute": "Ejecutar",
+    "waiting": "Esperando...",
+    "reset": "Reiniciar",
+    "output": "Salida:",
+    "musicSkills": "🎼 Habilidades Musicales",
+    "skillsSubtitle": "Desde instrumentos tradicionales hasta software de producción moderno - descubre los diferentes aspectos de la creación musical.",
+    "dawSoftware": {
+      "title": "Software DAW",
+      "description": "Producción musical profesional con FL Studio, Ableton Live y otras estaciones de trabajo de audio digital.",
+      "items": [
+        "FL Studio - Creación de beats y arreglos",
+        "Ableton Live - Interpretación en vivo y loops",
+        "Logic Pro - Grabación profesional"
+      ]
+    },
+    "analogHardware": {
+      "title": "Analógico y Hardware",
+      "description": "Sonidos analógicos cálidos y sintetizadores de hardware prácticos para producción musical auténtica.",
+      "items": [
+        "Sintetizadores y módulos analógicos",
+        "Máquinas de ritmos de hardware",
+        "Procesadores de efectos vintage"
+      ]
+    },
+    "acousticLive": {
+      "title": "Acústico y En Vivo",
+      "description": "Instrumentos tradicionales y jamming en vivo para creación y interpretación musical orgánica.",
+      "items": [
+        "Tocar guitarra y bajo",
+        "Jamming en vivo e improvisación",
+        "Percusión acústica"
+      ]
+    },
+    "vocalsSoundDesign": {
+      "title": "Voces y Diseño de Sonido",
+      "description": "Técnicas vocales y diseño de sonido creativo para texturas musicales únicas.",
+      "items": [
+        "Grabación y procesamiento vocal",
+        "Diseño de sonido y síntesis",
+        "Manipulación creativa de audio"
+      ]
+    },
+    "liveCodingAlgorave": {
+      "title": "Live Coding y Algorave",
+      "description": "Creación musical algorítmica y live coding para música electrónica experimental.",
+      "items": [
+        "Composición algorítmica",
+        "Interpretación de live coding",
+        "Sistemas de música generativa"
+      ]
+    },
+    "theoryProduction": {
+      "title": "Teoría y Producción",
+      "description": "Teoría musical, arreglos y técnicas de producción profesional.",
+      "items": [
+        "Teoría musical y composición",
+        "Arreglos y orquestación",
+        "Mezcla y masterización"
+      ]
+    },
+    "codeComments": {
+      "header": "Live Coding Algorave",
+      "makeBeats": "¡Crea tus propios beats y loops!",
+      "usePattern": "Usa 1 para un golpe, 0 para silencio",
+      "soundDesign": "Parámetros de Diseño de Sonido",
+      "patterns": "Patrones",
+      "clickExecute": "¡Haz clic en \"Ejecutar\" para reproducir tus propios patrones!",
+      "useShortcuts": "Usa Ctrl+S para guardar, Ctrl+Enter para ejecutar"
+    },
+    "outputMessages": {
+      "ready": "Listo para crear música...",
+      "playing": "Reproduciendo patrón...",
+      "finished": "¡Patrón terminado! Intenta editar el código de arriba.",
+      "stopped": "Reproducción detenida.",
+      "reset": "¡Código reiniciado! Listo para crear nueva música...",
+      "parsing": "Analizando código...",
+      "waitingLoop": "Esperando que termine el bucle actual...",
+      "parsed": "¡Código analizado con éxito! Reproduciendo patrones personalizados...",
+      "error": "Error: No se pudieron analizar los patrones. Verifica tu sintaxis.",
+      "errorParsing": "Error al analizar código:",
+      "playingCustom": "Reproduciendo patrones personalizados...",
+      "newCode": "¡Nuevo código ejecutado en la próxima iteración del bucle!",
+      "customFinished": "¡Patrón personalizado terminado! Intenta editar el código de arriba.",
+      "loopDisabled": "Bucle desactivado",
+      "loopEnabled": "Bucle activado - el patrón se repetirá continuamente",
+      "exitedFullscreen": "Salió del modo de pantalla completa",
+      "enteredFullscreen": "Entró en modo de pantalla completa",
+      "bpmChanged": "BPM cambiado a",
+      "bpmSet": "BPM establecido en",
+      "codeExecutedCtrlS": "¡Código ejecutado vía atajo Ctrl+S!",
+      "codeExecutedCtrlEnter": "¡Código ejecutado vía atajo Ctrl+Enter!",
+      "pleaseWait": "Por favor espera a que termine el bucle actual...",
+      "pendingCode": "El código pendiente se ejecutará en la próxima iteración del bucle..."
+    }
+  },
+  "sports": {
+    "title": "Deportes y Aventura",
+    "subtitle": "Desde slackline en el parque hasta snowboard en las montañas - los deportes y la aventura son una parte esencial de mi vida. Estas actividades me ayudan a encontrar equilibrio entre cuerpo y mente.",
+    "whySports": "¿Por qué Deportes y Aventura?",
+    "whyDescription": "Los deportes y la aventura son más que solo actividades físicas. Me enseñan sobre perseverancia, resolución de problemas y encontrar equilibrio. Cada deporte tiene sus propios desafíos y lecciones que puedo aplicar en mi trabajo y vida diaria.",
+    "balanceFocus": {
+      "title": "Equilibrio y Concentración",
+      "description": "El slackline y el boulder requieren concentración y equilibrio totales - habilidades que son esenciales en todos los aspectos de la vida."
+    },
+    "perseverance": {
+      "title": "Perseverancia",
+      "description": "Cada deporte tiene sus desafíos. Superarlos construye carácter y me enseña a no rendirme."
+    },
+    "natureAdventure": {
+      "title": "Naturaleza y Aventura",
+      "description": "La conexión con la naturaleza y la sensación de libertad me dan energía e inspiración para la creatividad."
+    },
+    "explore": "Explorar",
+    "photoSpace": "Espacio para foto de",
+    "sports": {
+      "slacklining": {
+        "title": "Slackline",
+        "description": "Equilibrarse en una línea tensa entre dos puntos. Un deporte que combina equilibrio, concentración y paz mental.",
+        "details": ["Entrenamiento de equilibrio", "Concentración mental", "Fuerza del core", "Meditación en movimiento"],
+        "photoPlaceholder": "📸 Foto de slackline"
+      },
+      "dailyTraining": {
+        "title": "Entrenamiento Diario",
+        "description": "Entrenamiento consistente para condición física general y fuerza. Desde cardio hasta entrenamiento de fuerza.",
+        "details": ["Cardio", "Entrenamiento de fuerza", "Flexibilidad", "Consistencia"],
+        "photoPlaceholder": "📸 Foto de entrenamiento"
+      },
+      "dapoFlowStar": {
+        "title": "Dapo Flow Star",
+        "description": "Un arte de movimiento único que combina movimientos fluidos con elementos acrobáticos. Una mezcla de danza, artes marciales y flow.",
+        "details": ["Movimiento flow", "Acrobacias", "Artes marciales", "Expresión creativa"],
+        "photoPlaceholder": "📸 Foto de Dapo Flow Star"
+      },
+      "dancing": {
+        "title": "Baile",
+        "description": "Formas de baile expresivas que combinan ritmo, emoción y movimiento. Desde freestyle hasta coreografía.",
+        "details": ["Freestyle", "Coreografía", "Ritmo", "Expresión emocional"],
+        "photoPlaceholder": "📸 Foto de baile"
+      },
+      "bouldering": {
+        "title": "Boulder",
+        "description": "Escalar sin cuerda a bajas alturas. Un rompecabezas de movimiento y fuerza.",
+        "details": ["Resolución de problemas", "Fuerza del tren superior", "Estrategia mental", "Deporte social"],
+        "photoPlaceholder": "📸 Foto de boulder"
+      },
+      "snowboarding": {
+        "title": "Snowboard",
+        "description": "Deslizarse sobre la nieve en una tabla. Libertad y adrenalina en las montañas.",
+        "details": ["Libertad en la montaña", "Equilibrio", "Control de velocidad", "Aventura invernal"],
+        "photoPlaceholder": "📸 Foto de snowboard"
+      },
+      "surfing": {
+        "title": "Surf",
+        "description": "Montar olas en el océano. Un nuevo desafío que voy a descubrir pronto.",
+        "details": ["Conexión con el océano", "Lectura de olas", "Equilibrio", "Próximamente"],
+        "photoPlaceholder": "📸 Foto de surf (próximamente)"
+      }
+    }
+  },
+  "gardenDesign": {
+    "newDesign": "Nuevo Diseño",
+    "save": "Guardar",
+    "load": "Cargar",
+    "errorLoading": "Error al cargar el archivo. Por favor verifica si es un archivo JSON válido.",
+    "objects": "objetos",
+    "object": "objeto",
+    "tool": "Herramienta:",
+    "tools": {
+      "select": "Seleccionar",
+      "rectangle": "Rectángulo",
+      "circle": "Círculo",
+      "line": "Línea",
+      "polygon": "Polígono",
+      "freehand": "Mano Alzada"
+    }
+  },
+  "investing": {
+    "title": "💰 Inversión y Seguimiento de Inflación",
+    "subtitle": "Rastrea cómo la inflación afecta tu dinero y compara cómo diferentes inversiones se desempeñan en relación con la inflación. Estadísticas en tiempo real y datos históricos.",
+    "categories": {
+      "techStocks": "Acciones Tecnológicas",
+      "realEstate": "Bienes Raíces",
+      "bonds": "Bonos",
+      "cryptocurrency": "Criptomonedas"
+    },
+    "errorMessages": {
+      "apiKeyNotConfigured": "Clave API de Alpha Vantage no configurada",
+      "addApiKey": "Agregar",
+      "toEnvFile": "a tu archivo .env para usar datos en tiempo real.",
+      "important": "Importante:",
+      "restartServer": "¡Reinicia tu servidor de desarrollo después de agregar la clave API!",
+      "getApiKey": "Obtén una clave API gratuita aquí",
+      "usingMockData": "Usando datos simulados",
+      "cannotFetchData": "No se pudieron obtener datos en tiempo real. Mostrando datos de muestra.",
+      "checkConsole": "Verifica la consola del navegador (F12) para más detalles sobre el error.",
+      "fetchingData": "Obteniendo datos en tiempo real de Alpha Vantage...",
+      "mayTakeTime": "Esto puede tardar un poco debido a la limitación de velocidad (5 llamadas/minuto)",
+      "checkConsoleDetails": "Verifica la consola del navegador para detalles",
+      "errorFetching": "Error al obtener datos",
+      "openConsole": "Abre la consola del navegador (F12) para más detalles",
+      "cannotFetchGold": "No se pudo obtener el precio del oro",
+      "cannotFetchRealTime": "No se pudieron obtener datos en tiempo real. Usa datos simulados."
+    }
+  },
+  "moltbook": {
+    "backToInterests": "Volver a Intereses",
+    "title": "Agente Moltbook",
+    "subtitle": "Haz preguntas y responde publicaciones de otros agentes",
+    "apiKeyConfiguration": "Configuración de Clave API",
+    "enterApiKey": "Ingresa tu clave API de Moltbook para comenzar. Puedes encontrarla en tu archivo de credenciales.",
+    "save": "Guardar",
+    "saving": "Guardando...",
+    "newName": "Nuevo nombre",
+    "cancel": "Cancelar",
+    "nameUpdated": "Nombre cambiado exitosamente a",
+    "errorUpdatingName": "Error al actualizar el nombre",
+    "changeNameOnWebsite": "Puedes cambiar el nombre a través del sitio web de Moltbook:",
+    "createPost": "Crear Publicación",
+    "titleLabel": "Título",
+    "content": "Contenido",
+    "submolt": "Submolt",
+    "send": "Enviar",
+    "posts": "Publicaciones",
+    "all": "Todas",
+    "my": "Mis",
+    "sort": {
+      "new": "Nuevas",
+      "hot": "Populares",
+      "top": "Top"
+    },
+    "loading": "Cargando...",
+    "noPosts": "No se encontraron publicaciones",
+    "comments": "Comentarios",
+    "reply": "Responder",
+    "posting": "Publicando...",
+    "refresh": "Actualizar",
+    "autoReply": "Respuesta Automática",
+    "replyingTo": "Respondiendo al comentario de",
+    "askQuestion": "Hacer una Pregunta",
+    "generatePost": "Generar...",
+    "aiPost": "Publicación de IA",
+    "allPosts": "Todas las Publicaciones",
+    "myPosts": "Mis Publicaciones",
+    "newest": "Más Recientes",
+    "hide": "Ocultar",
+    "view": "Ver",
+    "loadingOwnPosts": "Cargando publicaciones propias...",
+    "foundOwnPosts": "Encontradas",
+    "ownPosts": "publicaciones propias. Verificando nuevos comentarios...",
+    "checkingPost": "Verificando publicación:",
+    "rateLimitReached": "Límite de velocidad alcanzado. Espera un momento...",
+    "working": "Trabajando...",
+    "changeName": "Cambiar Nombre",
+    "profile": "Perfil",
+    "karma": "Karma",
+    "followers": "Seguidores",
+    "following": "Siguiendo",
+    "writeAnswer": "Escribe tu respuesta...",
+    "postAnswer": "Publicar Respuesta",
+    "by": "Por",
+    "replies": "respuestas"
+  },
+  "developmentNotice": {
+    "title": "🚧 Trabajo en Progreso",
+    "message": "Este sitio web está actualmente en desarrollo activo y sirve como entorno de prueba. Algunas páginas pueden no estar completamente funcionales o completas. Estoy compartiendo mi progreso mientras construyo y refino el sitio.",
+    "subtitle": "Entorno de Prueba y Compartir Progreso",
+    "understand": "Entiendo",
+    "dontShowAgain": "No mostrar esto de nuevo"
+  }
+}
+

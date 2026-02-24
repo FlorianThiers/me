@@ -2,31 +2,33 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Heart, Star, Clock, Users, Utensils, Flame, Leaf, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const CookingPage: React.FC = () => {
+  const { t } = useTranslation();
 
   const cookingCategories = [
     {
       icon: <Heart className="w-12 h-12" />,
-      title: 'Gezonde Recepten',
-      description: 'Voedzame en gezonde maaltijden die zowel lekker als voedzaam zijn. Focus op verse ingrediënten en gebalanceerde voeding.',
-      details: ['Salades', 'Smoothies', 'Gezonde Bowls', 'Vegetarisch', 'Superfoods'],
+      title: t('cooking.categories.healthy.title'),
+      description: t('cooking.categories.healthy.description'),
+      details: t('cooking.categories.healthy.details', { returnObjects: true }) as string[],
       photoPlaceholder: '🥗',
       color: 'from-green-400 to-emerald-600',
       recipes: [
         {
-          name: 'Quinoa Power Bowl',
-          description: 'Een voedzame bowl met quinoa, avocado, groene groenten en tahini dressing.',
-          difficulty: 'Makkelijk',
-          time: '20 min',
+          name: t('cooking.categories.healthy.recipes.quinoaBowl.name'),
+          description: t('cooking.categories.healthy.recipes.quinoaBowl.description'),
+          difficulty: t('cooking.categories.healthy.recipes.quinoaBowl.difficulty'),
+          time: t('cooking.categories.healthy.recipes.quinoaBowl.time'),
           rating: 5,
-          tags: ['Gezond', 'Vegetarisch', 'Glutenvrij']
+          tags: ['Gezond', 'Vegetarisch', 'Glutenvrij'] // Tags kunnen later ook vertaald worden
         },
         {
-          name: 'Groene Smoothie Bowl',
-          description: 'Een energieke smoothie bowl met spinazie, banaan, mango en granola topping.',
-          difficulty: 'Makkelijk',
-          time: '10 min',
+          name: t('cooking.categories.healthy.recipes.smoothieBowl.name'),
+          description: t('cooking.categories.healthy.recipes.smoothieBowl.description'),
+          difficulty: t('cooking.categories.healthy.recipes.smoothieBowl.difficulty'),
+          time: t('cooking.categories.healthy.recipes.smoothieBowl.time'),
           rating: 4,
           tags: ['Ontbijt', 'Smoothie', 'Vitamines']
         }
@@ -34,25 +36,25 @@ export const CookingPage: React.FC = () => {
     },
     {
       icon: <Flame className="w-12 h-12" />,
-      title: 'Experimentele Gerechten',
-      description: 'Creatieve en experimentele recepten waarbij ik nieuwe smaken en technieken uitprobeer. Van fusion cuisine tot moleculaire gastronomie.',
-      details: ['Fusion Cuisine', 'Moleculaire Gastronomie', 'Nieuwe Technieken', 'Creatieve Combinaties', 'Innovatie'],
+      title: t('cooking.categories.experimental.title'),
+      description: t('cooking.categories.experimental.description'),
+      details: t('cooking.categories.experimental.details', { returnObjects: true }) as string[],
       photoPlaceholder: '🔥',
       color: 'from-red-400 to-orange-600',
       recipes: [
         {
-          name: 'Miso Caramel Dessert',
-          description: 'Een unieke combinatie van umami en zoetheid met miso, caramel en vanille.',
-          difficulty: 'Gevorderd',
-          time: '45 min',
+          name: t('cooking.categories.experimental.recipes.misoCaramel.name'),
+          description: t('cooking.categories.experimental.recipes.misoCaramel.description'),
+          difficulty: t('cooking.categories.experimental.recipes.misoCaramel.difficulty'),
+          time: t('cooking.categories.experimental.recipes.misoCaramel.time'),
           rating: 5,
           tags: ['Dessert', 'Fusion', 'Experimenteel']
         },
         {
-          name: 'Sous Vide Eieren',
-          description: 'Perfecte eieren gekookt op lage temperatuur voor een unieke textuur.',
-          difficulty: 'Gemiddeld',
-          time: '60 min',
+          name: t('cooking.categories.experimental.recipes.sousVide.name'),
+          description: t('cooking.categories.experimental.recipes.sousVide.description'),
+          difficulty: t('cooking.categories.experimental.recipes.sousVide.difficulty'),
+          time: t('cooking.categories.experimental.recipes.sousVide.time'),
           rating: 4,
           tags: ['Techniek', 'Ontbijt', 'Precisie']
         }
@@ -60,25 +62,25 @@ export const CookingPage: React.FC = () => {
     },
     {
       icon: <Utensils className="w-12 h-12" />,
-      title: 'Traditionele Recepten',
-      description: 'Klassieke gerechten uit verschillende culturen, met respect voor traditionele bereidingswijzen en authentieke smaken.',
-      details: ['Italiaans', 'Aziatisch', 'Mediterraan', 'Traditioneel', 'Authentiek'],
+      title: t('cooking.categories.traditional.title'),
+      description: t('cooking.categories.traditional.description'),
+      details: t('cooking.categories.traditional.details', { returnObjects: true }) as string[],
       photoPlaceholder: '🍝',
       color: 'from-yellow-400 to-orange-600',
       recipes: [
         {
-          name: 'Homemade Pasta',
-          description: 'Verse pasta gemaakt van scratch met een klassieke tomatensaus en basilicum.',
-          difficulty: 'Gemiddeld',
-          time: '90 min',
+          name: t('cooking.categories.traditional.recipes.pasta.name'),
+          description: t('cooking.categories.traditional.recipes.pasta.description'),
+          difficulty: t('cooking.categories.traditional.recipes.pasta.difficulty'),
+          time: t('cooking.categories.traditional.recipes.pasta.time'),
           rating: 5,
           tags: ['Italiaans', 'Pasta', 'Traditioneel']
         },
         {
-          name: 'Ramen Tonkotsu',
-          description: 'Een rijke, romige ramen met 12-uur gekookte varkensbouillon en perfecte noedels.',
-          difficulty: 'Gevorderd',
-          time: '720 min',
+          name: t('cooking.categories.traditional.recipes.ramen.name'),
+          description: t('cooking.categories.traditional.recipes.ramen.description'),
+          difficulty: t('cooking.categories.traditional.recipes.ramen.difficulty'),
+          time: t('cooking.categories.traditional.recipes.ramen.time'),
           rating: 5,
           tags: ['Japans', 'Ramen', 'Bouillon']
         }
@@ -86,25 +88,25 @@ export const CookingPage: React.FC = () => {
     },
     {
       icon: <Leaf className="w-12 h-12" />,
-      title: 'Vegetarisch & Vegan',
-      description: 'Plant-based recepten die bewijzen dat vegetarisch en vegan eten niet saai hoeft te zijn. Vol smaak en creativiteit.',
-      details: ['Vegan', 'Vegetarisch', 'Plant-based', 'Duurzaam', 'Ethisch'],
+      title: t('cooking.categories.vegetarian.title'),
+      description: t('cooking.categories.vegetarian.description'),
+      details: t('cooking.categories.vegetarian.details', { returnObjects: true }) as string[],
       photoPlaceholder: '🌱',
       color: 'from-green-400 to-teal-600',
       recipes: [
         {
-          name: 'Jackfruit Pulled "Pork"',
-          description: 'Vegan pulled pork gemaakt van jackfruit met BBQ saus en coleslaw.',
-          difficulty: 'Gemiddeld',
-          time: '30 min',
+          name: t('cooking.categories.vegetarian.recipes.jackfruit.name'),
+          description: t('cooking.categories.vegetarian.recipes.jackfruit.description'),
+          difficulty: t('cooking.categories.vegetarian.recipes.jackfruit.difficulty'),
+          time: t('cooking.categories.vegetarian.recipes.jackfruit.time'),
           rating: 4,
           tags: ['Vegan', 'BBQ', 'Jackfruit']
         },
         {
-          name: 'Cashew Cheese Platter',
-          description: 'Een assortiment van zelfgemaakte vegan kazen op basis van cashewnoten.',
-          difficulty: 'Gevorderd',
-          time: '120 min',
+          name: t('cooking.categories.vegetarian.recipes.cashewCheese.name'),
+          description: t('cooking.categories.vegetarian.recipes.cashewCheese.description'),
+          difficulty: t('cooking.categories.vegetarian.recipes.cashewCheese.difficulty'),
+          time: t('cooking.categories.vegetarian.recipes.cashewCheese.time'),
           rating: 5,
           tags: ['Vegan', 'Kaas', 'Fermentatie']
         }
@@ -112,25 +114,25 @@ export const CookingPage: React.FC = () => {
     },
     {
       icon: <Star className="w-12 h-12" />,
-      title: 'Speciale Gelegenheden',
-      description: 'Feestelijke en bijzondere gerechten voor speciale momenten. Van verjaardagen tot feestdagen - elk moment verdient iets speciaals.',
-      details: ['Feestdagen', 'Verjaardagen', 'Romantisch', 'Feestelijk', 'Speciaal'],
+      title: t('cooking.categories.special.title'),
+      description: t('cooking.categories.special.description'),
+      details: t('cooking.categories.special.details', { returnObjects: true }) as string[],
       photoPlaceholder: '🎉',
       color: 'from-purple-400 to-pink-600',
       recipes: [
         {
-          name: 'Chocolate Lava Cake',
-          description: 'Een decadente chocolade lava cake met vanille-ijs en bessen coulis.',
-          difficulty: 'Gemiddeld',
-          time: '25 min',
+          name: t('cooking.categories.special.recipes.lavaCake.name'),
+          description: t('cooking.categories.special.recipes.lavaCake.description'),
+          difficulty: t('cooking.categories.special.recipes.lavaCake.difficulty'),
+          time: t('cooking.categories.special.recipes.lavaCake.time'),
           rating: 5,
           tags: ['Dessert', 'Chocolade', 'Romantisch']
         },
         {
-          name: 'Beef Wellington',
-          description: 'Een klassieke Beef Wellington met champignons duxelles en bladerdeeg.',
-          difficulty: 'Gevorderd',
-          time: '180 min',
+          name: t('cooking.categories.special.recipes.wellington.name'),
+          description: t('cooking.categories.special.recipes.wellington.description'),
+          difficulty: t('cooking.categories.special.recipes.wellington.difficulty'),
+          time: t('cooking.categories.special.recipes.wellington.time'),
           rating: 5,
           tags: ['Vlees', 'Feestelijk', 'Klassiek']
         }
@@ -138,25 +140,25 @@ export const CookingPage: React.FC = () => {
     },
     {
       icon: <Zap className="w-12 h-12" />,
-      title: 'Snelle Maaltijden',
-      description: 'Lekkere en voedzame maaltijden die in 30 minuten of minder klaar zijn. Perfect voor drukke dagen zonder in te leveren op smaak.',
-      details: ['30 min of minder', 'Eenvoudig', 'Snel', 'Praktisch', 'Weeknight'],
+      title: t('cooking.categories.quick.title'),
+      description: t('cooking.categories.quick.description'),
+      details: t('cooking.categories.quick.details', { returnObjects: true }) as string[],
       photoPlaceholder: '⚡',
       color: 'from-blue-400 to-cyan-600',
       recipes: [
         {
-          name: 'One-Pot Pasta',
-          description: 'Een complete pasta maaltijd gekookt in één pan met tomaten, spinazie en kaas.',
-          difficulty: 'Makkelijk',
-          time: '20 min',
+          name: t('cooking.categories.quick.recipes.onePot.name'),
+          description: t('cooking.categories.quick.recipes.onePot.description'),
+          difficulty: t('cooking.categories.quick.recipes.onePot.difficulty'),
+          time: t('cooking.categories.quick.recipes.onePot.time'),
           rating: 4,
           tags: ['Snel', 'One-pot', 'Pasta']
         },
         {
-          name: 'Stir-fry Express',
-          description: 'Een snelle wok met seizoensgroenten, tofu en een umami-rijke saus.',
-          difficulty: 'Makkelijk',
-          time: '15 min',
+          name: t('cooking.categories.quick.recipes.stirFry.name'),
+          description: t('cooking.categories.quick.recipes.stirFry.description'),
+          difficulty: t('cooking.categories.quick.recipes.stirFry.difficulty'),
+          time: t('cooking.categories.quick.recipes.stirFry.time'),
           rating: 4,
           tags: ['Wok', 'Vegetarisch', 'Snel']
         }
@@ -165,10 +167,14 @@ export const CookingPage: React.FC = () => {
   ];
 
   const getDifficultyColor = (difficulty: string) => {
+    const easy = t('cooking.difficulty.easy');
+    const medium = t('cooking.difficulty.medium');
+    const advanced = t('cooking.difficulty.advanced');
+    
     switch (difficulty) {
-      case 'Makkelijk': return 'bg-green-500/20 text-green-400';
-      case 'Gemiddeld': return 'bg-yellow-500/20 text-yellow-400';
-      case 'Gevorderd': return 'bg-red-500/20 text-red-400';
+      case easy: return 'bg-green-500/20 text-green-400';
+      case medium: return 'bg-yellow-500/20 text-yellow-400';
+      case advanced: return 'bg-red-500/20 text-red-400';
       default: return 'bg-gray-500/20 text-gray-400';
     }
   };
@@ -197,11 +203,10 @@ export const CookingPage: React.FC = () => {
             </Link>
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                👨‍🍳 Cooking & Culinary Arts
+                👨‍🍳 {t('cooking.title')}
               </h1>
               <p className="text-lg text-white/80 max-w-3xl leading-relaxed">
-                Van snelle weeknight maaltijden tot experimentele fusion cuisine - ontdek mijn passie voor 
-                koken en het creëren van heerlijke gerechten. Een mix van traditionele technieken en moderne innovatie.
+                {t('cooking.description')}
               </p>
             </div>
           </div>
@@ -222,7 +227,7 @@ export const CookingPage: React.FC = () => {
                 <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center border-b border-white/10">
                   <div className="text-center">
                     <div className="text-6xl mb-4">{category.photoPlaceholder}</div>
-                    <p className="text-white/60 text-sm">Gerecht foto's voor {category.title}</p>
+                    <p className="text-white/60 text-sm">{t('cooking.photoPlaceholder')} {category.title}</p>
                   </div>
                 </div>
 
@@ -254,7 +259,7 @@ export const CookingPage: React.FC = () => {
 
                   {/* Recipes List */}
                   <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-white mb-3">Featured Recepten:</h4>
+                    <h4 className="text-lg font-semibold text-white mb-3">{t('cooking.featuredRecipes')}</h4>
                     {category.recipes.map((recipe, recipeIndex) => (
                       <div key={recipeIndex} className="bg-dark-bg/50 rounded-lg p-4 border border-white/5">
                         <div className="flex items-start justify-between mb-3">
@@ -303,28 +308,26 @@ export const CookingPage: React.FC = () => {
           {/* Philosophy Section */}
           <div className="mt-16 text-center">
             <h2 className="text-3xl font-bold text-white mb-6">
-              Mijn Kookfilosofie
+              {t('cooking.philosophy.title')}
             </h2>
             <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed mb-8">
-              Koken is voor mij een creatieve uitlaatklep en een manier om te experimenteren met smaken, 
-              texturen en technieken. Ik geloof in het gebruik van verse, seizoensgebonden ingrediënten en 
-              het respecteren van traditionele bereidingswijzen, terwijl ik ook ruimte laat voor innovatie en experiment.
+              {t('cooking.philosophy.description')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
                 <div className="text-4xl mb-4">🌿</div>
-                <h3 className="text-xl font-bold text-neon-green mb-3">Verse Ingrediënten</h3>
-                <p className="text-white/70">Het gebruik van de beste, verse ingrediënten is de basis van elke goede maaltijd.</p>
+                <h3 className="text-xl font-bold text-neon-green mb-3">{t('cooking.philosophyCards.fresh.title')}</h3>
+                <p className="text-white/70">{t('cooking.philosophyCards.fresh.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
                 <div className="text-4xl mb-4">🎨</div>
-                <h3 className="text-xl font-bold text-neon-green mb-3">Creativiteit & Experiment</h3>
-                <p className="text-white/70">Koken is een kunstvorm waar ruimte is voor creativiteit en het uitproberen van nieuwe combinaties.</p>
+                <h3 className="text-xl font-bold text-neon-green mb-3">{t('cooking.philosophyCards.creativity.title')}</h3>
+                <p className="text-white/70">{t('cooking.philosophyCards.creativity.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
                 <div className="text-4xl mb-4">❤️</div>
-                <h3 className="text-xl font-bold text-neon-green mb-3">Liefde & Passie</h3>
-                <p className="text-white/70">Elke maaltijd wordt bereid met liefde en aandacht voor detail - dat proef je in elke hap.</p>
+                <h3 className="text-xl font-bold text-neon-green mb-3">{t('cooking.philosophyCards.love.title')}</h3>
+                <p className="text-white/70">{t('cooking.philosophyCards.love.description')}</p>
               </div>
             </div>
           </div>
@@ -332,28 +335,28 @@ export const CookingPage: React.FC = () => {
           {/* Cooking Techniques */}
           <div className="mt-16">
             <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Kooktechnieken & Vaardigheden
+              {t('cooking.techniques.title')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10 text-center">
                 <Flame className="w-8 h-8 text-neon-red mx-auto mb-3" />
-                <h3 className="text-lg font-semibold text-white mb-2">Grillen & Roosteren</h3>
-                <p className="text-white/70 text-sm">Perfecte searing en caramelisatie technieken</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{t('cooking.techniques.grilling.title')}</h3>
+                <p className="text-white/70 text-sm">{t('cooking.techniques.grilling.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10 text-center">
                 <Utensils className="w-8 h-8 text-neon-blue mx-auto mb-3" />
-                <h3 className="text-lg font-semibold text-white mb-2">Knife Skills</h3>
-                <p className="text-white/70 text-sm">Precisie snijtechnieken en veilig mesgebruik</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{t('cooking.techniques.knifeSkills.title')}</h3>
+                <p className="text-white/70 text-sm">{t('cooking.techniques.knifeSkills.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10 text-center">
                 <Leaf className="w-8 h-8 text-neon-green mx-auto mb-3" />
-                <h3 className="text-lg font-semibold text-white mb-2">Fermentatie</h3>
-                <p className="text-white/70 text-sm">Traditionele fermentatie en pickling technieken</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{t('cooking.techniques.fermentation.title')}</h3>
+                <p className="text-white/70 text-sm">{t('cooking.techniques.fermentation.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10 text-center">
                 <Zap className="w-8 h-8 text-neon-purple mx-auto mb-3" />
-                <h3 className="text-lg font-semibold text-white mb-2">Moleculaire Gastronomie</h3>
-                <p className="text-white/70 text-sm">Experimentele technieken en texturen</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{t('cooking.techniques.molecular.title')}</h3>
+                <p className="text-white/70 text-sm">{t('cooking.techniques.molecular.description')}</p>
               </div>
             </div>
           </div>

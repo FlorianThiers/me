@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG } from '../config/emailjs';
+import { sendEmailViaResend } from '../services/resendService';
+import { sendEmailViaBrevo } from '../services/brevoService';
+import { sendEmailViaWeb3Forms } from '../services/web3formsService';
+import { sendEmailViaSendGrid } from '../services/sendgridService';
+import { sendEmailViaFormspree } from '../services/formspreeService';
+import { EMAIL_SERVICE } from '../config/emailService';
 import { 
   Mail, 
   Phone, 
@@ -24,10 +28,25 @@ export const ContactSection: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // EmailJS initialisatie
+  // Check email service configuration
   useEffect(() => {
-    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+    const service = EMAIL_SERVICE;
+    console.log(`Using email service: ${service}`);
+    
+    // Warn if service is not configured
+    if (service === 'brevo' && !import.meta.env.VITE_BREVO_API_KEY) {
+      console.warn('Brevo API key is not configured. Please add VITE_BREVO_API_KEY to your .env file.');
+    } else if (service === 'web3forms' && !import.meta.env.VITE_WEB3FORMS_ACCESS_KEY) {
+      console.warn('Web3Forms access key is not configured. Please add VITE_WEB3FORMS_ACCESS_KEY to your .env file.');
+    } else if (service === 'formspree' && !import.meta.env.VITE_FORMSPREE_FORM_ID) {
+      console.warn('Formspree form ID is not configured. Please add VITE_FORMSPREE_FORM_ID to your .env file.');
+    } else if (service === 'sendgrid' && !import.meta.env.VITE_SENDGRID_API_KEY) {
+      console.warn('SendGrid API key is not configured. Please add VITE_SENDGRID_API_KEY to your .env file.');
+    } else if (service === 'resend' && !import.meta.env.VITE_RESEND_API_KEY) {
+      console.warn('Resend API key is not configured. Please add VITE_RESEND_API_KEY to your .env file.');
+    }
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -42,37 +61,54 @@ export const ContactSection: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    setErrorMessage(null);
     
     try {
-      // EmailJS configuratie
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_name: 'Florian Thiers'
+      let result;
+      const emailData = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message
       };
 
-      // Verstuur email via EmailJS
-      const result = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
+      // Use the configured email service
+      switch (EMAIL_SERVICE) {
+        case 'brevo':
+          result = await sendEmailViaBrevo(emailData);
+          break;
+        case 'web3forms':
+          result = await sendEmailViaWeb3Forms(emailData);
+          break;
+        case 'formspree':
+          result = await sendEmailViaFormspree(emailData);
+          break;
+        case 'sendgrid':
+          result = await sendEmailViaSendGrid(emailData);
+          break;
+        case 'resend':
+        default:
+          result = await sendEmailViaResend(emailData);
+          break;
+      }
 
-      if (result.status === 200) {
+      if (result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
         setSubmitStatus('error');
+        setErrorMessage(result.error || t('contact.errorGeneric'));
       }
-    } catch (error) {
-      console.error('EmailJS Error:', error);
+    } catch (error: any) {
+      console.error('Email Service Error:', error);
       setSubmitStatus('error');
+      setErrorMessage(error?.message || t('contact.errorGeneric'));
     } finally {
       setIsSubmitting(false);
       // Reset status na 5 seconden
-      setTimeout(() => setSubmitStatus('idle'), 5000);
+      setTimeout(() => {
+        setSubmitStatus('idle');
+        setErrorMessage(null);
+      }, 5000);
     }
   };
 
@@ -155,7 +191,7 @@ export const ContactSection: React.FC = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold text-white mb-6">
-              Send me a message
+              {t('contact.sendMessage')}
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -172,7 +208,7 @@ export const ContactSection: React.FC = () => {
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 bg-dark-secondary border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-neon-green focus:outline-none focus:ring-2 focus:ring-neon-green/20 transition-all duration-300"
-                  placeholder="Your name"
+                  placeholder={t('contact.yourName')}
                 />
               </div>
 
@@ -189,7 +225,7 @@ export const ContactSection: React.FC = () => {
                   onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 bg-dark-secondary border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-neon-green focus:outline-none focus:ring-2 focus:ring-neon-green/20 transition-all duration-300"
-                  placeholder="your.email@example.com"
+                  placeholder={t('contact.yourEmail')}
                 />
               </div>
 
@@ -206,7 +242,7 @@ export const ContactSection: React.FC = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-3 bg-dark-secondary border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-neon-green focus:outline-none focus:ring-2 focus:ring-neon-green/20 transition-all duration-300 resize-none"
-                  placeholder="Tell me about your project..."
+                  placeholder={t('contact.tellMeAboutProject')}
                 />
               </div>
 
@@ -221,7 +257,7 @@ export const ContactSection: React.FC = () => {
                 {isSubmitting ? (
                   <div className="flex items-center justify-center space-x-2">
                     <div className="w-5 h-5 border-2 border-dark-bg border-t-transparent rounded-full animate-spin" />
-                    <span>Sending...</span>
+                    <span>{t('contact.sending')}</span>
                   </div>
                 ) : (
                   <div className="flex items-center justify-center space-x-2">
@@ -239,7 +275,7 @@ export const ContactSection: React.FC = () => {
                   className="flex items-center space-x-2 text-neon-green bg-neon-green/20 p-3 rounded-lg"
                 >
                   <CheckCircle size={20} />
-                  <span>Message sent successfully! I'll get back to you soon.</span>
+                  <span>{t('contact.messageSentSuccess')}</span>
                 </motion.div>
               )}
 
@@ -250,7 +286,7 @@ export const ContactSection: React.FC = () => {
                   className="flex items-center space-x-2 text-red-400 bg-red-400/20 p-3 rounded-lg"
                 >
                   <AlertCircle size={20} />
-                  <span>Failed to send message. Please check your connection and try again.</span>
+                  <span>{errorMessage || t('contact.errorGeneric')}</span>
                 </motion.div>
               )}
             </form>
@@ -264,7 +300,7 @@ export const ContactSection: React.FC = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold text-white mb-6">
-              Get in touch
+              {t('contact.getInTouch')}
             </h3>
 
             {/* Contact Details */}
@@ -296,7 +332,7 @@ export const ContactSection: React.FC = () => {
 
             {/* Social Links */}
             <div className="mb-8">
-              <h4 className="text-lg font-semibold text-white mb-4">Follow me</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">{t('contact.followMe')}</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -330,8 +366,7 @@ export const ContactSection: React.FC = () => {
                 <span className="text-neon-green font-semibold">{t('contact.available')}</span>
               </div>
               <p className="text-white/80 text-sm">
-                I'm currently accepting new projects and opportunities. 
-                Let's discuss how we can work together to bring your ideas to life!
+                {t('contact.availabilityDescription')}
               </p>
             </motion.div>
           </motion.div>
@@ -347,11 +382,10 @@ export const ContactSection: React.FC = () => {
         >
           <div className="bg-gradient-to-r from-neon-green/20 to-neon-blue/20 rounded-2xl p-8 border border-neon-green/30">
             <h3 className="text-2xl font-bold text-white mb-4">
-              Ready to start your project?
+              {t('contact.readyToStart')}
             </h3>
             <p className="text-white/80 mb-6 max-w-2xl mx-auto">
-              Whether you have a specific project in mind or just want to explore possibilities, 
-              I'm here to help. Let's create something amazing together!
+              {t('contact.readyToStartDescription')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
@@ -365,14 +399,14 @@ export const ContactSection: React.FC = () => {
                   }
                 }}
               >
-                Start a Project
+                {t('contact.startProject')}
               </motion.button>
               <motion.button
                 className="border-2 border-neon-green text-neon-green font-bold py-3 px-8 rounded-full hover:bg-neon-green hover:text-dark-bg transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Schedule a Call
+                {t('contact.scheduleCall')}
               </motion.button>
             </div>
           </div>

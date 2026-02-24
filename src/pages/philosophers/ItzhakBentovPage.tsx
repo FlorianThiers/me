@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Brain, Users, Calendar, MapPin, Award, Zap, Atom } from 'lucide-react';
 
 export const ItzhakBentovPage: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen pt-20 bg-dark-secondary relative overflow-hidden">
       {/* Decoratieve achtergrond elementen */}
@@ -26,11 +28,10 @@ export const ItzhakBentovPage: React.FC = () => {
             className="mb-8"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6 neon-text">
-              Itzhak Bentov
+              {t('itzhakBentov.title')}
             </h1>
             <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed">
-              De Israëlische uitvinder en bewustzijnsonderzoeker die revolutionaire theorieën ontwikkelde 
-              over holografische realiteit en het onderbewustzijn als schepper van materiële werkelijkheid
+              {t('itzhakBentov.subtitle')}
             </p>
           </motion.div>
 
@@ -45,7 +46,7 @@ export const ItzhakBentovPage: React.FC = () => {
               className="inline-flex items-center space-x-2 text-neon-green hover:text-neon-blue transition-colors duration-300"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span>Terug naar Mind as Computer</span>
+              <span>{t('itzhakBentov.backToMindComputer')}</span>
             </Link>
           </motion.div>
         </div>
@@ -59,41 +60,41 @@ export const ItzhakBentovPage: React.FC = () => {
             className="bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 rounded-2xl p-8 border border-neon-purple/30"
           >
             <h2 className="text-2xl font-bold text-white mb-6 text-center">
-              Persoonlijke Informatie & Geschiedenis
+              {t('itzhakBentov.personalInfo')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-neon-purple" />
                   <div>
-                    <h3 className="font-semibold text-white">Geboren:</h3>
+                    <h3 className="font-semibold text-white">{t('itzhakBentov.born')}</h3>
                     <p className="text-white/70">9 augustus 1923, Haifa, Israël</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-neon-purple" />
                   <div>
-                    <h3 className="font-semibold text-white">Overleden:</h3>
+                    <h3 className="font-semibold text-white">{t('itzhakBentov.died')}</h3>
                     <p className="text-white/70">25 mei 1979, Mount St. Helens, Washington, VS</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-neon-purple" />
                   <div>
-                    <h3 className="font-semibold text-white">Nationaliteit:</h3>
+                    <h3 className="font-semibold text-white">{t('itzhakBentov.nationality')}</h3>
                     <p className="text-white/70">Israëlisch</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Award className="w-5 h-5 text-neon-purple" />
                   <div>
-                    <h3 className="font-semibold text-white">Beroep:</h3>
+                    <h3 className="font-semibold text-white">{t('itzhakBentov.occupation')}</h3>
                     <p className="text-white/70">Uitvinder, Bewustzijnsonderzoeker, Schrijver</p>
                   </div>
                 </div>
               </div>
               <div className="space-y-4">
-                <h3 className="font-semibold text-white mb-3">Belangrijkste Opleiding:</h3>
+                <h3 className="font-semibold text-white mb-3">{t('itzhakBentov.mainEducation')}</h3>
                 <ul className="space-y-2 text-white/70 text-sm">
                   <li>• Technische opleiding in Israël</li>
                   <li>• Uitvinder van medische apparaten</li>
@@ -114,10 +115,10 @@ export const ItzhakBentovPage: React.FC = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-6">
-              Kern Theorieën & Concepten
+              {t('itzhakBentov.coreTheories')}
             </h2>
             <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              Bentov's revolutionaire inzichten over holografische realiteit, quantum bewustzijn 
+              {t('itzhakBentov.coreTheoriesSubtitle')} 
               en het onderbewustzijn als actieve schepper van materiële werkelijkheid
             </p>
           </motion.div>
@@ -323,8 +324,7 @@ export const ItzhakBentovPage: React.FC = () => {
           className="text-center"
         >
           <p className="text-white/70 mb-6 text-lg">
-            Geïnteresseerd in het bespreken van Bentov's theorieën over quantum manifestatie 
-            en holografische realiteit, of hoe ze toegepast kunnen worden in moderne technologie?
+            {t('itzhakBentov.cta')}
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -334,7 +334,7 @@ export const ItzhakBentovPage: React.FC = () => {
               to="/#contact"
               className="inline-block bg-gradient-to-r from-neon-green to-neon-blue text-dark-bg font-bold py-3 px-8 rounded-full hover:shadow-2xl hover:shadow-neon-green/30 transition-all duration-300"
             >
-              Laten we Bespreken
+              {t('itzhakBentov.ctaButton')}
             </Link>
           </motion.div>
         </motion.div>

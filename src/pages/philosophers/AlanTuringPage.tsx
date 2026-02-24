@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Brain, BookOpen, Users, Calendar, MapPin, Award, Cpu } from 'lucide-react';
 
 export const AlanTuringPage: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen pt-20 bg-dark-secondary relative overflow-hidden">
       {/* Decoratieve achtergrond elementen */}
@@ -26,11 +28,10 @@ export const AlanTuringPage: React.FC = () => {
             className="mb-8"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6 neon-text">
-              Alan Turing
+              {t('alanTuring.title')}
             </h1>
             <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed">
-              De Britse wiskundige, logicus en computerwetenschapper die de fundamenten legde 
-              voor moderne computerwetenschap en kunstmatige intelligentie
+              {t('alanTuring.subtitle')}
             </p>
           </motion.div>
 
@@ -45,7 +46,7 @@ export const AlanTuringPage: React.FC = () => {
               className="inline-flex items-center space-x-2 text-neon-green hover:text-neon-blue transition-colors duration-300"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span>Terug naar Mind as Computer</span>
+              <span>{t('alanTuring.backToMindComputer')}</span>
             </Link>
           </motion.div>
         </div>
@@ -59,41 +60,41 @@ export const AlanTuringPage: React.FC = () => {
             className="bg-gradient-to-r from-neon-yellow/20 to-neon-green/20 rounded-2xl p-8 border border-neon-yellow/30"
           >
             <h2 className="text-2xl font-bold text-white mb-6 text-center">
-              Persoonlijke Informatie & Geschiedenis
+              {t('alanTuring.personalInfo')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-neon-yellow" />
                   <div>
-                    <h3 className="font-semibold text-white">Geboren:</h3>
+                    <h3 className="font-semibold text-white">{t('alanTuring.born')}</h3>
                     <p className="text-white/70">23 juni 1912, Maida Vale, Londen, VK</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-neon-yellow" />
                   <div>
-                    <h3 className="font-semibold text-white">Overleden:</h3>
+                    <h3 className="font-semibold text-white">{t('alanTuring.died')}</h3>
                     <p className="text-white/70">7 juni 1954, Wilmslow, Cheshire, VK</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-neon-yellow" />
                   <div>
-                    <h3 className="font-semibold text-white">Nationaliteit:</h3>
+                    <h3 className="font-semibold text-white">{t('alanTuring.nationality')}</h3>
                     <p className="text-white/70">Brits</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Award className="w-5 h-5 text-neon-yellow" />
                   <div>
-                    <h3 className="font-semibold text-white">Beroep:</h3>
+                    <h3 className="font-semibold text-white">{t('alanTuring.occupation')}</h3>
                     <p className="text-white/70">Wiskundige, Computerwetenschapper, Logicast</p>
                   </div>
                 </div>
               </div>
               <div className="space-y-4">
-                <h3 className="font-semibold text-white mb-3">Belangrijkste Opleiding:</h3>
+                <h3 className="font-semibold text-white mb-3">{t('alanTuring.mainEducation')}</h3>
                 <ul className="space-y-2 text-white/70 text-sm">
                   <li>• Wiskunde aan King's College, Cambridge</li>
                   <li>• PhD aan Princeton University</li>
@@ -114,10 +115,10 @@ export const AlanTuringPage: React.FC = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-6">
-              Kern Theorieën & Concepten
+              {t('alanTuring.coreTheories')}
             </h2>
             <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              Turing's revolutionaire inzichten over computation, intelligentie en de mogelijkheid 
+              {t('alanTuring.coreTheoriesSubtitle')} 
               om de menselijke geest te simuleren
             </p>
           </motion.div>
@@ -322,8 +323,7 @@ export const AlanTuringPage: React.FC = () => {
           className="text-center"
         >
           <p className="text-white/70 mb-6 text-lg">
-            Geïnteresseerd in het bespreken van Turing's theorieën over computation en intelligentie, 
-            of hoe ze toegepast kunnen worden in moderne AI en bewustzijnsonderzoek?
+            {t('alanTuring.cta')}
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -333,7 +333,7 @@ export const AlanTuringPage: React.FC = () => {
               to="/#contact"
               className="inline-block bg-gradient-to-r from-neon-green to-neon-blue text-dark-bg font-bold py-3 px-8 rounded-full hover:shadow-2xl hover:shadow-neon-green/30 transition-all duration-300"
             >
-              Laten we Bespreken
+              {t('alanTuring.ctaButton')}
             </Link>
           </motion.div>
         </motion.div>

@@ -46,8 +46,8 @@ export const Navigation: React.FC<NavigationProps> = ({
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-dark-bg/90 backdrop-blur-md border-b border-white/10' 
-          : 'bg-transparent'
+          ? 'bg-dark-bg/95 backdrop-blur-md border-b border-white/10' 
+          : 'bg-dark-bg/70 backdrop-blur-md'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -115,6 +115,14 @@ export const Navigation: React.FC<NavigationProps> = ({
                   onClick={() => handleLanguageChange('nl')}
                 >
                   Nederlands
+                </button>
+                <button
+                  className={`block w-full px-4 py-2 text-left hover:bg-white/5 transition-colors duration-200 ${
+                    currentLanguage === 'es' ? 'text-neon-green' : 'text-white/80'
+                  }`}
+                  onClick={() => handleLanguageChange('es')}
+                >
+                  Español
                 </button>
               </div>
             </motion.div>

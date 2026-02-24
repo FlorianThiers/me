@@ -2,68 +2,42 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Activity, Mountain, Waves, Snowflake, MountainSnow, Zap, Music } from 'lucide-react';
 import { Link } from 'react-router-dom';
-export const SportsPage: React.FC = () => {
+import { useTranslation } from 'react-i18next';
 
-  const sports = [
-    {
-      icon: <MountainSnow className="w-12 h-12" />,
-      title: 'Slacklining',
-      description: 'Balanceren op een strakke lijn tussen twee punten. Een sport die balans, focus en mentale rust combineert.',
-      details: ['Balance training', 'Mental focus', 'Core strength', 'Meditation in motion'],
-      photoPlaceholder: '📸 Slackline foto',
-      color: 'from-green-400 to-emerald-600'
-    },
-    {
-      icon: <Activity className="w-12 h-12" />,
-      title: 'Dagelijkse Training',
-      description: 'Consistente training voor algemene fitheid en kracht. Van cardio tot krachttraining.',
-      details: ['Cardio', 'Strength training', 'Flexibility', 'Consistency'],
-      photoPlaceholder: '📸 Training foto',
-      color: 'from-blue-400 to-cyan-600'
-    },
-    {
-      icon: <Zap className="w-12 h-12" />,
-      title: 'Dapo Flow Star',
-      description: 'Een unieke bewegingskunst die vloeiende bewegingen combineert met acrobatische elementen. Een mix van dans, martial arts en flow.',
-      details: ['Flow movement', 'Acrobatics', 'Martial arts', 'Creative expression'],
-      photoPlaceholder: '📸 Dapo Flow Star foto',
-      color: 'from-purple-400 to-pink-600',
-      link: '/sports/dapo-flow-star'
-    },
-    {
-      icon: <Music className="w-12 h-12" />,
-      title: 'Dancing',
-      description: 'Expressieve dansvormen die ritme, emotie en beweging combineren. Van freestyle tot choreografie.',
-      details: ['Freestyle', 'Choreography', 'Rhythm', 'Emotional expression'],
-      photoPlaceholder: '📸 Dancing foto',
-      color: 'from-rose-400 to-red-600',
-      link: '/sports/dancing'
-    },
-    {
-      icon: <Mountain className="w-12 h-12" />,
-      title: 'Boulderen',
-      description: 'Klimmen zonder touw op lage hoogtes. Een puzzel van beweging en kracht.',
-      details: ['Problem solving', 'Upper body strength', 'Mental strategy', 'Social sport'],
-      photoPlaceholder: '📸 Boulderen foto',
-      color: 'from-orange-400 to-red-600'
-    },
-    {
-      icon: <Snowflake className="w-12 h-12" />,
-      title: 'Snowboarden',
-      description: 'Glijden over sneeuw op een board. Vrijheid en adrenaline in de bergen.',
-      details: ['Mountain freedom', 'Balance', 'Speed control', 'Winter adventure'],
-      photoPlaceholder: '📸 Snowboard foto',
-      color: 'from-sky-400 to-blue-600'
-    },
-    {
-      icon: <Waves className="w-12 h-12" />,
-      title: 'Surfen',
-      description: 'Rijden op golven in de oceaan. Een nieuwe uitdaging die ik binnenkort ga ontdekken.',
-      details: ['Ocean connection', 'Wave reading', 'Balance', 'Coming soon'],
-      photoPlaceholder: '📸 Surfen foto (binnenkort)',
-      color: 'from-teal-400 to-cyan-600'
-    }
+export const SportsPage: React.FC = () => {
+  const { t } = useTranslation();
+
+  const sportKeys = ['slacklining', 'dailyTraining', 'dapoFlowStar', 'dancing', 'bouldering', 'snowboarding', 'surfing'];
+  const sportIcons = [
+    <MountainSnow className="w-12 h-12" />,
+    <Activity className="w-12 h-12" />,
+    <Zap className="w-12 h-12" />,
+    <Music className="w-12 h-12" />,
+    <Mountain className="w-12 h-12" />,
+    <Snowflake className="w-12 h-12" />,
+    <Waves className="w-12 h-12" />
   ];
+  const sportColors = [
+    'from-green-400 to-emerald-600',
+    'from-blue-400 to-cyan-600',
+    'from-purple-400 to-pink-600',
+    'from-rose-400 to-red-600',
+    'from-orange-400 to-red-600',
+    'from-sky-400 to-blue-600',
+    'from-teal-400 to-cyan-600'
+  ];
+  const sportLinks = [null, null, '/sports/dapo-flow-star', '/sports/dancing', null, null, null];
+
+  const sports = sportKeys.map((key, index) => ({
+    key,
+    icon: sportIcons[index],
+    title: t(`sports.sports.${key}.title`),
+    description: t(`sports.sports.${key}.description`),
+    details: t(`sports.sports.${key}.details`, { returnObjects: true }) as string[],
+    photoPlaceholder: t(`sports.sports.${key}.photoPlaceholder`),
+    color: sportColors[index],
+    link: sportLinks[index] || undefined
+  }));
 
   return (
     <div className="min-h-screen pt-20 bg-dark-bg">
@@ -80,11 +54,10 @@ export const SportsPage: React.FC = () => {
             </Link>
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                Sports & Adventure
+                {t('sports.title')}
               </h1>
               <p className="text-lg text-white/80 max-w-3xl leading-relaxed">
-                Van slacklinen in het park tot snowboarden in de bergen - sport en avontuur zijn een essentieel 
-                onderdeel van mijn leven. Deze activiteiten helpen me om balans te vinden tussen lichaam en geest.
+                {t('sports.subtitle')}
               </p>
             </div>
           </div>
@@ -95,7 +68,7 @@ export const SportsPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {sports.map((sport, index) => (
               <motion.div
-                key={sport.title}
+                key={sport.key}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -107,7 +80,7 @@ export const SportsPage: React.FC = () => {
                     <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center border-b border-white/10">
                       <div className="text-center">
                         <div className="text-6xl mb-4">{sport.photoPlaceholder}</div>
-                        <p className="text-white/60 text-sm">Foto ruimte voor {sport.title}</p>
+                        <p className="text-white/60 text-sm">{t('sports.photoSpace')} {sport.title}</p>
                       </div>
                     </div>
 
@@ -140,7 +113,7 @@ export const SportsPage: React.FC = () => {
                       {/* Link Indicator */}
                       <div className="mt-4 text-center">
                         <span className="inline-flex items-center text-neon-green text-sm font-medium group-hover:text-neon-blue transition-colors duration-300">
-                          Verken {sport.title}
+                          {t('sports.explore')} {sport.title}
                           <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -154,7 +127,7 @@ export const SportsPage: React.FC = () => {
                     <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center border-b border-white/10">
                       <div className="text-center">
                         <div className="text-6xl mb-4">{sport.photoPlaceholder}</div>
-                        <p className="text-white/60 text-sm">Foto ruimte voor {sport.title}</p>
+                        <p className="text-white/60 text-sm">{t('sports.photoSpace')} {sport.title}</p>
                       </div>
                     </div>
 
@@ -193,25 +166,23 @@ export const SportsPage: React.FC = () => {
           {/* Philosophy Section */}
           <div className="mt-16 text-center">
             <h2 className="text-3xl font-bold text-white mb-6">
-              Waarom Sport & Avontuur?
+              {t('sports.whySports')}
             </h2>
             <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed mb-8">
-              Sport en avontuur zijn meer dan alleen fysieke activiteiten. Ze leren me over doorzettingsvermogen, 
-              probleemoplossing, en het vinden van balans. Elke sport heeft zijn eigen uitdagingen en lessen, 
-              die ik kan toepassen in mijn werk en dagelijks leven.
+              {t('sports.whyDescription')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-bold text-neon-green mb-3">Balans & Focus</h3>
-                <p className="text-white/70">Slacklinen en boulderen vereisen volledige focus en balans - vaardigheden die essentieel zijn in alle aspecten van het leven.</p>
+                <h3 className="text-xl font-bold text-neon-green mb-3">{t('sports.balanceFocus.title')}</h3>
+                <p className="text-white/70">{t('sports.balanceFocus.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-bold text-neon-green mb-3">Doorzettingsvermogen</h3>
-                <p className="text-white/70">Elke sport heeft zijn uitdagingen. Het overwinnen daarvan bouwt karakter en leert me niet op te geven.</p>
+                <h3 className="text-xl font-bold text-neon-green mb-3">{t('sports.perseverance.title')}</h3>
+                <p className="text-white/70">{t('sports.perseverance.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
-                <h3 className="text-xl font-bold text-neon-green mb-3">Natuur & Avontuur</h3>
-                <p className="text-white/70">De verbinding met natuur en het gevoel van vrijheid geven me energie en inspiratie voor creativiteit.</p>
+                <h3 className="text-xl font-bold text-neon-green mb-3">{t('sports.natureAdventure.title')}</h3>
+                <p className="text-white/70">{t('sports.natureAdventure.description')}</p>
               </div>
             </div>
           </div>

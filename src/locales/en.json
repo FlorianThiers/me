@@ -137,7 +137,26 @@
     "location": "Gent, Belgium",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
-    "socialLabel": "Social Media"
+    "socialLabel": "Social Media",
+    "available": "Available for new projects",
+    "errorInvalidKey": "EmailJS configuration error: Invalid Public Key. Please check your EmailJS credentials in the .env file.",
+    "errorInvalidService": "EmailJS configuration error: Invalid Service ID. Please check your EmailJS credentials.",
+    "errorInvalidTemplate": "EmailJS configuration error: Invalid Template ID. Please check your EmailJS credentials.",
+    "errorResendNotConfigured": "Resend API key is not configured. Please add VITE_RESEND_API_KEY to your .env file.",
+    "errorGeneric": "Failed to send message. Please check your connection and try again.",
+    "sendMessage": "Send me a message",
+    "getInTouch": "Get in touch",
+    "followMe": "Follow me",
+    "availabilityDescription": "I'm currently accepting new projects and opportunities. Let's discuss how we can work together to bring your ideas to life!",
+    "readyToStart": "Ready to start your project?",
+    "readyToStartDescription": "Whether you have a specific project in mind or just want to explore possibilities, I'm here to help. Let's create something amazing together!",
+    "startProject": "Start a Project",
+    "scheduleCall": "Schedule a Call",
+    "messageSentSuccess": "Message sent successfully! I'll get back to you soon.",
+    "yourName": "Your name",
+    "yourEmail": "your.email@example.com",
+    "tellMeAboutProject": "Tell me about your project...",
+    "sending": "Sending..."
   },
   "footer": {
     "description": "Building the future, one line of code at a time.",
@@ -145,21 +164,103 @@
     "madeWith": "Made with ❤️ and ☕"
   },
   "interests": {
+    "intro": "Beyond my professional skills, I have diverse interests that shape my perspective and contribute to my creative approach to problem-solving.",
     "meditation": {
       "title": "Meditation",
       "description": "I regularly practice meditation to calm my mind, improve focus, and find inner peace. This also helps me in my creative work.",
-      "details": ["Mindfulness", "Vipassana", "Breathing Techniques", "Mental Clarity", "Stress Reduction"]
+      "details": ["Mindfulness", "Vipassana", "Breathing Techniques", "Mental Clarity", "Stress Reduction"],
+      "explore": "Explore Meditation & Mindfulness"
     },
     "cultivation": {
       "title": "Cultivation",
       "description": "I'm passionate about growing plants and connecting with nature. From houseplants to vegetable gardens - I find peace in caring for living beings.",
-      "details": ["Indoor Plants", "Gardening", "Sustainability", "Plant Care", "Nature Connection"]
+      "details": ["Indoor Plants", "Gardening", "Sustainability", "Plant Care", "Nature Connection"],
+      "explore": "Explore Growing Projects"
     },
     "cooking": {
       "title": "Cooking",
       "description": "Cooking is a creative outlet for me and a way to experiment with flavors and techniques. I enjoy the process of making healthy, delicious meals.",
-      "details": ["Healthy Cooking", "Flavor Experimentation", "Culinary Techniques", "Meal Planning", "Nutrition"]
-    }
+      "details": ["Healthy Cooking", "Flavor Experimentation", "Culinary Techniques", "Meal Planning", "Nutrition"],
+      "explore": "Explore Recipes & Dishes"
+    },
+    "philosophy": {
+      "title": "Philosophy & Consciousness",
+      "description": "I'm fascinated by the deeper questions of consciousness, psychology, and how great thinkers throughout history have shaped our view of the mind.",
+      "details": ["Carl Jung", "Consciousness Philosophy", "Psychology", "Philosophical Traditions", "Mental Models"],
+      "explore": "Explore Philosophers & Thinkers"
+    },
+    "sports": {
+      "title": "Sports & Adventure",
+      "description": "I'm passionate about outdoor sports and adventure. From slacklining and bouldering to snowboarding and surfing - I love the challenge and freedom these sports offer.",
+      "details": ["Slacklining", "Bouldering", "Snowboarding", "Surfing", "Daily Training"],
+      "explore": "Explore Sports & Adventure"
+    },
+    "music": {
+      "title": "Music",
+      "description": "I have a deep passion for music, both listening and creating. I enjoy exploring various genres and experimenting with digital music production.",
+      "details": ["Electronic Music", "Jazz", "Classical", "Digital Audio Workstations", "Sound Design"],
+      "explore": "Explore Live Coding & Music"
+    },
+    "learning": {
+      "title": "Learning",
+      "description": "I'm constantly seeking to expand my knowledge and skills, whether through books, online courses, or hands-on projects.",
+      "details": ["Technology Trends", "Design Principles", "New Programming Languages", "Creative Techniques"]
+    },
+    "photography": {
+      "title": "Photography",
+      "description": "I enjoy capturing moments and exploring visual storytelling through photography and videography.",
+      "details": ["Digital Photography", "Composition", "Lighting", "Post-Processing", "Storytelling"]
+    },
+    "art": {
+      "title": "Art & Creativity",
+      "description": "Creative expression is important to me, whether through digital art, traditional media, or innovative design solutions.",
+      "details": ["Digital Art", "Sketching", "Color Theory", "Creative Problem Solving", "Innovation"]
+    },
+    "travel": {
+      "title": "Travel & Culture",
+      "description": "I love exploring different cultures and perspectives, which enriches my creative work and understanding of global design trends.",
+      "details": ["Cultural Exchange", "Global Design", "Language Learning", "Cultural Sensitivity", "Diverse Perspectives"]
+    },
+    "gaming": {
+      "title": "Gaming",
+      "description": "Gaming has been a significant part of my life, inspiring my interest in technology and interactive experiences.",
+      "details": ["Strategy Games", "RPGs", "Indie Games", "Game Development", "Virtual Reality"]
+    },
+    "timeVisualization": {
+      "title": "Alternative Time Visualization",
+      "description": "I'm fascinated by alternative ways to experience time. Through a 13-month chakra calendar (starting July 26th) I explore how energy and consciousness relate to our experience of time.",
+      "details": ["13-Month Calendar", "Chakra Rhythm", "Consciousness & Time", "Energetic Cycles", "Gregorian Overlay"],
+      "clickToView": "Click to view calendar",
+      "clickToClose": "Click to close"
+    },
+    "gardenDesign": {
+      "title": "Garden & House Design",
+      "description": "Design and draw your own garden and house with different work layers. From foundations to plants and water - create your perfect space.",
+      "details": ["2D Design", "Work Layers", "Plant Planning", "Water Systems", "Local Storage"],
+      "explore": "Start Designer"
+    },
+    "investing": {
+      "title": "Investing",
+      "description": "I track how inflation affects my money and analyze how different investments perform relative to inflation. From tech stocks to gold - I learn about financial markets and wealth building.",
+      "details": ["Inflation Tracking", "Stocks", "Gold", "Cryptocurrency", "Wealth Building"],
+      "explore": "Explore Inflation & Investments"
+    },
+    "moltbook": {
+      "title": "Moltbook Agent",
+      "description": "My AI agent on Moltbook where I can ask questions and answer posts from other agents. A platform for AI-to-AI communication and knowledge exchange.",
+      "details": ["AI Communication", "Asking Questions", "Answering", "Community", "Knowledge Exchange"],
+      "explore": "Open Moltbook Agent"
+    },
+    "howInterestsShape": {
+      "title": "How These Interests Shape My Work",
+      "description": "My diverse interests influence my approach to design and development. From music's rhythm and structure to gaming's interactive storytelling, each interest brings unique perspectives that help me create more engaging and innovative solutions. I believe that a well-rounded individual creates more well-rounded work."
+    },
+    "mindAsComputer": {
+      "title": "The Mind as a Computer",
+      "description": "One of my fascinations lies in understanding how the human mind processes information like a computer, and how we can visualize these complex cognitive processes. This intersection of psychology, technology, and visualization drives my approach to creating intuitive user experiences.",
+      "explore": "Explore Interactive Diagrams"
+    },
+    "explore": "Explore"
   },
   "cultivation": {
     "title": "Cultivation & Growing",
@@ -168,6 +269,157 @@
     "philosophy": {
       "title": "Why Cultivation?",
       "description": "Growing plants is more than just a hobby - it's a way to connect with nature, learn about sustainability, and use technology to optimize growth. Each plant has its own needs and challenges, making it a perfect combination of science, art and patience."
+    },
+    "projects": {
+      "houseplants": {
+        "title": "Houseplants",
+        "description": "A growing collection of houseplants that transform my living space into a green oasis. From air-purifying plants to exotic species.",
+        "details": ["Monstera Deliciosa", "Ficus Lyrata", "Sansevieria", "Pothos", "Spider Plant"],
+        "subProjects": {
+          "monsteraJungle": {
+            "name": "Monstera Jungle",
+            "description": "A large Monstera Deliciosa growing into a real jungle in the living room.",
+            "status": "Growing"
+          },
+          "airPurifying": {
+            "name": "Air-Purifying Collection",
+            "description": "A selection of plants that improve air quality and produce oxygen.",
+            "status": "Active"
+          }
+        }
+      },
+      "indoorTent": {
+        "title": "Indoor Growing Tent",
+        "description": "Controlled indoor cultivation for microgreens, tropical plants and experimental growing. A perfect environment for year-round growing.",
+        "details": ["Microgreens", "Tropical Plants", "LED Lighting", "Climate Control", "Hydroponics"],
+        "subProjects": {
+          "microgreensStation": {
+            "name": "Microgreens Station",
+            "description": "A compact setup for growing fresh microgreens like radish, broccoli and peas.",
+            "status": "In Development"
+          },
+          "tropicalNursery": {
+            "name": "Tropical Plant Nursery",
+            "description": "A warm, humid environment for growing tropical plants and exotic species.",
+            "status": "Planned"
+          }
+        }
+      },
+      "fungi": {
+        "title": "Fungi & Mushrooms",
+        "description": "The fascinating process of growing mushrooms and fungi. From oyster mushrooms to medicinal species.",
+        "details": ["Oyster Mushrooms", "Shiitake", "Medicinal Species", "Mycelium", "Substrate"],
+        "subProjects": {
+          "oysterFarm": {
+            "name": "Oyster Mushroom Farm",
+            "description": "A setup for growing fresh oyster mushrooms on coffee grounds and wood substrate.",
+            "status": "Experimental"
+          },
+          "medicinalFungi": {
+            "name": "Medicinal Fungi",
+            "description": "Research into growing medicinal mushrooms like Lion's Mane and Reishi.",
+            "status": "Research"
+          }
+        }
+      },
+      "vegetableGarden": {
+        "title": "Vegetable Garden",
+        "description": "Outdoor cultivation of vegetables, herbs and fruit. From seed to harvest, the complete process of natural growing.",
+        "details": ["Vegetables", "Herbs", "Fruit", "Compost", "Organic Growing"],
+        "subProjects": {
+          "seasonalVegetables": {
+            "name": "Seasonal Vegetables",
+            "description": "A varied vegetable garden with seasonal vegetables and herbs.",
+            "status": "Active"
+          },
+          "compostSystem": {
+            "name": "Compost System",
+            "description": "An efficient composting system for recycling organic waste.",
+            "status": "In Use"
+          }
+        }
+      },
+      "automation": {
+        "title": "Growing Automation",
+        "description": "Technological solutions for automating growing processes. From sensors to automated irrigation.",
+        "details": ["IoT Sensors", "Automatic Irrigation", "Climate Control", "Data Logging", "Remote Monitoring"],
+        "subProjects": {
+          "smartIrrigation": {
+            "name": "Smart Irrigation System",
+            "description": "An automated irrigation system with humidity sensors and timers.",
+            "status": "In Development"
+          },
+          "climateMonitoring": {
+            "name": "Climate Monitoring",
+            "description": "A system for monitoring temperature, humidity and light in growing spaces.",
+            "status": "Prototype"
+          }
+        }
+      },
+      "monitoring": {
+        "title": "Monitoring & Data",
+        "description": "Collecting and analyzing data on growing conditions to optimize cultivation.",
+        "details": ["Data Logging", "Growth Analysis", "Optimization", "Trends", "Predictions"],
+        "subProjects": {
+          "growthDashboard": {
+            "name": "Growth Data Dashboard",
+            "description": "A dashboard for visualizing growing data and growth trends.",
+            "status": "Concept"
+          },
+          "predictiveAnalytics": {
+            "name": "Predictive Analytics",
+            "description": "Machine learning models for predicting growth and harvest times.",
+            "status": "Research"
+          }
+        }
+      }
+    },
+    "status": {
+      "active": "Active",
+      "inDevelopment": "In Development",
+      "planned": "Planned",
+      "experimental": "Experimental",
+      "research": "Research",
+      "growing": "Growing",
+      "inUse": "In Use",
+      "prototype": "Prototype",
+      "concept": "Concept"
+    },
+    "photoPlaceholder": "Project photos for",
+    "activeProjects": "Active Projects:",
+    "startDate": "Start:",
+    "technology": {
+      "title": "Technology & Innovation",
+      "sensors": {
+        "title": "Sensors",
+        "description": "Temperature, humidity and light monitoring"
+      },
+      "irrigation": {
+        "title": "Irrigation",
+        "description": "Automated water and nutrient systems"
+      },
+      "ledLighting": {
+        "title": "LED Lighting",
+        "description": "Energy-efficient grow lights and spectrums"
+      },
+      "automation": {
+        "title": "Automation",
+        "description": "Smart home integration and remote control"
+      }
+    },
+    "philosophyCards": {
+      "nature": {
+        "title": "Nature & Sustainability",
+        "description": "Growing your own food and plants contributes to a more sustainable lifestyle and environmental awareness."
+      },
+      "science": {
+        "title": "Science & Technology",
+        "description": "Combining traditional growing methods with modern technology for optimal results."
+      },
+      "mindfulness": {
+        "title": "Mindfulness & Patience",
+        "description": "Caring for plants teaches patience, attention and appreciating slow, natural processes."
+      }
     }
   },
   "cooking": {
@@ -177,7 +429,810 @@
     "philosophy": {
       "title": "My Cooking Philosophy",
       "description": "Cooking is a creative outlet for me and a way to experiment with flavors, textures and techniques. I believe in using fresh, seasonal ingredients and respecting traditional preparation methods, while also leaving room for innovation and experiment."
+    },
+    "categories": {
+      "healthy": {
+        "title": "Healthy Recipes",
+        "description": "Nutritious and healthy meals that are both delicious and nutritious. Focus on fresh ingredients and balanced nutrition.",
+        "details": ["Salads", "Smoothies", "Healthy Bowls", "Vegetarian", "Superfoods"],
+        "recipes": {
+          "quinoaBowl": {
+            "name": "Quinoa Power Bowl",
+            "description": "A nutritious bowl with quinoa, avocado, green vegetables and tahini dressing.",
+            "difficulty": "Easy",
+            "time": "20 min"
+          },
+          "smoothieBowl": {
+            "name": "Green Smoothie Bowl",
+            "description": "An energetic smoothie bowl with spinach, banana, mango and granola topping.",
+            "difficulty": "Easy",
+            "time": "10 min"
+          }
+        }
+      },
+      "experimental": {
+        "title": "Experimental Dishes",
+        "description": "Creative and experimental recipes where I try new flavors and techniques. From fusion cuisine to molecular gastronomy.",
+        "details": ["Fusion Cuisine", "Molecular Gastronomy", "New Techniques", "Creative Combinations", "Innovation"],
+        "recipes": {
+          "misoCaramel": {
+            "name": "Miso Caramel Dessert",
+            "description": "A unique combination of umami and sweetness with miso, caramel and vanilla.",
+            "difficulty": "Advanced",
+            "time": "45 min"
+          },
+          "sousVide": {
+            "name": "Sous Vide Eggs",
+            "description": "Perfect eggs cooked at low temperature for a unique texture.",
+            "difficulty": "Medium",
+            "time": "60 min"
+          }
+        }
+      },
+      "traditional": {
+        "title": "Traditional Recipes",
+        "description": "Classic dishes from different cultures, with respect for traditional preparation methods and authentic flavors.",
+        "details": ["Italian", "Asian", "Mediterranean", "Traditional", "Authentic"],
+        "recipes": {
+          "pasta": {
+            "name": "Homemade Pasta",
+            "description": "Fresh pasta made from scratch with a classic tomato sauce and basil.",
+            "difficulty": "Medium",
+            "time": "90 min"
+          },
+          "ramen": {
+            "name": "Ramen Tonkotsu",
+            "description": "A rich, creamy ramen with 12-hour cooked pork broth and perfect noodles.",
+            "difficulty": "Advanced",
+            "time": "720 min"
+          }
+        }
+      },
+      "vegetarian": {
+        "title": "Vegetarian & Vegan",
+        "description": "Plant-based recipes that prove vegetarian and vegan food doesn't have to be boring. Full of flavor and creativity.",
+        "details": ["Vegan", "Vegetarian", "Plant-based", "Sustainable", "Ethical"],
+        "recipes": {
+          "jackfruit": {
+            "name": "Jackfruit Pulled \"Pork\"",
+            "description": "Vegan pulled pork made from jackfruit with BBQ sauce and coleslaw.",
+            "difficulty": "Medium",
+            "time": "30 min"
+          },
+          "cashewCheese": {
+            "name": "Cashew Cheese Platter",
+            "description": "An assortment of homemade vegan cheeses based on cashews.",
+            "difficulty": "Advanced",
+            "time": "120 min"
+          }
+        }
+      },
+      "special": {
+        "title": "Special Occasions",
+        "description": "Festive and special dishes for special moments. From birthdays to holidays - every moment deserves something special.",
+        "details": ["Holidays", "Birthdays", "Romantic", "Festive", "Special"],
+        "recipes": {
+          "lavaCake": {
+            "name": "Chocolate Lava Cake",
+            "description": "A decadent chocolate lava cake with vanilla ice cream and berry coulis.",
+            "difficulty": "Medium",
+            "time": "25 min"
+          },
+          "wellington": {
+            "name": "Beef Wellington",
+            "description": "A classic Beef Wellington with mushroom duxelles and puff pastry.",
+            "difficulty": "Advanced",
+            "time": "180 min"
+          }
+        }
+      },
+      "quick": {
+        "title": "Quick Meals",
+        "description": "Delicious and nutritious meals ready in 30 minutes or less. Perfect for busy days without compromising on flavor.",
+        "details": ["30 min or less", "Simple", "Quick", "Practical", "Weeknight"],
+        "recipes": {
+          "onePot": {
+            "name": "One-Pot Pasta",
+            "description": "A complete pasta meal cooked in one pan with tomatoes, spinach and cheese.",
+            "difficulty": "Easy",
+            "time": "20 min"
+          },
+          "stirFry": {
+            "name": "Stir-fry Express",
+            "description": "A quick wok with seasonal vegetables, tofu and an umami-rich sauce.",
+            "difficulty": "Easy",
+            "time": "15 min"
+          }
+        }
+      }
+    },
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "advanced": "Advanced"
+    },
+    "photoPlaceholder": "Dish photos for",
+    "featuredRecipes": "Featured Recipes:",
+    "techniques": {
+      "title": "Cooking Techniques & Skills",
+      "grilling": {
+        "title": "Grilling & Roasting",
+        "description": "Perfect searing and caramelization techniques"
+      },
+      "knifeSkills": {
+        "title": "Knife Skills",
+        "description": "Precision cutting techniques and safe knife use"
+      },
+      "fermentation": {
+        "title": "Fermentation",
+        "description": "Traditional fermentation and pickling techniques"
+      },
+      "molecular": {
+        "title": "Molecular Gastronomy",
+        "description": "Experimental techniques and textures"
+      }
+    },
+    "philosophyCards": {
+      "fresh": {
+        "title": "Fresh Ingredients",
+        "description": "Using the best, fresh ingredients is the foundation of every good meal."
+      },
+      "creativity": {
+        "title": "Creativity & Experiment",
+        "description": "Cooking is an art form where there is room for creativity and trying new combinations."
+      },
+      "love": {
+        "title": "Love & Passion",
+        "description": "Every meal is prepared with love and attention to detail - you can taste it in every bite."
+      }
     }
+  },
+  "mindComputer": {
+    "title": "Mind as Computer",
+    "subtitle": "Explore all components of your mind-computer with detailed comparisons and scientific references. Use the controls to navigate through the different parts.",
+    "interactiveDiagram": "Interactive Mind-Computer Diagram",
+    "diagramDescription": "Hover over the components to see their connections and details. Each part has its own role in the larger system.",
+    "dataFlow": "Data Flow",
+    "activeComponent": "Active Component",
+    "connectionPoints": "Connection Points",
+    "mindFunctions": "Mind Functions",
+    "computerEquivalent": "Computer Equivalent",
+    "researchReferences": "Research & References",
+    "note": "Note: These are modern interpretations, not what the philosophers themselves said.",
+    "tip": "Tip: These comparisons help make abstract mental processes concrete and understandable.",
+    "preliminarySchema": "Preliminary Complete Schema",
+    "preliminaryDescription": "This is the preliminary complete overview of how the human mind works as a computer. The detailed explanation and further development of each component will be added in the future. For now, this schema provides a visual overview of all components and their interconnections.",
+    "philosophersResearchers": "Philosophers & Researchers",
+    "philosophersDescription": "Discover how great thinkers throughout history have shaped our understanding of consciousness and the mind. Each has unique insights that help us understand how the mind works.",
+    "researchAreas": "Research Areas & Topics",
+    "researchDescription": "Explore different aspects of consciousness, technology and their interconnections. Each topic has its own detailed page with interactive content.",
+    "readMore": "Read More",
+    "explore": "Explore",
+    "components": {
+      "cpu": {
+        "title": "CPU (Meditation & Focus)",
+        "description": "The central processing unit of your mind that processes and controls thoughts.",
+        "details": [
+          "Executive control and decision making",
+          "Attention and focus management",
+          "Steering thought patterns",
+          "Emotional regulation"
+        ],
+        "computerEquivalent": [
+          "Multi-core processor",
+          "Task scheduler and priority management",
+          "Cache and instruction pipeline",
+          "Thermal management and throttling"
+        ],
+        "research": "Based on modern neuroscience and cognitive psychology. Meditation literally trains the prefrontal cortex, similar to CPU training."
+      },
+      "ram": {
+        "title": "RAM & Cache (Short-term Memory)",
+        "description": "Working memory for active thoughts and quick access to recent information.",
+        "details": [
+          "Active thoughts and memories",
+          "Short-term associations",
+          "Workspace for problems",
+          "Context and focus retention"
+        ],
+        "computerEquivalent": [
+          "Random Access Memory (RAM)",
+          "L1, L2, L3 cache levels",
+          "Memory bandwidth and latency",
+          "Virtual memory and paging"
+        ],
+        "research": "Based on working memory theories by Baddeley and Cowan. Similar to computer RAM that is constantly updated."
+      },
+      "gpu": {
+        "title": "GPU (Imagination & Creativity)",
+        "description": "Graphics processing for creative output, dream images and visual hallucinations.",
+        "details": [
+          "Visual imagination and dreams",
+          "Creative patterns and associations",
+          "Emotional images and symbols",
+          "Spatial processing and navigation"
+        ],
+        "computerEquivalent": [
+          "Graphics Processing Unit (GPU)",
+          "Parallel processing of images",
+          "Texture mapping and rendering",
+          "CUDA cores and shader units"
+        ],
+        "research": "Based on visual cortex research and creativity studies. The right hemisphere is specialized in visual processing, just like a GPU."
+      },
+      "database": {
+        "title": "Database (Subconscious)",
+        "description": "Long-term storage of memories, experiences, traumas and automatic patterns.",
+        "details": [
+          "Long-term memories and traumas",
+          "Automatic habits and scripts",
+          "Archetypes and collective patterns",
+          "Hidden connections and associations"
+        ],
+        "computerEquivalent": [
+          "Hard disk drive (HDD) and SSD",
+          "Database indexing and queries",
+          "File system and data structures",
+          "Backup and recovery systems"
+        ],
+        "research": "Based on Jung's collective unconscious and modern memory theories. The subconscious works like a huge database with complex indexing."
+      },
+      "network": {
+        "title": "Network & Firewall (Ego & Filters)",
+        "description": "Connections with others, collective consciousness and ego filters that determine what comes in.",
+        "details": [
+          "Social connections and empathy",
+          "Collective consciousness and culture",
+          "Ego and personal filters",
+          "Boundaries and protection"
+        ],
+        "computerEquivalent": [
+          "Network interface and protocols",
+          "Firewall and security rules",
+          "VPN and encrypted connections",
+          "Bandwidth and connection pooling"
+        ],
+        "research": "Based on social psychology and network theories. Humans are social beings who constantly exchange information, just like computers in a network."
+      },
+      "io": {
+        "title": "I/O System (Senses & Behavior)",
+        "description": "Input/output of information via senses and expression of thoughts and emotions.",
+        "details": [
+          "Sensory perception (input)",
+          "Speech and body language (output)",
+          "Emotional expression",
+          "Motor control and action"
+        ],
+        "computerEquivalent": [
+          "Input/Output controllers",
+          "USB and peripheral devices",
+          "Audio/video interfaces",
+          "Device drivers and protocols"
+        ],
+        "research": "Based on sensory processing and motor control theories. Senses are literally input devices, just like a keyboard or microphone."
+      }
+    },
+    "philosophers": {
+      "carlJung": {
+        "title": "Analytical Psychology",
+        "description": "Founder of analytical psychology, known for his work on archetypes, the collective unconscious and personality types."
+      },
+      "williamJames": {
+        "title": "Pragmatic Philosophy",
+        "description": "American philosopher and psychologist who did groundbreaking work in the field of consciousness, religion and pragmatism."
+      },
+      "sigmundFreud": {
+        "title": "Psychoanalysis",
+        "description": "Austrian neurologist and founder of psychoanalysis, known for his theories about the unconscious and dream interpretation."
+      },
+      "alanTuring": {
+        "title": "Computer Science & AI",
+        "description": "British mathematician and computer scientist who laid the foundation for modern computers and artificial intelligence."
+      },
+      "itzhakBentov": {
+        "title": "Consciousness & Reality",
+        "description": "Israeli inventor and consciousness researcher who did groundbreaking work in the field of consciousness and reality creation."
+      }
+    },
+    "topics": {
+      "substances": {
+        "name": "Substances & Consciousness",
+        "description": "Research into how different substances affect consciousness and broaden the bandwidth of perception."
+      },
+      "meditation": {
+        "name": "Meditation & CPU Training",
+        "description": "Techniques and methods to train mental processes and strengthen executive control."
+      },
+      "consciousnessExpansion": {
+        "name": "Consciousness Expansion",
+        "description": "Methods and techniques to expand consciousness and discover new perspectives."
+      },
+      "aiConsciousness": {
+        "name": "AI & Consciousness",
+        "description": "The relationship between artificial intelligence and human consciousness, and what this teaches us about ourselves."
+      },
+      "neuralNetworks": {
+        "name": "Neural Networks",
+        "description": "How the brain functions as a complex network and what this means for consciousness and learning."
+      },
+      "quantum": {
+        "name": "Quantum Consciousness",
+        "description": "Exploration of the boundary between consciousness and quantum physics, and how they influence each other."
+      }
+    }
+  },
+  "substances": {
+    "title": "Substances & Consciousness",
+    "subtitle": "Explore how different substances and techniques affect your mind-computer. From natural methods to experimental approaches - all aimed at optimizing your consciousness.",
+    "backToMindComputer": "Back to Mind as Computer",
+    "mainTitle": "How Substances Affect Your Computer Architecture",
+    "mainDescription": "Each substance or technique has a unique effect on different components of your mind-computer. Understand the mechanisms and risks before experimenting.",
+    "effectOnMind": "Effect on Mind-Computer",
+    "computerEquivalent": "Computer Equivalent",
+    "benefits": "Benefits",
+    "risks": "Risks",
+    "research": "Research",
+    "status": "Status:",
+    "cta": "Interested in discussing consciousness expansion or collaborating on research into the effects of different substances?",
+    "ctaButton": "Let's Discuss",
+    "substances": {
+      "cannabis": {
+        "name": "Cannabis",
+        "category": "Natural",
+        "effect": "Broadens bandwidth, increases creativity and associative thinking",
+        "computerEquivalent": "Bandwidth booster (increases data throughput)",
+        "benefits": ["Increased creativity", "Better associations", "Relaxation", "New perspectives"],
+        "risks": ["CPU lag with excessive use", "Memory problems", "Addiction"],
+        "research": "Research shows increased connectivity between brain regions",
+        "status": "Legal in many countries"
+      },
+      "psychedelics": {
+        "name": "Psychedelics",
+        "category": "Experimental",
+        "effect": "Opens direct access to subconscious and breaks down firewalls",
+        "computerEquivalent": "Root access to system (administrator rights)",
+        "benefits": ["Deep insights", "Trauma healing", "Spiritual experiences", "Creativity boost"],
+        "risks": ["Psychosis risk", "Bad trips", "Long-term effects", "Illegal"],
+        "research": "Psychedelic therapy shows promising results",
+        "status": "Research in development"
+      },
+      "meditation": {
+        "name": "Meditation",
+        "category": "Natural",
+        "effect": "Trains CPU efficiency and increases focus and control",
+        "computerEquivalent": "CPU optimization (better performance)",
+        "benefits": ["Increased focus", "Better emotion control", "Stress reduction", "Long-term improvements"],
+        "risks": ["No known risks", "Time investment required"],
+        "research": "Neuroplasticity changes demonstrated in studies",
+        "status": "Scientifically supported"
+      }
+    },
+    "statusLabels": {
+      "scientificallySupported": "Scientifically supported",
+      "legalInManyCountries": "Legal in many countries",
+      "researchInDevelopment": "Research in development"
+    }
+  },
+  "carlJung": {
+    "title": "Carl Gustav Jung",
+    "subtitle": "The Swiss psychiatrist who laid the foundations for our understanding of the subconscious, archetypes and the structure of the human psyche",
+    "backToMindComputer": "Back to Mind as Computer",
+    "personalInfo": "Personal Information & History",
+    "born": "Born:",
+    "died": "Died:",
+    "nationality": "Nationality:",
+    "occupation": "Occupation:",
+    "mainEducation": "Main Education:",
+    "coreTheories": "Core Theories & Concepts",
+    "coreTheoriesSubtitle": "Jung's revolutionary insights that changed psychology forever",
+    "collectiveUnconscious": {
+      "title": "Collective Unconscious",
+      "description": "Jung proposed that in addition to the personal unconscious, there exists a collective unconscious shared by all humans. This contains archetypes - universal patterns and images passed down through evolution.",
+      "computerEquivalent": "Computer Equivalent: Shared database of universal patterns (like a library of standard templates)."
+    },
+    "archetypes": {
+      "title": "Archetypes",
+      "description": "Universal symbols and patterns that occur in all cultures and times. Examples: the Hero, the Shadow, the Anima/Animus, the Wise Old Man/Woman.",
+      "computerEquivalent": "Computer Equivalent: Pre-installed software modules (standard functions that all systems share)."
+    },
+    "individuation": {
+      "title": "Individuation",
+      "description": "The process of self-realization where a person develops their full potential through integration of conscious and unconscious elements. The goal is an integrated, authentic personality.",
+      "computerEquivalent": "Computer Equivalent: System optimization (improving your own programs)."
+    },
+    "activeImagination": {
+      "title": "Active Imagination",
+      "description": "A technique where you consciously interact with your subconscious through visualization and dream-like images. This helps integrate unconscious content and resolve inner conflicts.",
+      "computerEquivalent": "Computer Equivalent: Debug interface (direct access to system processes)."
+    },
+    "historicalContext": {
+      "title": "Historical Context & Influence",
+      "timePeriod": "Time Period & Influence",
+      "timePeriodText1": "Jung lived during a period of enormous change in psychology and science. His work emerged from Freud's psychoanalysis but developed into a much broader, spiritual approach to the human psyche.",
+      "timePeriodText2": "His influence extends far beyond psychology - to literature, art, religion, and even modern technology and AI development.",
+      "mainBooks": "Main Books:",
+      "modernInfluence": "Modern Influence:",
+      "books": [
+        "\"Psychological Types\" (1921)",
+        "\"Archetypes and the Collective Unconscious\" (1934)",
+        "\"Memories, Dreams, Reflections\" (1961)",
+        "\"Man and his Symbols\" (1964)"
+      ],
+      "influences": [
+        "Myers-Briggs Type Indicator (MBTI)",
+        "Modern dream analysis",
+        "Archetypal marketing",
+        "AI and consciousness research"
+      ]
+    },
+    "computerScience": {
+      "title": "Jung's Work & Modern Computer Science",
+      "hierarchicalStructure": {
+        "title": "Hierarchical Structure",
+        "description": "Jung's model of consciousness, personal unconscious and collective unconscious shows a hierarchical organization. This inspires modern computer scientists to design layered systems with different levels of access."
+      },
+      "universalPatterns": {
+        "title": "Universal Patterns",
+        "description": "Jung's archetypes are universal patterns shared by all humans. This concept inspires the idea of shared software libraries and templates that different systems can use."
+      },
+      "modernInterpretation": {
+        "title": "What Jung REALLY Said vs. Modern Interpretations",
+        "description": "Jung NEVER spoke about computers - he died in 1961. His work is about consciousness, archetypes and personal growth. Modern computer scientists use his insights about hierarchical structures and universal patterns to design better systems. This is a modern interpretation, not Jung's own work."
+      }
+    },
+    "cta": "Interested in discussing Jung's theories or how they can be applied in modern technology and consciousness research?",
+    "ctaButton": "Let's Discuss"
+  },
+  "williamJames": {
+    "title": "William James",
+    "subtitle": "The American philosopher and psychologist who laid the foundations for pragmatic philosophy and our understanding of consciousness as a continuous stream of experiences",
+    "backToMindComputer": "Back to Mind as Computer",
+    "personalInfo": "Personal Information & History",
+    "born": "Born:",
+    "died": "Died:",
+    "nationality": "Nationality:",
+    "occupation": "Occupation:",
+    "mainEducation": "Main Education:",
+    "coreTheories": "Core Theories & Concepts",
+    "coreTheoriesSubtitle": "James's revolutionary insights that shaped modern psychology and philosophy",
+    "cta": "Interested in discussing James's theories or how they can be applied in modern technology and consciousness research?",
+    "ctaButton": "Let's Discuss"
+  },
+  "sigmundFreud": {
+    "title": "Sigmund Freud",
+    "subtitle": "The Austrian neurologist and founder of psychoanalysis, who laid the foundations for our understanding of the unconscious and the structure of the human psyche",
+    "backToMindComputer": "Back to Mind as Computer",
+    "personalInfo": "Personal Information & History",
+    "born": "Born:",
+    "died": "Died:",
+    "nationality": "Nationality:",
+    "occupation": "Occupation:",
+    "mainEducation": "Main Education:",
+    "coreTheories": "Core Theories & Concepts",
+    "coreTheoriesSubtitle": "Freud's revolutionary insights that changed psychology forever",
+    "cta": "Interested in discussing Freud's theories or how they can be applied in modern technology and consciousness research?",
+    "ctaButton": "Let's Discuss"
+  },
+  "alanTuring": {
+    "title": "Alan Turing",
+    "subtitle": "The British mathematician, logician and computer scientist who laid the foundations for modern computer science and artificial intelligence",
+    "backToMindComputer": "Back to Mind as Computer",
+    "personalInfo": "Personal Information & History",
+    "born": "Born:",
+    "died": "Died:",
+    "nationality": "Nationality:",
+    "occupation": "Occupation:",
+    "mainEducation": "Main Education:",
+    "coreTheories": "Core Theories & Concepts",
+    "coreTheoriesSubtitle": "Turing's revolutionary insights that shaped modern computing and AI",
+    "cta": "Interested in discussing Turing's theories or how they can be applied in modern technology and consciousness research?",
+    "ctaButton": "Let's Discuss"
+  },
+  "itzhakBentov": {
+    "title": "Itzhak Bentov",
+    "subtitle": "The Israeli inventor and consciousness researcher who developed revolutionary theories about holographic reality and the subconscious as creator of material reality",
+    "backToMindComputer": "Back to Mind as Computer",
+    "personalInfo": "Personal Information & History",
+    "born": "Born:",
+    "died": "Died:",
+    "nationality": "Nationality:",
+    "occupation": "Occupation:",
+    "mainEducation": "Main Education:",
+    "coreTheories": "Core Theories & Concepts",
+    "coreTheoriesSubtitle": "Bentov's revolutionary insights that bridge science and consciousness",
+    "cta": "Interested in discussing Bentov's theories or how they can be applied in modern technology and consciousness research?",
+    "ctaButton": "Let's Discuss"
+  },
+  "music": {
+    "title": "🎵 Music & Live Coding",
+    "subtitle": "Explore the world of music production, live coding and algorithmic composition. From traditional instruments to cutting-edge algorave technology.",
+    "backToHome": "Back to Home",
+    "liveCodingPanel": "Algorave Live Coding Panel",
+    "bpm": "BPM:",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit Fullscreen",
+    "exit": "Exit",
+    "beatGrid": "Beat Grid:",
+    "soundWaves": "Sound Waves:",
+    "patternBlocks": "Pattern Blocks:",
+    "soundDesignTips": "🎛️ Sound Design Tips",
+    "frequency": "Frequency:",
+    "duration": "Duration:",
+    "waveforms": "Waveforms:",
+    "shortcuts": "Shortcuts:",
+    "playPattern": "Play Pattern",
+    "stop": "Stop",
+    "loopOn": "Loop On",
+    "loopOff": "Loop Off",
+    "execute": "Execute",
+    "waiting": "Waiting...",
+    "reset": "Reset",
+    "output": "Output:",
+    "musicSkills": "🎼 Musical Skills",
+    "skillsSubtitle": "From traditional instruments to modern production software - discover the different aspects of music creation.",
+    "dawSoftware": {
+      "title": "DAW Software",
+      "description": "Professional music production with FL Studio, Ableton Live and other digital audio workstations.",
+      "items": [
+        "FL Studio - Beat making & arrangement",
+        "Ableton Live - Live performance & looping",
+        "Logic Pro - Professional recording"
+      ]
+    },
+    "analogHardware": {
+      "title": "Analog & Hardware",
+      "description": "Warm analog sounds and hands-on hardware synthesizers for authentic music production.",
+      "items": [
+        "Analog synthesizers & modules",
+        "Hardware drum machines",
+        "Vintage effect processors"
+      ]
+    },
+    "acousticLive": {
+      "title": "Acoustic & Live",
+      "description": "Traditional instruments and live jamming for organic music creation and performance.",
+      "items": [
+        "Guitar & bass playing",
+        "Live jamming & improvisation",
+        "Acoustic percussion"
+      ]
+    },
+    "vocalsSoundDesign": {
+      "title": "Vocals & Sound Design",
+      "description": "Vocal techniques and creative sound design for unique musical textures.",
+      "items": [
+        "Vocal recording & processing",
+        "Sound design & synthesis",
+        "Creative audio manipulation"
+      ]
+    },
+    "liveCodingAlgorave": {
+      "title": "Live Coding & Algorave",
+      "description": "Algorithmic music creation and live coding for experimental electronic music.",
+      "items": [
+        "Algorithmic composition",
+        "Live coding performance",
+        "Generative music systems"
+      ]
+    },
+    "theoryProduction": {
+      "title": "Theory & Production",
+      "description": "Music theory, arrangement and professional production techniques.",
+      "items": [
+        "Music theory & composition",
+        "Arrangement & orchestration",
+        "Mixing & mastering"
+      ]
+    },
+    "codeComments": {
+      "header": "Algorave Live Coding",
+      "makeBeats": "Make your own beats and loops!",
+      "usePattern": "Use 1 for a hit, 0 for silence",
+      "soundDesign": "Sound Design Parameters",
+      "patterns": "Patterns",
+      "clickExecute": "Click on \"Execute\" to play your own patterns!",
+      "useShortcuts": "Use Ctrl+S to save, Ctrl+Enter to execute"
+    },
+    "outputMessages": {
+      "ready": "Ready to create music...",
+      "playing": "Playing pattern...",
+      "finished": "Pattern finished! Try editing the code above.",
+      "stopped": "Playback stopped.",
+      "reset": "Code reset! Ready to create new music...",
+      "parsing": "Parsing code...",
+      "waitingLoop": "Waiting for current loop to finish...",
+      "parsed": "Code parsed successfully! Playing custom patterns...",
+      "error": "Error: Could not parse patterns. Check your syntax.",
+      "errorParsing": "Error parsing code:",
+      "playingCustom": "Playing custom patterns...",
+      "newCode": "New code executed at next loop iteration!",
+      "customFinished": "Custom pattern finished! Try editing the code above.",
+      "loopDisabled": "Loop disabled",
+      "loopEnabled": "Loop enabled - pattern will repeat continuously",
+      "exitedFullscreen": "Exited fullscreen mode",
+      "enteredFullscreen": "Entered fullscreen mode",
+      "bpmChanged": "BPM changed to",
+      "bpmSet": "BPM set to",
+      "codeExecutedCtrlS": "Code executed via Ctrl+S shortcut!",
+      "codeExecutedCtrlEnter": "Code executed via Ctrl+Enter shortcut!",
+      "pleaseWait": "Please wait for current loop to finish...",
+      "pendingCode": "Pending code will execute at next loop iteration..."
+    }
+  },
+  "sports": {
+    "title": "Sports & Adventure",
+    "subtitle": "From slacklining in the park to snowboarding in the mountains - sports and adventure are an essential part of my life. These activities help me find balance between body and mind.",
+    "whySports": "Why Sports & Adventure?",
+    "whyDescription": "Sports and adventure are more than just physical activities. They teach me about perseverance, problem-solving, and finding balance. Each sport has its own challenges and lessons that I can apply in my work and daily life.",
+    "balanceFocus": {
+      "title": "Balance & Focus",
+      "description": "Slacklining and bouldering require full focus and balance - skills that are essential in all aspects of life."
+    },
+    "perseverance": {
+      "title": "Perseverance",
+      "description": "Every sport has its challenges. Overcoming them builds character and teaches me not to give up."
+    },
+    "natureAdventure": {
+      "title": "Nature & Adventure",
+      "description": "The connection with nature and the feeling of freedom give me energy and inspiration for creativity."
+    },
+    "explore": "Explore",
+    "photoSpace": "Photo space for",
+    "sports": {
+      "slacklining": {
+        "title": "Slacklining",
+        "description": "Balancing on a tight line between two points. A sport that combines balance, focus and mental peace.",
+        "details": ["Balance training", "Mental focus", "Core strength", "Meditation in motion"],
+        "photoPlaceholder": "📸 Slackline photo"
+      },
+      "dailyTraining": {
+        "title": "Daily Training",
+        "description": "Consistent training for general fitness and strength. From cardio to strength training.",
+        "details": ["Cardio", "Strength training", "Flexibility", "Consistency"],
+        "photoPlaceholder": "📸 Training photo"
+      },
+      "dapoFlowStar": {
+        "title": "Dapo Flow Star",
+        "description": "A unique movement art that combines fluid movements with acrobatic elements. A mix of dance, martial arts and flow.",
+        "details": ["Flow movement", "Acrobatics", "Martial arts", "Creative expression"],
+        "photoPlaceholder": "📸 Dapo Flow Star photo"
+      },
+      "dancing": {
+        "title": "Dancing",
+        "description": "Expressive dance forms that combine rhythm, emotion and movement. From freestyle to choreography.",
+        "details": ["Freestyle", "Choreography", "Rhythm", "Emotional expression"],
+        "photoPlaceholder": "📸 Dancing photo"
+      },
+      "bouldering": {
+        "title": "Bouldering",
+        "description": "Climbing without rope at low heights. A puzzle of movement and strength.",
+        "details": ["Problem solving", "Upper body strength", "Mental strategy", "Social sport"],
+        "photoPlaceholder": "📸 Bouldering photo"
+      },
+      "snowboarding": {
+        "title": "Snowboarding",
+        "description": "Gliding over snow on a board. Freedom and adrenaline in the mountains.",
+        "details": ["Mountain freedom", "Balance", "Speed control", "Winter adventure"],
+        "photoPlaceholder": "📸 Snowboard photo"
+      },
+      "surfing": {
+        "title": "Surfing",
+        "description": "Riding waves in the ocean. A new challenge I'm going to discover soon.",
+        "details": ["Ocean connection", "Wave reading", "Balance", "Coming soon"],
+        "photoPlaceholder": "📸 Surfing photo (coming soon)"
+      }
+    }
+  },
+  "gardenDesign": {
+    "newDesign": "New Design",
+    "save": "Save",
+    "load": "Load",
+    "errorLoading": "Error loading file. Please check if it's a valid JSON file.",
+    "objects": "objects",
+    "object": "object",
+    "tool": "Tool:",
+    "tools": {
+      "select": "Select",
+      "rectangle": "Rectangle",
+      "circle": "Circle",
+      "line": "Line",
+      "polygon": "Polygon",
+      "freehand": "Freehand"
+    }
+  },
+  "investing": {
+    "title": "💰 Investing & Inflation Tracking",
+    "subtitle": "Track how inflation affects your money and compare how different investments perform relative to inflation. Real-time statistics and historical data.",
+    "categories": {
+      "techStocks": "Tech Stocks",
+      "realEstate": "Real Estate",
+      "bonds": "Bonds",
+      "cryptocurrency": "Cryptocurrency"
+    },
+    "errorMessages": {
+      "apiKeyNotConfigured": "Alpha Vantage API Key not configured",
+      "addApiKey": "Add",
+      "toEnvFile": "to your .env file to use real-time data.",
+      "important": "Important:",
+      "restartServer": "Restart your development server after adding the API key!",
+      "getApiKey": "Get a free API key here",
+      "usingMockData": "Using mock data",
+      "cannotFetchData": "Could not fetch real-time data. Showing sample data.",
+      "checkConsole": "Check the browser console (F12) for more details about the error.",
+      "fetchingData": "Fetching real-time data from Alpha Vantage...",
+      "mayTakeTime": "This may take a while due to rate limiting (5 calls/minute)",
+      "checkConsoleDetails": "Check the browser console for details",
+      "errorFetching": "Error fetching data",
+      "openConsole": "Open the browser console (F12) for more details",
+      "cannotFetchGold": "Could not fetch gold price",
+      "cannotFetchRealTime": "Could not fetch real-time data. Use mock data."
+    }
+  },
+  "moltbook": {
+    "backToInterests": "Back to Interests",
+    "title": "Moltbook Agent",
+    "subtitle": "Ask questions and answer posts from other agents",
+    "apiKeyConfiguration": "API Key Configuration",
+    "enterApiKey": "Enter your Moltbook API key to get started. You can find this in your credentials file.",
+    "save": "Save",
+    "saving": "Saving...",
+    "newName": "New name",
+    "cancel": "Cancel",
+    "nameUpdated": "Name successfully changed to",
+    "errorUpdatingName": "Error updating name",
+    "changeNameOnWebsite": "You can change the name via the Moltbook website:",
+    "createPost": "Create Post",
+    "titleLabel": "Title",
+    "content": "Content",
+    "submolt": "Submolt",
+    "send": "Send",
+    "posts": "Posts",
+    "all": "All",
+    "my": "My",
+    "sort": {
+      "new": "New",
+      "hot": "Hot",
+      "top": "Top"
+    },
+    "loading": "Loading...",
+    "noPosts": "No posts found",
+    "comments": "Comments",
+    "reply": "Reply",
+    "posting": "Posting...",
+    "refresh": "Refresh",
+    "autoReply": "Auto Reply",
+    "replyingTo": "Replying to comment from",
+    "askQuestion": "Ask a Question",
+    "generatePost": "Generate...",
+    "aiPost": "AI Post",
+    "allPosts": "All Posts",
+    "myPosts": "My Posts",
+    "newest": "Newest",
+    "hide": "Hide",
+    "view": "View",
+    "posting": "Posting...",
+    "loadingOwnPosts": "Loading own posts...",
+    "foundOwnPosts": "Found",
+    "ownPosts": "own posts. Checking for new comments...",
+    "checkingPost": "Checking post:",
+    "rateLimitReached": "Rate limit reached. Wait a moment...",
+    "working": "Working...",
+    "changeName": "Change Name",
+    "profile": "Profile",
+    "karma": "Karma",
+    "followers": "Followers",
+    "following": "Following",
+    "writeAnswer": "Write your answer...",
+    "postAnswer": "Post Answer",
+    "by": "By",
+    "replies": "replies"
+  },
+  "developmentNotice": {
+    "title": "🚧 Work in Progress",
+    "message": "This website is currently under active development and serves as a test environment. Some pages may not be fully functional or complete. I'm sharing my progress as I build and refine the site.",
+    "subtitle": "Test Environment & Progress Sharing",
+    "understand": "I Understand",
+    "dontShowAgain": "Don't show this again"
   }
 }
 

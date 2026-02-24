@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, TrendingUp, TrendingDown, DollarSign, BarChart3, Info, Loader2, AlertCircle, RefreshCw } from 'lucide-react';
 import { getStockQuote, getCurrencyRate, getRemainingQuota } from '../services/alphaVantageService';
 import { ALPHA_VANTAGE_CONFIG } from '../config/alphaVantage';
@@ -40,6 +41,7 @@ interface InflationData {
 }
 
 export const BeleggenPage: React.FC = () => {
+  const { t } = useTranslation();
   const [selectedPeriod, setSelectedPeriod] = useState<'1Y' | '3Y' | '5Y' | '10Y'>('5Y');
   const [selectedReturnPeriod, setSelectedReturnPeriod] = useState<'1D' | '1W' | '1M' | '3M' | '1Y' | '5Y' | '10Y' | '20Y' | '50Y'>('1D');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -157,7 +159,7 @@ export const BeleggenPage: React.FC = () => {
       change: 45.20,
       changePercent: 5.62,
       periodReturns: generateMockPeriodReturns(5.62),
-      category: 'Tech Aandelen',
+      category: t('investing.categories.techStocks'),
       description: 'Leider in AI chips en GPU technologie'
     },
     {
@@ -296,7 +298,7 @@ export const BeleggenPage: React.FC = () => {
       change: 1.20,
       changePercent: 1.27,
       periodReturns: generateMockPeriodReturns(1.27),
-      category: 'Vastgoed',
+      category: t('investing.categories.realEstate'),
       description: 'Real Estate Investment Trust'
     },
     {
@@ -307,7 +309,7 @@ export const BeleggenPage: React.FC = () => {
       change: -0.50,
       changePercent: -0.63,
       periodReturns: generateMockPeriodReturns(-0.63),
-      category: 'Obligaties',
+      category: t('investing.categories.bonds'),
       description: 'Stabiele inkomsten, lagere groei'
     },
     // Cryptocurrency
@@ -319,7 +321,7 @@ export const BeleggenPage: React.FC = () => {
       change: 1200.00,
       changePercent: 1.88,
       periodReturns: generateMockPeriodReturns(1.88),
-      category: 'Cryptocurrency',
+      category: t('investing.categories.cryptocurrency'),
       description: 'Digitale store of value (mock data - Alpha Vantage ondersteunt geen crypto)'
     }
   ];
@@ -561,7 +563,7 @@ export const BeleggenPage: React.FC = () => {
           }
         } catch (err: any) {
           console.error('Failed to fetch gold price:', err);
-          setError(err?.message || 'Kon goudprijs niet ophalen');
+          setError(err?.message || t('investing.errorMessages.cannotFetchGold'));
           const mockGold = mockInvestments.find(inv => inv.symbol === 'XAUUSD');
           if (mockGold) {
             fetchedInvestments.push(mockGold);
@@ -579,7 +581,7 @@ export const BeleggenPage: React.FC = () => {
             inflationAdjusted: btcPrice.currentPrice,
             change: btcPrice.priceChange24h,
             changePercent: btcPrice.priceChangePercent24h,
-            category: 'Cryptocurrency',
+            category: t('investing.categories.cryptocurrency'),
             description: 'Digitale store of value (real-time via CoinGecko)',
           });
           console.log('Successfully fetched Bitcoin:', btcPrice);
@@ -669,7 +671,7 @@ export const BeleggenPage: React.FC = () => {
         }
       } catch (err: any) {
         console.error('Error fetching investment data:', err);
-        setError(err?.message || 'Kon geen real-time data ophalen. Gebruik mock data.');
+        setError(err?.message || t('investing.errorMessages.cannotFetchRealTime'));
         setUseMockData(true);
         setRawInvestments(mockInvestments);
         // Calculate inflation-adjusted for mock data too
@@ -769,11 +771,10 @@ export const BeleggenPage: React.FC = () => {
             </Link>
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                💰 Beleggen & Inflatie Tracking
+                {t('investing.title')}
               </h1>
               <p className="text-lg text-white/80 max-w-3xl leading-relaxed">
-                Volg hoe inflatie je geld beïnvloedt en vergelijk hoe verschillende investeringen 
-                presteren ten opzichte van inflatie. Real-time statistieken en historische data.
+                {t('investing.subtitle')}
               </p>
             </div>
           </div>
@@ -792,11 +793,11 @@ export const BeleggenPage: React.FC = () => {
                 <div className="flex-1">
                   {!ALPHA_VANTAGE_CONFIG.API_KEY ? (
                     <div>
-                      <p className="text-yellow-300 font-semibold mb-1">Alpha Vantage API Key niet geconfigureerd</p>
+                      <p className="text-yellow-300 font-semibold mb-1">{t('investing.errorMessages.apiKeyNotConfigured')}</p>
                       <p className="text-yellow-200/80 text-sm">
-                        Voeg <code className="bg-yellow-500/20 px-1 rounded">VITE_ALPHA_VANTAGE_API_KEY</code> toe aan je <code className="bg-yellow-500/20 px-1 rounded">.env</code> bestand om real-time data te gebruiken.
+                        {t('investing.errorMessages.addApiKey')} <code className="bg-yellow-500/20 px-1 rounded">VITE_ALPHA_VANTAGE_API_KEY</code> {t('investing.errorMessages.toEnvFile')}
                         <br />
-                        <strong className="text-yellow-300">Belangrijk:</strong> Herstart je development server na het toevoegen van de API key!
+                        <strong className="text-yellow-300">{t('investing.errorMessages.important')}</strong> {t('investing.errorMessages.restartServer')}
                         <br />
                         <a 
                           href="https://www.alphavantage.co/support/#api-key" 
@@ -804,7 +805,7 @@ export const BeleggenPage: React.FC = () => {
                           rel="noopener noreferrer"
                           className="text-yellow-300 underline hover:text-yellow-200"
                         >
-                          Krijg hier een gratis API key
+                          {t('investing.errorMessages.getApiKey')}
                         </a>
                       </p>
                       <p className="text-yellow-200/60 text-xs mt-2">
@@ -813,12 +814,12 @@ export const BeleggenPage: React.FC = () => {
                     </div>
                   ) : useMockData ? (
                     <div>
-                      <p className="text-yellow-300 font-semibold mb-1">Gebruikt mock data</p>
+                      <p className="text-yellow-300 font-semibold mb-1">{t('investing.errorMessages.usingMockData')}</p>
                       <p className="text-yellow-200/80 text-sm">
-                        {error || 'Kon geen real-time data ophalen. Toont voorbeelddata.'}
+                        {error || t('investing.errorMessages.cannotFetchData')}
                       </p>
                       <p className="text-yellow-200/60 text-xs mt-2">
-                        Check de browser console (F12) voor meer details over de fout.
+                        {t('investing.errorMessages.checkConsole')}
                       </p>
                     </div>
                   ) : null}
@@ -836,11 +837,11 @@ export const BeleggenPage: React.FC = () => {
             >
               <Loader2 className="w-8 h-8 text-neon-green mx-auto mb-4 animate-spin" />
               <p className="text-white/70">
-                Real-time data ophalen van Alpha Vantage...
+                {t('investing.errorMessages.fetchingData')}
                 <br />
-                <span className="text-sm text-white/50">Dit kan even duren vanwege rate limiting (5 calls/minuut)</span>
+                <span className="text-sm text-white/50">{t('investing.errorMessages.mayTakeTime')}</span>
                 <br />
-                <span className="text-xs text-white/40 mt-2 block">Check de browser console voor details</span>
+                <span className="text-xs text-white/40 mt-2 block">{t('investing.errorMessages.checkConsoleDetails')}</span>
               </p>
             </motion.div>
           )}
@@ -855,9 +856,9 @@ export const BeleggenPage: React.FC = () => {
               <div className="flex items-start">
                 <AlertCircle className="w-5 h-5 text-red-400 mr-3 mt-0.5 flex-shrink-0" />
                 <div className="flex-1">
-                  <p className="text-red-300 font-semibold mb-1">Fout bij ophalen data</p>
+                  <p className="text-red-300 font-semibold mb-1">{t('investing.errorMessages.errorFetching')}</p>
                   <p className="text-red-200/80 text-sm">{error}</p>
-                  <p className="text-red-200/60 text-xs mt-2">Open de browser console (F12) voor meer details</p>
+                  <p className="text-red-200/60 text-xs mt-2">{t('investing.errorMessages.openConsole')}</p>
                 </div>
               </div>
             </motion.div>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Brain, BookOpen, Users, Calendar, MapPin, Award, Shield } from 'lucide-react';
 
 export const SigmundFreudPage: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen pt-20 bg-dark-secondary relative overflow-hidden">
       {/* Decoratieve achtergrond elementen */}
@@ -26,11 +28,10 @@ export const SigmundFreudPage: React.FC = () => {
             className="mb-8"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6 neon-text">
-              Sigmund Freud
+              {t('sigmundFreud.title')}
             </h1>
             <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed">
-              De Oostenrijkse neuroloog en grondlegger van de psychoanalyse, die de fundamenten legde 
-              voor ons begrip van het onderbewuste en de structuur van de menselijke psyche
+              {t('sigmundFreud.subtitle')}
             </p>
           </motion.div>
 
@@ -45,7 +46,7 @@ export const SigmundFreudPage: React.FC = () => {
               className="inline-flex items-center space-x-2 text-neon-green hover:text-neon-blue transition-colors duration-300"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span>Terug naar Mind as Computer</span>
+              <span>{t('sigmundFreud.backToMindComputer')}</span>
             </Link>
           </motion.div>
         </div>
@@ -59,41 +60,41 @@ export const SigmundFreudPage: React.FC = () => {
             className="bg-gradient-to-r from-neon-pink/20 to-neon-orange/20 rounded-2xl p-8 border border-neon-pink/30"
           >
             <h2 className="text-2xl font-bold text-white mb-6 text-center">
-              Persoonlijke Informatie & Geschiedenis
+              {t('sigmundFreud.personalInfo')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-neon-pink" />
                   <div>
-                    <h3 className="font-semibold text-white">Geboren:</h3>
+                    <h3 className="font-semibold text-white">{t('sigmundFreud.born')}</h3>
                     <p className="text-white/70">6 mei 1856, Freiberg, Moravië (nu Tsjechië)</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-neon-pink" />
                   <div>
-                    <h3 className="font-semibold text-white">Overleden:</h3>
+                    <h3 className="font-semibold text-white">{t('sigmundFreud.died')}</h3>
                     <p className="text-white/70">23 september 1939, Londen, Verenigd Koninkrijk</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-neon-pink" />
                   <div>
-                    <h3 className="font-semibold text-white">Nationaliteit:</h3>
+                    <h3 className="font-semibold text-white">{t('sigmundFreud.nationality')}</h3>
                     <p className="text-white/70">Oostenrijks (later Brits)</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Award className="w-5 h-5 text-neon-pink" />
                   <div>
-                    <h3 className="font-semibold text-white">Beroep:</h3>
+                    <h3 className="font-semibold text-white">{t('sigmundFreud.occupation')}</h3>
                     <p className="text-white/70">Neuroloog, Psychoanalyticus, Schrijver</p>
                   </div>
                 </div>
               </div>
               <div className="space-y-4">
-                <h3 className="font-semibold text-white mb-3">Belangrijkste Opleiding:</h3>
+                <h3 className="font-semibold text-white mb-3">{t('sigmundFreud.mainEducation')}</h3>
                 <ul className="space-y-2 text-white/70 text-sm">
                   <li>• Geneeskunde aan de Universiteit van Wenen</li>
                   <li>• Neurologie en fysiologie</li>
@@ -114,10 +115,10 @@ export const SigmundFreudPage: React.FC = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-6">
-              Kern Theorieën & Concepten
+              {t('sigmundFreud.coreTheories')}
             </h2>
             <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              Freud's revolutionaire inzichten over het onderbewuste, dromen en de structuur van de psyche
+              {t('sigmundFreud.coreTheoriesSubtitle')}
             </p>
           </motion.div>
 
@@ -278,8 +279,7 @@ export const SigmundFreudPage: React.FC = () => {
           className="text-center"
         >
           <p className="text-white/70 mb-6 text-lg">
-            Geïnteresseerd in het bespreken van Freud's psychoanalytische theorieën of hoe ze 
-            toegepast kunnen worden in moderne technologie en bewustzijnsonderzoek?
+            {t('sigmundFreud.cta')}
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -289,7 +289,7 @@ export const SigmundFreudPage: React.FC = () => {
               to="/#contact"
               className="inline-block bg-gradient-to-r from-neon-green to-neon-blue text-dark-bg font-bold py-3 px-8 rounded-full hover:shadow-2xl hover:shadow-neon-green/30 transition-all duration-300"
             >
-              Laten we Bespreken
+              {t('sigmundFreud.ctaButton')}
             </Link>
           </motion.div>
         </motion.div>

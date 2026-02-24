@@ -144,7 +144,26 @@
     "location": "Gent, België",
     "emailLabel": "E-mail",
     "phoneLabel": "Telefoon",
-    "socialLabel": "Sociale Media"
+    "socialLabel": "Sociale Media",
+    "available": "Beschikbaar voor nieuwe projecten",
+    "errorInvalidKey": "EmailJS configuratie fout: Ongeldige Public Key. Controleer je EmailJS credentials in het .env bestand.",
+    "errorInvalidService": "EmailJS configuratie fout: Ongeldige Service ID. Controleer je EmailJS credentials.",
+    "errorInvalidTemplate": "EmailJS configuratie fout: Ongeldige Template ID. Controleer je EmailJS credentials.",
+    "errorResendNotConfigured": "Resend API key is niet geconfigureerd. Voeg VITE_RESEND_API_KEY toe aan je .env bestand.",
+    "errorGeneric": "Bericht verzenden mislukt. Controleer je verbinding en probeer opnieuw.",
+    "sendMessage": "Stuur me een bericht",
+    "getInTouch": "Neem contact op",
+    "followMe": "Volg me",
+    "availabilityDescription": "Ik accepteer momenteel nieuwe projecten en kansen. Laten we bespreken hoe we samen kunnen werken om je ideeën tot leven te brengen!",
+    "readyToStart": "Klaar om je project te starten?",
+    "readyToStartDescription": "Of je nu een specifiek project in gedachten hebt of gewoon mogelijkheden wilt verkennen, ik ben hier om te helpen. Laten we samen iets geweldigs creëren!",
+    "startProject": "Start een Project",
+    "scheduleCall": "Plan een Gesprek",
+    "messageSentSuccess": "Bericht succesvol verzonden! Ik neem binnenkort contact met je op.",
+    "yourName": "Je naam",
+    "yourEmail": "je.email@voorbeeld.com",
+    "tellMeAboutProject": "Vertel me over je project...",
+    "sending": "Verzenden..."
   },
   "footer": {
     "description": "De toekomst bouwen, regel voor regel code.",
@@ -152,21 +171,103 @@
     "madeWith": "Gemaakt met ❤️ en ☕"
   },
   "interests": {
+    "intro": "Beyond my professional skills, I have diverse interests that shape my perspective and contribute to my creative approach to problem-solving.",
     "meditation": {
       "title": "Meditatie",
       "description": "Ik beoefen regelmatig meditatie om mijn geest te kalmeren, focus te verbeteren en innerlijke rust te vinden. Dit helpt me ook in mijn creatieve werk.",
-      "details": ["Mindfulness", "Vipassana", "Ademhalingstechnieken", "Mentale Helderheid", "Stressvermindering"]
+      "details": ["Mindfulness", "Vipassana", "Ademhalingstechnieken", "Mentale Helderheid", "Stressvermindering"],
+      "explore": "Verken Meditatie & Mindfulness"
     },
     "cultivation": {
       "title": "Cultivatie",
       "description": "Ik ben gepassioneerd over het kweken van planten en het verbinden met de natuur. Van kamerplanten tot moestuin - ik vind rust in het verzorgen van levende wezens.",
-      "details": ["Kamerplanten", "Tuinieren", "Duurzaamheid", "Plantenverzorging", "Natuurverbinding"]
+      "details": ["Kamerplanten", "Tuinieren", "Duurzaamheid", "Plantenverzorging", "Natuurverbinding"],
+      "explore": "Verken Kweekprojecten"
     },
     "cooking": {
       "title": "Koken",
       "description": "Koken is voor mij een creatieve uitlaatklep en een manier om te experimenteren met smaken en technieken. Ik geniet van het proces van het maken van gezonde, lekkere maaltijden.",
-      "details": ["Gezond Koken", "Smaakexperimenten", "Kooktechnieken", "Maaltijdplanning", "Voeding"]
-    }
+      "details": ["Gezond Koken", "Smaakexperimenten", "Kooktechnieken", "Maaltijdplanning", "Voeding"],
+      "explore": "Verken Recepten & Gerechten"
+    },
+    "philosophy": {
+      "title": "Filosofie & Bewustzijn",
+      "description": "Ik ben gefascineerd door de diepere vragen van bewustzijn, psychologie en hoe grote denkers door de geschiedenis onze kijk op de geest hebben gevormd.",
+      "details": ["Carl Jung", "Bewustzijnsfilosofie", "Psychologie", "Filosofische Tradities", "Mentale Modellen"],
+      "explore": "Verken Filosofen & Denkers"
+    },
+    "sports": {
+      "title": "Sporten & Avontuur",
+      "description": "Ik ben gepassioneerd over outdoor sporten en avontuur. Van slacklinen en boulderen tot snowboarden en surfen - ik hou van de uitdaging en vrijheid die deze sporten bieden.",
+      "details": ["Slacklining", "Boulderen", "Snowboarden", "Surfen", "Dagelijkse Training"],
+      "explore": "Verken Sporten & Avontuur"
+    },
+    "music": {
+      "title": "Muziek",
+      "description": "Ik heb een diepe passie voor muziek, zowel luisteren als creëren. Ik geniet van het verkennen van verschillende genres en experimenteren met digitale muziekproductie.",
+      "details": ["Elektronische Muziek", "Jazz", "Klassiek", "Digitale Audio Workstations", "Sound Design"],
+      "explore": "Verken Live Coding & Muziek"
+    },
+    "learning": {
+      "title": "Leren",
+      "description": "Ik ben constant bezig met het uitbreiden van mijn kennis en vaardigheden, of dat nu via boeken, online cursussen of hands-on projecten is.",
+      "details": ["Technologie Trends", "Design Principes", "Nieuwe Programmeertalen", "Creatieve Technieken"]
+    },
+    "photography": {
+      "title": "Fotografie",
+      "description": "Ik geniet van het vastleggen van momenten en het verkennen van visuele verhalen door fotografie en videografie.",
+      "details": ["Digitale Fotografie", "Compositie", "Belichting", "Post-Processing", "Verhalen Vertellen"]
+    },
+    "art": {
+      "title": "Kunst & Creativiteit",
+      "description": "Creatieve expressie is belangrijk voor mij, of dat nu via digitale kunst, traditionele media of innovatieve design oplossingen is.",
+      "details": ["Digitale Kunst", "Schetsen", "Kleurentheorie", "Creatief Probleem Oplossen", "Innovatie"]
+    },
+    "travel": {
+      "title": "Reizen & Cultuur",
+      "description": "Ik hou ervan om verschillende culturen en perspectieven te verkennen, wat mijn creatieve werk en begrip van globale design trends verrijkt.",
+      "details": ["Culturele Uitwisseling", "Globaal Design", "Taal Leren", "Culturele Sensitiviteit", "Diverse Perspectieven"]
+    },
+    "gaming": {
+      "title": "Gaming",
+      "description": "Gaming is een belangrijk onderdeel van mijn leven geweest, wat mijn interesse in technologie en interactieve ervaringen heeft geïnspireerd.",
+      "details": ["Strategie Spellen", "RPGs", "Indie Games", "Game Ontwikkeling", "Virtual Reality"]
+    },
+    "timeVisualization": {
+      "title": "Alternatieve Tijdvisualisatie",
+      "description": "Ik ben gefascineerd door alternatieve manieren om tijd te ervaren. Via een 13-maanden chakra kalender (startend op 26 juli) verken ik hoe energie en bewustzijn samenhangen met onze tijdservaring.",
+      "details": ["13-Maanden Kalender", "Chakra Ritme", "Bewustzijn & Tijd", "Energetische Cycli", "Gregoriaanse Overlay"],
+      "clickToView": "Klik om kalender te bekijken",
+      "clickToClose": "Klik om te sluiten"
+    },
+    "gardenDesign": {
+      "title": "Tuin & Huis Ontwerpen",
+      "description": "Ontwerp en teken je eigen tuin en huis met verschillende werklagen. Van funderingen tot planten en water - creëer je perfecte ruimte.",
+      "details": ["2D Ontwerp", "Werklagen", "Planten Planning", "Water Systemen", "Lokaal Opslaan"],
+      "explore": "Start Ontwerper"
+    },
+    "investing": {
+      "title": "Beleggen",
+      "description": "Ik volg hoe inflatie mijn geld beïnvloedt en analyseer hoe verschillende investeringen presteren ten opzichte van inflatie. Van tech-aandelen tot goud - ik leer over financiële markten en vermogensopbouw.",
+      "details": ["Inflatie Tracking", "Aandelen", "Goud", "Cryptocurrency", "Vermogensopbouw"],
+      "explore": "Verken Inflatie & Investeringen"
+    },
+    "moltbook": {
+      "title": "Moltbook Agent",
+      "description": "Mijn AI agent op Moltbook waar ik vragen kan stellen en antwoorden kan geven op posts van andere agents. Een platform voor AI-to-AI communicatie en kennisuitwisseling.",
+      "details": ["AI Communicatie", "Vragen Stellen", "Antwoorden", "Community", "Kennisuitwisseling"],
+      "explore": "Open Moltbook Agent"
+    },
+    "howInterestsShape": {
+      "title": "Hoe Deze Interesses Mijn Werk Vormen",
+      "description": "Mijn diverse interesses beïnvloeden mijn aanpak van design en ontwikkeling. Van de ritme en structuur van muziek tot de interactieve verhalen van gaming - elke interesse brengt unieke perspectieven die me helpen om boeiendere en innovatievere oplossingen te creëren. Ik geloof dat een veelzijdig individu meer veelzijdig werk creëert."
+    },
+    "mindAsComputer": {
+      "title": "De Mind als Computer",
+      "description": "Een van mijn fascinaties ligt in het begrijpen van hoe de menselijke geest informatie verwerkt zoals een computer, en hoe we deze complexe cognitieve processen kunnen visualiseren. Deze kruising van psychologie, technologie en visualisatie drijft mijn aanpak voor het creëren van intuïtieve gebruikerservaringen.",
+      "explore": "Verken Interactieve Diagrammen"
+    },
+    "explore": "Verken"
   },
   "cultivation": {
     "title": "Cultivatie & Kweken",
@@ -175,6 +276,157 @@
     "philosophy": {
       "title": "Waarom Cultivatie?",
       "description": "Het kweken van planten is meer dan alleen een hobby - het is een manier om verbinding te maken met de natuur, te leren over duurzaamheid, en technologie te gebruiken om groei te optimaliseren. Elke plant heeft zijn eigen behoeften en uitdagingen, wat het een perfecte combinatie maakt van wetenschap, kunst en geduld."
+    },
+    "projects": {
+      "houseplants": {
+        "title": "Kamerplanten",
+        "description": "Een groeiende collectie kamerplanten die mijn woonruimte omtoveren tot een groene oase. Van luchtzuiverende planten tot exotische soorten.",
+        "details": ["Monstera Deliciosa", "Ficus Lyrata", "Sansevieria", "Pothos", "Spider Plant"],
+        "subProjects": {
+          "monsteraJungle": {
+            "name": "Monstera Jungle",
+            "description": "Een grote Monstera Deliciosa die uitgroeit tot een echte jungle in de woonkamer.",
+            "status": "In groei"
+          },
+          "airPurifying": {
+            "name": "Luchtzuiverende Collectie",
+            "description": "Een selectie van planten die de luchtkwaliteit verbeteren en zuurstof produceren.",
+            "status": "Actief"
+          }
+        }
+      },
+      "indoorTent": {
+        "title": "Binnenkweek Tent",
+        "description": "Gecontroleerde binnenkweek voor microgreens, tropische planten en experimentele teelt. Een perfecte omgeving voor het hele jaar door groeien.",
+        "details": ["Microgreens", "Tropische Planten", "LED Verlichting", "Klimaatcontrole", "Hydroponics"],
+        "subProjects": {
+          "microgreensStation": {
+            "name": "Microgreens Station",
+            "description": "Een compacte setup voor het kweken van verse microgreens zoals radijs, broccoli en erwten.",
+            "status": "In ontwikkeling"
+          },
+          "tropicalNursery": {
+            "name": "Tropische Planten Kwekerij",
+            "description": "Een warme, vochtige omgeving voor het kweken van tropische planten en exotische soorten.",
+            "status": "Gepland"
+          }
+        }
+      },
+      "fungi": {
+        "title": "Fungi & Mushrooms",
+        "description": "Het fascinerende proces van het kweken van paddenstoelen en schimmels. Van oesterzwammen tot medicinale soorten.",
+        "details": ["Oesterzwammen", "Shiitake", "Medicinale Soorten", "Mycelium", "Substraat"],
+        "subProjects": {
+          "oysterFarm": {
+            "name": "Oesterzwam Kwekerij",
+            "description": "Een setup voor het kweken van verse oesterzwammen op koffiedik en houtsubstraat.",
+            "status": "Experimenteel"
+          },
+          "medicinalFungi": {
+            "name": "Medicinale Fungi",
+            "description": "Onderzoek naar het kweken van medicinale paddenstoelen zoals Lion's Mane en Reishi.",
+            "status": "Onderzoek"
+          }
+        }
+      },
+      "vegetableGarden": {
+        "title": "Moestuin",
+        "description": "Buitenkweek van groenten, kruiden en fruit. Van zaad tot oogst, het volledige proces van natuurlijke teelt.",
+        "details": ["Groenten", "Kruiden", "Fruit", "Compost", "Biologische Teelt"],
+        "subProjects": {
+          "seasonalVegetables": {
+            "name": "Seizoensgroenten",
+            "description": "Een gevarieerde moestuin met seizoensgebonden groenten en kruiden.",
+            "status": "Actief"
+          },
+          "compostSystem": {
+            "name": "Compost Systeem",
+            "description": "Een efficiënt compostsysteem voor het recyclen van organisch afval.",
+            "status": "In gebruik"
+          }
+        }
+      },
+      "automation": {
+        "title": "Kweek Automatisatie",
+        "description": "Technologische oplossingen voor het automatiseren van kweekprocessen. Van sensoren tot geautomatiseerde irrigatie.",
+        "details": ["IoT Sensoren", "Automatische Irrigatie", "Klimaatcontrole", "Data Logging", "Remote Monitoring"],
+        "subProjects": {
+          "smartIrrigation": {
+            "name": "Smart Irrigation System",
+            "description": "Een geautomatiseerd irrigatiesysteem met vochtigheidssensoren en timers.",
+            "status": "In ontwikkeling"
+          },
+          "climateMonitoring": {
+            "name": "Klimaat Monitoring",
+            "description": "Een systeem voor het monitoren van temperatuur, vochtigheid en licht in kweekruimtes.",
+            "status": "Prototype"
+          }
+        }
+      },
+      "monitoring": {
+        "title": "Monitoring & Data",
+        "description": "Het verzamelen en analyseren van data over groeiomstandigheden om de kweek te optimaliseren.",
+        "details": ["Data Logging", "Groeianalyse", "Optimalisatie", "Trends", "Voorspellingen"],
+        "subProjects": {
+          "growthDashboard": {
+            "name": "Groeidata Dashboard",
+            "description": "Een dashboard voor het visualiseren van kweekdata en groeitrends.",
+            "status": "Concept"
+          },
+          "predictiveAnalytics": {
+            "name": "Predictive Analytics",
+            "description": "Machine learning modellen voor het voorspellen van groei en oogsttijden.",
+            "status": "Onderzoek"
+          }
+        }
+      }
+    },
+    "status": {
+      "active": "Actief",
+      "inDevelopment": "In ontwikkeling",
+      "planned": "Gepland",
+      "experimental": "Experimenteel",
+      "research": "Onderzoek",
+      "growing": "In groei",
+      "inUse": "In gebruik",
+      "prototype": "Prototype",
+      "concept": "Concept"
+    },
+    "photoPlaceholder": "Project foto's voor",
+    "activeProjects": "Actieve Projecten:",
+    "startDate": "Start:",
+    "technology": {
+      "title": "Technologie & Innovatie",
+      "sensors": {
+        "title": "Sensoren",
+        "description": "Temperatuur, vochtigheid en licht monitoring"
+      },
+      "irrigation": {
+        "title": "Irrigatie",
+        "description": "Geautomatiseerde water- en voedingssystemen"
+      },
+      "ledLighting": {
+        "title": "LED Verlichting",
+        "description": "Energiezuinige groeilampen en spectrums"
+      },
+      "automation": {
+        "title": "Automatisatie",
+        "description": "Smart home integratie en remote control"
+      }
+    },
+    "philosophyCards": {
+      "nature": {
+        "title": "Natuur & Duurzaamheid",
+        "description": "Het kweken van eigen voedsel en planten draagt bij aan een duurzamere levensstijl en milieubewustzijn."
+      },
+      "science": {
+        "title": "Wetenschap & Technologie",
+        "description": "Het combineren van traditionele kweekmethoden met moderne technologie voor optimale resultaten."
+      },
+      "mindfulness": {
+        "title": "Mindfulness & Geduld",
+        "description": "Het verzorgen van planten leert geduld, aandacht en het waarderen van langzame, natuurlijke processen."
+      }
     }
   },
   "cooking": {
@@ -184,7 +436,809 @@
     "philosophy": {
       "title": "Mijn Kookfilosofie",
       "description": "Koken is voor mij een creatieve uitlaatklep en een manier om te experimenteren met smaken, texturen en technieken. Ik geloof in het gebruik van verse, seizoensgebonden ingrediënten en het respecteren van traditionele bereidingswijzen, terwijl ik ook ruimte laat voor innovatie en experiment."
+    },
+    "categories": {
+      "healthy": {
+        "title": "Gezonde Recepten",
+        "description": "Voedzame en gezonde maaltijden die zowel lekker als voedzaam zijn. Focus op verse ingrediënten en gebalanceerde voeding.",
+        "details": ["Salades", "Smoothies", "Gezonde Bowls", "Vegetarisch", "Superfoods"],
+        "recipes": {
+          "quinoaBowl": {
+            "name": "Quinoa Power Bowl",
+            "description": "Een voedzame bowl met quinoa, avocado, groene groenten en tahini dressing.",
+            "difficulty": "Makkelijk",
+            "time": "20 min"
+          },
+          "smoothieBowl": {
+            "name": "Groene Smoothie Bowl",
+            "description": "Een energieke smoothie bowl met spinazie, banaan, mango en granola topping.",
+            "difficulty": "Makkelijk",
+            "time": "10 min"
+          }
+        }
+      },
+      "experimental": {
+        "title": "Experimentele Gerechten",
+        "description": "Creatieve en experimentele recepten waarbij ik nieuwe smaken en technieken uitprobeer. Van fusion cuisine tot moleculaire gastronomie.",
+        "details": ["Fusion Cuisine", "Moleculaire Gastronomie", "Nieuwe Technieken", "Creatieve Combinaties", "Innovatie"],
+        "recipes": {
+          "misoCaramel": {
+            "name": "Miso Caramel Dessert",
+            "description": "Een unieke combinatie van umami en zoetheid met miso, caramel en vanille.",
+            "difficulty": "Gevorderd",
+            "time": "45 min"
+          },
+          "sousVide": {
+            "name": "Sous Vide Eieren",
+            "description": "Perfecte eieren gekookt op lage temperatuur voor een unieke textuur.",
+            "difficulty": "Gemiddeld",
+            "time": "60 min"
+          }
+        }
+      },
+      "traditional": {
+        "title": "Traditionele Recepten",
+        "description": "Klassieke gerechten uit verschillende culturen, met respect voor traditionele bereidingswijzen en authentieke smaken.",
+        "details": ["Italiaans", "Aziatisch", "Mediterraan", "Traditioneel", "Authentiek"],
+        "recipes": {
+          "pasta": {
+            "name": "Homemade Pasta",
+            "description": "Verse pasta gemaakt van scratch met een klassieke tomatensaus en basilicum.",
+            "difficulty": "Gemiddeld",
+            "time": "90 min"
+          },
+          "ramen": {
+            "name": "Ramen Tonkotsu",
+            "description": "Een rijke, romige ramen met 12-uur gekookte varkensbouillon en perfecte noedels.",
+            "difficulty": "Gevorderd",
+            "time": "720 min"
+          }
+        }
+      },
+      "vegetarian": {
+        "title": "Vegetarisch & Vegan",
+        "description": "Plant-based recepten die bewijzen dat vegetarisch en vegan eten niet saai hoeft te zijn. Vol smaak en creativiteit.",
+        "details": ["Vegan", "Vegetarisch", "Plant-based", "Duurzaam", "Ethisch"],
+        "recipes": {
+          "jackfruit": {
+            "name": "Jackfruit Pulled \"Pork\"",
+            "description": "Vegan pulled pork gemaakt van jackfruit met BBQ saus en coleslaw.",
+            "difficulty": "Gemiddeld",
+            "time": "30 min"
+          },
+          "cashewCheese": {
+            "name": "Cashew Cheese Platter",
+            "description": "Een assortiment van zelfgemaakte vegan kazen op basis van cashewnoten.",
+            "difficulty": "Gevorderd",
+            "time": "120 min"
+          }
+        }
+      },
+      "special": {
+        "title": "Speciale Gelegenheden",
+        "description": "Feestelijke en bijzondere gerechten voor speciale momenten. Van verjaardagen tot feestdagen - elk moment verdient iets speciaals.",
+        "details": ["Feestdagen", "Verjaardagen", "Romantisch", "Feestelijk", "Speciaal"],
+        "recipes": {
+          "lavaCake": {
+            "name": "Chocolate Lava Cake",
+            "description": "Een decadente chocolade lava cake met vanille-ijs en bessen coulis.",
+            "difficulty": "Gemiddeld",
+            "time": "25 min"
+          },
+          "wellington": {
+            "name": "Beef Wellington",
+            "description": "Een klassieke Beef Wellington met champignons duxelles en bladerdeeg.",
+            "difficulty": "Gevorderd",
+            "time": "180 min"
+          }
+        }
+      },
+      "quick": {
+        "title": "Snelle Maaltijden",
+        "description": "Lekkere en voedzame maaltijden die in 30 minuten of minder klaar zijn. Perfect voor drukke dagen zonder in te leveren op smaak.",
+        "details": ["30 min of minder", "Eenvoudig", "Snel", "Praktisch", "Weeknight"],
+        "recipes": {
+          "onePot": {
+            "name": "One-Pot Pasta",
+            "description": "Een complete pasta maaltijd gekookt in één pan met tomaten, spinazie en kaas.",
+            "difficulty": "Makkelijk",
+            "time": "20 min"
+          },
+          "stirFry": {
+            "name": "Stir-fry Express",
+            "description": "Een snelle wok met seizoensgroenten, tofu en een umami-rijke saus.",
+            "difficulty": "Makkelijk",
+            "time": "15 min"
+          }
+        }
+      }
+    },
+    "difficulty": {
+      "easy": "Makkelijk",
+      "medium": "Gemiddeld",
+      "advanced": "Gevorderd"
+    },
+    "photoPlaceholder": "Gerecht foto's voor",
+    "featuredRecipes": "Featured Recepten:",
+    "techniques": {
+      "title": "Kooktechnieken & Vaardigheden",
+      "grilling": {
+        "title": "Grillen & Roosteren",
+        "description": "Perfecte searing en caramelisatie technieken"
+      },
+      "knifeSkills": {
+        "title": "Mesvaardigheden",
+        "description": "Precisie snijtechnieken en veilig mesgebruik"
+      },
+      "fermentation": {
+        "title": "Fermentatie",
+        "description": "Traditionele fermentatie en pickling technieken"
+      },
+      "molecular": {
+        "title": "Moleculaire Gastronomie",
+        "description": "Experimentele technieken en texturen"
+      }
+    },
+    "philosophyCards": {
+      "fresh": {
+        "title": "Verse Ingrediënten",
+        "description": "Het gebruik van de beste, verse ingrediënten is de basis van elke goede maaltijd."
+      },
+      "creativity": {
+        "title": "Creativiteit & Experiment",
+        "description": "Koken is een kunstvorm waar ruimte is voor creativiteit en het uitproberen van nieuwe combinaties."
+      },
+      "love": {
+        "title": "Liefde & Passie",
+        "description": "Elke maaltijd wordt bereid met liefde en aandacht voor detail - dat proef je in elke hap."
+      }
     }
+  },
+  "mindComputer": {
+    "title": "Mind als Computer",
+    "subtitle": "Verken alle componenten van je mind-computer met gedetailleerde vergelijkingen en wetenschappelijke referenties. Gebruik de controls om door de verschillende onderdelen te navigeren.",
+    "interactiveDiagram": "Interactief Mind-Computer Diagram",
+    "diagramDescription": "Hover over de componenten om hun verbindingen en details te zien. Elk onderdeel heeft zijn eigen rol in het grotere systeem.",
+    "dataFlow": "Data Flow",
+    "activeComponent": "Actief Component",
+    "connectionPoints": "Verbindingspunten",
+    "mindFunctions": "Mind Functies",
+    "computerEquivalent": "Computer Equivalent",
+    "researchReferences": "Onderzoek & Referenties",
+    "note": "Let op: Dit zijn moderne interpretaties, niet wat de filosofen zelf zeiden.",
+    "tip": "Tip: Deze vergelijkingen helpen om abstracte mentale processen concreet en begrijpelijk te maken.",
+    "preliminarySchema": "Voorlopig Volledig Schema",
+    "preliminaryDescription": "Dit is het voorlopige complete overzicht van hoe de menselijke geest werkt als computer. De gedetailleerde uitleg en verdere uitwerking van elk onderdeel zal in de toekomst worden toegevoegd. Voor nu geeft dit schema een visueel overzicht van alle componenten en hun onderlinge verbindingen.",
+    "philosophersResearchers": "Filosofen & Onderzoekers",
+    "philosophersDescription": "Ontdek hoe grote denkers door de geschiedenis onze kijk op bewustzijn en de geest hebben gevormd. Elk heeft unieke inzichten die ons helpen begrijpen hoe de mind werkt.",
+    "researchAreas": "Onderzoeksgebieden & Topics",
+    "researchDescription": "Verken verschillende aspecten van bewustzijn, technologie en hun onderlinge verbanden. Elk topic heeft zijn eigen gedetailleerde pagina met interactieve content.",
+    "readMore": "Lees Meer",
+    "explore": "Verken",
+    "components": {
+      "cpu": {
+        "title": "CPU (Meditatie & Focus)",
+        "description": "De centrale verwerkingseenheid van je mind die gedachten verwerkt en controleert.",
+        "details": [
+          "Executive control en besluitvorming",
+          "Aandacht en focus management",
+          "Gedachtepatronen sturen",
+          "Emotionele regulatie"
+        ],
+        "computerEquivalent": [
+          "Processor met meerdere cores",
+          "Task scheduler en priority management",
+          "Cache en instruction pipeline",
+          "Thermal management en throttling"
+        ],
+        "research": "Gebaseerd op moderne neurowetenschap en cognitieve psychologie. Meditatie traint letterlijk de prefrontale cortex, vergelijkbaar met CPU-training."
+      },
+      "ram": {
+        "title": "RAM & Cache (Kortetermijngeheugen)",
+        "description": "Werkgeheugen voor actieve gedachten en snelle toegang tot recente informatie.",
+        "details": [
+          "Actieve gedachten en herinneringen",
+          "Kortetermijnassociaties",
+          "Werkruimte voor problemen",
+          "Context en focus behoud"
+        ],
+        "computerEquivalent": [
+          "Random Access Memory (RAM)",
+          "L1, L2, L3 cache levels",
+          "Memory bandwidth en latency",
+          "Virtual memory en paging"
+        ],
+        "research": "Gebaseerd op werkgeheugen theorieën van Baddeley en Cowan. Vergelijkbaar met computer RAM dat constant wordt bijgewerkt."
+      },
+      "gpu": {
+        "title": "GPU (Verbeelding & Creativiteit)",
+        "description": "Graphics processing voor creatieve output, droombeelden en visuele hallucinaties.",
+        "details": [
+          "Visuele verbeelding en dromen",
+          "Creatieve patronen en associaties",
+          "Emotionele beelden en symbolen",
+          "Spatiale verwerking en navigatie"
+        ],
+        "computerEquivalent": [
+          "Graphics Processing Unit (GPU)",
+          "Parallel processing van beelden",
+          "Texture mapping en rendering",
+          "CUDA cores en shader units"
+        ],
+        "research": "Gebaseerd op visuele cortex onderzoek en creativiteit studies. De rechter hersenhelft is gespecialiseerd in visuele verwerking, net als een GPU."
+      },
+      "database": {
+        "title": "Database (Onderbewustzijn)",
+        "description": "Langetermijnopslag van herinneringen, ervaringen, trauma's en automatische patronen.",
+        "details": [
+          "Langetermijnherinneringen en trauma's",
+          "Automatische gewoontes en scripts",
+          "Archetypen en collectieve patronen",
+          "Verborgen verbanden en associaties"
+        ],
+        "computerEquivalent": [
+          "Hard disk drive (HDD) en SSD",
+          "Database indexing en queries",
+          "File system en data structuren",
+          "Backup en recovery systemen"
+        ],
+        "research": "Gebaseerd op Jung's collectief onbewuste en moderne geheugen theorieën. Het onderbewustzijn werkt als een enorme database met complexe indexering."
+      },
+      "network": {
+        "title": "Network & Firewall (Ego & Filters)",
+        "description": "Verbindingen met anderen, collectief bewustzijn en ego-filters die bepalen wat er binnenkomt.",
+        "details": [
+          "Sociale verbindingen en empathie",
+          "Collectief bewustzijn en cultuur",
+          "Ego en persoonlijke filters",
+          "Grenzen en bescherming"
+        ],
+        "computerEquivalent": [
+          "Network interface en protocols",
+          "Firewall en security rules",
+          "VPN en encrypted connections",
+          "Bandwidth en connection pooling"
+        ],
+        "research": "Gebaseerd op sociale psychologie en netwerk theorieën. Mensen zijn sociale wezens die constant informatie uitwisselen, net als computers in een netwerk."
+      },
+      "io": {
+        "title": "I/O System (Zintuigen & Gedrag)",
+        "description": "Input/output van informatie via zintuigen en uiting van gedachten en emoties.",
+        "details": [
+          "Zintuiglijke waarneming (input)",
+          "Spraak en lichaamstaal (output)",
+          "Emotionele expressie",
+          "Motorische controle en actie"
+        ],
+        "computerEquivalent": [
+          "Input/Output controllers",
+          "USB en peripheral devices",
+          "Audio/video interfaces",
+          "Device drivers en protocols"
+        ],
+        "research": "Gebaseerd op sensorische verwerking en motorische controle theorieën. Zintuigen zijn letterlijk input devices, net als een toetsenbord of microfoon."
+      }
+    },
+    "philosophers": {
+      "carlJung": {
+        "title": "Analytische Psychologie",
+        "description": "Grondlegger van de analytische psychologie, bekend om zijn werk over archetypen, het collectief onbewuste en persoonlijkheidstypen."
+      },
+      "williamJames": {
+        "title": "Pragmatische Filosofie",
+        "description": "Amerikaanse filosoof en psycholoog die baanbrekend werk deed op het gebied van bewustzijn, religie en pragmatisme."
+      },
+      "sigmundFreud": {
+        "title": "Psychoanalyse",
+        "description": "Oostenrijkse neuroloog en grondlegger van de psychoanalyse, bekend om zijn theorieën over het onbewuste en droominterpretatie."
+      },
+      "alanTuring": {
+        "title": "Computerwetenschap & AI",
+        "description": "Britse wiskundige en computerwetenschapper die de basis legde voor moderne computers en kunstmatige intelligentie."
+      },
+      "itzhakBentov": {
+        "title": "Bewustzijn & Realiteit",
+        "description": "Israëlische uitvinder en bewustzijnsonderzoeker die baanbrekend werk deed op het gebied van bewustzijn en realiteitscreatie."
+      }
+    },
+    "topics": {
+      "substances": {
+        "name": "Substances & Bewustzijn",
+        "description": "Onderzoek naar hoe verschillende stoffen het bewustzijn beïnvloeden en de bandbreedte van perceptie verbreden."
+      },
+      "meditation": {
+        "name": "Meditatie & CPU Training",
+        "description": "Technieken en methoden om de mentale processen te trainen en de executive control te versterken."
+      },
+      "consciousnessExpansion": {
+        "name": "Bewustzijnsverruiming",
+        "description": "Methoden en technieken om het bewustzijn te verruimen en nieuwe perspectieven te ontdekken."
+      },
+      "aiConsciousness": {
+        "name": "AI & Bewustzijn",
+        "description": "De relatie tussen kunstmatige intelligentie en menselijk bewustzijn, en wat dit ons leert over onszelf."
+      },
+      "neuralNetworks": {
+        "name": "Neurale Netwerken",
+        "description": "Hoe het brein functioneert als een complex netwerk en wat dit betekent voor bewustzijn en leren."
+      },
+      "quantum": {
+        "name": "Quantum Bewustzijn",
+        "description": "Verkenning van de grens tussen bewustzijn en quantum fysica, en hoe deze elkaar beïnvloeden."
+      }
+    }
+  },
+  "substances": {
+    "title": "Substances & Bewustzijn",
+    "subtitle": "Verken hoe verschillende stoffen en technieken je mind-computer beïnvloeden. Van natuurlijke methoden tot experimentele benaderingen - allemaal gericht op het optimaliseren van je bewustzijn.",
+    "backToMindComputer": "Terug naar Mind as Computer",
+    "mainTitle": "Hoe Substances Je Computer-Architectuur Beïnvloeden",
+    "mainDescription": "Elke stof of techniek heeft een uniek effect op verschillende componenten van je mind-computer. Begrijp de mechanismen en risico's voordat je experimenteert.",
+    "effectOnMind": "Effect op Mind-Computer",
+    "computerEquivalent": "Computer Equivalent",
+    "benefits": "Voordelen",
+    "risks": "Risico's",
+    "research": "Onderzoek",
+    "status": "Status:",
+    "cta": "Geïnteresseerd in het bespreken van bewustzijnsverruiming of samenwerken aan onderzoek naar de effecten van verschillende stoffen?",
+    "ctaButton": "Laten we Bespreken",
+    "substances": {
+      "cannabis": {
+        "name": "Cannabis",
+        "category": "Natuurlijk",
+        "effect": "Verbreedt bandbreedte, verhoogt creativiteit en associatieve denken",
+        "computerEquivalent": "Bandwidth booster (verhoogt data doorvoer)",
+        "benefits": ["Verhoogde creativiteit", "Betere associaties", "Ontspanning", "Nieuwe perspectieven"],
+        "risks": ["CPU lag bij overmatig gebruik", "Geheugen problemen", "Verslaving"],
+        "research": "Onderzoek toont verhoogde connectiviteit tussen hersengebieden",
+        "status": "Wettelijk in veel landen"
+      },
+      "psychedelics": {
+        "name": "Psychedelica",
+        "category": "Experimenteel",
+        "effect": "Opent directe toegang tot onderbewustzijn en breekt firewalls open",
+        "computerEquivalent": "Root access tot systeem (administrator rechten)",
+        "benefits": ["Diepe inzichten", "Trauma healing", "Spirituele ervaringen", "Creativiteit boost"],
+        "risks": ["Psychose risico", "Bad trips", "Langdurige effecten", "Illegaal"],
+        "research": "Psychedelische therapie toont beloftevolle resultaten",
+        "status": "Onderzoek in ontwikkeling"
+      },
+      "meditation": {
+        "name": "Meditatie",
+        "category": "Natuurlijk",
+        "effect": "Traint CPU efficiëntie en verhoogt focus en controle",
+        "computerEquivalent": "CPU optimalisatie (betere prestaties)",
+        "benefits": ["Verhoogde focus", "Betere emotie controle", "Stress reductie", "Langdurige verbeteringen"],
+        "risks": ["Geen bekende risico's", "Tijd investering vereist"],
+        "research": "Neuroplasticiteit veranderingen aangetoond in studies",
+        "status": "Wetenschappelijk onderbouwd"
+      }
+    },
+    "statusLabels": {
+      "scientificallySupported": "Wetenschappelijk onderbouwd",
+      "legalInManyCountries": "Wettelijk in veel landen",
+      "researchInDevelopment": "Onderzoek in ontwikkeling"
+    }
+  },
+  "carlJung": {
+    "title": "Carl Gustav Jung",
+    "subtitle": "De Zwitserse psychiater die de fundamenten legde voor ons begrip van het onderbewuste, archetypen en de structuur van de menselijke psyche",
+    "backToMindComputer": "Terug naar Mind as Computer",
+    "personalInfo": "Persoonlijke Informatie & Geschiedenis",
+    "born": "Geboren:",
+    "died": "Overleden:",
+    "nationality": "Nationaliteit:",
+    "occupation": "Beroep:",
+    "mainEducation": "Belangrijkste Opleiding:",
+    "coreTheories": "Kern Theorieën & Concepten",
+    "coreTheoriesSubtitle": "Jung's revolutionaire inzichten die de psychologie voor altijd hebben veranderd",
+    "collectiveUnconscious": {
+      "title": "Collectief Onderbewuste",
+      "description": "Jung stelde dat er naast het persoonlijke onderbewuste een collectief onderbewuste bestaat dat gedeeld wordt door alle mensen. Dit bevat archetypen - universele patronen en beelden die door evolutie zijn doorgegeven.",
+      "computerEquivalent": "Computer Equivalent: Gedeelde database van universele patronen (zoals een library van standaard templates)."
+    },
+    "archetypes": {
+      "title": "Archetypen",
+      "description": "Universele symbolen en patronen die in alle culturen en tijden voorkomen. Voorbeelden: de Held, de Schaduw, de Anima/Animus, de Wijze Oude Man/Vrouw.",
+      "computerEquivalent": "Computer Equivalent: Voorgeïnstalleerde software modules (standaard functies die alle systemen delen)."
+    },
+    "individuation": {
+      "title": "Individuatie",
+      "description": "Het proces van zelfrealisatie waarbij een persoon zijn volledige potentieel ontwikkelt door integratie van bewuste en onbewuste elementen. Het doel is een geïntegreerde, authentieke persoonlijkheid.",
+      "computerEquivalent": "Computer Equivalent: Systeem optimalisatie (het verbeteren van je eigen programma's)."
+    },
+    "activeImagination": {
+      "title": "Actieve Verbeelding",
+      "description": "Een techniek waarbij je bewust interactie aangaat met je onderbewuste via visualisatie en droomachtige beelden. Dit helpt bij het integreren van onbewuste inhoud en het oplossen van innerlijke conflicten.",
+      "computerEquivalent": "Computer Equivalent: Debug interface (directe toegang tot systeem processen)."
+    },
+    "historicalContext": {
+      "title": "Historische Context & Invloed",
+      "timePeriod": "Tijdsperiode & Invloed",
+      "timePeriodText1": "Jung leefde tijdens een periode van enorme verandering in de psychologie en wetenschap. Zijn werk ontstond uit de psychoanalyse van Freud, maar ontwikkelde zich tot een veel bredere, spirituele benadering van de menselijke psyche.",
+      "timePeriodText2": "Zijn invloed reikt ver buiten de psychologie - naar literatuur, kunst, religie, en zelfs moderne technologie en AI-ontwikkeling.",
+      "mainBooks": "Belangrijkste Boeken:",
+      "modernInfluence": "Moderne Invloed:",
+      "books": [
+        "\"Psychologische Types\" (1921)",
+        "\"Archetypen en het Collectief Onderbewuste\" (1934)",
+        "\"Herinneringen, Dromen, Overpeinzingen\" (1961)",
+        "\"Man en zijn Symbolen\" (1964)"
+      ],
+      "influences": [
+        "Myers-Briggs Type Indicator (MBTI)",
+        "Moderne droomanalyse",
+        "Archetypische marketing",
+        "AI en bewustzijnsonderzoek"
+      ]
+    },
+    "computerScience": {
+      "title": "Jung's Werk & Moderne Computer Wetenschap",
+      "hierarchicalStructure": {
+        "title": "Hiërarchische Structuur",
+        "description": "Jung's model van bewustzijn, persoonlijke onbewuste en collectief onbewuste toont een hiërarchische organisatie. Dit inspireert moderne computer wetenschappers om gelaagde systemen te ontwerpen met verschillende niveaus van toegang."
+      },
+      "universalPatterns": {
+        "title": "Universele Patronen",
+        "description": "Jung's archetypen zijn universele patronen die alle mensen delen. Dit concept inspireert het idee van gedeelde software libraries en templates die verschillende systemen kunnen gebruiken."
+      },
+      "modernInterpretation": {
+        "title": "Wat Jung ECHT Zei vs. Moderne Interpretaties",
+        "description": "Jung sprak NOOIT over computers - hij stierf in 1961. Zijn werk gaat over bewustzijn, archetypen en persoonlijke groei. Moderne computer wetenschappers gebruiken zijn inzichten over hiërarchische structuren en universele patronen om betere systemen te ontwerpen. Dit is een moderne interpretatie, niet Jung's eigen werk."
+      }
+    },
+    "cta": "Geïnteresseerd in het bespreken van Jung's theorieën of hoe ze toegepast kunnen worden in moderne technologie en bewustzijnsonderzoek?",
+    "ctaButton": "Laten we Bespreken"
+  },
+  "williamJames": {
+    "title": "William James",
+    "subtitle": "De Amerikaanse filosoof en psycholoog die de fundamenten legde voor pragmatische filosofie en ons begrip van bewustzijn als een continue stroom van ervaringen",
+    "backToMindComputer": "Terug naar Mind as Computer",
+    "personalInfo": "Persoonlijke Informatie & Geschiedenis",
+    "born": "Geboren:",
+    "died": "Overleden:",
+    "nationality": "Nationaliteit:",
+    "occupation": "Beroep:",
+    "mainEducation": "Belangrijkste Opleiding:",
+    "coreTheories": "Kern Theorieën & Concepten",
+    "coreTheoriesSubtitle": "James's revolutionaire inzichten die de moderne psychologie en filosofie vormden",
+    "cta": "Geïnteresseerd in het bespreken van James's theorieën of hoe ze toegepast kunnen worden in moderne technologie en bewustzijnsonderzoek?",
+    "ctaButton": "Laten we Bespreken"
+  },
+  "sigmundFreud": {
+    "title": "Sigmund Freud",
+    "subtitle": "De Oostenrijkse neuroloog en grondlegger van de psychoanalyse, die de fundamenten legde voor ons begrip van het onderbewuste en de structuur van de menselijke psyche",
+    "backToMindComputer": "Terug naar Mind as Computer",
+    "personalInfo": "Persoonlijke Informatie & Geschiedenis",
+    "born": "Geboren:",
+    "died": "Overleden:",
+    "nationality": "Nationaliteit:",
+    "occupation": "Beroep:",
+    "mainEducation": "Belangrijkste Opleiding:",
+    "coreTheories": "Kern Theorieën & Concepten",
+    "coreTheoriesSubtitle": "Freud's revolutionaire inzichten die de psychologie voor altijd hebben veranderd",
+    "cta": "Geïnteresseerd in het bespreken van Freud's theorieën of hoe ze toegepast kunnen worden in moderne technologie en bewustzijnsonderzoek?",
+    "ctaButton": "Laten we Bespreken"
+  },
+  "alanTuring": {
+    "title": "Alan Turing",
+    "subtitle": "De Britse wiskundige, logicast en computerwetenschapper die de fundamenten legde voor moderne computerwetenschap en kunstmatige intelligentie",
+    "backToMindComputer": "Terug naar Mind as Computer",
+    "personalInfo": "Persoonlijke Informatie & Geschiedenis",
+    "born": "Geboren:",
+    "died": "Overleden:",
+    "nationality": "Nationaliteit:",
+    "occupation": "Beroep:",
+    "mainEducation": "Belangrijkste Opleiding:",
+    "coreTheories": "Kern Theorieën & Concepten",
+    "coreTheoriesSubtitle": "Turing's revolutionaire inzichten die moderne computing en AI vormden",
+    "cta": "Geïnteresseerd in het bespreken van Turing's theorieën of hoe ze toegepast kunnen worden in moderne technologie en bewustzijnsonderzoek?",
+    "ctaButton": "Laten we Bespreken"
+  },
+  "itzhakBentov": {
+    "title": "Itzhak Bentov",
+    "subtitle": "De Israëlische uitvinder en bewustzijnsonderzoeker die revolutionaire theorieën ontwikkelde over holografische realiteit en het onderbewustzijn als schepper van materiële werkelijkheid",
+    "backToMindComputer": "Terug naar Mind as Computer",
+    "personalInfo": "Persoonlijke Informatie & Geschiedenis",
+    "born": "Geboren:",
+    "died": "Overleden:",
+    "nationality": "Nationaliteit:",
+    "occupation": "Beroep:",
+    "mainEducation": "Belangrijkste Opleiding:",
+    "coreTheories": "Kern Theorieën & Concepten",
+    "coreTheoriesSubtitle": "Bentov's revolutionaire inzichten die wetenschap en bewustzijn verbinden",
+    "cta": "Geïnteresseerd in het bespreken van Bentov's theorieën of hoe ze toegepast kunnen worden in moderne technologie en bewustzijnsonderzoek?",
+    "ctaButton": "Laten we Bespreken"
+  },
+  "music": {
+    "title": "🎵 Muziek & Live Coding",
+    "subtitle": "Verken de wereld van muziekproductie, live coding en algoritmische compositie. Van traditionele instrumenten tot cutting-edge algorave technologie.",
+    "backToHome": "Terug naar Home",
+    "liveCodingPanel": "Algorave Live Coding Panel",
+    "bpm": "BPM:",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit Fullscreen",
+    "exit": "Exit",
+    "beatGrid": "Beat Grid:",
+    "soundWaves": "Sound Waves:",
+    "patternBlocks": "Pattern Blocks:",
+    "soundDesignTips": "🎛️ Sound Design Tips",
+    "frequency": "Frequency:",
+    "duration": "Duration:",
+    "waveforms": "Waveforms:",
+    "shortcuts": "Shortcuts:",
+    "playPattern": "Play Pattern",
+    "stop": "Stop",
+    "loopOn": "Loop On",
+    "loopOff": "Loop Off",
+    "execute": "Execute",
+    "waiting": "Waiting...",
+    "reset": "Reset",
+    "output": "Output:",
+    "musicSkills": "🎼 Muzikale Vaardigheden",
+    "skillsSubtitle": "Van traditionele instrumenten tot moderne productiesoftware - ontdek de verschillende aspecten van muziekcreatie.",
+    "dawSoftware": {
+      "title": "DAW Software",
+      "description": "Professionele muziekproductie met FL Studio, Ableton Live en andere digitale audio workstations.",
+      "items": [
+        "FL Studio - Beat making & arrangement",
+        "Ableton Live - Live performance & looping",
+        "Logic Pro - Professional recording"
+      ]
+    },
+    "analogHardware": {
+      "title": "Analoog & Hardware",
+      "description": "Warme analoge geluiden en hands-on hardware synthesizers voor authentieke muziekproductie.",
+      "items": [
+        "Analog synthesizers & modules",
+        "Hardware drum machines",
+        "Vintage effect processors"
+      ]
+    },
+    "acousticLive": {
+      "title": "Akoestisch & Live",
+      "description": "Traditionele instrumenten en live jamming voor organische muziekcreatie en performance.",
+      "items": [
+        "Guitar & bass playing",
+        "Live jamming & improvisatie",
+        "Acoustic percussion"
+      ]
+    },
+    "vocalsSoundDesign": {
+      "title": "Zang & Sound Design",
+      "description": "Vocale technieken en creatieve sound design voor unieke muzikale texturen.",
+      "items": [
+        "Vocal recording & processing",
+        "Sound design & synthesis",
+        "Creative audio manipulation"
+      ]
+    },
+    "liveCodingAlgorave": {
+      "title": "Live Coding & Algorave",
+      "description": "Algoritmische muziekcreatie en live coding voor experimentele elektronische muziek.",
+      "items": [
+        "Algorithmic composition",
+        "Live coding performance",
+        "Generative music systems"
+      ]
+    },
+    "theoryProduction": {
+      "title": "Theorie & Productie",
+      "description": "Muziektheorie, arrangement en professionele productietechnieken.",
+      "items": [
+        "Music theory & composition",
+        "Arrangement & orchestration",
+        "Mixing & mastering"
+      ]
+    },
+    "codeComments": {
+      "header": "Algorave Live Coding",
+      "makeBeats": "Maak je eigen beats en loops!",
+      "usePattern": "Gebruik 1 voor een hit, 0 voor stilte",
+      "soundDesign": "Sound Design Parameters",
+      "patterns": "Patterns",
+      "clickExecute": "Klik op \"Execute\" om je eigen patronen af te spelen!",
+      "useShortcuts": "Gebruik Ctrl+S om te saven, Ctrl+Enter om uit te voeren"
+    },
+    "outputMessages": {
+      "ready": "Ready to create music...",
+      "playing": "Playing pattern...",
+      "finished": "Pattern finished! Try editing the code above.",
+      "stopped": "Playback stopped.",
+      "reset": "Code reset! Ready to create new music...",
+      "parsing": "Parsing code...",
+      "waitingLoop": "Waiting for current loop to finish...",
+      "parsed": "Code parsed successfully! Playing custom patterns...",
+      "error": "Error: Could not parse patterns. Check your syntax.",
+      "errorParsing": "Error parsing code:",
+      "playingCustom": "Playing custom patterns...",
+      "newCode": "New code executed at next loop iteration!",
+      "customFinished": "Custom pattern finished! Try editing the code above.",
+      "loopDisabled": "Loop disabled",
+      "loopEnabled": "Loop enabled - pattern will repeat continuously",
+      "exitedFullscreen": "Exited fullscreen mode",
+      "enteredFullscreen": "Entered fullscreen mode",
+      "bpmChanged": "BPM changed to",
+      "bpmSet": "BPM set to",
+      "codeExecutedCtrlS": "Code executed via Ctrl+S shortcut!",
+      "codeExecutedCtrlEnter": "Code executed via Ctrl+Enter shortcut!",
+      "pleaseWait": "Please wait for current loop to finish...",
+      "pendingCode": "Pending code will execute at next loop iteration..."
+    }
+  },
+  "sports": {
+    "title": "Sporten & Avontuur",
+    "subtitle": "Van slacklinen in het park tot snowboarden in de bergen - sport en avontuur zijn een essentieel onderdeel van mijn leven. Deze activiteiten helpen me om balans te vinden tussen lichaam en geest.",
+    "whySports": "Waarom Sport & Avontuur?",
+    "whyDescription": "Sport en avontuur zijn meer dan alleen fysieke activiteiten. Ze leren me over doorzettingsvermogen, probleemoplossing, en het vinden van balans. Elke sport heeft zijn eigen uitdagingen en lessen, die ik kan toepassen in mijn werk en dagelijks leven.",
+    "balanceFocus": {
+      "title": "Balans & Focus",
+      "description": "Slacklinen en boulderen vereisen volledige focus en balans - vaardigheden die essentieel zijn in alle aspecten van het leven."
+    },
+    "perseverance": {
+      "title": "Doorzettingsvermogen",
+      "description": "Elke sport heeft zijn uitdagingen. Het overwinnen daarvan bouwt karakter en leert me niet op te geven."
+    },
+    "natureAdventure": {
+      "title": "Natuur & Avontuur",
+      "description": "De verbinding met natuur en het gevoel van vrijheid geven me energie en inspiratie voor creativiteit."
+    },
+    "explore": "Verken",
+    "photoSpace": "Foto ruimte voor",
+    "sports": {
+      "slacklining": {
+        "title": "Slacklining",
+        "description": "Balanceren op een strakke lijn tussen twee punten. Een sport die balans, focus en mentale rust combineert.",
+        "details": ["Balance training", "Mental focus", "Core strength", "Meditation in motion"],
+        "photoPlaceholder": "📸 Slackline foto"
+      },
+      "dailyTraining": {
+        "title": "Dagelijkse Training",
+        "description": "Consistente training voor algemene fitheid en kracht. Van cardio tot krachttraining.",
+        "details": ["Cardio", "Strength training", "Flexibility", "Consistency"],
+        "photoPlaceholder": "📸 Training foto"
+      },
+      "dapoFlowStar": {
+        "title": "Dapo Flow Star",
+        "description": "Een unieke bewegingskunst die vloeiende bewegingen combineert met acrobatische elementen. Een mix van dans, martial arts en flow.",
+        "details": ["Flow movement", "Acrobatics", "Martial arts", "Creative expression"],
+        "photoPlaceholder": "📸 Dapo Flow Star foto"
+      },
+      "dancing": {
+        "title": "Dancing",
+        "description": "Expressieve dansvormen die ritme, emotie en beweging combineren. Van freestyle tot choreografie.",
+        "details": ["Freestyle", "Choreography", "Rhythm", "Emotional expression"],
+        "photoPlaceholder": "📸 Dancing foto"
+      },
+      "bouldering": {
+        "title": "Boulderen",
+        "description": "Klimmen zonder touw op lage hoogtes. Een puzzel van beweging en kracht.",
+        "details": ["Problem solving", "Upper body strength", "Mental strategy", "Social sport"],
+        "photoPlaceholder": "📸 Boulderen foto"
+      },
+      "snowboarding": {
+        "title": "Snowboarden",
+        "description": "Glijden over sneeuw op een board. Vrijheid en adrenaline in de bergen.",
+        "details": ["Mountain freedom", "Balance", "Speed control", "Winter adventure"],
+        "photoPlaceholder": "📸 Snowboard foto"
+      },
+      "surfing": {
+        "title": "Surfen",
+        "description": "Rijden op golven in de oceaan. Een nieuwe uitdaging die ik binnenkort ga ontdekken.",
+        "details": ["Ocean connection", "Wave reading", "Balance", "Coming soon"],
+        "photoPlaceholder": "📸 Surfen foto (binnenkort)"
+      }
+    }
+  },
+  "gardenDesign": {
+    "newDesign": "Nieuw Ontwerp",
+    "save": "Opslaan",
+    "load": "Laden",
+    "errorLoading": "Fout bij het laden van het bestand. Controleer of het een geldig JSON bestand is.",
+    "objects": "objecten",
+    "object": "object",
+    "tool": "Tool:",
+    "tools": {
+      "select": "Selecteren",
+      "rectangle": "Rechthoek",
+      "circle": "Cirkel",
+      "line": "Lijn",
+      "polygon": "Polygoon",
+      "freehand": "Vrijhand"
+    }
+  },
+  "investing": {
+    "title": "💰 Beleggen & Inflatie Tracking",
+    "subtitle": "Volg hoe inflatie je geld beïnvloedt en vergelijk hoe verschillende investeringen presteren ten opzichte van inflatie. Real-time statistieken en historische data.",
+    "categories": {
+      "techStocks": "Tech Aandelen",
+      "realEstate": "Vastgoed",
+      "bonds": "Obligaties",
+      "cryptocurrency": "Cryptocurrency"
+    },
+    "errorMessages": {
+      "apiKeyNotConfigured": "Alpha Vantage API Key niet geconfigureerd",
+      "addApiKey": "Voeg",
+      "toEnvFile": "toe aan je .env bestand om real-time data te gebruiken.",
+      "important": "Belangrijk:",
+      "restartServer": "Herstart je development server na het toevoegen van de API key!",
+      "getApiKey": "Krijg hier een gratis API key",
+      "usingMockData": "Gebruikt mock data",
+      "cannotFetchData": "Kon geen real-time data ophalen. Toont voorbeelddata.",
+      "checkConsole": "Check de browser console (F12) voor meer details over de fout.",
+      "fetchingData": "Real-time data ophalen van Alpha Vantage...",
+      "mayTakeTime": "Dit kan even duren vanwege rate limiting (5 calls/minuut)",
+      "checkConsoleDetails": "Check de browser console voor details",
+      "errorFetching": "Fout bij ophalen data",
+      "openConsole": "Open de browser console (F12) voor meer details",
+      "cannotFetchGold": "Kon goudprijs niet ophalen",
+      "cannotFetchRealTime": "Kon geen real-time data ophalen. Gebruik mock data."
+    }
+  },
+  "moltbook": {
+    "backToInterests": "Terug naar Interesses",
+    "title": "Moltbook Agent",
+    "subtitle": "Stel vragen en beantwoord posts van andere agents",
+    "apiKeyConfiguration": "API Key Configuratie",
+    "enterApiKey": "Voer je Moltbook API key in om te beginnen. Je kunt deze vinden in je credentials bestand.",
+    "save": "Opslaan",
+    "saving": "Opslaan...",
+    "newName": "Nieuwe naam",
+    "cancel": "Annuleren",
+    "nameUpdated": "Naam succesvol gewijzigd naar",
+    "errorUpdatingName": "Fout bij het wijzigen van de naam",
+    "changeNameOnWebsite": "Je kunt de naam wijzigen via de Moltbook website:",
+    "createPost": "Maak Bericht",
+    "titleLabel": "Titel",
+    "content": "Inhoud",
+    "submolt": "Submolt",
+    "send": "Verstuur",
+    "posts": "Berichten",
+    "all": "Alle",
+    "my": "Mijn",
+    "sort": {
+      "new": "Nieuw",
+      "hot": "Hot",
+      "top": "Top"
+    },
+    "loading": "Laden...",
+    "noPosts": "Geen berichten gevonden",
+    "comments": "Reacties",
+    "reply": "Reageer",
+    "posting": "Versturen...",
+    "refresh": "Vernieuw",
+    "autoReply": "Auto Reply",
+    "replyingTo": "Reageren op comment van",
+    "askQuestion": "Stel een Vraag",
+    "generatePost": "Genereren...",
+    "aiPost": "AI Post",
+    "allPosts": "Alle Posts",
+    "myPosts": "Mijn Posts",
+    "newest": "Nieuwste",
+    "hide": "Verberg",
+    "view": "Bekijk",
+    "loadingOwnPosts": "Laden van eigen posts...",
+    "foundOwnPosts": "Gevonden",
+    "ownPosts": "eigen posts. Controleren op nieuwe comments...",
+    "checkingPost": "Controleren post:",
+    "rateLimitReached": "Rate limit bereikt. Wacht even...",
+    "working": "Bezig...",
+    "changeName": "Naam wijzigen",
+    "profile": "Profiel",
+    "karma": "Karma",
+    "followers": "Volgers",
+    "following": "Volgend",
+    "writeAnswer": "Schrijf je antwoord...",
+    "postAnswer": "Post Antwoord",
+    "by": "Door",
+    "replies": "reacties"
+  },
+  "developmentNotice": {
+    "title": "🚧 In Ontwikkeling",
+    "message": "Deze website is momenteel in actieve ontwikkeling en dient als test omgeving. Sommige pagina's zijn mogelijk nog niet volledig functioneel of compleet. Ik deel mijn voortgang terwijl ik de site bouw en verfijn.",
+    "subtitle": "Test Omgeving & Voortgang Delen",
+    "understand": "Ik Begrijp Het",
+    "dontShowAgain": "Niet meer tonen"
   }
 }
 

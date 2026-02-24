@@ -2,138 +2,140 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Home, Tent, TreePine, Circle, Cpu, Thermometer, Droplets, Sun, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const CultivationPage: React.FC = () => {
+  const { t } = useTranslation();
 
   const cultivationProjects = [
     {
       icon: <Home className="w-12 h-12" />,
-      title: 'Kamerplanten',
-      description: 'Een groeiende collectie kamerplanten die mijn woonruimte omtoveren tot een groene oase. Van luchtzuiverende planten tot exotische soorten.',
-      details: ['Monstera Deliciosa', 'Ficus Lyrata', 'Sansevieria', 'Pothos', 'Spider Plant'],
+      title: t('cultivation.projects.houseplants.title'),
+      description: t('cultivation.projects.houseplants.description'),
+      details: t('cultivation.projects.houseplants.details', { returnObjects: true }) as string[],
       photoPlaceholder: '🌱',
       color: 'from-green-400 to-emerald-600',
       projects: [
         {
-          name: 'Monstera Jungle',
-          description: 'Een grote Monstera Deliciosa die uitgroeit tot een echte jungle in de woonkamer.',
-          status: 'In groei',
+          name: t('cultivation.projects.houseplants.subProjects.monsteraJungle.name'),
+          description: t('cultivation.projects.houseplants.subProjects.monsteraJungle.description'),
+          status: t('cultivation.projects.houseplants.subProjects.monsteraJungle.status'),
           date: '2024'
         },
         {
-          name: 'Luchtzuiverende Collectie',
-          description: 'Een selectie van planten die de luchtkwaliteit verbeteren en zuurstof produceren.',
-          status: 'Actief',
+          name: t('cultivation.projects.houseplants.subProjects.airPurifying.name'),
+          description: t('cultivation.projects.houseplants.subProjects.airPurifying.description'),
+          status: t('cultivation.projects.houseplants.subProjects.airPurifying.status'),
           date: '2024'
         }
       ]
     },
     {
       icon: <Tent className="w-12 h-12" />,
-      title: 'Binnenkweek Tent',
-      description: 'Gecontroleerde binnenkweek voor microgreens, tropische planten en experimentele teelt. Een perfecte omgeving voor het hele jaar door groeien.',
-      details: ['Microgreens', 'Tropische Planten', 'LED Verlichting', 'Klimaatcontrole', 'Hydroponics'],
+      title: t('cultivation.projects.indoorTent.title'),
+      description: t('cultivation.projects.indoorTent.description'),
+      details: t('cultivation.projects.indoorTent.details', { returnObjects: true }) as string[],
       photoPlaceholder: '🏠',
       color: 'from-blue-400 to-cyan-600',
       projects: [
         {
-          name: 'Microgreens Station',
-          description: 'Een compacte setup voor het kweken van verse microgreens zoals radijs, broccoli en erwten.',
-          status: 'In ontwikkeling',
+          name: t('cultivation.projects.indoorTent.subProjects.microgreensStation.name'),
+          description: t('cultivation.projects.indoorTent.subProjects.microgreensStation.description'),
+          status: t('cultivation.projects.indoorTent.subProjects.microgreensStation.status'),
           date: '2024'
         },
         {
-          name: 'Tropische Planten Kwekerij',
-          description: 'Een warme, vochtige omgeving voor het kweken van tropische planten en exotische soorten.',
-          status: 'Gepland',
+          name: t('cultivation.projects.indoorTent.subProjects.tropicalNursery.name'),
+          description: t('cultivation.projects.indoorTent.subProjects.tropicalNursery.description'),
+          status: t('cultivation.projects.indoorTent.subProjects.tropicalNursery.status'),
           date: '2025'
         }
       ]
     },
     {
       icon: <Circle className="w-12 h-12" />,
-      title: 'Fungi & Mushrooms',
-      description: 'Het fascinerende proces van het kweken van paddenstoelen en schimmels. Van oesterzwammen tot medicinale soorten.',
-      details: ['Oesterzwammen', 'Shiitake', 'Medicinale Soorten', 'Mycelium', 'Substraat'],
+      title: t('cultivation.projects.fungi.title'),
+      description: t('cultivation.projects.fungi.description'),
+      details: t('cultivation.projects.fungi.details', { returnObjects: true }) as string[],
       photoPlaceholder: '🍄',
       color: 'from-purple-400 to-pink-600',
       projects: [
         {
-          name: 'Oesterzwam Kwekerij',
-          description: 'Een setup voor het kweken van verse oesterzwammen op koffiedik en houtsubstraat.',
-          status: 'Experimenteel',
+          name: t('cultivation.projects.fungi.subProjects.oysterFarm.name'),
+          description: t('cultivation.projects.fungi.subProjects.oysterFarm.description'),
+          status: t('cultivation.projects.fungi.subProjects.oysterFarm.status'),
           date: '2024'
         },
         {
-          name: 'Medicinale Fungi',
-          description: 'Onderzoek naar het kweken van medicinale paddenstoelen zoals Lion\'s Mane en Reishi.',
-          status: 'Onderzoek',
+          name: t('cultivation.projects.fungi.subProjects.medicinalFungi.name'),
+          description: t('cultivation.projects.fungi.subProjects.medicinalFungi.description'),
+          status: t('cultivation.projects.fungi.subProjects.medicinalFungi.status'),
           date: '2025'
         }
       ]
     },
     {
       icon: <TreePine className="w-12 h-12" />,
-      title: 'Moestuin',
-      description: 'Buitenkweek van groenten, kruiden en fruit. Van zaad tot oogst, het volledige proces van natuurlijke teelt.',
-      details: ['Groenten', 'Kruiden', 'Fruit', 'Compost', 'Biologische Teelt'],
+      title: t('cultivation.projects.vegetableGarden.title'),
+      description: t('cultivation.projects.vegetableGarden.description'),
+      details: t('cultivation.projects.vegetableGarden.details', { returnObjects: true }) as string[],
       photoPlaceholder: '🥕',
       color: 'from-orange-400 to-red-600',
       projects: [
         {
-          name: 'Seizoensgroenten',
-          description: 'Een gevarieerde moestuin met seizoensgebonden groenten en kruiden.',
-          status: 'Actief',
+          name: t('cultivation.projects.vegetableGarden.subProjects.seasonalVegetables.name'),
+          description: t('cultivation.projects.vegetableGarden.subProjects.seasonalVegetables.description'),
+          status: t('cultivation.projects.vegetableGarden.subProjects.seasonalVegetables.status'),
           date: '2024'
         },
         {
-          name: 'Compost Systeem',
-          description: 'Een efficiënt compostsysteem voor het recyclen van organisch afval.',
-          status: 'In gebruik',
+          name: t('cultivation.projects.vegetableGarden.subProjects.compostSystem.name'),
+          description: t('cultivation.projects.vegetableGarden.subProjects.compostSystem.description'),
+          status: t('cultivation.projects.vegetableGarden.subProjects.compostSystem.status'),
           date: '2024'
         }
       ]
     },
     {
       icon: <Cpu className="w-12 h-12" />,
-      title: 'Kweek Automatisatie',
-      description: 'Technologische oplossingen voor het automatiseren van kweekprocessen. Van sensoren tot geautomatiseerde irrigatie.',
-      details: ['IoT Sensoren', 'Automatische Irrigatie', 'Klimaatcontrole', 'Data Logging', 'Remote Monitoring'],
+      title: t('cultivation.projects.automation.title'),
+      description: t('cultivation.projects.automation.description'),
+      details: t('cultivation.projects.automation.details', { returnObjects: true }) as string[],
       photoPlaceholder: '🤖',
       color: 'from-indigo-400 to-purple-600',
       projects: [
         {
-          name: 'Smart Irrigation System',
-          description: 'Een geautomatiseerd irrigatiesysteem met vochtigheidssensoren en timers.',
-          status: 'In ontwikkeling',
+          name: t('cultivation.projects.automation.subProjects.smartIrrigation.name'),
+          description: t('cultivation.projects.automation.subProjects.smartIrrigation.description'),
+          status: t('cultivation.projects.automation.subProjects.smartIrrigation.status'),
           date: '2024'
         },
         {
-          name: 'Klimaat Monitoring',
-          description: 'Een systeem voor het monitoren van temperatuur, vochtigheid en licht in kweekruimtes.',
-          status: 'Prototype',
+          name: t('cultivation.projects.automation.subProjects.climateMonitoring.name'),
+          description: t('cultivation.projects.automation.subProjects.climateMonitoring.description'),
+          status: t('cultivation.projects.automation.subProjects.climateMonitoring.status'),
           date: '2024'
         }
       ]
     },
     {
       icon: <Thermometer className="w-12 h-12" />,
-      title: 'Monitoring & Data',
-      description: 'Het verzamelen en analyseren van data over groeiomstandigheden om de kweek te optimaliseren.',
-      details: ['Data Logging', 'Groeianalyse', 'Optimalisatie', 'Trends', 'Voorspellingen'],
+      title: t('cultivation.projects.monitoring.title'),
+      description: t('cultivation.projects.monitoring.description'),
+      details: t('cultivation.projects.monitoring.details', { returnObjects: true }) as string[],
       photoPlaceholder: '📊',
       color: 'from-teal-400 to-cyan-600',
       projects: [
         {
-          name: 'Groeidata Dashboard',
-          description: 'Een dashboard voor het visualiseren van kweekdata en groeitrends.',
-          status: 'Concept',
+          name: t('cultivation.projects.monitoring.subProjects.growthDashboard.name'),
+          description: t('cultivation.projects.monitoring.subProjects.growthDashboard.description'),
+          status: t('cultivation.projects.monitoring.subProjects.growthDashboard.status'),
           date: '2025'
         },
         {
-          name: 'Predictive Analytics',
-          description: 'Machine learning modellen voor het voorspellen van groei en oogsttijden.',
-          status: 'Onderzoek',
+          name: t('cultivation.projects.monitoring.subProjects.predictiveAnalytics.name'),
+          description: t('cultivation.projects.monitoring.subProjects.predictiveAnalytics.description'),
+          status: t('cultivation.projects.monitoring.subProjects.predictiveAnalytics.status'),
           date: '2025'
         }
       ]
@@ -155,11 +157,10 @@ export const CultivationPage: React.FC = () => {
             </Link>
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                🌱 Cultivation & Growing
+                🌱 {t('cultivation.title')}
               </h1>
               <p className="text-lg text-white/80 max-w-3xl leading-relaxed">
-                Van kamerplanten tot geautomatiseerde kweeksystemen - ontdek mijn passie voor het kweken 
-                en verzorgen van planten. Een combinatie van traditionele teelt en moderne technologie.
+                {t('cultivation.description')}
               </p>
             </div>
           </div>
@@ -180,7 +181,7 @@ export const CultivationPage: React.FC = () => {
                 <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center border-b border-white/10">
                   <div className="text-center">
                     <div className="text-6xl mb-4">{project.photoPlaceholder}</div>
-                    <p className="text-white/60 text-sm">Project foto's voor {project.title}</p>
+                    <p className="text-white/60 text-sm">{t('cultivation.photoPlaceholder')} {project.title}</p>
                   </div>
                 </div>
 
@@ -212,24 +213,28 @@ export const CultivationPage: React.FC = () => {
 
                   {/* Projects List */}
                   <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white mb-3">Actieve Projecten:</h4>
+                    <h4 className="text-lg font-semibold text-white mb-3">{t('cultivation.activeProjects')}</h4>
                     {project.projects.map((subProject, subIndex) => (
                       <div key={subIndex} className="bg-dark-bg/50 rounded-lg p-4 border border-white/5">
                         <div className="flex items-center justify-between mb-2">
                           <h5 className="font-medium text-white">{subProject.name}</h5>
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            subProject.status === 'Actief' ? 'bg-green-500/20 text-green-400' :
-                            subProject.status === 'In ontwikkeling' ? 'bg-blue-500/20 text-blue-400' :
-                            subProject.status === 'Gepland' ? 'bg-yellow-500/20 text-yellow-400' :
-                            subProject.status === 'Experimenteel' ? 'bg-purple-500/20 text-purple-400' :
-                            subProject.status === 'Onderzoek' ? 'bg-orange-500/20 text-orange-400' :
+                            subProject.status === t('cultivation.status.active') ? 'bg-green-500/20 text-green-400' :
+                            subProject.status === t('cultivation.status.inDevelopment') ? 'bg-blue-500/20 text-blue-400' :
+                            subProject.status === t('cultivation.status.planned') ? 'bg-yellow-500/20 text-yellow-400' :
+                            subProject.status === t('cultivation.status.experimental') ? 'bg-purple-500/20 text-purple-400' :
+                            subProject.status === t('cultivation.status.research') ? 'bg-orange-500/20 text-orange-400' :
+                            subProject.status === t('cultivation.status.growing') ? 'bg-green-500/20 text-green-400' :
+                            subProject.status === t('cultivation.status.inUse') ? 'bg-blue-500/20 text-blue-400' :
+                            subProject.status === t('cultivation.status.prototype') ? 'bg-purple-500/20 text-purple-400' :
+                            subProject.status === t('cultivation.status.concept') ? 'bg-yellow-500/20 text-yellow-400' :
                             'bg-gray-500/20 text-gray-400'
                           }`}>
                             {subProject.status}
                           </span>
                         </div>
                         <p className="text-white/60 text-sm mb-2">{subProject.description}</p>
-                        <p className="text-white/40 text-xs">Start: {subProject.date}</p>
+                        <p className="text-white/40 text-xs">{t('cultivation.startDate')} {subProject.date}</p>
                       </div>
                     ))}
                   </div>
@@ -241,29 +246,26 @@ export const CultivationPage: React.FC = () => {
           {/* Philosophy Section */}
           <div className="mt-16 text-center">
             <h2 className="text-3xl font-bold text-white mb-6">
-              Waarom Cultivation?
+              {t('cultivation.philosophy.title')}
             </h2>
             <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed mb-8">
-              Het kweken van planten is meer dan alleen een hobby - het is een manier om verbinding te maken 
-              met de natuur, te leren over duurzaamheid, en technologie te gebruiken om groei te optimaliseren. 
-              Elke plant heeft zijn eigen behoeften en uitdagingen, wat het een perfecte combinatie maakt van 
-              wetenschap, kunst en geduld.
+              {t('cultivation.philosophy.description')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
                 <div className="text-4xl mb-4">🌱</div>
-                <h3 className="text-xl font-bold text-neon-green mb-3">Natuur & Duurzaamheid</h3>
-                <p className="text-white/70">Het kweken van eigen voedsel en planten draagt bij aan een duurzamere levensstijl en milieubewustzijn.</p>
+                <h3 className="text-xl font-bold text-neon-green mb-3">{t('cultivation.philosophyCards.nature.title')}</h3>
+                <p className="text-white/70">{t('cultivation.philosophyCards.nature.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
                 <div className="text-4xl mb-4">🔬</div>
-                <h3 className="text-xl font-bold text-neon-green mb-3">Wetenschap & Technologie</h3>
-                <p className="text-white/70">Het combineren van traditionele kweekmethoden met moderne technologie voor optimale resultaten.</p>
+                <h3 className="text-xl font-bold text-neon-green mb-3">{t('cultivation.philosophyCards.science.title')}</h3>
+                <p className="text-white/70">{t('cultivation.philosophyCards.science.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
                 <div className="text-4xl mb-4">🧘</div>
-                <h3 className="text-xl font-bold text-neon-green mb-3">Mindfulness & Geduld</h3>
-                <p className="text-white/70">Het verzorgen van planten leert geduld, aandacht en het waarderen van langzame, natuurlijke processen.</p>
+                <h3 className="text-xl font-bold text-neon-green mb-3">{t('cultivation.philosophyCards.mindfulness.title')}</h3>
+                <p className="text-white/70">{t('cultivation.philosophyCards.mindfulness.description')}</p>
               </div>
             </div>
           </div>
@@ -271,28 +273,28 @@ export const CultivationPage: React.FC = () => {
           {/* Technology Integration */}
           <div className="mt-16">
             <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Technologie & Innovatie
+              {t('cultivation.technology.title')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10 text-center">
                 <Thermometer className="w-8 h-8 text-neon-blue mx-auto mb-3" />
-                <h3 className="text-lg font-semibold text-white mb-2">Sensoren</h3>
-                <p className="text-white/70 text-sm">Temperatuur, vochtigheid en licht monitoring</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{t('cultivation.technology.sensors.title')}</h3>
+                <p className="text-white/70 text-sm">{t('cultivation.technology.sensors.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10 text-center">
                 <Droplets className="w-8 h-8 text-neon-green mx-auto mb-3" />
-                <h3 className="text-lg font-semibold text-white mb-2">Irrigatie</h3>
-                <p className="text-white/70 text-sm">Geautomatiseerde water- en voedingssystemen</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{t('cultivation.technology.irrigation.title')}</h3>
+                <p className="text-white/70 text-sm">{t('cultivation.technology.irrigation.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10 text-center">
                 <Sun className="w-8 h-8 text-neon-yellow mx-auto mb-3" />
-                <h3 className="text-lg font-semibold text-white mb-2">LED Verlichting</h3>
-                <p className="text-white/70 text-sm">Energiezuinige groeilampen en spectrums</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{t('cultivation.technology.ledLighting.title')}</h3>
+                <p className="text-white/70 text-sm">{t('cultivation.technology.ledLighting.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10 text-center">
                 <Zap className="w-8 h-8 text-neon-purple mx-auto mb-3" />
-                <h3 className="text-lg font-semibold text-white mb-2">Automatisatie</h3>
-                <p className="text-white/70 text-sm">Smart home integratie en remote control</p>
+                <h3 className="text-lg font-semibold text-white mb-2">{t('cultivation.technology.automation.title')}</h3>
+                <p className="text-white/70 text-sm">{t('cultivation.technology.automation.description')}</p>
               </div>
             </div>
           </div>

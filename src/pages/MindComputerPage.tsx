@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
     Cpu,
     Brain,
@@ -14,118 +15,27 @@ import {
 } from 'lucide-react';
 
 export const MindComputerPage: React.FC = () => {
+    const { t } = useTranslation();
     const [currentDiagram, setCurrentDiagram] = useState(0);
 
-    const computerComponents = [
-        {
-            icon: <Cpu className="w-full h-full" />,
-            title: 'CPU (Meditatie & Focus)',
-            description: 'De centrale verwerkingseenheid van je mind die gedachten verwerkt en controleert.',
-            details: [
-                'Executive control en besluitvorming',
-                'Aandacht en focus management',
-                'Gedachtepatronen sturen',
-                'Emotionele regulatie'
-            ],
-            computerEquivalent: [
-                'Processor met meerdere cores',
-                'Task scheduler en priority management',
-                'Cache en instruction pipeline',
-                'Thermal management en throttling'
-            ],
-            research: 'Gebaseerd op moderne neurowetenschap en cognitieve psychologie. Meditatie traint letterlijk de prefrontale cortex, vergelijkbaar met CPU-training.'
-        },
-        {
-            icon: <HardDrive className="w-full h-full" />,
-            title: 'RAM & Cache (Kortetermijngeheugen)',
-            description: 'Werkgeheugen voor actieve gedachten en snelle toegang tot recente informatie.',
-            details: [
-                'Actieve gedachten en herinneringen',
-                'Kortetermijnassociaties',
-                'Werkruimte voor problemen',
-                'Context en focus behoud'
-            ],
-            computerEquivalent: [
-                'Random Access Memory (RAM)',
-                'L1, L2, L3 cache levels',
-                'Memory bandwidth en latency',
-                'Virtual memory en paging'
-            ],
-            research: 'Gebaseerd op werkgeheugen theorieën van Baddeley en Cowan. Vergelijkbaar met computer RAM dat constant wordt bijgewerkt.'
-        },
-        {
-            icon: <Brain className="w-full h-full" />,
-            title: 'GPU (Verbeelding & Creativiteit)',
-            description: 'Graphics processing voor creatieve output, droombeelden en visuele hallucinaties.',
-            details: [
-                'Visuele verbeelding en dromen',
-                'Creatieve patronen en associaties',
-                'Emotionele beelden en symbolen',
-                'Spatiale verwerking en navigatie'
-            ],
-            computerEquivalent: [
-                'Graphics Processing Unit (GPU)',
-                'Parallel processing van beelden',
-                'Texture mapping en rendering',
-                'CUDA cores en shader units'
-            ],
-            research: 'Gebaseerd op visuele cortex onderzoek en creativiteit studies. De rechter hersenhelft is gespecialiseerd in visuele verwerking, net als een GPU.'
-        },
-        {
-            icon: <HardDrive className="w-full h-full" />,
-            title: 'Database (Onderbewustzijn)',
-            description: 'Langetermijnopslag van herinneringen, ervaringen, trauma\'s en automatische patronen.',
-            details: [
-                'Langetermijnherinneringen en trauma\'s',
-                'Automatische gewoontes en scripts',
-                'Archetypen en collectieve patronen',
-                'Verborgen verbanden en associaties'
-            ],
-            computerEquivalent: [
-                'Hard disk drive (HDD) en SSD',
-                'Database indexing en queries',
-                'File system en data structuren',
-                'Backup en recovery systemen'
-            ],
-            research: 'Gebaseerd op Jung\'s collectief onbewuste en moderne geheugen theorieën. Het onderbewustzijn werkt als een enorme database met complexe indexering.'
-        },
-        {
-            icon: <Network className="w-full h-full" />,
-            title: 'Network & Firewall (Ego & Filters)',
-            description: 'Verbindingen met anderen, collectief bewustzijn en ego-filters die bepalen wat er binnenkomt.',
-            details: [
-                'Sociale verbindingen en empathie',
-                'Collectief bewustzijn en cultuur',
-                'Ego en persoonlijke filters',
-                'Grenzen en bescherming'
-            ],
-            computerEquivalent: [
-                'Network interface en protocols',
-                'Firewall en security rules',
-                'VPN en encrypted connections',
-                'Bandwidth en connection pooling'
-            ],
-            research: 'Gebaseerd op sociale psychologie en netwerk theorieën. Mensen zijn sociale wezens die constant informatie uitwisselen, net als computers in een netwerk.'
-        },
-        {
-            icon: <Zap className="w-full h-full" />,
-            title: 'I/O System (Zintuigen & Gedrag)',
-            description: 'Input/output van informatie via zintuigen en uiting van gedachten en emoties.',
-            details: [
-                'Zintuiglijke waarneming (input)',
-                'Spraak en lichaamstaal (output)',
-                'Emotionele expressie',
-                'Motorische controle en actie'
-            ],
-            computerEquivalent: [
-                'Input/Output controllers',
-                'USB en peripheral devices',
-                'Audio/video interfaces',
-                'Device drivers en protocols'
-            ],
-            research: 'Gebaseerd op sensorische verwerking en motorische controle theorieën. Zintuigen zijn letterlijk input devices, net als een toetsenbord of microfoon.'
-        }
+    const componentKeys = ['cpu', 'ram', 'gpu', 'database', 'network', 'io'];
+    const componentIcons = [
+        <Cpu className="w-full h-full" />,
+        <HardDrive className="w-full h-full" />,
+        <Brain className="w-full h-full" />,
+        <HardDrive className="w-full h-full" />,
+        <Network className="w-full h-full" />,
+        <Zap className="w-full h-full" />
     ];
+
+    const computerComponents = componentKeys.map((key, index) => ({
+        icon: componentIcons[index],
+        title: t(`mindComputer.components.${key}.title`),
+        description: t(`mindComputer.components.${key}.description`),
+        details: t(`mindComputer.components.${key}.details`, { returnObjects: true }) as string[],
+        computerEquivalent: t(`mindComputer.components.${key}.computerEquivalent`, { returnObjects: true }) as string[],
+        research: t(`mindComputer.components.${key}.research`)
+    }));
 
     return (
         <div className="min-h-screen bg-dark-bg text-white py-20">
@@ -138,11 +48,10 @@ export const MindComputerPage: React.FC = () => {
                     className="text-center mb-16"
                 >
                     <h1 className="text-5xl font-bold text-white mb-6">
-                        Mind als Computer
+                        {t('mindComputer.title')}
                     </h1>
                     <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
-                        Verken alle componenten van je mind-computer met gedetailleerde vergelijkingen
-                        en wetenschappelijke referenties. Gebruik de controls om door de verschillende onderdelen te navigeren.
+                        {t('mindComputer.subtitle')}
                     </p>
                 </motion.div>
 
@@ -154,11 +63,10 @@ export const MindComputerPage: React.FC = () => {
                     className="relative"
                 >
                     <h3 className="text-2xl font-bold text-white text-center mb-8">
-                        Interactief Mind-Computer Diagram
+                        {t('mindComputer.interactiveDiagram')}
                     </h3>
                     <p className="text-white/70 text-center mb-12 max-w-3xl mx-auto">
-                        Hover over de componenten om hun verbindingen en details te zien.
-                        Elk onderdeel heeft zijn eigen rol in het grotere systeem.
+                        {t('mindComputer.diagramDescription')}
                     </p>
 
                     {/* SVG Connections Layer */}
@@ -618,15 +526,15 @@ export const MindComputerPage: React.FC = () => {
                         <div className="inline-flex items-center space-x-6 bg-dark-secondary/30 backdrop-blur-sm rounded-full px-6 py-3 border border-white/10">
                             <div className="flex items-center space-x-2">
                                 <div className="w-4 h-1 bg-neon-green rounded-full" />
-                                <span className="text-white/70 text-sm">Data Flow</span>
+                                <span className="text-white/70 text-sm">{t('mindComputer.dataFlow')}</span>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <div className="w-3 h-3 bg-neon-purple rounded-full" />
-                                <span className="text-white/70 text-sm">Active Component</span>
+                                <span className="text-white/70 text-sm">{t('mindComputer.activeComponent')}</span>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <div className="w-3 h-3 bg-white/30 rounded-full" />
-                                <span className="text-white/70 text-sm">Connection Points</span>
+                                <span className="text-white/70 text-sm">{t('mindComputer.connectionPoints')}</span>
                             </div>
                         </div>
                     </motion.div>
@@ -657,7 +565,7 @@ export const MindComputerPage: React.FC = () => {
                         <div className="bg-dark-bg/50 rounded-lg p-4 border border-white/10">
                             <h4 className="text-neon-green font-semibold mb-3 flex items-center">
                                 <Brain className="w-4 h-4 mr-2" />
-                                Mind Functies
+                                {t('mindComputer.mindFunctions')}
                             </h4>
                             <ul className="space-y-2 text-white/80 text-sm">
                                 {computerComponents[currentDiagram].details.map((detail, index) => (
@@ -673,7 +581,7 @@ export const MindComputerPage: React.FC = () => {
                         <div className="bg-dark-bg/50 rounded-lg p-4 border border-white/10">
                             <h4 className="text-neon-blue font-semibold mb-3 flex items-center">
                                 <Cpu className="w-4 h-4 mr-2" />
-                                Computer Equivalent
+                                {t('mindComputer.computerEquivalent')}
                             </h4>
                             <div className="space-y-2 text-white/80 text-sm">
                                 {computerComponents[currentDiagram].computerEquivalent.map((equivalent, index) => (
@@ -684,7 +592,7 @@ export const MindComputerPage: React.FC = () => {
                                 ))}
                                 <div className="mt-3 p-2 bg-dark-secondary/30 rounded border border-white/10">
                                     <p className="text-xs text-white/60">
-                                        <strong>Let op:</strong> Dit zijn moderne interpretaties, niet wat de filosofen zelf zeiden.
+                                        <strong>{t('mindComputer.note')}</strong>
                                     </p>
                                 </div>
                             </div>
@@ -694,14 +602,13 @@ export const MindComputerPage: React.FC = () => {
                         <div className="bg-dark-bg/50 rounded-lg p-4 border border-white/10">
                             <h4 className="text-neon-purple font-semibold mb-3 flex items-center">
                                 <BookOpen className="w-4 h-4 mr-2" />
-                                Onderzoek & Referenties
+                                {t('mindComputer.researchReferences')}
                             </h4>
                             <div className="text-white/80 text-sm">
                                 <p className="mb-3">{computerComponents[currentDiagram].research}</p>
                                 <div className="bg-dark-secondary/30 rounded p-2 border border-white/10">
                                     <p className="text-xs text-white/60">
-                                        <strong>Tip:</strong> Deze vergelijkingen helpen om abstracte mentale processen
-                                        concreet en begrijpelijk te maken.
+                                        <strong>{t('mindComputer.tip')}</strong>
                                     </p>
                                 </div>
                             </div>
@@ -720,12 +627,10 @@ export const MindComputerPage: React.FC = () => {
                     >
                         <div className="text-center mb-6">
                             <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
-                                🧠 Voorlopig Volledig Schema
+                                🧠 {t('mindComputer.preliminarySchema')}
                             </h3>
                             <p className="text-white/70 mb-6 max-w-3xl mx-auto text-sm sm:text-base">
-                                Dit is het voorlopige complete overzicht van hoe de menselijke geest werkt als computer.
-                                De gedetailleerde uitleg en verdere uitwerking van elk onderdeel zal in de toekomst worden toegevoegd.
-                                Voor nu geeft dit schema een visueel overzicht van alle componenten en hun onderlinge verbindingen.
+                                {t('mindComputer.preliminaryDescription')}
                             </p>
                         </div>
 
@@ -751,11 +656,10 @@ export const MindComputerPage: React.FC = () => {
                         className="text-center mb-12"
                     >
                         <h2 className="text-3xl font-bold text-white mb-6">
-                            Filosofen & Onderzoekers
+                            {t('mindComputer.philosophersResearchers')}
                         </h2>
                         <p className="text-lg text-white/80 max-w-3xl mx-auto">
-                            Ontdek hoe grote denkers door de geschiedenis onze kijk op bewustzijn en de geest hebben gevormd.
-                            Elk heeft unieke inzichten die ons helpen begrijpen hoe de mind werkt.
+                            {t('mindComputer.philosophersDescription')}
                         </p>
                     </motion.div>
 
@@ -763,37 +667,31 @@ export const MindComputerPage: React.FC = () => {
                         {[
                             {
                                 name: 'Carl Jung',
-                                title: 'Analytische Psychologie',
-                                description: 'Grondlegger van de analytische psychologie, bekend om zijn werk over archetypen, het collectief onbewuste en persoonlijkheidstypen.',
+                                titleKey: 'carlJung',
                                 image: <Users className="w-12 h-12 text-neon-green" />,
                                 href: '/philosopher/carl-jung'
                             },
                             {
                                 name: 'William James',
-                                title: 'Pragmatische Filosofie',
-                                description: 'Amerikaanse filosoof en psycholoog die baanbrekend werk deed op het gebied van bewustzijn, religie en pragmatisme.',
+                                titleKey: 'williamJames',
                                 image: <Users className="w-12 h-12 text-neon-blue" />,
                                 href: '/philosopher/william-james'
                             },
                             {
                                 name: 'Sigmund Freud',
-                                title: 'Psychoanalyse',
-                                description: 'Oostenrijkse neuroloog en grondlegger van de psychoanalyse, bekend om zijn theorieën over het onbewuste en droominterpretatie.',
+                                titleKey: 'sigmundFreud',
                                 image: <Users className="w-12 h-12 text-neon-purple" />,
                                 href: '/philosopher/sigmund-freud'
                             },
                             {
                                 name: 'Alan Turing',
-                                title: 'Computerwetenschap & AI',
-                                description: 'Britse wiskundige en computerwetenschapper die de basis legde voor moderne computers en kunstmatige intelligentie.',
+                                titleKey: 'alanTuring',
                                 image: <Users className="w-12 h-12 text-orange-400" />,
                                 href: '/philosopher/alan-turing'
                             },
                             {
-
                                 name: 'Itzhak Bentov',
-                                title: 'Bewustzijn & Realiteit',
-                                description: 'Israëlische uitvinder en bewustzijnsonderzoeker die baanbrekend werk deed op het gebied van bewustzijn en realiteitscreatie.',
+                                titleKey: 'itzhakBentov',
                                 image: <Users className="w-12 h-12 text-pink-400" />,
                                 href: '/philosopher/itzhak-bentov'
                             }
@@ -813,17 +711,17 @@ export const MindComputerPage: React.FC = () => {
                                         {philosopher.name}
                                     </h3>
                                     <p className="text-neon-green text-sm font-medium mb-3">
-                                        {philosopher.title}
+                                        {t(`mindComputer.philosophers.${philosopher.titleKey}.title`)}
                                     </p>
                                     <p className="text-white/70 text-sm leading-relaxed">
-                                        {philosopher.description}
+                                        {t(`mindComputer.philosophers.${philosopher.titleKey}.description`)}
                                     </p>
                                 </div>
                                 <Link
                                     to={philosopher.href}
                                     className="inline-flex items-center space-x-2 text-neon-green hover:text-neon-blue transition-colors duration-300 text-sm font-medium w-full justify-center py-2 bg-dark-bg/30 rounded-lg hover:bg-dark-bg/50"
                                 >
-                                    <span>Lees Meer</span>
+                                    <span>{t('mindComputer.readMore')}</span>
                                     <ArrowLeft className="w-4 h-4 rotate-180" />
                                 </Link>
                             </motion.div>
@@ -840,55 +738,48 @@ export const MindComputerPage: React.FC = () => {
                         className="text-center mb-12"
                     >
                         <h2 className="text-3xl font-bold text-white mb-6">
-                            Onderzoeksgebieden & Topics
+                            {t('mindComputer.researchAreas')}
                         </h2>
                         <p className="text-lg text-white/80 max-w-3xl mx-auto">
-                            Verken verschillende aspecten van bewustzijn, technologie en hun onderlinge verbanden.
-                            Elk topic heeft zijn eigen gedetailleerde pagina met interactieve content.
+                            {t('mindComputer.researchDescription')}
                         </p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {[
                             {
-                                name: 'Substances & Bewustzijn',
-                                description: 'Onderzoek naar hoe verschillende stoffen het bewustzijn beïnvloeden en de bandbreedte van perceptie verbreden.',
+                                key: 'substances',
                                 icon: <Atom className="w-8 h-8" />,
                                 href: '/topics/substances'
                             },
                             {
-                                name: 'Meditatie & CPU Training',
-                                description: 'Technieken en methoden om de mentale processen te trainen en de executive control te versterken.',
+                                key: 'meditation',
                                 icon: <Brain className="w-8 h-8" />,
                                 href: '/topics/meditation'
                             },
                             {
-                                name: 'Bewustzijnsverruiming',
-                                description: 'Methoden en technieken om het bewustzijn te verruimen en nieuwe perspectieven te ontdekken.',
+                                key: 'consciousnessExpansion',
                                 icon: <Zap className="w-8 h-8" />,
                                 href: '/topics/consciousness-expansion'
                             },
                             {
-                                name: 'AI & Bewustzijn',
-                                description: 'De relatie tussen kunstmatige intelligentie en menselijk bewustzijn, en wat dit ons leert over onszelf.',
+                                key: 'aiConsciousness',
                                 icon: <Cpu className="w-8 h-8" />,
                                 href: '/topics/ai-consciousness'
                             },
                             {
-                                name: 'Neurale Netwerken',
-                                description: 'Hoe het brein functioneert als een complex netwerk en wat dit betekent voor bewustzijn en leren.',
+                                key: 'neuralNetworks',
                                 icon: <Network className="w-8 h-8" />,
                                 href: '/topics/neural-networks'
                             },
                             {
-                                name: 'Quantum Bewustzijn',
-                                description: 'Verkenning van de grens tussen bewustzijn en quantum fysica, en hoe deze elkaar beïnvloeden.',
+                                key: 'quantum',
                                 icon: <Atom className="w-8 h-8" />,
                                 href: '/topics/quantum'
                             },
                         ].map((topic, index) => (
                             <motion.div
-                                key={topic.name}
+                                key={topic.key}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 1.6 + index * 0.1 }}
@@ -899,17 +790,17 @@ export const MindComputerPage: React.FC = () => {
                                         {topic.icon}
                                     </div>
                                     <h3 className="text-lg font-bold text-white mb-2 group-hover:text-neon-green transition-colors duration-300">
-                                        {topic.name}
+                                        {t(`mindComputer.topics.${topic.key}.name`)}
                                     </h3>
                                     <p className="text-white/70 text-sm leading-relaxed">
-                                        {topic.description}
+                                        {t(`mindComputer.topics.${topic.key}.description`)}
                                     </p>
                                 </div>
                                 <Link
                                     to={topic.href}
                                     className="inline-flex items-center space-x-2 text-neon-green hover:text-neon-blue transition-colors duration-300 text-sm font-medium w-full justify-center py-2 bg-dark-bg/30 rounded-lg hover:bg-dark-bg/50"
                                 >
-                                    <span>Verken {topic.name}</span>
+                                    <span>{t('mindComputer.explore')} {t(`mindComputer.topics.${topic.key}.name`)}</span>
                                     <ArrowLeft className="w-4 h-4 rotate-180" />
                                 </Link>
                             </motion.div>

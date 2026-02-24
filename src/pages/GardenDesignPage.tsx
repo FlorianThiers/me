@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Download, Upload, ChevronLeft, ChevronRight, Settings, Package } from 'lucide-react';
 import { DesignCanvas } from '../components/gardenDesigner/DesignCanvas';
 import { Toolbar } from '../components/gardenDesigner/Toolbar';
@@ -22,6 +23,7 @@ const STATUS_BAR_HEIGHT = 40;
 const TOTAL_HEADER_HEIGHT = NAV_HEIGHT + PAGE_HEADER_HEIGHT + STATUS_BAR_HEIGHT;
 
 export const GardenDesignPage: React.FC = () => {
+  const { t } = useTranslation();
   // Dynamic canvas size based on viewport
   const [canvasSize, setCanvasSize] = useState({ 
     width: window.innerWidth, 
@@ -40,7 +42,7 @@ export const GardenDesignPage: React.FC = () => {
   }, []);
   const [designData, setDesignData] = useState<DesignData>({
     version: '1.0',
-    name: 'Nieuw Ontwerp',
+    name: t('gardenDesign.newDesign'),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     canvasWidth: window.innerWidth,
@@ -373,7 +375,7 @@ export const GardenDesignPage: React.FC = () => {
         setDesignData(loadedData);
         setSelectedElementIds([]);
       } catch (error) {
-        alert('Fout bij het laden van het bestand. Controleer of het een geldig JSON bestand is.');
+        alert(t('gardenDesign.errorLoading'));
       }
     };
     reader.readAsText(file);
@@ -414,7 +416,7 @@ export const GardenDesignPage: React.FC = () => {
             className="px-3 py-1.5 bg-neon-green/20 border border-neon-green/50 rounded-lg text-neon-green hover:bg-neon-green/30 transition-all duration-300 flex items-center gap-2 text-sm"
           >
             <Download className="w-4 h-4" />
-            Opslaan
+            {t('gardenDesign.save')}
           </button>
         </div>
       </div>
@@ -571,16 +573,12 @@ export const GardenDesignPage: React.FC = () => {
                  activeLayer === 'plants' ? 'Planten' : 'Water'}
               </div>
               <div>
-                <span className="text-neon-green">Tool:</span>{' '}
-                {activeTool === 'select' ? 'Selecteren' :
-                 activeTool === 'rectangle' ? 'Rechthoek' :
-                 activeTool === 'circle' ? 'Cirkel' :
-                 activeTool === 'line' ? 'Lijn' :
-                 activeTool === 'polygon' ? 'Polygoon' : 'Vrijhand'}
+                <span className="text-neon-green">{t('gardenDesign.tool')}</span>{' '}
+                {t(`gardenDesign.tools.${activeTool}`)}
               </div>
             </div>
             <div className="text-white/40">
-              {designData.elements.length} objecten
+              {designData.elements.length} {designData.elements.length === 1 ? t('gardenDesign.object') : t('gardenDesign.objects')}
             </div>
           </div>
         </div>

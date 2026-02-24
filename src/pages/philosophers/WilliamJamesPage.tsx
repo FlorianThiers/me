@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Brain, Users, Lightbulb, Calendar, MapPin, Award, Zap } from 'lucide-react';
 
 export const WilliamJamesPage: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen pt-20 bg-dark-secondary relative overflow-hidden">
       {/* Decoratieve achtergrond elementen */}
@@ -26,11 +28,10 @@ export const WilliamJamesPage: React.FC = () => {
             className="mb-8"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6 neon-text">
-              William James
+              {t('williamJames.title')}
             </h1>
             <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed">
-              De Amerikaanse filosoof en psycholoog die de fundamenten legde voor pragmatische filosofie 
-              en ons begrip van bewustzijn als een continue stroom van ervaringen
+              {t('williamJames.subtitle')}
             </p>
           </motion.div>
 
@@ -45,7 +46,7 @@ export const WilliamJamesPage: React.FC = () => {
               className="inline-flex items-center space-x-2 text-neon-green hover:text-neon-blue transition-colors duration-300"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span>Terug naar Mind as Computer</span>
+              <span>{t('williamJames.backToMindComputer')}</span>
             </Link>
           </motion.div>
         </div>
@@ -59,41 +60,41 @@ export const WilliamJamesPage: React.FC = () => {
             className="bg-gradient-to-r from-neon-blue/20 to-neon-green/20 rounded-2xl p-8 border border-neon-blue/30"
           >
             <h2 className="text-2xl font-bold text-white mb-6 text-center">
-              Persoonlijke Informatie & Geschiedenis
+              {t('williamJames.personalInfo')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-neon-blue" />
                   <div>
-                    <h3 className="font-semibold text-white">Geboren:</h3>
+                    <h3 className="font-semibold text-white">{t('williamJames.born')}</h3>
                     <p className="text-white/70">11 januari 1842, New York City, VS</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-neon-blue" />
                   <div>
-                    <h3 className="font-semibold text-white">Overleden:</h3>
+                    <h3 className="font-semibold text-white">{t('williamJames.died')}</h3>
                     <p className="text-white/70">26 augustus 1910, Chocorua, New Hampshire, VS</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-neon-blue" />
                   <div>
-                    <h3 className="font-semibold text-white">Nationaliteit:</h3>
+                    <h3 className="font-semibold text-white">{t('williamJames.nationality')}</h3>
                     <p className="text-white/70">Amerikaans</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Award className="w-5 h-5 text-neon-blue" />
                   <div>
-                    <h3 className="font-semibold text-white">Beroep:</h3>
+                    <h3 className="font-semibold text-white">{t('williamJames.occupation')}</h3>
                     <p className="text-white/70">Filosoof, Psycholoog, Arts, Professor</p>
                   </div>
                 </div>
               </div>
               <div className="space-y-4">
-                <h3 className="font-semibold text-white mb-3">Belangrijkste Opleiding:</h3>
+                <h3 className="font-semibold text-white mb-3">{t('williamJames.mainEducation')}</h3>
                 <ul className="space-y-2 text-white/70 text-sm">
                   <li>• Geneeskunde aan Harvard Medical School</li>
                   <li>• Filosofie en psychologie aan Harvard University</li>
@@ -114,10 +115,10 @@ export const WilliamJamesPage: React.FC = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white mb-6">
-              Kern Theorieën & Concepten
+              {t('williamJames.coreTheories')}
             </h2>
             <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              James' revolutionaire inzichten over bewustzijn, pragmatisme en de menselijke ervaring
+              {t('williamJames.coreTheoriesSubtitle')}
             </p>
           </motion.div>
 
@@ -311,8 +312,7 @@ export const WilliamJamesPage: React.FC = () => {
           className="text-center"
         >
           <p className="text-white/70 mb-6 text-lg">
-            Geïnteresseerd in het bespreken van James' pragmatische filosofie of hoe ze toegepast 
-            kan worden in moderne technologie en bewustzijnsonderzoek?
+            {t('williamJames.cta')}
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -322,7 +322,7 @@ export const WilliamJamesPage: React.FC = () => {
               to="/#contact"
               className="inline-block bg-gradient-to-r from-neon-green to-neon-blue text-dark-bg font-bold py-3 px-8 rounded-full hover:shadow-2xl hover:shadow-neon-green/30 transition-all duration-300"
             >
-              Laten we Bespreken
+              {t('williamJames.ctaButton')}
             </Link>
           </motion.div>
         </motion.div>
