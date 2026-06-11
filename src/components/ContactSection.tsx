@@ -36,9 +36,7 @@ export const ContactSection: React.FC = () => {
     console.log(`Using email service: ${service}`);
     
     // Warn if service is not configured
-    if (service === 'brevo' && !import.meta.env.VITE_BREVO_API_KEY) {
-      console.warn('Brevo API key is not configured. Please add VITE_BREVO_API_KEY to your .env file.');
-    } else if (service === 'web3forms' && !import.meta.env.VITE_WEB3FORMS_ACCESS_KEY) {
+    if (service === 'web3forms' && !import.meta.env.VITE_WEB3FORMS_ACCESS_KEY) {
       console.warn('Web3Forms access key is not configured. Please add VITE_WEB3FORMS_ACCESS_KEY to your .env file.');
     } else if (service === 'formspree' && !import.meta.env.VITE_FORMSPREE_FORM_ID) {
       console.warn('Formspree form ID is not configured. Please add VITE_FORMSPREE_FORM_ID to your .env file.');

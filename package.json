@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:vercel": "vercel dev",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -29,6 +30,7 @@
     "@types/node": "^25.2.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
+    "@vercel/node": "^5.8.15",
     "@vitejs/plugin-react": "^5.0.0",
     "autoprefixer": "^10.4.21",
     "dotenv": "^17.2.3",

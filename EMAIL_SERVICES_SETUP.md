@@ -70,50 +70,67 @@ VITE_FORMSPREE_FORM_ID=xvgkqjpn
 
 ---
 
-## 🎯 Alternatief 2: Brevo (Sendinblue) - Vereist SMS
+## ⭐ Productie: Brevo (Sendinblue) — standaard op florian-tau.vercel.app
 
 **Waarom Brevo?**
-- ✅ **300 emails/dag** gratis (veel meer dan Resend's 3,000/maand)
+- ✅ **300 emails/dag** gratis
 - ✅ **Geen domain limiet** op gratis tier
-- ✅ Betrouwbaar en snel
-- ✅ Goede deliverability
+- ✅ API key blijft **server-side** via `/api/contact` (niet in de browser)
 
-### Stap 1: Brevo Account Aanmaken
+Account bestaat al (welcome-mails feb/mrt 2026 op `florthiers@gmail.com`).
 
-1. Ga naar [Brevo.com](https://www.brevo.com) (voorheen Sendinblue)
-2. Klik op "Sign Up Free"
-3. Maak een account aan
-4. Verifieer je email adres
+### Stap 1: API key (als je die nog niet hebt)
 
-### Stap 2: API Key Aanmaken
+1. [Brevo API Keys](https://app.brevo.com/settings/keys/api) → **Generate a new API key**
+2. Naam: `portfolio-mandelbrot-contact`
+3. Key kopiëren (één keer zichtbaar)
 
-1. Ga naar [Brevo API Keys](https://app.brevo.com/settings/keys/api)
-2. Klik op "Generate a new API key"
-3. Geef het een naam (bijv. "Portfolio Contact Form")
-4. Kopieer de API key (je ziet hem maar één keer!)
+### Stap 2: Sender verifiëren
 
-### Stap 3: Email Adres Verifiëren
+1. [Brevo Senders](https://app.brevo.com/settings/senders)
+2. `florthiers@gmail.com` als sender — verifieer via de mail als dat nog niet gebeurd is
 
-1. Ga naar [Brevo Senders](https://app.brevo.com/settings/senders)
-2. Klik op "Add a sender"
-3. Voeg je email adres toe (bijv. `florthiers@gmail.com`)
-4. Verifieer je email adres via de link die je ontvangt
+### Stap 3: Vercel environment variables
 
-### Stap 4: Environment Variables Toevoegen
-
-Voeg toe aan je `.env` bestand:
+In het Vercel-project **florian-tau** (Production + Preview):
 
 ```env
-# Email Service Configuration
 VITE_EMAIL_SERVICE=brevo
-
-# Brevo Configuration
-VITE_BREVO_API_KEY=xkeysib-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-VITE_BREVO_FROM_EMAIL=florthiers@gmail.com
-VITE_BREVO_TO_EMAIL=florthiers@gmail.com
+BREVO_API_KEY=xkeysib-...
+BREVO_FROM_EMAIL=florthiers@gmail.com
+BREVO_TO_EMAIL=florthiers@gmail.com
 ```
 
-**Klaar!** Je contact formulier gebruikt nu Brevo.
+`BREVO_*` zonder `VITE_` prefix — alleen de serverless route `/api/contact` leest die.
+
+### `.env` en tokens die eindigen op `==`
+
+Brevo MCP-tokens zijn base64 en eindigen vaak op `==`. Zet die **altijd tussen dubbele quotes**:
+
+```env
+BREVO_MCP_TOKEN="eyJhcGlfa2V5IjoiLi4uIn0=="
+```
+
+Zonder quotes kan een editor of parser de trailing `=` weglaten.
+
+**Contactform** gebruikt de gewone REST-key (`xkeysib-...`), niet de MCP-wrapper — die heeft geen `==`:
+
+```env
+BREVO_API_KEY="xkeysib-..."
+```
+
+### Stap 4: Lokaal testen
+
+```powershell
+cd C:\Users\flort\MySpace\me
+copy .env.example .env
+# vul BREVO_API_KEY in .env
+npx vercel dev
+```
+
+`npm run dev` alleen draait Vite; contactform test je best met `vercel dev` zodat `/api/contact` meedraait.
+
+**Klaar!** Contactform op de site gebruikt Brevo via `/api/contact`.
 
 ---
 
