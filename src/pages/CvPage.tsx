@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
@@ -15,6 +15,18 @@ export const CvPage: React.FC = () => {
   const handlePrint = () => {
     window.print();
   };
+
+  useEffect(() => {
+    const onBeforePrint = () => document.body.classList.add('cv-print-mode');
+    const onAfterPrint = () => document.body.classList.remove('cv-print-mode');
+    window.addEventListener('beforeprint', onBeforePrint);
+    window.addEventListener('afterprint', onAfterPrint);
+    return () => {
+      window.removeEventListener('beforeprint', onBeforePrint);
+      window.removeEventListener('afterprint', onAfterPrint);
+      document.body.classList.remove('cv-print-mode');
+    };
+  }, []);
 
   return (
     <div className="min-h-screen pt-20 pb-16 cv-page bg-dark-bg">
@@ -41,7 +53,7 @@ export const CvPage: React.FC = () => {
         <p className="text-white/50 text-sm mt-3">{t('cv.printHint')}</p>
       </div>
 
-      <div className="container-custom px-4 max-w-4xl mx-auto">
+      <div className="cv-print-wrap container-custom px-4 max-w-4xl mx-auto">
         <article className="cv-sheet relative overflow-hidden rounded-2xl border border-neon-green/25 bg-gradient-to-b from-dark-secondary to-dark-bg shadow-2xl shadow-neon-green/10">
           <div
             className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neon-green via-neon-blue to-neon-pink"

@@ -165,7 +165,7 @@
     "viewOrDownload": "Ver o descargar CV",
     "backHome": "Volver al inicio",
     "saveAsPdf": "Guardar como PDF",
-    "printHint": "Consejo: en el diálogo de impresión, activa \"Gráficos de fondo\" para el tema neon completo. Luego elige \"Guardar como PDF\".",
+    "printHint": "Consejo: activa \"Gráficos de fondo\" y desactiva \"Encabezados y pies de página\" para una página oscura sin bordes blancos.",
     "updated": "Última actualización",
     "summary": "Resumen",
     "experience": "Experiencia",

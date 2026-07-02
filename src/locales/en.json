@@ -165,7 +165,7 @@
     "viewOrDownload": "View or download CV",
     "backHome": "Back to home",
     "saveAsPdf": "Save as PDF",
-    "printHint": "Tip: in the print dialog, enable \"Background graphics\" for the full neon theme. Then choose \"Save as PDF\".",
+    "printHint": "Tip: in print settings turn ON \"Background graphics\" and turn OFF \"Headers and footers\" for a full dark page without white borders.",
     "updated": "Last updated",
     "summary": "Summary",
     "experience": "Experience",
