@@ -130,17 +130,22 @@
   .border-neon-orange\/50 { border-color: rgba(255, 102, 0, 0.5); }
 }
 
-/* CV print — clean PDF for recruiters */
+/* CV print — keep site theme (enable background graphics in print dialog) */
 @media print {
-  body {
-    background: #fff !important;
-    color: #111 !important;
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body,
+  .App {
+    background: #0a0a0a !important;
+    color: #ffffff !important;
   }
 
   .cv-no-print,
   nav,
   footer,
-  .scroll-to-top,
   button[aria-label='Scroll to top'] {
     display: none !important;
   }
@@ -148,48 +153,23 @@
   .cv-page {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    background: #0a0a0a !important;
   }
 
   .cv-sheet {
     max-width: 100% !important;
-    padding: 0 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
   }
 
-  .cv-header {
-    border-color: #ddd !important;
-  }
-
-  .cv-section-title {
-    color: #111 !important;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.25rem;
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .cv-sheet h1,
-  .cv-sheet h2,
-  .cv-sheet h3,
-  .cv-sheet p,
-  .cv-sheet li,
-  .cv-sheet span,
-  .cv-sheet a {
-    color: #111 !important;
-  }
-
-  .cv-sheet a {
-    text-decoration: none;
-  }
-
-  .text-neon-green,
-  .text-neon-blue {
-    color: #0a6b3a !important;
+  .neon-text {
+    background: linear-gradient(to right, #00ff88, #0088ff, #ff0088) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
   }
 }
 
 .cv-section-title {
-  @apply text-lg font-bold text-white mb-3 uppercase tracking-wide;
+  @apply text-lg font-bold text-white mb-3 uppercase tracking-wide border-b border-neon-green/30 pb-2;
 }

@@ -10,13 +10,13 @@
   "hero": {
     "title": "Hola, soy Flor",
     "subtitle": "Desarrollador Full-Stack y Entusiasta de la Tecnología",
-    "description": "Desarrollo productos full-stack para Servelec (E-stock) y Urban Culture en Gante — desde plataformas B2B hasta hubs comunitarios. React, TypeScript, Next.js, Supabase, Python.",
+    "description": "Desarrollo productos full-stack para Servelec y Urban Culture en Gante — desde plataformas B2B hasta hubs comunitarios. React, TypeScript, Next.js, Supabase, Python.",
     "cta": "Trabajemos Juntos",
     "scroll": "Desplázate para explorar"
   },
   "about": {
     "title": "Sobre Mí",
-    "description": "Soy un desarrollador apasionado con más de 7 años de experiencia. Construyo la plataforma Servelec E-stock (ciclo de producto, RMA, almacén) y el hub Urban Culture para ParkSports y Corridor en Gante — como miembro de la junta de LifeGroup. Proyectos propios: ImmoGen y Vijverstofzuigers.",
+    "description": "Soy un desarrollador apasionado con más de 7 años de experiencia. Construyo plataformas web para Servelec y el hub Urban Culture para ParkSports y Corridor en Gante — como miembro de la junta de LifeGroup. Proyectos propios: ImmoGen y Vijverstofzuigers.",
     "experience": "Años de Experiencia",
     "projects": "Proyectos",
     "skills": "Habilidades Principales",
@@ -55,11 +55,11 @@
     "letsWorkTogether": "Trabajemos Juntos",
     "events": {
       "event1": {
-        "title": "Servelec E-stock y Urban Culture",
+        "title": "Servelec y Urban Culture",
         "company": "LifeGroup · Servelec · Urban Culture",
         "location": "Bélgica",
-        "description": "Desarrollo full-stack en la plataforma B2B Servelec E-stock (Next.js, Supabase, integraciones TIP) y el sitio paraguas Urban Culture Gent. Miembro de la junta de LifeGroup — ingeniería y gobernanza.",
-        "achievements": ["Plataforma Servelec E-stock", "Hub Urban Culture (ParkSports + Corridor)", "Junta LifeGroup + entrega"]
+        "description": "Desarrollo full-stack para la plataforma B2B de Servelec y el sitio paraguas Urban Culture Gent. Miembro de la junta de LifeGroup — ingeniería y gobernanza.",
+        "achievements": ["Plataforma B2B Servelec", "Hub Urban Culture (ParkSports + Corridor)", "Junta LifeGroup + entrega"]
       },
       "event2": {
         "title": "Educación en Desarrollo Web",
@@ -165,7 +165,7 @@
     "viewOrDownload": "Ver o descargar CV",
     "backHome": "Volver al inicio",
     "saveAsPdf": "Guardar como PDF",
-    "printHint": "Consejo: usa imprimir en el navegador y elige \"Guardar como PDF\".",
+    "printHint": "Consejo: en el diálogo de impresión, activa \"Gráficos de fondo\" para el tema neon completo. Luego elige \"Guardar como PDF\".",
     "updated": "Última actualización",
     "summary": "Resumen",
     "experience": "Experiencia",

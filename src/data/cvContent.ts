@@ -29,9 +29,9 @@ export interface CvContent {
 
 const sharedProjects = [
   {
-    name: 'Servelec E-stock Platform',
-    stack: 'Next.js, TypeScript, Supabase, TIP/Outlook',
-    description: 'B2B ops platform: product lifecycle, RMA, warehouse tasks, Nouvelec invoice parsing, multi-brand admin.',
+    name: 'Servelec Platform',
+    stack: 'Next.js, TypeScript, Supabase',
+    description: 'Private B2B platform for operations, admin tools and system integrations.',
   },
   {
     name: 'Urban Culture Gent',
@@ -63,7 +63,7 @@ const contentByLocale: Record<CvLocale, CvContent> = {
   en: {
     headline: 'Full-Stack Developer · React · TypeScript · Python · AI workflows',
     summary:
-      'Developer with 7+ years of hands-on experience. Builds the Servelec E-stock platform and Urban Culture hub (ParkSports + Corridor) while serving on the LifeGroup board. Side projects include ImmoGen and client sites.',
+      'Developer with 7+ years of hands-on experience. Builds web platforms for Servelec and the Urban Culture hub (ParkSports + Corridor) while serving on the LifeGroup board. Side projects include ImmoGen and client sites.',
     experience: [
       {
         period: '2025 — present',
@@ -71,7 +71,7 @@ const contentByLocale: Record<CvLocale, CvContent> = {
         org: 'LifeGroup · Servelec · Urban Culture',
         location: 'Belgium',
         bullets: [
-          'Ship and maintain the Servelec E-stock platform (product lifecycle, RMA, warehouse, TIP/Outlook).',
+          'Develop and maintain Servelec\'s B2B web platform and internal tools.',
           'Combine engineering with board responsibilities at LifeGroup.',
           'Drive automation, integrations and pragmatic delivery in a small team.',
         ],
@@ -104,7 +104,7 @@ const contentByLocale: Record<CvLocale, CvContent> = {
   nl: {
     headline: 'Full-Stack Developer · React · TypeScript · Python · AI workflows',
     summary:
-      'Developer met 7+ jaar praktijkervaring. Bouwt het Servelec E-stock platform en de Urban Culture hub (ParkSports + Corridor) als bestuurder bij LifeGroup. Side projects: ImmoGen en klantsites.',
+      'Developer met 7+ jaar praktijkervaring. Bouwt webplatformen voor Servelec en de Urban Culture hub (ParkSports + Corridor) als bestuurder bij LifeGroup. Side projects: ImmoGen en klantsites.',
     experience: [
       {
         period: '2025 — heden',
@@ -112,7 +112,7 @@ const contentByLocale: Record<CvLocale, CvContent> = {
         org: 'LifeGroup · Servelec · Urban Culture',
         location: 'België',
         bullets: [
-          'Ontwikkelt en onderhoudt het Servelec E-stock platform (product lifecycle, RMA, magazijn, TIP/Outlook).',
+          'Ontwikkelt en onderhoudt het B2B-webplatform en interne tools voor Servelec.',
           'Combineert engineering met bestuursrollen bij LifeGroup.',
           'Automation, integraties en pragmatische oplevering in een klein team.',
         ],
@@ -145,7 +145,7 @@ const contentByLocale: Record<CvLocale, CvContent> = {
   es: {
     headline: 'Desarrollador Full-Stack · React · TypeScript · Python · flujos con IA',
     summary:
-      'Desarrollador con más de 7 años de experiencia. Construye la plataforma Servelec E-stock y el hub Urban Culture (ParkSports + Corridor) como miembro de la junta de LifeGroup. Proyectos propios: ImmoGen y sitios de clientes.',
+      'Desarrollador con más de 7 años de experiencia. Construye plataformas web para Servelec y el hub Urban Culture (ParkSports + Corridor) como miembro de la junta de LifeGroup. Proyectos propios: ImmoGen y sitios de clientes.',
     experience: [
       {
         period: '2025 — actualidad',
@@ -153,7 +153,7 @@ const contentByLocale: Record<CvLocale, CvContent> = {
         org: 'LifeGroup · Servelec · Urban Culture',
         location: 'Bélgica',
         bullets: [
-          'Desarrollo y mantenimiento de la plataforma Servelec E-stock (ciclo de producto, RMA, almacén, TIP/Outlook).',
+          'Desarrollo y mantenimiento de la plataforma B2B y herramientas internas de Servelec.',
           'Combina ingeniería con responsabilidades de junta en LifeGroup.',
           'Automatización, integraciones y entrega pragmática en equipo pequeño.',
         ],

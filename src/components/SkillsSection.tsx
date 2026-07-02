@@ -108,7 +108,7 @@ export const SkillsSection: React.FC = () => {
     { name: 'Mobile Development', icon: '📱', description: 'React Native, Flutter, Mobile-first design' },
     { name: 'Testing', icon: '🧪', description: 'Jest, Cypress, Unit & Integration testing' },
     { name: 'Performance', icon: '⚡', description: 'Web Vitals, Lighthouse, Optimization' },
-    { name: 'Enterprise & B2B', icon: '🏢', description: 'Servelec E-stock, TIP integrations, RMA workflows' },
+    { name: 'Enterprise & B2B', icon: '🏢', description: 'Servelec platform, integrations, admin workflows' },
     { name: 'IoT & Robotics', icon: '🤖', description: 'Vijverstofzuigers, robot development' },
     { name: 'AI Integration', icon: '🤖', description: 'ChatGPT, AI-driven solutions' },
   ];

@@ -11,13 +11,13 @@
   "hero": {
     "title": "Ik ben Florian",
     "subtitle": "Full-Stack Developer & Tech Enthousiast",
-    "description": "Full-stack producten voor Servelec (E-stock) en Urban Culture in Gent — van B2B-platforms tot community hubs. React, TypeScript, Next.js, Supabase, Python.",
+    "description": "Full-stack producten voor Servelec en Urban Culture in Gent — van B2B-platforms tot community hubs. React, TypeScript, Next.js, Supabase, Python.",
     "cta": "Zie meer",
     "scroll": "Scroll om te ontdekken"
   },
   "about": {
     "title": "Over mij",
-    "description": "Ik ben een gepassioneerde developer met 7+ jaar ervaring. Ik bouw het Servelec E-stock platform (product lifecycle, RMA, magazijn) en de Urban Culture hub voor ParkSports & Corridor in Gent — naast mijn rol als bestuurder bij LifeGroup. Side projects: ImmoGen en Vijverstofzuigers.",
+    "description": "Ik ben een gepassioneerde developer met 7+ jaar ervaring. Ik bouw webplatformen voor Servelec en de Urban Culture hub voor ParkSports & Corridor in Gent — naast mijn rol als bestuurder bij LifeGroup. Side projects: ImmoGen en Vijverstofzuigers.",
     "experience": "Jaar Ervaring",
     "projects": "Projecten",
     "skills": "Kernvaardigheden",
@@ -56,11 +56,11 @@
     "letsWorkTogether": "Laten we samenwerken",
     "events": {
       "event1": {
-        "title": "Servelec E-stock & Urban Culture",
+        "title": "Servelec & Urban Culture",
         "company": "LifeGroup · Servelec · Urban Culture",
         "location": "België",
-        "description": "Full-stack ontwikkeling op het Servelec E-stock B2B-platform (Next.js, Supabase, TIP-integraties) en de Urban Culture Gent umbrella-site. Bestuurder bij LifeGroup — engineering én bestuur.",
-        "achievements": ["Servelec E-stock platform", "Urban Culture hub (ParkSports + Corridor)", "LifeGroup bestuur + delivery"]
+        "description": "Full-stack ontwikkeling voor het B2B-platform van Servelec en de Urban Culture Gent umbrella-site. Bestuurder bij LifeGroup — engineering én bestuur.",
+        "achievements": ["Servelec B2B-platform", "Urban Culture hub (ParkSports + Corridor)", "LifeGroup bestuur + delivery"]
       },
       "event2": {
         "title": "Web Development Opleiding",
@@ -166,7 +166,7 @@
     "viewOrDownload": "Bekijk of download CV",
     "backHome": "Terug naar home",
     "saveAsPdf": "Opslaan als PDF",
-    "printHint": "Tip: gebruik afdrukken in je browser en kies \"Opslaan als PDF\" voor een recruiter-vriendelijk bestand.",
+    "printHint": "Tip: zet in het afdrukvenster \"Achtergrondafbeeldingen\" aan voor het volledige neon-thema. Kies daarna \"Opslaan als PDF\".",
     "updated": "Laatst bijgewerkt",
     "summary": "Profiel",
     "experience": "Ervaring",

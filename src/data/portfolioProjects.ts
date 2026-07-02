@@ -24,12 +24,12 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     id: 8,
-    title: 'Servelec E-stock Platform',
+    title: 'Servelec Platform',
     description:
-      'B2B operations platform for product lifecycle: TIP catalog sync, warehouse tasks, RMA flows, invoice parsing (Nouvelec), Outlook integrations and multi-brand admin for Servelec.',
+      'B2B operations platform for inventory, warehouse workflows, service requests and multi-brand admin — built with modern full-stack tooling.',
     image: '/projects/servelec.png',
     technologies: ['Next.js', 'TypeScript', 'Supabase', 'shadcn/ui', 'Vitest'],
-    github: 'https://github.com/LifeGroup-CodeLux/E-stock',
+    github: 'https://github.com/FlorianThiers',
     category: 'Enterprise / Full-Stack',
   },
   {

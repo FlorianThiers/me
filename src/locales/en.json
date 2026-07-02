@@ -10,13 +10,13 @@
   "hero": {
     "title": "Hi, I'm Flor",
     "subtitle": "Full-Stack Developer & Tech Enthusiast",
-    "description": "Building full-stack products for Servelec (E-stock) and Urban Culture in Ghent — from B2B ops platforms to community hubs. React, TypeScript, Next.js, Supabase, Python.",
+    "description": "Building full-stack products for Servelec and Urban Culture in Ghent — from B2B platforms to community hubs. React, TypeScript, Next.js, Supabase, Python.",
     "cta": "Let's Work Together",
     "scroll": "Scroll to explore"
   },
   "about": {
     "title": "About Me",
-    "description": "I'm a passionate developer with 7+ years of experience. I build the Servelec E-stock platform (product lifecycle, RMA, warehouse ops) and the Urban Culture hub for ParkSports & Corridor in Ghent — while serving on the LifeGroup board. Side projects include ImmoGen and Vijverstofzuigers.",
+    "description": "I'm a passionate developer with 7+ years of experience. I build web platforms for Servelec and the Urban Culture hub for ParkSports & Corridor in Ghent — while serving on the LifeGroup board. Side projects include ImmoGen and Vijverstofzuigers.",
     "experience": "Years Experience",
     "projects": "Projects",
     "skills": "Core Skills",
@@ -55,11 +55,11 @@
     "letsWorkTogether": "Let's Work Together",
     "events": {
       "event1": {
-        "title": "Servelec E-stock & Urban Culture",
+        "title": "Servelec & Urban Culture",
         "company": "LifeGroup · Servelec · Urban Culture",
         "location": "Belgium",
-        "description": "Full-stack development on the Servelec E-stock B2B platform (Next.js, Supabase, TIP integrations) and the Urban Culture Gent umbrella site. Board member at LifeGroup — engineering plus governance.",
-        "achievements": ["Servelec E-stock platform", "Urban Culture hub (ParkSports + Corridor)", "LifeGroup board + delivery"]
+        "description": "Full-stack development for Servelec's B2B platform and the Urban Culture Gent umbrella site. Board member at LifeGroup — engineering plus governance.",
+        "achievements": ["Servelec B2B platform", "Urban Culture hub (ParkSports + Corridor)", "LifeGroup board + delivery"]
       },
       "event2": {
         "title": "Web Development Education",
@@ -165,7 +165,7 @@
     "viewOrDownload": "View or download CV",
     "backHome": "Back to home",
     "saveAsPdf": "Save as PDF",
-    "printHint": "Tip: use your browser print dialog and choose \"Save as PDF\" for a recruiter-ready file.",
+    "printHint": "Tip: in the print dialog, enable \"Background graphics\" for the full neon theme. Then choose \"Save as PDF\".",
     "updated": "Last updated",
     "summary": "Summary",
     "experience": "Experience",
