@@ -30,6 +30,7 @@ import { CookingPage } from './pages/CookingPage';
 import { GardenDesignPage } from './pages/GardenDesignPage';
 import { BeleggenPage } from './pages/BeleggenPage';
 import { MoltbookPage } from './pages/MoltbookPage';
+import { CvPage } from './pages/CvPage';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollToTopButton } from './components/ScrollToTopButton';
@@ -67,6 +68,7 @@ function App() {
         <main className="relative z-10">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/cv" element={<CvPage />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/journey" element={<JourneyPage />} />

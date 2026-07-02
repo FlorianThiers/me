@@ -4,18 +4,19 @@
     "skills": "Habilidades",
     "journey": "Trayectoria",
     "goals": "Objetivos",
-    "interests": "Intereses"
+    "interests": "Intereses",
+    "cv": "CV"
   },
   "hero": {
     "title": "Hola, soy Flor",
     "subtitle": "Desarrollador Full-Stack y Entusiasta de la Tecnología",
-    "description": "Apasionado por crear soluciones innovadoras que combinan tecnología con sostenibilidad. Especializado en React, TypeScript, Python y desarrollo impulsado por IA.",
+    "description": "Desarrollo productos full-stack para Servelec (E-stock) y Urban Culture en Gante — desde plataformas B2B hasta hubs comunitarios. React, TypeScript, Next.js, Supabase, Python.",
     "cta": "Trabajemos Juntos",
     "scroll": "Desplázate para explorar"
   },
   "about": {
     "title": "Sobre Mí",
-    "description": "Soy un desarrollador apasionado con más de 7 años de experiencia, combinando mi amor por la tecnología con un fuerte enfoque en sostenibilidad e innovación. Actualmente trabajo como miembro de la junta de un grupo en vivo y para Electrostock, mientras persigo mis propios proyectos como Parksports e Immogen.",
+    "description": "Soy un desarrollador apasionado con más de 7 años de experiencia. Construyo la plataforma Servelec E-stock (ciclo de producto, RMA, almacén) y el hub Urban Culture para ParkSports y Corridor en Gante — como miembro de la junta de LifeGroup. Proyectos propios: ImmoGen y Vijverstofzuigers.",
     "experience": "Años de Experiencia",
     "projects": "Proyectos",
     "skills": "Habilidades Principales",
@@ -43,7 +44,8 @@
     "title": "Portafolio",
     "subtitle": "Proyectos Destacados",
     "viewProject": "Ver Proyecto",
-    "technologies": "Tecnologías Utilizadas"
+    "technologies": "Tecnologías Utilizadas",
+    "privatePlatform": "Plataforma privada"
   },
   "timeline": {
     "title": "Mi Trayectoria",
@@ -53,11 +55,11 @@
     "letsWorkTogether": "Trabajemos Juntos",
     "events": {
       "event1": {
-        "title": "Miembro del Consejo LifeGroup + ElectroStock",
-        "company": "LifeGroup & ElectroStock",
+        "title": "Servelec E-stock y Urban Culture",
+        "company": "LifeGroup · Servelec · Urban Culture",
         "location": "Bélgica",
-        "description": "Primer año trabajando como miembro del consejo de LifeGroup y trabajo para ElectroStock. Combinando experiencia en programación con responsabilidades del consejo.",
-        "achievements": ["Consejo de LifeGroup", "Trabajo para ElectroStock", "Combinación de tecnología y consejo"]
+        "description": "Desarrollo full-stack en la plataforma B2B Servelec E-stock (Next.js, Supabase, integraciones TIP) y el sitio paraguas Urban Culture Gent. Miembro de la junta de LifeGroup — ingeniería y gobernanza.",
+        "achievements": ["Plataforma Servelec E-stock", "Hub Urban Culture (ParkSports + Corridor)", "Junta LifeGroup + entrega"]
       },
       "event2": {
         "title": "Educación en Desarrollo Web",
@@ -93,9 +95,9 @@
     "robotsBouwen": "Construir Más Robots",
     "robotsBouwenDesc": "Crear soluciones robóticas adicionales para diversas aplicaciones, enfocándose en automatización y sostenibilidad.",
     "soloprojecten": "Completar Proyectos en Solitario",
-    "soloprojectenDesc": "Terminar el desarrollo de los proyectos Parksports e Immogen, llevándolos a su completa finalización.",
-    "parksportsCommunity": "Construir Comunidad Parksports",
-    "parksportsCommunityDesc": "Crear y hacer crecer una comunidad en torno al proyecto Parksports, involucrando usuarios y colaboradores.",
+    "soloprojectenDesc": "Completar ImmoGen y sitios de clientes como Vijverstofzuigers — junto con la entrega continua de Servelec y Urban Culture.",
+    "parksportsCommunity": "Hacer crecer Urban Culture y ParkSports",
+    "parksportsCommunityDesc": "Expandir el paraguas Urban Culture y la comunidad ParkSports — spots, eventos y participación en el deporte urbano de Gante.",
     "immogenSamenwerkers": "Encontrar Colaboradores para Immogen",
     "immogenSamenwerkersDesc": "Identificar e incorporar miembros del equipo para ayudar a desarrollar y escalar el proyecto Immogen.",
     "properheidAarde": "Contribuir a la Limpieza de la Tierra",
@@ -157,6 +159,22 @@
     "yourEmail": "tu.correo@ejemplo.com",
     "tellMeAboutProject": "Cuéntame sobre tu proyecto...",
     "sending": "Enviando..."
+  },
+  "cv": {
+    "download": "Descargar CV",
+    "viewOrDownload": "Ver o descargar CV",
+    "backHome": "Volver al inicio",
+    "saveAsPdf": "Guardar como PDF",
+    "printHint": "Consejo: usa imprimir en el navegador y elige \"Guardar como PDF\".",
+    "updated": "Última actualización",
+    "summary": "Resumen",
+    "experience": "Experiencia",
+    "selectedProjects": "Proyectos destacados",
+    "skills": "Habilidades",
+    "education": "Formación",
+    "languages": "Idiomas",
+    "contactCardTitle": "¿Prefieres un resumen rápido?",
+    "contactCardDescription": "CV de una página con el mismo estilo — ver online o guardar como PDF."
   },
   "footer": {
     "description": "Construyendo el futuro, una línea de código a la vez.",

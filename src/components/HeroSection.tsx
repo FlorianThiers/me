@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { MandelbrotBackground } from './MandelbrotBackground';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
+import { CvDownloadButton } from './CvDownloadButton';
 
 export const HeroSection: React.FC = () => {
   const { t } = useTranslation();
@@ -80,19 +81,24 @@ export const HeroSection: React.FC = () => {
             {t('hero.description')}
           </motion.p>
 
-          {/* CTA Button */}
-          <motion.button
-            className="bg-gradient-to-r from-neon-green to-neon-blue text-dark-bg font-bold py-4 px-8 rounded-full text-lg hover:shadow-2xl hover:shadow-neon-green/30 transition-all duration-300 transform hover:scale-105"
+          {/* CTA Buttons */}
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={scrollToNext}
-            aria-label={`${t('hero.cta')} - Navigate to About section`}
           >
-            {t('hero.cta')}
-          </motion.button>
+            <motion.button
+              className="bg-gradient-to-r from-neon-green to-neon-blue text-dark-bg font-bold py-4 px-8 rounded-full text-lg hover:shadow-2xl hover:shadow-neon-green/30 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={scrollToNext}
+              aria-label={`${t('hero.cta')} - Navigate to About section`}
+            >
+              {t('hero.cta')}
+            </motion.button>
+            <CvDownloadButton variant="outline" />
+          </motion.div>
 
           {/* Sociale Media Links */}
           <nav

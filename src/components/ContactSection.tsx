@@ -9,15 +9,17 @@ import { sendEmailViaFormspree } from '../services/formspreeService';
 import { EMAIL_SERVICE } from '../config/emailService';
 import { 
   Mail, 
-  Phone, 
+  Phone,
   MapPin, 
   Send, 
   Github, 
-  Linkedin, 
-  Twitter,
+  Linkedin,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  FileDown
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { CONTACT, CV } from '../config/contact';
 
 export const ContactSection: React.FC = () => {
   const { t } = useTranslation();
@@ -114,21 +116,23 @@ export const ContactSection: React.FC = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'florthiers@gmail.com',
-      link: 'mailto:florthiers@gmail.com',
+      value: CONTACT.email,
+      link: `mailto:${CONTACT.email}`,
       color: 'neon-green'
     },
-    {
-      icon: Phone,
-      title: 'Phone',
-      value: '+32 123 456 789',
-      link: 'tel:+32123456789',
-      color: 'neon-blue'
-    },
+    ...(CONTACT.phone
+      ? [{
+          icon: Phone,
+          title: t('contact.phoneLabel'),
+          value: CONTACT.phone,
+          link: `tel:${CONTACT.phone.replace(/\s/g, '')}`,
+          color: 'neon-blue'
+        }]
+      : []),
     {
       icon: MapPin,
       title: 'Location',
-      value: 'Gent, Belgium',
+      value: CONTACT.location,
       link: '#',
       color: 'neon-pink'
     }
@@ -138,21 +142,15 @@ export const ContactSection: React.FC = () => {
     {
       name: 'GitHub',
       icon: Github,
-      url: 'https://github.com/FlorianThiers',
+      url: CONTACT.github,
       color: 'hover:text-white'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      url: 'https://www.linkedin.com/in/florian-thiers-2908ba305/',
+      url: CONTACT.linkedin,
       color: 'hover:text-neon-blue'
     },
-    {
-      name: 'Twitter',
-      icon: Twitter,
-      url: 'https://twitter.com',
-      color: 'hover:text-neon-green'
-    }
   ];
 
   return (
@@ -301,6 +299,33 @@ export const ContactSection: React.FC = () => {
               {t('contact.getInTouch')}
             </h3>
 
+            {/* CV quick link */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="mb-8 p-6 rounded-xl border border-neon-green/30 bg-gradient-to-r from-neon-green/10 to-neon-blue/10"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-neon-green/20 flex items-center justify-center border border-neon-green/30 shrink-0">
+                  <FileDown className="w-6 h-6 text-neon-green" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-1">{t('cv.contactCardTitle')}</h4>
+                  <p className="text-white/70 text-sm mb-3">{t('cv.contactCardDescription')}</p>
+                  <Link
+                    to={CV.route}
+                    className="inline-flex items-center gap-2 text-neon-green font-medium hover:text-white transition-colors"
+                  >
+                    <FileDown size={16} />
+                    {t('cv.viewOrDownload')}
+                  </Link>
+                  <p className="text-xs text-white/40 mt-2">{t('cv.updated')}: {CV.updatedAt}</p>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Contact Details */}
             <div className="space-y-6 mb-8">
               {contactInfo.map((info, index) => (
@@ -403,6 +428,9 @@ export const ContactSection: React.FC = () => {
                 className="border-2 border-neon-green text-neon-green font-bold py-3 px-8 rounded-full hover:bg-neon-green hover:text-dark-bg transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(t('contact.scheduleCall'))}`;
+                }}
               >
                 {t('contact.scheduleCall')}
               </motion.button>

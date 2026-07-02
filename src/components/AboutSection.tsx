@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Code, Coffee, Heart, Zap } from 'lucide-react';
+import { CvDownloadButton } from './CvDownloadButton';
 
 export const AboutSection: React.FC = () => {
   const { t } = useTranslation();
@@ -81,6 +82,10 @@ export const AboutSection: React.FC = () => {
             <p className="text-lg text-white/80 leading-relaxed mb-6">
               {t('about.description')}
             </p>
+
+            <div className="mb-8">
+              <CvDownloadButton variant="compact" />
+            </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-6" role="list" aria-label="Experience Statistics">

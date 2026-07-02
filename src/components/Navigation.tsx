@@ -35,6 +35,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   };
 
   const navItems = [
+    { path: '/cv', label: t('nav.cv') },
     { path: '/portfolio', label: t('nav.portfolio') },
     { path: '/skills', label: t('nav.skills') },
     { path: '/journey', label: t('nav.journey') },

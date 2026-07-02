@@ -59,7 +59,7 @@ export const TimelineSection: React.FC = () => {
     { skill: 'SCSS, PHP, SQL', year: '2022', level: 55 },
     { skill: 'React, MongoDB', year: '2023', level: 70 },
     { skill: 'Python, TypeSriptReact', year: '2024', level: 85 },
-    { skill: 'Kotlin, Java, Supabase, Cursor, Linux, IntelliJ', year: '2025', level: 65 }
+    { skill: 'Next.js, Supabase, Servelec & Urban Culture', year: '2025', level: 90 },
   ];
 
   return (

@@ -5,18 +5,19 @@
     "skills": "Vaardigheden",
     "journey": "Reis",
     "goals": "Doelen",
-    "interests": "Interesses"
+    "interests": "Interesses",
+    "cv": "CV"
   },
   "hero": {
     "title": "Ik ben Florian",
     "subtitle": "Full-Stack Developer & Tech Enthousiast",
-    "description": "Gepassioneerd over het creëren van innovatieve oplossingen die technologie combineren met duurzaamheid. Gespecialiseerd in React, TypeScript, Python en AI-gedreven ontwikkeling.",
+    "description": "Full-stack producten voor Servelec (E-stock) en Urban Culture in Gent — van B2B-platforms tot community hubs. React, TypeScript, Next.js, Supabase, Python.",
     "cta": "Zie meer",
     "scroll": "Scroll om te ontdekken"
   },
   "about": {
     "title": "Over mij",
-    "description": "Ik ben een gepassioneerde developer met 7+ jaar ervaring, die mijn liefde voor technologie combineert met een sterke focus op duurzaamheid en innovatie. Momenteel werk ik als developer voor LifeGroup & Electrostock, terwijl ik mijn eigen projecten zoals ParkSportss en ImmoGen nastreef.",
+    "description": "Ik ben een gepassioneerde developer met 7+ jaar ervaring. Ik bouw het Servelec E-stock platform (product lifecycle, RMA, magazijn) en de Urban Culture hub voor ParkSports & Corridor in Gent — naast mijn rol als bestuurder bij LifeGroup. Side projects: ImmoGen en Vijverstofzuigers.",
     "experience": "Jaar Ervaring",
     "projects": "Projecten",
     "skills": "Kernvaardigheden",
@@ -30,7 +31,8 @@
     "title": "Portfolio",
     "subtitle": "Uitgelichte Projecten",
     "viewProject": "Bekijk Project",
-    "technologies": "Gebruikte Technologieën"
+    "technologies": "Gebruikte Technologieën",
+    "privatePlatform": "Privé platform"
   },
   "skills": {
     "title": "Vaardigheden & Expertise",
@@ -46,12 +48,6 @@
     "qualityCode": "Kwaliteitscode",
     "summary": "Voortdurend mijn vaardigheden uitbreiden en op de hoogte blijven van de nieuwste technologieën. Gepassioneerd over het creëren van efficiënte, schaalbare en onderhoudbare oplossingen met focus op duurzaamheid en AI-integratie."
   },
-  "portfolio": {
-    "title": "Portfolio",
-    "subtitle": "Uitgelichte Projecten",
-    "viewProject": "Bekijk Project",
-    "technologies": "Gebruikte Technologieën"
-  },
   "timeline": {
     "title": "Mijn Reis",
     "skillsEvolution": "Vaardigheden Evolutie Door de Tijd",
@@ -60,11 +56,11 @@
     "letsWorkTogether": "Laten we samenwerken",
     "events": {
       "event1": {
-        "title": "Bestuurder LifeGroup + ElectroStock",
-        "company": "LifeGroup & ElectroStock",
+        "title": "Servelec E-stock & Urban Culture",
+        "company": "LifeGroup · Servelec · Urban Culture",
         "location": "België",
-        "description": "Eerste jaar werken als bestuurder van LifeGroup en werk voor ElectroStock. Combineren van programmeerervaring met bestuursverantwoordelijkheden.",
-        "achievements": ["Bestuur van lifeGroup", "Werk voor ElectroStock", "Combinatie tech & bestuur"]
+        "description": "Full-stack ontwikkeling op het Servelec E-stock B2B-platform (Next.js, Supabase, TIP-integraties) en de Urban Culture Gent umbrella-site. Bestuurder bij LifeGroup — engineering én bestuur.",
+        "achievements": ["Servelec E-stock platform", "Urban Culture hub (ParkSports + Corridor)", "LifeGroup bestuur + delivery"]
       },
       "event2": {
         "title": "Web Development Opleiding",
@@ -100,9 +96,9 @@
     "robotsBouwen": "Meer Robots Bouwen",
     "robotsBouwenDesc": "Extra robotische oplossingen creëren voor verschillende toepassingen, focus op automatisering en duurzaamheid.",
     "soloprojecten": "Soloprojecten Afwerken",
-    "soloprojectenDesc": "Ontwikkeling van Parksports en Immogen projecten afronden, ze naar volledige voltooiing brengen.",
-    "parksportsCommunity": "Parksports Community Bouwen",
-    "parksportsCommunityDesc": "Een community rond het Parksports project creëren en laten groeien, gebruikers en bijdragers betrekken.",
+    "soloprojectenDesc": "ImmoGen en klantsites zoals Vijverstofzuigers afronden — naast doorlopende delivery voor Servelec en Urban Culture.",
+    "parksportsCommunity": "Urban Culture & ParkSports laten groeien",
+    "parksportsCommunityDesc": "De Urban Culture umbrella en ParkSports-community uitbreiden — spots, events en engagement rond urban sports in Gent.",
     "immogenSamenwerkers": "Immogen Samenwerkers Vinden",
     "immogenSamenwerkersDesc": "Teamleden identificeren en onboarden om te helpen bij de ontwikkeling en schaalvergroting van het Immogen project.",
     "properheidAarde": "Betekenis voor Properheid Aarde",
@@ -164,6 +160,22 @@
     "yourEmail": "je.email@voorbeeld.com",
     "tellMeAboutProject": "Vertel me over je project...",
     "sending": "Verzenden..."
+  },
+  "cv": {
+    "download": "Download CV",
+    "viewOrDownload": "Bekijk of download CV",
+    "backHome": "Terug naar home",
+    "saveAsPdf": "Opslaan als PDF",
+    "printHint": "Tip: gebruik afdrukken in je browser en kies \"Opslaan als PDF\" voor een recruiter-vriendelijk bestand.",
+    "updated": "Laatst bijgewerkt",
+    "summary": "Profiel",
+    "experience": "Ervaring",
+    "selectedProjects": "Uitgelichte projecten",
+    "skills": "Vaardigheden",
+    "education": "Opleiding",
+    "languages": "Talen",
+    "contactCardTitle": "Liever een snelle samenvatting?",
+    "contactCardDescription": "Eén-pagina CV in dezelfde stijl — online bekijken of opslaan als PDF."
   },
   "footer": {
     "description": "De toekomst bouwen, regel voor regel code.",

@@ -4,18 +4,19 @@
     "skills": "Skills",
     "journey": "Journey",
     "goals": "Goals",
-    "interests": "Interests"
+    "interests": "Interests",
+    "cv": "CV"
   },
   "hero": {
     "title": "Hi, I'm Flor",
     "subtitle": "Full-Stack Developer & Tech Enthusiast",
-    "description": "Passionate about creating innovative solutions that combine technology with sustainability. Specializing in React, TypeScript, Python, and AI-driven development.",
+    "description": "Building full-stack products for Servelec (E-stock) and Urban Culture in Ghent — from B2B ops platforms to community hubs. React, TypeScript, Next.js, Supabase, Python.",
     "cta": "Let's Work Together",
     "scroll": "Scroll to explore"
   },
   "about": {
     "title": "About Me",
-    "description": "I'm a passionate developer with 7+ years of experience, combining my love for technology with a strong focus on sustainability and innovation. Currently working as a board member of a live group and for Electrostock, while pursuing my own projects like Parksports and Immogen.",
+    "description": "I'm a passionate developer with 7+ years of experience. I build the Servelec E-stock platform (product lifecycle, RMA, warehouse ops) and the Urban Culture hub for ParkSports & Corridor in Ghent — while serving on the LifeGroup board. Side projects include ImmoGen and Vijverstofzuigers.",
     "experience": "Years Experience",
     "projects": "Projects",
     "skills": "Core Skills",
@@ -43,7 +44,8 @@
     "title": "Portfolio",
     "subtitle": "Featured Projects",
     "viewProject": "View Project",
-    "technologies": "Technologies Used"
+    "technologies": "Technologies Used",
+    "privatePlatform": "Private platform"
   },
   "timeline": {
     "title": "My Journey",
@@ -53,11 +55,11 @@
     "letsWorkTogether": "Let's Work Together",
     "events": {
       "event1": {
-        "title": "Board Member LifeGroup + ElectroStock",
-        "company": "LifeGroup & ElectroStock",
+        "title": "Servelec E-stock & Urban Culture",
+        "company": "LifeGroup · Servelec · Urban Culture",
         "location": "Belgium",
-        "description": "First year working as board member of LifeGroup and work for ElectroStock. Combining programming experience with board responsibilities.",
-        "achievements": ["Board of lifeGroup", "Work for ElectroStock", "Tech & board combination"]
+        "description": "Full-stack development on the Servelec E-stock B2B platform (Next.js, Supabase, TIP integrations) and the Urban Culture Gent umbrella site. Board member at LifeGroup — engineering plus governance.",
+        "achievements": ["Servelec E-stock platform", "Urban Culture hub (ParkSports + Corridor)", "LifeGroup board + delivery"]
       },
       "event2": {
         "title": "Web Development Education",
@@ -93,9 +95,9 @@
     "robotsBouwen": "Build More Robots",
     "robotsBouwenDesc": "Create additional robotic solutions for various applications, focusing on automation and sustainability.",
     "soloprojecten": "Complete Solo Projects",
-    "soloprojectenDesc": "Finish development of Parksports and Immogen projects, bringing them to full completion.",
-    "parksportsCommunity": "Build Parksports Community",
-    "parksportsCommunityDesc": "Create and grow a community around the Parksports project, engaging users and contributors.",
+    "soloprojectenDesc": "Finish ImmoGen and client sites such as Vijverstofzuigers — alongside ongoing Servelec and Urban Culture delivery.",
+    "parksportsCommunity": "Grow Urban Culture & ParkSports",
+    "parksportsCommunityDesc": "Expand the Urban Culture umbrella and ParkSports community — spots, events and member engagement across Ghent's urban sports scene.",
     "immogenSamenwerkers": "Find Immogen Collaborators",
     "immogenSamenwerkersDesc": "Identify and onboard team members to help develop and scale the Immogen project.",
     "properheidAarde": "Contribute to Earth's Cleanliness",
@@ -157,6 +159,22 @@
     "yourEmail": "your.email@example.com",
     "tellMeAboutProject": "Tell me about your project...",
     "sending": "Sending..."
+  },
+  "cv": {
+    "download": "Download CV",
+    "viewOrDownload": "View or download CV",
+    "backHome": "Back to home",
+    "saveAsPdf": "Save as PDF",
+    "printHint": "Tip: use your browser print dialog and choose \"Save as PDF\" for a recruiter-ready file.",
+    "updated": "Last updated",
+    "summary": "Summary",
+    "experience": "Experience",
+    "selectedProjects": "Selected projects",
+    "skills": "Skills",
+    "education": "Education",
+    "languages": "Languages",
+    "contactCardTitle": "Prefer a quick overview?",
+    "contactCardDescription": "One-page CV matching this site — view online or save as PDF."
   },
   "footer": {
     "description": "Building the future, one line of code at a time.",

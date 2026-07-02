@@ -129,3 +129,67 @@
   .border-neon-yellow\/50 { border-color: rgba(255, 136, 0, 0.5); }
   .border-neon-orange\/50 { border-color: rgba(255, 102, 0, 0.5); }
 }
+
+/* CV print — clean PDF for recruiters */
+@media print {
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .cv-no-print,
+  nav,
+  footer,
+  .scroll-to-top,
+  button[aria-label='Scroll to top'] {
+    display: none !important;
+  }
+
+  .cv-page {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .cv-sheet {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .cv-header {
+    border-color: #ddd !important;
+  }
+
+  .cv-section-title {
+    color: #111 !important;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .cv-sheet h1,
+  .cv-sheet h2,
+  .cv-sheet h3,
+  .cv-sheet p,
+  .cv-sheet li,
+  .cv-sheet span,
+  .cv-sheet a {
+    color: #111 !important;
+  }
+
+  .cv-sheet a {
+    text-decoration: none;
+  }
+
+  .text-neon-green,
+  .text-neon-blue {
+    color: #0a6b3a !important;
+  }
+}
+
+.cv-section-title {
+  @apply text-lg font-bold text-white mb-3 uppercase tracking-wide;
+}
