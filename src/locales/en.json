@@ -61,28 +61,44 @@
         "company": "LifeGroup · Servelec · Urban Culture",
         "location": "Belgium",
         "description": "Full-stack development for Servelec's B2B platform and the Urban Culture Gent umbrella site. Board member at LifeGroup — engineering plus governance.",
-        "achievements": ["Servelec B2B platform", "Urban Culture hub (ParkSports + Corridor)", "LifeGroup board + delivery"]
+        "achievements": [
+          "Servelec B2B platform",
+          "Urban Culture hub (ParkSports + Corridor)",
+          "LifeGroup board + delivery"
+        ]
       },
       "event2": {
         "title": "Web Development Education",
         "company": "Web Development Diploma",
         "location": "Belgium",
         "description": "4 years of web development education completed with diploma. Focus on modern web technologies and practical projects.",
-        "achievements": ["Diploma obtained", "Modern web technologies", "Practical projects"]
+        "achievements": [
+          "Diploma obtained",
+          "Modern web technologies",
+          "Practical projects"
+        ]
       },
       "event3": {
         "title": "Plant Technical Sciences",
         "company": "Plant Technical Sciences Diploma",
         "location": "Belgium",
         "description": "2 years of education in plant technical sciences completed with diploma. Focus on sustainability and technology.",
-        "achievements": ["Diploma obtained", "Sustainability", "Technology"]
+        "achievements": [
+          "Diploma obtained",
+          "Sustainability",
+          "Technology"
+        ]
       },
       "event4": {
         "title": "Start as Programmer",
         "company": "First Programming Experience",
         "location": "Belgium",
         "description": "Started programming in high school. First steps in the world of software development.",
-        "achievements": ["First programming experience", "Basic skills", "Passion discovered"]
+        "achievements": [
+          "First programming experience",
+          "Basic skills",
+          "Passion discovered"
+        ]
       }
     }
   },
@@ -497,28 +513,76 @@
       },
       "cells": {
         "day": {
-          "work": { "body": "Top 3 work intents + deep block before meetings.", "tool": "workflow-os day-log" },
-          "sport": { "body": "Today's split type (A/B/C/D) — knee-friendly, never same muscles two days in a row.", "tool": "Todoist @sport" },
-          "nutrition": { "body": "Protein-first meals; light deficit if fat-loss week.", "tool": "Notion weekmenu" },
-          "sleep": { "body": "Wind-down 22:30; screen-off buffer.", "tool": "Todoist recurring" }
+          "work": {
+            "body": "Top 3 work intents + deep block before meetings.",
+            "tool": "workflow-os day-log"
+          },
+          "sport": {
+            "body": "Today's split type (A/B/C/D) — knee-friendly, never same muscles two days in a row.",
+            "tool": "Todoist @sport"
+          },
+          "nutrition": {
+            "body": "Protein-first meals; light deficit if fat-loss week.",
+            "tool": "Notion weekmenu"
+          },
+          "sleep": {
+            "body": "Wind-down 22:30; screen-off buffer.",
+            "tool": "Todoist recurring"
+          }
         },
         "week": {
-          "work": { "body": "Feature priorities + stakeholder threads; max 3 carry-overs.", "tool": "Notion Tasks" },
-          "sport": { "body": "3–4 sessions: push, pull, legs (light), recovery walk.", "tool": "life-rhythm + calendar" },
-          "nutrition": { "body": "2× meal prep; grocery list from menu.", "tool": "Notion + Todoist" },
-          "sleep": { "body": "Target 7–8h average; one no-late-screen evening.", "tool": "Google Calendar soft block" }
+          "work": {
+            "body": "Feature priorities + stakeholder threads; max 3 carry-overs.",
+            "tool": "Notion Tasks"
+          },
+          "sport": {
+            "body": "3–4 sessions: push, pull, legs (light), recovery walk.",
+            "tool": "life-rhythm + calendar"
+          },
+          "nutrition": {
+            "body": "2× meal prep; grocery list from menu.",
+            "tool": "Notion + Todoist"
+          },
+          "sleep": {
+            "body": "Target 7–8h average; one no-late-screen evening.",
+            "tool": "Google Calendar soft block"
+          }
         },
         "month": {
-          "work": { "body": "Ship milestones; close FF items in testing.", "tool": "Notion Feature Flow" },
-          "sport": { "body": "Build condition gradually; deload if knee flares.", "tool": "/sports + life-rhythm" },
-          "nutrition": { "body": "Sustainable deficit or maintain; track energy not guilt.", "tool": "/cooking notes" },
-          "sleep": { "body": "Fix one sleep leak (caffeine, late work, etc.).", "tool": "Weekly review" }
+          "work": {
+            "body": "Ship milestones; close FF items in testing.",
+            "tool": "Notion Feature Flow"
+          },
+          "sport": {
+            "body": "Build condition gradually; deload if knee flares.",
+            "tool": "/sports + life-rhythm"
+          },
+          "nutrition": {
+            "body": "Sustainable deficit or maintain; track energy not guilt.",
+            "tool": "/cooking notes"
+          },
+          "sleep": {
+            "body": "Fix one sleep leak (caffeine, late work, etc.).",
+            "tool": "Weekly review"
+          }
         },
         "year": {
-          "work": { "body": "Career arc: Servelec, LifeGroup, side projects.", "tool": "/goals + Notion" },
-          "sport": { "body": "Long-term movement: strength + outdoor hobbies.", "tool": "life-rhythm anchors" },
-          "nutrition": { "body": "Habits that survive busy weeks.", "tool": "Notion MySpace hub" },
-          "sleep": { "body": "Chronic rhythm > perfect nights.", "tool": "Yearly goals review" }
+          "work": {
+            "body": "Career arc: Servelec, LifeGroup, side projects.",
+            "tool": "/goals + Notion"
+          },
+          "sport": {
+            "body": "Long-term movement: strength + outdoor hobbies.",
+            "tool": "life-rhythm anchors"
+          },
+          "nutrition": {
+            "body": "Habits that survive busy weeks.",
+            "tool": "Notion MySpace hub"
+          },
+          "sleep": {
+            "body": "Chronic rhythm > perfect nights.",
+            "tool": "Yearly goals review"
+          }
         }
       }
     },
@@ -546,93 +610,188 @@
     "lifeRhythm": {
       "title": "Life rhythm",
       "description": "A flexible thread through sleep, sport, hobbies and home — visualized as part of my Workflow OS on Julia.",
-      "details": ["Week anchors", "Sport split", "Hobbies", "Home projects", "Day thread"],
+      "details": [
+        "Week anchors",
+        "Sport split",
+        "Hobbies",
+        "Home projects",
+        "Day thread"
+      ],
       "explore": "Explore life rhythm"
     },
     "meditation": {
       "title": "Meditation",
       "description": "I regularly practice meditation to calm my mind, improve focus, and find inner peace. This also helps me in my creative work.",
-      "details": ["Mindfulness", "Vipassana", "Breathing Techniques", "Mental Clarity", "Stress Reduction"],
+      "details": [
+        "Mindfulness",
+        "Vipassana",
+        "Breathing Techniques",
+        "Mental Clarity",
+        "Stress Reduction"
+      ],
       "explore": "Explore Meditation & Mindfulness"
     },
     "cultivation": {
       "title": "Cultivation",
       "description": "I'm passionate about growing plants and connecting with nature. From houseplants to vegetable gardens - I find peace in caring for living beings.",
-      "details": ["Indoor Plants", "Gardening", "Sustainability", "Plant Care", "Nature Connection"],
+      "details": [
+        "Indoor Plants",
+        "Gardening",
+        "Sustainability",
+        "Plant Care",
+        "Nature Connection"
+      ],
       "explore": "Explore Growing Projects"
     },
     "cooking": {
       "title": "Cooking",
       "description": "Cooking is a creative outlet for me and a way to experiment with flavors and techniques. I enjoy the process of making healthy, delicious meals.",
-      "details": ["Healthy Cooking", "Flavor Experimentation", "Culinary Techniques", "Meal Planning", "Nutrition"],
+      "details": [
+        "Healthy Cooking",
+        "Flavor Experimentation",
+        "Culinary Techniques",
+        "Meal Planning",
+        "Nutrition"
+      ],
       "explore": "Explore Recipes & Dishes"
     },
     "philosophy": {
       "title": "Philosophy & Consciousness",
       "description": "I'm fascinated by the deeper questions of consciousness, psychology, and how great thinkers throughout history have shaped our view of the mind.",
-      "details": ["Carl Jung", "Consciousness Philosophy", "Psychology", "Philosophical Traditions", "Mental Models"],
+      "details": [
+        "Carl Jung",
+        "Consciousness Philosophy",
+        "Psychology",
+        "Philosophical Traditions",
+        "Mental Models"
+      ],
       "explore": "Explore Philosophers & Thinkers"
     },
     "sports": {
       "title": "Sports & Adventure",
       "description": "I'm passionate about outdoor sports and adventure. From slacklining and bouldering to snowboarding and surfing - I love the challenge and freedom these sports offer.",
-      "details": ["Slacklining", "Bouldering", "Snowboarding", "Surfing", "Daily Training"],
+      "details": [
+        "Slacklining",
+        "Bouldering",
+        "Snowboarding",
+        "Surfing",
+        "Daily Training"
+      ],
       "explore": "Explore Sports & Adventure"
     },
     "music": {
       "title": "Music",
       "description": "I have a deep passion for music, both listening and creating. I enjoy exploring various genres and experimenting with digital music production.",
-      "details": ["Electronic Music", "Jazz", "Classical", "Digital Audio Workstations", "Sound Design"],
+      "details": [
+        "Electronic Music",
+        "Jazz",
+        "Classical",
+        "Digital Audio Workstations",
+        "Sound Design"
+      ],
       "explore": "Explore Live Coding & Music"
     },
     "learning": {
       "title": "Learning",
       "description": "I'm constantly seeking to expand my knowledge and skills, whether through books, online courses, or hands-on projects.",
-      "details": ["Technology Trends", "Design Principles", "New Programming Languages", "Creative Techniques"]
+      "details": [
+        "Technology Trends",
+        "Design Principles",
+        "New Programming Languages",
+        "Creative Techniques"
+      ]
     },
     "photography": {
       "title": "Photography",
       "description": "I enjoy capturing moments and exploring visual storytelling through photography and videography.",
-      "details": ["Digital Photography", "Composition", "Lighting", "Post-Processing", "Storytelling"]
+      "details": [
+        "Digital Photography",
+        "Composition",
+        "Lighting",
+        "Post-Processing",
+        "Storytelling"
+      ]
     },
     "art": {
       "title": "Art & Creativity",
       "description": "Creative expression is important to me, whether through digital art, traditional media, or innovative design solutions.",
-      "details": ["Digital Art", "Sketching", "Color Theory", "Creative Problem Solving", "Innovation"]
+      "details": [
+        "Digital Art",
+        "Sketching",
+        "Color Theory",
+        "Creative Problem Solving",
+        "Innovation"
+      ]
     },
     "travel": {
       "title": "Travel & Culture",
       "description": "I love exploring different cultures and perspectives, which enriches my creative work and understanding of global design trends.",
-      "details": ["Cultural Exchange", "Global Design", "Language Learning", "Cultural Sensitivity", "Diverse Perspectives"]
+      "details": [
+        "Cultural Exchange",
+        "Global Design",
+        "Language Learning",
+        "Cultural Sensitivity",
+        "Diverse Perspectives"
+      ]
     },
     "gaming": {
       "title": "Gaming",
       "description": "Gaming has been a significant part of my life, inspiring my interest in technology and interactive experiences.",
-      "details": ["Strategy Games", "RPGs", "Indie Games", "Game Development", "Virtual Reality"]
+      "details": [
+        "Strategy Games",
+        "RPGs",
+        "Indie Games",
+        "Game Development",
+        "Virtual Reality"
+      ]
     },
     "timeVisualization": {
       "title": "Alternative Time Visualization",
       "description": "I'm fascinated by alternative ways to experience time. Through a 13-month chakra calendar (starting July 26th) I explore how energy and consciousness relate to our experience of time.",
-      "details": ["13-Month Calendar", "Chakra Rhythm", "Consciousness & Time", "Energetic Cycles", "Gregorian Overlay"],
+      "details": [
+        "13-Month Calendar",
+        "Chakra Rhythm",
+        "Consciousness & Time",
+        "Energetic Cycles",
+        "Gregorian Overlay"
+      ],
       "clickToView": "Click to view calendar",
       "clickToClose": "Click to close"
     },
     "gardenDesign": {
       "title": "Garden & House Design",
       "description": "Design and draw your own garden and house with different work layers. From foundations to plants and water - create your perfect space.",
-      "details": ["2D Design", "Work Layers", "Plant Planning", "Water Systems", "Local Storage"],
+      "details": [
+        "2D Design",
+        "Work Layers",
+        "Plant Planning",
+        "Water Systems",
+        "Local Storage"
+      ],
       "explore": "Start Designer"
     },
     "investing": {
       "title": "Investing",
       "description": "I track how inflation affects my money and analyze how different investments perform relative to inflation. From tech stocks to gold - I learn about financial markets and wealth building.",
-      "details": ["Inflation Tracking", "Stocks", "Gold", "Cryptocurrency", "Wealth Building"],
+      "details": [
+        "Inflation Tracking",
+        "Stocks",
+        "Gold",
+        "Cryptocurrency",
+        "Wealth Building"
+      ],
       "explore": "Explore Inflation & Investments"
     },
     "moltbook": {
       "title": "Moltbook Agent",
       "description": "My AI agent on Moltbook where I can ask questions and answer posts from other agents. A platform for AI-to-AI communication and knowledge exchange.",
-      "details": ["AI Communication", "Asking Questions", "Answering", "Community", "Knowledge Exchange"],
+      "details": [
+        "AI Communication",
+        "Asking Questions",
+        "Answering",
+        "Community",
+        "Knowledge Exchange"
+      ],
       "explore": "Open Moltbook Agent"
     },
     "howInterestsShape": {
@@ -658,7 +817,13 @@
       "houseplants": {
         "title": "Houseplants",
         "description": "A growing collection of houseplants that transform my living space into a green oasis. From air-purifying plants to exotic species.",
-        "details": ["Monstera Deliciosa", "Ficus Lyrata", "Sansevieria", "Pothos", "Spider Plant"],
+        "details": [
+          "Monstera Deliciosa",
+          "Ficus Lyrata",
+          "Sansevieria",
+          "Pothos",
+          "Spider Plant"
+        ],
         "subProjects": {
           "monsteraJungle": {
             "name": "Monstera Jungle",
@@ -675,7 +840,13 @@
       "indoorTent": {
         "title": "Indoor Growing Tent",
         "description": "Controlled indoor cultivation for microgreens, tropical plants and experimental growing. A perfect environment for year-round growing.",
-        "details": ["Microgreens", "Tropical Plants", "LED Lighting", "Climate Control", "Hydroponics"],
+        "details": [
+          "Microgreens",
+          "Tropical Plants",
+          "LED Lighting",
+          "Climate Control",
+          "Hydroponics"
+        ],
         "subProjects": {
           "microgreensStation": {
             "name": "Microgreens Station",
@@ -692,7 +863,13 @@
       "fungi": {
         "title": "Fungi & Mushrooms",
         "description": "The fascinating process of growing mushrooms and fungi. From oyster mushrooms to medicinal species.",
-        "details": ["Oyster Mushrooms", "Shiitake", "Medicinal Species", "Mycelium", "Substrate"],
+        "details": [
+          "Oyster Mushrooms",
+          "Shiitake",
+          "Medicinal Species",
+          "Mycelium",
+          "Substrate"
+        ],
         "subProjects": {
           "oysterFarm": {
             "name": "Oyster Mushroom Farm",
@@ -709,7 +886,13 @@
       "vegetableGarden": {
         "title": "Vegetable Garden",
         "description": "Outdoor cultivation of vegetables, herbs and fruit. From seed to harvest, the complete process of natural growing.",
-        "details": ["Vegetables", "Herbs", "Fruit", "Compost", "Organic Growing"],
+        "details": [
+          "Vegetables",
+          "Herbs",
+          "Fruit",
+          "Compost",
+          "Organic Growing"
+        ],
         "subProjects": {
           "seasonalVegetables": {
             "name": "Seasonal Vegetables",
@@ -726,7 +909,13 @@
       "automation": {
         "title": "Growing Automation",
         "description": "Technological solutions for automating growing processes. From sensors to automated irrigation.",
-        "details": ["IoT Sensors", "Automatic Irrigation", "Climate Control", "Data Logging", "Remote Monitoring"],
+        "details": [
+          "IoT Sensors",
+          "Automatic Irrigation",
+          "Climate Control",
+          "Data Logging",
+          "Remote Monitoring"
+        ],
         "subProjects": {
           "smartIrrigation": {
             "name": "Smart Irrigation System",
@@ -743,7 +932,13 @@
       "monitoring": {
         "title": "Monitoring & Data",
         "description": "Collecting and analyzing data on growing conditions to optimize cultivation.",
-        "details": ["Data Logging", "Growth Analysis", "Optimization", "Trends", "Predictions"],
+        "details": [
+          "Data Logging",
+          "Growth Analysis",
+          "Optimization",
+          "Trends",
+          "Predictions"
+        ],
         "subProjects": {
           "growthDashboard": {
             "name": "Growth Data Dashboard",
@@ -818,7 +1013,13 @@
       "healthy": {
         "title": "Healthy Recipes",
         "description": "Nutritious and healthy meals that are both delicious and nutritious. Focus on fresh ingredients and balanced nutrition.",
-        "details": ["Salads", "Smoothies", "Healthy Bowls", "Vegetarian", "Superfoods"],
+        "details": [
+          "Salads",
+          "Smoothies",
+          "Healthy Bowls",
+          "Vegetarian",
+          "Superfoods"
+        ],
         "recipes": {
           "quinoaBowl": {
             "name": "Quinoa Power Bowl",
@@ -837,7 +1038,13 @@
       "experimental": {
         "title": "Experimental Dishes",
         "description": "Creative and experimental recipes where I try new flavors and techniques. From fusion cuisine to molecular gastronomy.",
-        "details": ["Fusion Cuisine", "Molecular Gastronomy", "New Techniques", "Creative Combinations", "Innovation"],
+        "details": [
+          "Fusion Cuisine",
+          "Molecular Gastronomy",
+          "New Techniques",
+          "Creative Combinations",
+          "Innovation"
+        ],
         "recipes": {
           "misoCaramel": {
             "name": "Miso Caramel Dessert",
@@ -856,7 +1063,13 @@
       "traditional": {
         "title": "Traditional Recipes",
         "description": "Classic dishes from different cultures, with respect for traditional preparation methods and authentic flavors.",
-        "details": ["Italian", "Asian", "Mediterranean", "Traditional", "Authentic"],
+        "details": [
+          "Italian",
+          "Asian",
+          "Mediterranean",
+          "Traditional",
+          "Authentic"
+        ],
         "recipes": {
           "pasta": {
             "name": "Homemade Pasta",
@@ -875,7 +1088,13 @@
       "vegetarian": {
         "title": "Vegetarian & Vegan",
         "description": "Plant-based recipes that prove vegetarian and vegan food doesn't have to be boring. Full of flavor and creativity.",
-        "details": ["Vegan", "Vegetarian", "Plant-based", "Sustainable", "Ethical"],
+        "details": [
+          "Vegan",
+          "Vegetarian",
+          "Plant-based",
+          "Sustainable",
+          "Ethical"
+        ],
         "recipes": {
           "jackfruit": {
             "name": "Jackfruit Pulled \"Pork\"",
@@ -894,7 +1113,13 @@
       "special": {
         "title": "Special Occasions",
         "description": "Festive and special dishes for special moments. From birthdays to holidays - every moment deserves something special.",
-        "details": ["Holidays", "Birthdays", "Romantic", "Festive", "Special"],
+        "details": [
+          "Holidays",
+          "Birthdays",
+          "Romantic",
+          "Festive",
+          "Special"
+        ],
         "recipes": {
           "lavaCake": {
             "name": "Chocolate Lava Cake",
@@ -913,7 +1138,13 @@
       "quick": {
         "title": "Quick Meals",
         "description": "Delicious and nutritious meals ready in 30 minutes or less. Perfect for busy days without compromising on flavor.",
-        "details": ["30 min or less", "Simple", "Quick", "Practical", "Weeknight"],
+        "details": [
+          "30 min or less",
+          "Simple",
+          "Quick",
+          "Practical",
+          "Weeknight"
+        ],
         "recipes": {
           "onePot": {
             "name": "One-Pot Pasta",
@@ -1165,8 +1396,17 @@
         "category": "Natural",
         "effect": "Broadens bandwidth, increases creativity and associative thinking",
         "computerEquivalent": "Bandwidth booster (increases data throughput)",
-        "benefits": ["Increased creativity", "Better associations", "Relaxation", "New perspectives"],
-        "risks": ["CPU lag with excessive use", "Memory problems", "Addiction"],
+        "benefits": [
+          "Increased creativity",
+          "Better associations",
+          "Relaxation",
+          "New perspectives"
+        ],
+        "risks": [
+          "CPU lag with excessive use",
+          "Memory problems",
+          "Addiction"
+        ],
         "research": "Research shows increased connectivity between brain regions",
         "status": "Legal in many countries"
       },
@@ -1175,8 +1415,18 @@
         "category": "Experimental",
         "effect": "Opens direct access to subconscious and breaks down firewalls",
         "computerEquivalent": "Root access to system (administrator rights)",
-        "benefits": ["Deep insights", "Trauma healing", "Spiritual experiences", "Creativity boost"],
-        "risks": ["Psychosis risk", "Bad trips", "Long-term effects", "Illegal"],
+        "benefits": [
+          "Deep insights",
+          "Trauma healing",
+          "Spiritual experiences",
+          "Creativity boost"
+        ],
+        "risks": [
+          "Psychosis risk",
+          "Bad trips",
+          "Long-term effects",
+          "Illegal"
+        ],
         "research": "Psychedelic therapy shows promising results",
         "status": "Research in development"
       },
@@ -1185,8 +1435,16 @@
         "category": "Natural",
         "effect": "Trains CPU efficiency and increases focus and control",
         "computerEquivalent": "CPU optimization (better performance)",
-        "benefits": ["Increased focus", "Better emotion control", "Stress reduction", "Long-term improvements"],
-        "risks": ["No known risks", "Time investment required"],
+        "benefits": [
+          "Increased focus",
+          "Better emotion control",
+          "Stress reduction",
+          "Long-term improvements"
+        ],
+        "risks": [
+          "No known risks",
+          "Time investment required"
+        ],
         "research": "Neuroplasticity changes demonstrated in studies",
         "status": "Scientifically supported"
       }
@@ -1328,7 +1586,7 @@
     "ctaButton": "Let's Discuss"
   },
   "music": {
-    "title": "🎵 Music & Live Coding",
+    "title": "Music & Live Coding",
     "subtitle": "Explore the world of music production, live coding and algorithmic composition. From traditional instruments to cutting-edge algorave technology.",
     "backToHome": "Back to Home",
     "liveCodingPanel": "Algorave Live Coding Panel",
@@ -1339,7 +1597,7 @@
     "beatGrid": "Beat Grid:",
     "soundWaves": "Sound Waves:",
     "patternBlocks": "Pattern Blocks:",
-    "soundDesignTips": "🎛️ Sound Design Tips",
+    "soundDesignTips": "Sound Design Tips",
     "frequency": "Frequency:",
     "duration": "Duration:",
     "waveforms": "Waveforms:",
@@ -1352,7 +1610,7 @@
     "waiting": "Waiting...",
     "reset": "Reset",
     "output": "Output:",
-    "musicSkills": "🎼 Musical Skills",
+    "musicSkills": "Musical Skills",
     "skillsSubtitle": "From traditional instruments to modern production software - discover the different aspects of music creation.",
     "dawSoftware": {
       "title": "DAW Software",
@@ -1466,44 +1724,79 @@
       "slacklining": {
         "title": "Slacklining",
         "description": "Balancing on a tight line between two points. A sport that combines balance, focus and mental peace.",
-        "details": ["Balance training", "Mental focus", "Core strength", "Meditation in motion"],
-        "photoPlaceholder": "📸 Slackline photo"
+        "details": [
+          "Balance training",
+          "Mental focus",
+          "Core strength",
+          "Meditation in motion"
+        ],
+        "photoPlaceholder": "Slackline photo"
       },
       "dailyTraining": {
         "title": "Daily Training",
         "description": "Consistent training for general fitness and strength. From cardio to strength training.",
-        "details": ["Cardio", "Strength training", "Flexibility", "Consistency"],
-        "photoPlaceholder": "📸 Training photo"
+        "details": [
+          "Cardio",
+          "Strength training",
+          "Flexibility",
+          "Consistency"
+        ],
+        "photoPlaceholder": "Training photo"
       },
       "dapoFlowStar": {
         "title": "Dapo Flow Star",
         "description": "A unique movement art that combines fluid movements with acrobatic elements. A mix of dance, martial arts and flow.",
-        "details": ["Flow movement", "Acrobatics", "Martial arts", "Creative expression"],
-        "photoPlaceholder": "📸 Dapo Flow Star photo"
+        "details": [
+          "Flow movement",
+          "Acrobatics",
+          "Martial arts",
+          "Creative expression"
+        ],
+        "photoPlaceholder": "Dapo Flow Star photo"
       },
       "dancing": {
         "title": "Dancing",
         "description": "Expressive dance forms that combine rhythm, emotion and movement. From freestyle to choreography.",
-        "details": ["Freestyle", "Choreography", "Rhythm", "Emotional expression"],
-        "photoPlaceholder": "📸 Dancing photo"
+        "details": [
+          "Freestyle",
+          "Choreography",
+          "Rhythm",
+          "Emotional expression"
+        ],
+        "photoPlaceholder": "Dancing photo"
       },
       "bouldering": {
         "title": "Bouldering",
         "description": "Climbing without rope at low heights. A puzzle of movement and strength.",
-        "details": ["Problem solving", "Upper body strength", "Mental strategy", "Social sport"],
-        "photoPlaceholder": "📸 Bouldering photo"
+        "details": [
+          "Problem solving",
+          "Upper body strength",
+          "Mental strategy",
+          "Social sport"
+        ],
+        "photoPlaceholder": "Bouldering photo"
       },
       "snowboarding": {
         "title": "Snowboarding",
         "description": "Gliding over snow on a board. Freedom and adrenaline in the mountains.",
-        "details": ["Mountain freedom", "Balance", "Speed control", "Winter adventure"],
-        "photoPlaceholder": "📸 Snowboard photo"
+        "details": [
+          "Mountain freedom",
+          "Balance",
+          "Speed control",
+          "Winter adventure"
+        ],
+        "photoPlaceholder": "Snowboard photo"
       },
       "surfing": {
         "title": "Surfing",
         "description": "Riding waves in the ocean. A new challenge I'm going to discover soon.",
-        "details": ["Ocean connection", "Wave reading", "Balance", "Coming soon"],
-        "photoPlaceholder": "📸 Surfing photo (coming soon)"
+        "details": [
+          "Ocean connection",
+          "Wave reading",
+          "Balance",
+          "Coming soon"
+        ],
+        "photoPlaceholder": "Surfing photo (coming soon)"
       }
     }
   },
@@ -1527,7 +1820,7 @@
     }
   },
   "investing": {
-    "title": "💰 Investing & Inflation Tracking",
+    "title": "Investing & Inflation Tracking",
     "subtitle": "Track how inflation affects your money and compare how different investments perform relative to inflation. Real-time statistics and historical data.",
     "categories": {
       "techStocks": "Tech Stocks",
@@ -1596,7 +1889,6 @@
     "newest": "Newest",
     "hide": "Hide",
     "view": "View",
-    "posting": "Posting...",
     "loadingOwnPosts": "Loading own posts...",
     "foundOwnPosts": "Found",
     "ownPosts": "own posts. Checking for new comments...",
@@ -1614,11 +1906,10 @@
     "replies": "replies"
   },
   "developmentNotice": {
-    "title": "🚧 Work in Progress",
+    "title": "Work in Progress",
     "message": "This website is currently under active development and serves as a test environment. Some pages may not be fully functional or complete. I'm sharing my progress as I build and refine the site.",
     "subtitle": "Test Environment & Progress Sharing",
     "understand": "I Understand",
     "dontShowAgain": "Don't show this again"
   }
 }
-

@@ -35,7 +35,7 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
   onElementDelete,
   onFolderExpandAll,
   onFolderCollapseAll
-}) => {
+}) =>{
   const [draggedElementId, setDraggedElementId] = useState<string | null>(null);
   const [draggedFolderId, setDraggedFolderId] = useState<string | null>(null);
   const [editingFolderId, setEditingFolderId] = useState<string | null>(null);
@@ -45,22 +45,22 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
   const rootElements = elements.filter(el => !el.folderId);
   const rootFolders = folders.filter(f => !f.parentId);
 
-  const handleDragStart = (e: React.DragEvent, elementId: string) => {
+  const handleDragStart = (e: React.DragEvent, elementId: string) =>{
     setDraggedElementId(elementId);
     e.dataTransfer.effectAllowed = 'move';
   };
 
-  const handleFolderDragStart = (e: React.DragEvent, folderId: string) => {
+  const handleFolderDragStart = (e: React.DragEvent, folderId: string) =>{
     setDraggedFolderId(folderId);
     e.dataTransfer.effectAllowed = 'move';
   };
 
-  const handleDragOver = (e: React.DragEvent, _folderId?: string) => {
+  const handleDragOver = (e: React.DragEvent, _folderId?: string) =>{
     e.preventDefault();
     e.dataTransfer.dropEffect = 'move';
   };
 
-  const handleDrop = (e: React.DragEvent, targetFolderId?: string) => {
+  const handleDrop = (e: React.DragEvent, targetFolderId?: string) =>{
     e.preventDefault();
     
     if (draggedElementId) {
@@ -79,19 +79,19 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
     }
   };
 
-  const handleNewFolder = (parentId?: string) => {
+  const handleNewFolder = (parentId?: string) =>{
     const name = prompt('Map naam:');
     if (name) {
       onFolderCreate(name.trim(), parentId);
     }
   };
 
-  const handleRenameFolder = (folderId: string, currentName: string) => {
+  const handleRenameFolder = (folderId: string, currentName: string) =>{
     setEditingFolderId(folderId);
     setEditingFolderName(currentName);
   };
 
-  const handleRenameSubmit = (folderId: string) => {
+  const handleRenameSubmit = (folderId: string) =>{
     if (editingFolderName.trim()) {
       onFolderRename(folderId, editingFolderName.trim());
     }
@@ -99,13 +99,13 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
     setEditingFolderName('');
   };
 
-  const handleContextMenu = (e: React.MouseEvent, type: 'folder' | 'element', id: string) => {
+  const handleContextMenu = (e: React.MouseEvent, type: 'folder' | 'element', id: string) =>{
     e.preventDefault();
     e.stopPropagation();
     setContextMenu({ x: e.clientX, y: e.clientY, type, id });
   };
 
-  const renderFolder = (folder: Folder, depth: number = 0): React.ReactNode => {
+  const renderFolder = (folder: Folder, depth: number = 0): React.ReactNode =>{
     const childFolders = folders.filter(f => f.parentId === folder.id);
     const folderElements = elements.filter(el => el.folderId === folder.id);
     const itemCount = getAllElementsInFolderHierarchy(elements, folders, folder.id).length;
@@ -125,15 +125,12 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
           <button
             onClick={() => onFolderToggle(folder.id)}
             className="text-white/60 hover:text-white transition-colors"
-          >
-            {folder.expanded ? (
+          >{folder.expanded ? (
               <ChevronDown className="w-4 h-4" />
             ) : (
               <ChevronRight className="w-4 h-4" />
             )}
-          </button>
-          
-          {folder.expanded ? (
+          </button>{folder.expanded ? (
             <FolderOpen className="w-4 h-4 text-amber-500" />
           ) : (
             <FolderIcon className="w-4 h-4 text-amber-500" />
@@ -145,7 +142,7 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
               value={editingFolderName}
               onChange={(e) => setEditingFolderName(e.target.value)}
               onBlur={() => handleRenameSubmit(folder.id)}
-              onKeyDown={(e) => {
+              onKeyDown={(e) =>{
                 if (e.key === 'Enter') handleRenameSubmit(folder.id);
                 if (e.key === 'Escape') {
                   setEditingFolderId(null);
@@ -163,14 +160,13 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
           )}
           
           <button
-            onClick={(e) => {
+            onClick={(e) =>{
               e.stopPropagation();
               onFolderVisibilityToggle(folder.id);
             }}
             className="p-1 hover:bg-white/10 rounded transition-colors"
             title={folder.visible ? 'Verberg map' : 'Toon map'}
-          >
-            {folder.visible ? (
+          >{folder.visible ? (
               <Eye className="w-4 h-4 text-white/60" />
             ) : (
               <EyeOff className="w-4 h-4 text-white/30" />
@@ -178,7 +174,7 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
           </button>
           
           <button
-            onClick={(e) => {
+            onClick={(e) =>{
               e.stopPropagation();
               handleContextMenu(e, 'folder', folder.id);
             }}
@@ -186,11 +182,8 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
           >
             <MoreVertical className="w-4 h-4 text-white/40" />
           </button>
-        </div>
-        
-        {folder.expanded && (
-          <div className="ml-4">
-            {childFolders.map(childFolder => renderFolder(childFolder, depth + 1))}
+        </div>{folder.expanded && (
+          <div className="ml-4">{childFolders.map(childFolder => renderFolder(childFolder, depth + 1))}
             {folderElements.map(element => renderElement(element, depth + 1))}
           </div>
         )}
@@ -198,7 +191,7 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
     );
   };
 
-  const renderElement = (element: DesignElement, depth: number = 0): React.ReactNode => {
+  const renderElement = (element: DesignElement, depth: number = 0): React.ReactNode =>{
     const isSelected = selectedElementIds.includes(element.id);
     const icon = getElementIcon(element);
 
@@ -214,18 +207,16 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
         onContextMenu={(e) => handleContextMenu(e, 'element', element.id)}
       >
         <span className="text-lg">{icon}</span>
-        <span className={`flex-1 text-sm ${isSelected ? 'text-neon-green' : 'text-white/70'}`}>
-          {element.name}
+        <span className={`flex-1 text-sm ${isSelected ? 'text-neon-green' : 'text-white/70'}`}>{element.name}
         </span>
         <button
-          onClick={(e) => {
+          onClick={(e) =>{
             e.stopPropagation();
             onElementVisibilityToggle(element.id);
           }}
           className="p-1 hover:bg-white/10 rounded transition-colors"
           title={element.visible ? 'Verberg object' : 'Toon object'}
-        >
-          {element.visible ? (
+        >{element.visible ? (
             <Eye className="w-4 h-4 text-white/60" />
           ) : (
             <EyeOff className="w-4 h-4 text-white/30" />
@@ -235,23 +226,22 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
     );
   };
 
-  const getElementIcon = (element: DesignElement): string => {
-    if (element.type === 'freehand') return '✏️';
-    if (element.type === 'circle') return '⭕';
-    if (element.type === 'line') return '➖';
-    if (element.type === 'polygon') return '⬡';
-    if (element.layer === 'building') return '🧱';
-    if (element.layer === 'plants') return '🌿';
-    if (element.layer === 'water') return '💧';
-    return '⬜';
+  const getElementIcon = (element: DesignElement): string =>{
+    if (element.type === 'freehand') return 'pen';
+    if (element.type === 'circle') return '○';
+    if (element.type === 'line') return '—';
+    if (element.type === 'polygon') return '◇';
+    if (element.layer === 'building') return 'B';
+    if (element.layer === 'plants') return 'P';
+    if (element.layer === 'water') return 'W';
+    return '□';
   };
 
   return (
     <div className="bg-dark-secondary/50 backdrop-blur-sm border border-white/10 rounded-xl p-4">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-bold text-white">Objecten</h3>
-        <div className="flex items-center gap-1">
-          {onFolderExpandAll && (
+        <div className="flex items-center gap-1">{onFolderExpandAll && (
             <button
               type="button"
               onClick={onFolderExpandAll}
@@ -281,17 +271,14 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
         </div>
       </div>
       
-      <div className="space-y-1 max-h-96 overflow-y-auto">
-        {rootFolders.map(folder => renderFolder(folder))}
+      <div className="space-y-1 max-h-96 overflow-y-auto">{rootFolders.map(folder => renderFolder(folder))}
         {rootElements.map(element => renderElement(element))}
         {rootFolders.length === 0 && rootElements.length === 0 && (
           <p className="text-white/40 text-sm text-center py-4">
             Geen objecten. Begin met tekenen!
           </p>
         )}
-      </div>
-
-      {/* Context Menu */}
+      </div>{/* Context Menu */}
       {contextMenu && (
         <>
           <div
@@ -301,11 +288,10 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
           <div
             className="fixed z-50 bg-dark-secondary border border-white/20 rounded-lg shadow-2xl py-2 min-w-[150px]"
             style={{ left: contextMenu.x, top: contextMenu.y }}
-          >
-            {contextMenu.type === 'folder' ? (
+          >{contextMenu.type === 'folder' ? (
               <>
                 <button
-                  onClick={() => {
+                  onClick={() =>{
                     const folder = folders.find(f => f.id === contextMenu.id);
                     if (folder) {
                       handleRenameFolder(folder.id, folder.name);
@@ -318,7 +304,7 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
                   Hernoemen
                 </button>
                 <button
-                  onClick={() => {
+                  onClick={() =>{
                     const folder = folders.find(f => f.id === contextMenu.id);
                     if (folder) {
                       handleNewFolder(folder.id);
@@ -331,7 +317,7 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
                   Nieuwe submap
                 </button>
                 <button
-                  onClick={() => {
+                  onClick={() =>{
                     onFolderDelete(contextMenu.id);
                     setContextMenu(null);
                   }}
@@ -343,7 +329,7 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
               </>
             ) : (
               <button
-                onClick={() => {
+                onClick={() =>{
                   onElementDelete(contextMenu.id);
                   setContextMenu(null);
                 }}

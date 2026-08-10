@@ -486,7 +486,7 @@ function drawElementLabel(
   if (isOpening) {
     const kind = element.properties.openingKind === 'window' ? 'Raam' : 'Deur';
     const w = element.properties.openingWidthCm;
-    const text = w ? `${kind} ${w}cm` : kind;
+    const text = w ? `${kind} ${w}cm`: kind;
     ctx.font = '10px system-ui, sans-serif';
     ctx.fillStyle = 'rgba(255,255,255,0.9)';
     ctx.strokeStyle = 'rgba(0,0,0,0.55)';
@@ -501,9 +501,9 @@ function drawElementLabel(
   const sub =
     isZone && element.properties.sunExposure
       ? element.properties.sunExposure === 'full'
-        ? '☀'
+        ? 'sun'
         : element.properties.sunExposure === 'shade'
-          ? '☁'
+          ? 'shd'
           : '◐'
       : null;
 
@@ -511,7 +511,7 @@ function drawElementLabel(
   ctx.fillStyle = 'rgba(255,255,255,0.9)';
   ctx.strokeStyle = 'rgba(0,0,0,0.6)';
   ctx.lineWidth = 3;
-  const text = sub ? `${label} ${sub}` : label;
+  const text = sub ? `${label} ${sub}`: label;
   ctx.strokeText(text, cx, cy);
   ctx.fillText(text, cx, cy);
 
@@ -540,7 +540,7 @@ function drawSelectionHandles(
   ctx.strokeStyle = '#0a0a0a';
   ctx.lineWidth = 2;
   
-  handles.forEach(handle => {
+  handles.forEach(handle =>{
     ctx.fillRect(
       handle.x - handleSize / 2,
       handle.y - handleSize / 2,

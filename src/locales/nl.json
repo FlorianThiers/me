@@ -62,28 +62,44 @@
         "company": "LifeGroup · Servelec · Urban Culture",
         "location": "België",
         "description": "Full-stack ontwikkeling voor het B2B-platform van Servelec en de Urban Culture Gent umbrella-site. Bestuurder bij LifeGroup — engineering én bestuur.",
-        "achievements": ["Servelec B2B-platform", "Urban Culture hub (ParkSports + Corridor)", "LifeGroup bestuur + delivery"]
+        "achievements": [
+          "Servelec B2B-platform",
+          "Urban Culture hub (ParkSports + Corridor)",
+          "LifeGroup bestuur + delivery"
+        ]
       },
       "event2": {
         "title": "Web Development Opleiding",
         "company": "Web Development Diploma",
         "location": "België",
         "description": "4 jaar webdevelopment opleiding afgerond met diploma. Focus op moderne webtechnologieën en praktische projecten.",
-        "achievements": ["Diploma behaald", "Moderne webtechnologieën", "Praktische projecten"]
+        "achievements": [
+          "Diploma behaald",
+          "Moderne webtechnologieën",
+          "Praktische projecten"
+        ]
       },
       "event3": {
         "title": "Plantechnische Wetenschappen",
         "company": "Plantechnische Wetenschappen Diploma",
         "location": "België",
         "description": "2 jaar opleiding in plantentechnische wetenschappen afgerond met diploma. Focus op duurzaamheid en technologie.",
-        "achievements": ["Diploma behaald", "Duurzaamheid", "Technologie"]
+        "achievements": [
+          "Diploma behaald",
+          "Duurzaamheid",
+          "Technologie"
+        ]
       },
       "event4": {
         "title": "Start als Programmeur",
         "company": "Eerste Programmeerervaring",
         "location": "België",
         "description": "Begonnen met programmeren in het middelbaar. Eerste stappen in de wereld van software ontwikkeling.",
-        "achievements": ["Diploma behaald", "Basis vaardigheden", "Passie ontdekt"]
+        "achievements": [
+          "Diploma behaald",
+          "Basis vaardigheden",
+          "Passie ontdekt"
+        ]
       }
     }
   },
@@ -468,8 +484,18 @@
       "title": "Planningshorizonten",
       "subtitle": "Kies een venster en domein — demo van hoe werk, sport, eten en slaap samenhangen. Geen strakke planning.",
       "toolLabel": "Canoniek in",
-      "horizons": { "day": "Dag", "week": "Week", "month": "Maand", "year": "Jaar" },
-      "domains": { "work": "Werk", "sport": "Sport", "nutrition": "Eten", "sleep": "Slaap" },
+      "horizons": {
+        "day": "Dag",
+        "week": "Week",
+        "month": "Maand",
+        "year": "Jaar"
+      },
+      "domains": {
+        "work": "Werk",
+        "sport": "Sport",
+        "nutrition": "Eten",
+        "sleep": "Slaap"
+      },
       "nowTitle": "Wat nu werkt",
       "nowBody": "Orb-briefing + dag-thread (4 intents) + dit raster. Voorbeelddata — gebruik Todoist, Notion en je day-log voor echte taken.",
       "nextTitle": "Volgende stap",
@@ -488,28 +514,76 @@
       },
       "cells": {
         "day": {
-          "work": { "body": "Top 3 werk + deep block vóór meetings.", "tool": "workflow-os day-log" },
-          "sport": { "body": "Split type vandaag (A/B/C/D) — knie-vriendelijk.", "tool": "Todoist @sport" },
-          "nutrition": { "body": "Eiwit eerst; licht tekort indien vet-verlies week.", "tool": "Notion weekmenu" },
-          "sleep": { "body": "Wind-down 22:30; schermen uit buffer.", "tool": "Todoist recurring" }
+          "work": {
+            "body": "Top 3 werk + deep block vóór meetings.",
+            "tool": "workflow-os day-log"
+          },
+          "sport": {
+            "body": "Split type vandaag (A/B/C/D) — knie-vriendelijk.",
+            "tool": "Todoist @sport"
+          },
+          "nutrition": {
+            "body": "Eiwit eerst; licht tekort indien vet-verlies week.",
+            "tool": "Notion weekmenu"
+          },
+          "sleep": {
+            "body": "Wind-down 22:30; schermen uit buffer.",
+            "tool": "Todoist recurring"
+          }
         },
         "week": {
-          "work": { "body": "Feature-prioriteiten + threads; max 3 carry-overs.", "tool": "Notion Tasks" },
-          "sport": { "body": "3–4 sessies: push, pull, benen licht, recovery wandeling.", "tool": "life-rhythm + calendar" },
-          "nutrition": { "body": "2× meal prep; boodschappenlijst.", "tool": "Notion + Todoist" },
-          "sleep": { "body": "Gemiddeld 7–8u; één avond geen late schermen.", "tool": "Google Calendar soft block" }
+          "work": {
+            "body": "Feature-prioriteiten + threads; max 3 carry-overs.",
+            "tool": "Notion Tasks"
+          },
+          "sport": {
+            "body": "3–4 sessies: push, pull, benen licht, recovery wandeling.",
+            "tool": "life-rhythm + calendar"
+          },
+          "nutrition": {
+            "body": "2× meal prep; boodschappenlijst.",
+            "tool": "Notion + Todoist"
+          },
+          "sleep": {
+            "body": "Gemiddeld 7–8u; één avond geen late schermen.",
+            "tool": "Google Calendar soft block"
+          }
         },
         "month": {
-          "work": { "body": "Milestones shippen; FF testing items sluiten.", "tool": "Notion Feature Flow" },
-          "sport": { "body": "Conditie opbouwen; deload bij knie klacht.", "tool": "/sports + life-rhythm" },
-          "nutrition": { "body": "Houdbaar tekort of onderhoud; energie volgen.", "tool": "/cooking notities" },
-          "sleep": { "body": "Eén slaaplek fixen (cafeïne, laat werk, …).", "tool": "Weekreview" }
+          "work": {
+            "body": "Milestones shippen; FF testing items sluiten.",
+            "tool": "Notion Feature Flow"
+          },
+          "sport": {
+            "body": "Conditie opbouwen; deload bij knie klacht.",
+            "tool": "/sports + life-rhythm"
+          },
+          "nutrition": {
+            "body": "Houdbaar tekort of onderhoud; energie volgen.",
+            "tool": "/cooking notities"
+          },
+          "sleep": {
+            "body": "Eén slaaplek fixen (cafeïne, laat werk, …).",
+            "tool": "Weekreview"
+          }
         },
         "year": {
-          "work": { "body": "Carrière: Servelec, LifeGroup, side projects.", "tool": "/goals + Notion" },
-          "sport": { "body": "Lange termijn: kracht + outdoor hobby's.", "tool": "life-rhythm ankers" },
-          "nutrition": { "body": "Gewoontes die drukke weken overleven.", "tool": "Notion MySpace hub" },
-          "sleep": { "body": "Chronisch ritme > perfecte nachten.", "tool": "Jaarlijkse goals review" }
+          "work": {
+            "body": "Carrière: Servelec, LifeGroup, side projects.",
+            "tool": "/goals + Notion"
+          },
+          "sport": {
+            "body": "Lange termijn: kracht + outdoor hobby's.",
+            "tool": "life-rhythm ankers"
+          },
+          "nutrition": {
+            "body": "Gewoontes die drukke weken overleven.",
+            "tool": "Notion MySpace hub"
+          },
+          "sleep": {
+            "body": "Chronisch ritme > perfecte nachten.",
+            "tool": "Jaarlijkse goals review"
+          }
         }
       }
     },
@@ -537,93 +611,188 @@
     "lifeRhythm": {
       "title": "Life rhythm",
       "description": "Een flexibele rode draad door slaap, sport, hobby's en huis — onderdeel van mijn Workflow OS op Julia.",
-      "details": ["Week-ankers", "Sport-split", "Hobby's", "Huisprojecten", "Dag-thread"],
+      "details": [
+        "Week-ankers",
+        "Sport-split",
+        "Hobby's",
+        "Huisprojecten",
+        "Dag-thread"
+      ],
       "explore": "Verken life rhythm"
     },
     "meditation": {
       "title": "Meditatie",
       "description": "Ik beoefen regelmatig meditatie om mijn geest te kalmeren, focus te verbeteren en innerlijke rust te vinden. Dit helpt me ook in mijn creatieve werk.",
-      "details": ["Mindfulness", "Vipassana", "Ademhalingstechnieken", "Mentale Helderheid", "Stressvermindering"],
+      "details": [
+        "Mindfulness",
+        "Vipassana",
+        "Ademhalingstechnieken",
+        "Mentale Helderheid",
+        "Stressvermindering"
+      ],
       "explore": "Verken Meditatie & Mindfulness"
     },
     "cultivation": {
       "title": "Cultivatie",
       "description": "Ik ben gepassioneerd over het kweken van planten en het verbinden met de natuur. Van kamerplanten tot moestuin - ik vind rust in het verzorgen van levende wezens.",
-      "details": ["Kamerplanten", "Tuinieren", "Duurzaamheid", "Plantenverzorging", "Natuurverbinding"],
+      "details": [
+        "Kamerplanten",
+        "Tuinieren",
+        "Duurzaamheid",
+        "Plantenverzorging",
+        "Natuurverbinding"
+      ],
       "explore": "Verken Kweekprojecten"
     },
     "cooking": {
       "title": "Koken",
       "description": "Koken is voor mij een creatieve uitlaatklep en een manier om te experimenteren met smaken en technieken. Ik geniet van het proces van het maken van gezonde, lekkere maaltijden.",
-      "details": ["Gezond Koken", "Smaakexperimenten", "Kooktechnieken", "Maaltijdplanning", "Voeding"],
+      "details": [
+        "Gezond Koken",
+        "Smaakexperimenten",
+        "Kooktechnieken",
+        "Maaltijdplanning",
+        "Voeding"
+      ],
       "explore": "Verken Recepten & Gerechten"
     },
     "philosophy": {
       "title": "Filosofie & Bewustzijn",
       "description": "Ik ben gefascineerd door de diepere vragen van bewustzijn, psychologie en hoe grote denkers door de geschiedenis onze kijk op de geest hebben gevormd.",
-      "details": ["Carl Jung", "Bewustzijnsfilosofie", "Psychologie", "Filosofische Tradities", "Mentale Modellen"],
+      "details": [
+        "Carl Jung",
+        "Bewustzijnsfilosofie",
+        "Psychologie",
+        "Filosofische Tradities",
+        "Mentale Modellen"
+      ],
       "explore": "Verken Filosofen & Denkers"
     },
     "sports": {
       "title": "Sporten & Avontuur",
       "description": "Ik ben gepassioneerd over outdoor sporten en avontuur. Van slacklinen en boulderen tot snowboarden en surfen - ik hou van de uitdaging en vrijheid die deze sporten bieden.",
-      "details": ["Slacklining", "Boulderen", "Snowboarden", "Surfen", "Dagelijkse Training"],
+      "details": [
+        "Slacklining",
+        "Boulderen",
+        "Snowboarden",
+        "Surfen",
+        "Dagelijkse Training"
+      ],
       "explore": "Verken Sporten & Avontuur"
     },
     "music": {
       "title": "Muziek",
       "description": "Ik heb een diepe passie voor muziek, zowel luisteren als creëren. Ik geniet van het verkennen van verschillende genres en experimenteren met digitale muziekproductie.",
-      "details": ["Elektronische Muziek", "Jazz", "Klassiek", "Digitale Audio Workstations", "Sound Design"],
+      "details": [
+        "Elektronische Muziek",
+        "Jazz",
+        "Klassiek",
+        "Digitale Audio Workstations",
+        "Sound Design"
+      ],
       "explore": "Verken Live Coding & Muziek"
     },
     "learning": {
       "title": "Leren",
       "description": "Ik ben constant bezig met het uitbreiden van mijn kennis en vaardigheden, of dat nu via boeken, online cursussen of hands-on projecten is.",
-      "details": ["Technologie Trends", "Design Principes", "Nieuwe Programmeertalen", "Creatieve Technieken"]
+      "details": [
+        "Technologie Trends",
+        "Design Principes",
+        "Nieuwe Programmeertalen",
+        "Creatieve Technieken"
+      ]
     },
     "photography": {
       "title": "Fotografie",
       "description": "Ik geniet van het vastleggen van momenten en het verkennen van visuele verhalen door fotografie en videografie.",
-      "details": ["Digitale Fotografie", "Compositie", "Belichting", "Post-Processing", "Verhalen Vertellen"]
+      "details": [
+        "Digitale Fotografie",
+        "Compositie",
+        "Belichting",
+        "Post-Processing",
+        "Verhalen Vertellen"
+      ]
     },
     "art": {
       "title": "Kunst & Creativiteit",
       "description": "Creatieve expressie is belangrijk voor mij, of dat nu via digitale kunst, traditionele media of innovatieve design oplossingen is.",
-      "details": ["Digitale Kunst", "Schetsen", "Kleurentheorie", "Creatief Probleem Oplossen", "Innovatie"]
+      "details": [
+        "Digitale Kunst",
+        "Schetsen",
+        "Kleurentheorie",
+        "Creatief Probleem Oplossen",
+        "Innovatie"
+      ]
     },
     "travel": {
       "title": "Reizen & Cultuur",
       "description": "Ik hou ervan om verschillende culturen en perspectieven te verkennen, wat mijn creatieve werk en begrip van globale design trends verrijkt.",
-      "details": ["Culturele Uitwisseling", "Globaal Design", "Taal Leren", "Culturele Sensitiviteit", "Diverse Perspectieven"]
+      "details": [
+        "Culturele Uitwisseling",
+        "Globaal Design",
+        "Taal Leren",
+        "Culturele Sensitiviteit",
+        "Diverse Perspectieven"
+      ]
     },
     "gaming": {
       "title": "Gaming",
       "description": "Gaming is een belangrijk onderdeel van mijn leven geweest, wat mijn interesse in technologie en interactieve ervaringen heeft geïnspireerd.",
-      "details": ["Strategie Spellen", "RPGs", "Indie Games", "Game Ontwikkeling", "Virtual Reality"]
+      "details": [
+        "Strategie Spellen",
+        "RPGs",
+        "Indie Games",
+        "Game Ontwikkeling",
+        "Virtual Reality"
+      ]
     },
     "timeVisualization": {
       "title": "Alternatieve Tijdvisualisatie",
       "description": "Ik ben gefascineerd door alternatieve manieren om tijd te ervaren. Via een 13-maanden chakra kalender (startend op 26 juli) verken ik hoe energie en bewustzijn samenhangen met onze tijdservaring.",
-      "details": ["13-Maanden Kalender", "Chakra Ritme", "Bewustzijn & Tijd", "Energetische Cycli", "Gregoriaanse Overlay"],
+      "details": [
+        "13-Maanden Kalender",
+        "Chakra Ritme",
+        "Bewustzijn & Tijd",
+        "Energetische Cycli",
+        "Gregoriaanse Overlay"
+      ],
       "clickToView": "Klik om kalender te bekijken",
       "clickToClose": "Klik om te sluiten"
     },
     "gardenDesign": {
       "title": "Tuin & Huis Ontwerpen",
       "description": "Ontwerp en teken je eigen tuin en huis met verschillende werklagen. Van funderingen tot planten en water - creëer je perfecte ruimte.",
-      "details": ["2D Ontwerp", "Werklagen", "Planten Planning", "Water Systemen", "Lokaal Opslaan"],
+      "details": [
+        "2D Ontwerp",
+        "Werklagen",
+        "Planten Planning",
+        "Water Systemen",
+        "Lokaal Opslaan"
+      ],
       "explore": "Start Ontwerper"
     },
     "investing": {
       "title": "Beleggen",
       "description": "Ik volg hoe inflatie mijn geld beïnvloedt en analyseer hoe verschillende investeringen presteren ten opzichte van inflatie. Van tech-aandelen tot goud - ik leer over financiële markten en vermogensopbouw.",
-      "details": ["Inflatie Tracking", "Aandelen", "Goud", "Cryptocurrency", "Vermogensopbouw"],
+      "details": [
+        "Inflatie Tracking",
+        "Aandelen",
+        "Goud",
+        "Cryptocurrency",
+        "Vermogensopbouw"
+      ],
       "explore": "Verken Inflatie & Investeringen"
     },
     "moltbook": {
       "title": "Moltbook Agent",
       "description": "Mijn AI agent op Moltbook waar ik vragen kan stellen en antwoorden kan geven op posts van andere agents. Een platform voor AI-to-AI communicatie en kennisuitwisseling.",
-      "details": ["AI Communicatie", "Vragen Stellen", "Antwoorden", "Community", "Kennisuitwisseling"],
+      "details": [
+        "AI Communicatie",
+        "Vragen Stellen",
+        "Antwoorden",
+        "Community",
+        "Kennisuitwisseling"
+      ],
       "explore": "Open Moltbook Agent"
     },
     "howInterestsShape": {
@@ -649,7 +818,13 @@
       "houseplants": {
         "title": "Kamerplanten",
         "description": "Een groeiende collectie kamerplanten die mijn woonruimte omtoveren tot een groene oase. Van luchtzuiverende planten tot exotische soorten.",
-        "details": ["Monstera Deliciosa", "Ficus Lyrata", "Sansevieria", "Pothos", "Spider Plant"],
+        "details": [
+          "Monstera Deliciosa",
+          "Ficus Lyrata",
+          "Sansevieria",
+          "Pothos",
+          "Spider Plant"
+        ],
         "subProjects": {
           "monsteraJungle": {
             "name": "Monstera Jungle",
@@ -666,7 +841,13 @@
       "indoorTent": {
         "title": "Binnenkweek Tent",
         "description": "Gecontroleerde binnenkweek voor microgreens, tropische planten en experimentele teelt. Een perfecte omgeving voor het hele jaar door groeien.",
-        "details": ["Microgreens", "Tropische Planten", "LED Verlichting", "Klimaatcontrole", "Hydroponics"],
+        "details": [
+          "Microgreens",
+          "Tropische Planten",
+          "LED Verlichting",
+          "Klimaatcontrole",
+          "Hydroponics"
+        ],
         "subProjects": {
           "microgreensStation": {
             "name": "Microgreens Station",
@@ -683,7 +864,13 @@
       "fungi": {
         "title": "Fungi & Mushrooms",
         "description": "Het fascinerende proces van het kweken van paddenstoelen en schimmels. Van oesterzwammen tot medicinale soorten.",
-        "details": ["Oesterzwammen", "Shiitake", "Medicinale Soorten", "Mycelium", "Substraat"],
+        "details": [
+          "Oesterzwammen",
+          "Shiitake",
+          "Medicinale Soorten",
+          "Mycelium",
+          "Substraat"
+        ],
         "subProjects": {
           "oysterFarm": {
             "name": "Oesterzwam Kwekerij",
@@ -700,7 +887,13 @@
       "vegetableGarden": {
         "title": "Moestuin",
         "description": "Buitenkweek van groenten, kruiden en fruit. Van zaad tot oogst, het volledige proces van natuurlijke teelt.",
-        "details": ["Groenten", "Kruiden", "Fruit", "Compost", "Biologische Teelt"],
+        "details": [
+          "Groenten",
+          "Kruiden",
+          "Fruit",
+          "Compost",
+          "Biologische Teelt"
+        ],
         "subProjects": {
           "seasonalVegetables": {
             "name": "Seizoensgroenten",
@@ -717,7 +910,13 @@
       "automation": {
         "title": "Kweek Automatisatie",
         "description": "Technologische oplossingen voor het automatiseren van kweekprocessen. Van sensoren tot geautomatiseerde irrigatie.",
-        "details": ["IoT Sensoren", "Automatische Irrigatie", "Klimaatcontrole", "Data Logging", "Remote Monitoring"],
+        "details": [
+          "IoT Sensoren",
+          "Automatische Irrigatie",
+          "Klimaatcontrole",
+          "Data Logging",
+          "Remote Monitoring"
+        ],
         "subProjects": {
           "smartIrrigation": {
             "name": "Smart Irrigation System",
@@ -734,7 +933,13 @@
       "monitoring": {
         "title": "Monitoring & Data",
         "description": "Het verzamelen en analyseren van data over groeiomstandigheden om de kweek te optimaliseren.",
-        "details": ["Data Logging", "Groeianalyse", "Optimalisatie", "Trends", "Voorspellingen"],
+        "details": [
+          "Data Logging",
+          "Groeianalyse",
+          "Optimalisatie",
+          "Trends",
+          "Voorspellingen"
+        ],
         "subProjects": {
           "growthDashboard": {
             "name": "Groeidata Dashboard",
@@ -809,7 +1014,13 @@
       "healthy": {
         "title": "Gezonde Recepten",
         "description": "Voedzame en gezonde maaltijden die zowel lekker als voedzaam zijn. Focus op verse ingrediënten en gebalanceerde voeding.",
-        "details": ["Salades", "Smoothies", "Gezonde Bowls", "Vegetarisch", "Superfoods"],
+        "details": [
+          "Salades",
+          "Smoothies",
+          "Gezonde Bowls",
+          "Vegetarisch",
+          "Superfoods"
+        ],
         "recipes": {
           "quinoaBowl": {
             "name": "Quinoa Power Bowl",
@@ -828,7 +1039,13 @@
       "experimental": {
         "title": "Experimentele Gerechten",
         "description": "Creatieve en experimentele recepten waarbij ik nieuwe smaken en technieken uitprobeer. Van fusion cuisine tot moleculaire gastronomie.",
-        "details": ["Fusion Cuisine", "Moleculaire Gastronomie", "Nieuwe Technieken", "Creatieve Combinaties", "Innovatie"],
+        "details": [
+          "Fusion Cuisine",
+          "Moleculaire Gastronomie",
+          "Nieuwe Technieken",
+          "Creatieve Combinaties",
+          "Innovatie"
+        ],
         "recipes": {
           "misoCaramel": {
             "name": "Miso Caramel Dessert",
@@ -847,7 +1064,13 @@
       "traditional": {
         "title": "Traditionele Recepten",
         "description": "Klassieke gerechten uit verschillende culturen, met respect voor traditionele bereidingswijzen en authentieke smaken.",
-        "details": ["Italiaans", "Aziatisch", "Mediterraan", "Traditioneel", "Authentiek"],
+        "details": [
+          "Italiaans",
+          "Aziatisch",
+          "Mediterraan",
+          "Traditioneel",
+          "Authentiek"
+        ],
         "recipes": {
           "pasta": {
             "name": "Homemade Pasta",
@@ -866,7 +1089,13 @@
       "vegetarian": {
         "title": "Vegetarisch & Vegan",
         "description": "Plant-based recepten die bewijzen dat vegetarisch en vegan eten niet saai hoeft te zijn. Vol smaak en creativiteit.",
-        "details": ["Vegan", "Vegetarisch", "Plant-based", "Duurzaam", "Ethisch"],
+        "details": [
+          "Vegan",
+          "Vegetarisch",
+          "Plant-based",
+          "Duurzaam",
+          "Ethisch"
+        ],
         "recipes": {
           "jackfruit": {
             "name": "Jackfruit Pulled \"Pork\"",
@@ -885,7 +1114,13 @@
       "special": {
         "title": "Speciale Gelegenheden",
         "description": "Feestelijke en bijzondere gerechten voor speciale momenten. Van verjaardagen tot feestdagen - elk moment verdient iets speciaals.",
-        "details": ["Feestdagen", "Verjaardagen", "Romantisch", "Feestelijk", "Speciaal"],
+        "details": [
+          "Feestdagen",
+          "Verjaardagen",
+          "Romantisch",
+          "Feestelijk",
+          "Speciaal"
+        ],
         "recipes": {
           "lavaCake": {
             "name": "Chocolate Lava Cake",
@@ -904,7 +1139,13 @@
       "quick": {
         "title": "Snelle Maaltijden",
         "description": "Lekkere en voedzame maaltijden die in 30 minuten of minder klaar zijn. Perfect voor drukke dagen zonder in te leveren op smaak.",
-        "details": ["30 min of minder", "Eenvoudig", "Snel", "Praktisch", "Weeknight"],
+        "details": [
+          "30 min of minder",
+          "Eenvoudig",
+          "Snel",
+          "Praktisch",
+          "Weeknight"
+        ],
         "recipes": {
           "onePot": {
             "name": "One-Pot Pasta",
@@ -1156,8 +1397,17 @@
         "category": "Natuurlijk",
         "effect": "Verbreedt bandbreedte, verhoogt creativiteit en associatieve denken",
         "computerEquivalent": "Bandwidth booster (verhoogt data doorvoer)",
-        "benefits": ["Verhoogde creativiteit", "Betere associaties", "Ontspanning", "Nieuwe perspectieven"],
-        "risks": ["CPU lag bij overmatig gebruik", "Geheugen problemen", "Verslaving"],
+        "benefits": [
+          "Verhoogde creativiteit",
+          "Betere associaties",
+          "Ontspanning",
+          "Nieuwe perspectieven"
+        ],
+        "risks": [
+          "CPU lag bij overmatig gebruik",
+          "Geheugen problemen",
+          "Verslaving"
+        ],
         "research": "Onderzoek toont verhoogde connectiviteit tussen hersengebieden",
         "status": "Wettelijk in veel landen"
       },
@@ -1166,8 +1416,18 @@
         "category": "Experimenteel",
         "effect": "Opent directe toegang tot onderbewustzijn en breekt firewalls open",
         "computerEquivalent": "Root access tot systeem (administrator rechten)",
-        "benefits": ["Diepe inzichten", "Trauma healing", "Spirituele ervaringen", "Creativiteit boost"],
-        "risks": ["Psychose risico", "Bad trips", "Langdurige effecten", "Illegaal"],
+        "benefits": [
+          "Diepe inzichten",
+          "Trauma healing",
+          "Spirituele ervaringen",
+          "Creativiteit boost"
+        ],
+        "risks": [
+          "Psychose risico",
+          "Bad trips",
+          "Langdurige effecten",
+          "Illegaal"
+        ],
         "research": "Psychedelische therapie toont beloftevolle resultaten",
         "status": "Onderzoek in ontwikkeling"
       },
@@ -1176,8 +1436,16 @@
         "category": "Natuurlijk",
         "effect": "Traint CPU efficiëntie en verhoogt focus en controle",
         "computerEquivalent": "CPU optimalisatie (betere prestaties)",
-        "benefits": ["Verhoogde focus", "Betere emotie controle", "Stress reductie", "Langdurige verbeteringen"],
-        "risks": ["Geen bekende risico's", "Tijd investering vereist"],
+        "benefits": [
+          "Verhoogde focus",
+          "Betere emotie controle",
+          "Stress reductie",
+          "Langdurige verbeteringen"
+        ],
+        "risks": [
+          "Geen bekende risico's",
+          "Tijd investering vereist"
+        ],
         "research": "Neuroplasticiteit veranderingen aangetoond in studies",
         "status": "Wetenschappelijk onderbouwd"
       }
@@ -1319,7 +1587,7 @@
     "ctaButton": "Laten we Bespreken"
   },
   "music": {
-    "title": "🎵 Muziek & Live Coding",
+    "title": "Muziek & Live Coding",
     "subtitle": "Verken de wereld van muziekproductie, live coding en algoritmische compositie. Van traditionele instrumenten tot cutting-edge algorave technologie.",
     "backToHome": "Terug naar Home",
     "liveCodingPanel": "Algorave Live Coding Panel",
@@ -1330,7 +1598,7 @@
     "beatGrid": "Beat Grid:",
     "soundWaves": "Sound Waves:",
     "patternBlocks": "Pattern Blocks:",
-    "soundDesignTips": "🎛️ Sound Design Tips",
+    "soundDesignTips": "Sound Design Tips",
     "frequency": "Frequency:",
     "duration": "Duration:",
     "waveforms": "Waveforms:",
@@ -1343,7 +1611,7 @@
     "waiting": "Waiting...",
     "reset": "Reset",
     "output": "Output:",
-    "musicSkills": "🎼 Muzikale Vaardigheden",
+    "musicSkills": "Muzikale Vaardigheden",
     "skillsSubtitle": "Van traditionele instrumenten tot moderne productiesoftware - ontdek de verschillende aspecten van muziekcreatie.",
     "dawSoftware": {
       "title": "DAW Software",
@@ -1457,44 +1725,79 @@
       "slacklining": {
         "title": "Slacklining",
         "description": "Balanceren op een strakke lijn tussen twee punten. Een sport die balans, focus en mentale rust combineert.",
-        "details": ["Balance training", "Mental focus", "Core strength", "Meditation in motion"],
-        "photoPlaceholder": "📸 Slackline foto"
+        "details": [
+          "Balance training",
+          "Mental focus",
+          "Core strength",
+          "Meditation in motion"
+        ],
+        "photoPlaceholder": "Slackline foto"
       },
       "dailyTraining": {
         "title": "Dagelijkse Training",
         "description": "Consistente training voor algemene fitheid en kracht. Van cardio tot krachttraining.",
-        "details": ["Cardio", "Strength training", "Flexibility", "Consistency"],
-        "photoPlaceholder": "📸 Training foto"
+        "details": [
+          "Cardio",
+          "Strength training",
+          "Flexibility",
+          "Consistency"
+        ],
+        "photoPlaceholder": "Training foto"
       },
       "dapoFlowStar": {
         "title": "Dapo Flow Star",
         "description": "Een unieke bewegingskunst die vloeiende bewegingen combineert met acrobatische elementen. Een mix van dans, martial arts en flow.",
-        "details": ["Flow movement", "Acrobatics", "Martial arts", "Creative expression"],
-        "photoPlaceholder": "📸 Dapo Flow Star foto"
+        "details": [
+          "Flow movement",
+          "Acrobatics",
+          "Martial arts",
+          "Creative expression"
+        ],
+        "photoPlaceholder": "Dapo Flow Star foto"
       },
       "dancing": {
         "title": "Dancing",
         "description": "Expressieve dansvormen die ritme, emotie en beweging combineren. Van freestyle tot choreografie.",
-        "details": ["Freestyle", "Choreography", "Rhythm", "Emotional expression"],
-        "photoPlaceholder": "📸 Dancing foto"
+        "details": [
+          "Freestyle",
+          "Choreography",
+          "Rhythm",
+          "Emotional expression"
+        ],
+        "photoPlaceholder": "Dancing foto"
       },
       "bouldering": {
         "title": "Boulderen",
         "description": "Klimmen zonder touw op lage hoogtes. Een puzzel van beweging en kracht.",
-        "details": ["Problem solving", "Upper body strength", "Mental strategy", "Social sport"],
-        "photoPlaceholder": "📸 Boulderen foto"
+        "details": [
+          "Problem solving",
+          "Upper body strength",
+          "Mental strategy",
+          "Social sport"
+        ],
+        "photoPlaceholder": "Boulderen foto"
       },
       "snowboarding": {
         "title": "Snowboarden",
         "description": "Glijden over sneeuw op een board. Vrijheid en adrenaline in de bergen.",
-        "details": ["Mountain freedom", "Balance", "Speed control", "Winter adventure"],
-        "photoPlaceholder": "📸 Snowboard foto"
+        "details": [
+          "Mountain freedom",
+          "Balance",
+          "Speed control",
+          "Winter adventure"
+        ],
+        "photoPlaceholder": "Snowboard foto"
       },
       "surfing": {
         "title": "Surfen",
         "description": "Rijden op golven in de oceaan. Een nieuwe uitdaging die ik binnenkort ga ontdekken.",
-        "details": ["Ocean connection", "Wave reading", "Balance", "Coming soon"],
-        "photoPlaceholder": "📸 Surfen foto (binnenkort)"
+        "details": [
+          "Ocean connection",
+          "Wave reading",
+          "Balance",
+          "Coming soon"
+        ],
+        "photoPlaceholder": "Surfen foto (binnenkort)"
       }
     }
   },
@@ -1518,7 +1821,7 @@
     }
   },
   "investing": {
-    "title": "💰 Beleggen & Inflatie Tracking",
+    "title": "Beleggen & Inflatie Tracking",
     "subtitle": "Volg hoe inflatie je geld beïnvloedt en vergelijk hoe verschillende investeringen presteren ten opzichte van inflatie. Real-time statistieken en historische data.",
     "categories": {
       "techStocks": "Tech Aandelen",
@@ -1604,11 +1907,10 @@
     "replies": "reacties"
   },
   "developmentNotice": {
-    "title": "🚧 In Ontwikkeling",
+    "title": "In Ontwikkeling",
     "message": "Deze website is momenteel in actieve ontwikkeling en dient als test omgeving. Sommige pagina's zijn mogelijk nog niet volledig functioneel of compleet. Ik deel mijn voortgang terwijl ik de site bouw en verfijn.",
     "subtitle": "Test Omgeving & Voortgang Delen",
     "understand": "Ik Begrijp Het",
     "dontShowAgain": "Niet meer tonen"
   }
 }
-

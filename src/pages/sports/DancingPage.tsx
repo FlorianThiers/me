@@ -3,34 +3,34 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Music, Heart, Users, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export const DancingPage: React.FC = () => {
+export const DancingPage: React.FC = () =>{
   const sections = [
     {
       icon: <Music className="w-8 h-8" />,
       title: 'Expressie door Beweging',
       description: 'Dans is voor mij een pure vorm van zelfexpressie. Het is een taal zonder woorden waar emoties, verhalen en energie worden gecommuniceerd door beweging en ritme.',
-      photoPlaceholder: '📸 Dans expressie',
+      photoPlaceholder: 'Dans expressie',
       color: 'from-rose-400 to-red-600'
     },
     {
       icon: <Heart className="w-8 h-8" />,
       title: 'Emotionele Verbinding',
       description: 'Door dans kan ik emoties uiten die moeilijk in woorden te vatten zijn. Het is een therapeutische uitlaatklep die me helpt om mezelf beter te begrijpen en te accepteren.',
-      photoPlaceholder: '📸 Emotionele dans',
+      photoPlaceholder: 'Emotionele dans',
       color: 'from-pink-400 to-rose-600'
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: 'Sociale Dans & Freestyle',
       description: 'Ik geniet van zowel sociale dansvormen als freestyle sessies. Sociale dans verbindt mensen, terwijl freestyle me de vrijheid geeft om mijn eigen stijl te ontwikkelen.',
-      photoPlaceholder: '📸 Sociale dans sessie',
+      photoPlaceholder: 'Sociale dans sessie',
       color: 'from-blue-400 to-cyan-600'
     },
     {
       icon: <Star className="w-8 h-8" />,
       title: 'Choreografie & Improvisatie',
       description: 'Ik werk graag met choreografieën maar hou ook van improvisatie. Het is een balans tussen structuur en spontaniteit die me uitdaagt om creatief te zijn.',
-      photoPlaceholder: '📸 Choreografie werk',
+      photoPlaceholder: 'Choreografie werk',
       color: 'from-yellow-400 to-orange-600'
     }
   ];
@@ -56,9 +56,7 @@ export const DancingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="container-custom px-4 py-8">
-        
-        {/* Header */}
+      <div className="container-custom px-4 py-8">{/* Header */}
         <div className="max-w-6xl mx-auto mb-12">
           <div className="flex items-center mb-8">
             <Link
@@ -77,53 +75,41 @@ export const DancingPage: React.FC = () => {
               </p>
             </div>
           </div>
-        </div>
-
-        {/* Main Content Grid */}
+        </div>{/* Main Content Grid */}
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            {sections.map((section, index) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">{sections.map((section, index) => (
               <motion.div
                 key={section.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-dark-secondary/50 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-neon-green/50 transition-all duration-300 group"
-              >
-                {/* Photo Section */}
+              >{/* Photo Section */}
                 <div className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center border-b border-white/10">
                   <div className="text-center">
                     <div className="text-4xl mb-2">{section.photoPlaceholder}</div>
                     <p className="text-white/60 text-xs">Foto ruimte</p>
                   </div>
-                </div>
-
-                {/* Content Section */}
+                </div>{/* Content Section */}
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className={`p-2 rounded-full bg-gradient-to-r ${section.color} mr-3 group-hover:scale-110 transition-transform duration-300`}>
-                      {section.icon}
+                    <div className={`p-2 rounded-full bg-gradient-to-r ${section.color} mr-3 group-hover:scale-110 transition-transform duration-300`}>{section.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-white">
-                      {section.title}
+                    <h3 className="text-xl font-bold text-white">{section.title}
                     </h3>
                   </div>
                   
-                  <p className="text-white/70 leading-relaxed">
-                    {section.description}
+                  <p className="text-white/70 leading-relaxed">{section.description}
                   </p>
                 </div>
               </motion.div>
             ))}
-          </div>
-
-          {/* Dance Styles Section */}
+          </div>{/* Dance Styles Section */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-white mb-8 text-center">
               Dansstijlen & Technieken
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {danceStyles.map((style, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">{danceStyles.map((style, index) => (
                 <motion.div
                   key={style.title}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
@@ -131,18 +117,14 @@ export const DancingPage: React.FC = () => {
                   transition={{ delay: index * 0.1 }}
                   className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10 hover:border-neon-green/50 transition-all duration-300"
                 >
-                  <h3 className="text-xl font-bold text-neon-green mb-3">
-                    {style.title}
+                  <h3 className="text-xl font-bold text-neon-green mb-3">{style.title}
                   </h3>
-                  <p className="text-white/70 leading-relaxed">
-                    {style.description}
+                  <p className="text-white/70 leading-relaxed">{style.description}
                   </p>
                 </motion.div>
               ))}
             </div>
-          </div>
-
-          {/* Music Connection Section */}
+          </div>{/* Music Connection Section */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-white mb-8 text-center">
               Dans & Muziek
@@ -164,14 +146,11 @@ export const DancingPage: React.FC = () => {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="text-6xl mb-4">🎵💃</div>
                   <p className="text-white/60 text-sm">Muziek & Dans connectie</p>
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Personal Journey Section */}
+          </div>{/* Personal Journey Section */}
           <div className="text-center">
             <h2 className="text-3xl font-bold text-white mb-6">
               Mijn Dansreis

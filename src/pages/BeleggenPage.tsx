@@ -40,7 +40,7 @@ interface InflationData {
   historical: Array<{ year: number; rate: number }>;
 }
 
-export const BeleggenPage: React.FC = () => {
+export const BeleggenPage: React.FC = () =>{
   const { t } = useTranslation();
   const [selectedPeriod, setSelectedPeriod] = useState<'1Y' | '3Y' | '5Y' | '10Y'>('5Y');
   const [selectedReturnPeriod, setSelectedReturnPeriod] = useState<'1D' | '1W' | '1M' | '3M' | '1Y' | '5Y' | '10Y' | '20Y' | '50Y'>('1D');
@@ -61,23 +61,23 @@ export const BeleggenPage: React.FC = () => {
   });
 
   // Fetch inflation data from FRED API (if configured)
-  useEffect(() => {
-    const fetchInflationData = async () => {
-      console.log('🔄 Fetching inflation data from FRED API...');
-      console.log('🔑 FRED API Key configured:', !!FRED_CONFIG.API_KEY);
+  useEffect(() =>{
+    const fetchInflationData = async () =>{
+      console.log(' Fetching inflation data from FRED API...');
+      console.log(' FRED API Key configured:', !!FRED_CONFIG.API_KEY);
       
       try {
         // Fetch current inflation rate
         const fredInflation = await getInflationRate();
         if (fredInflation !== null && !isNaN(fredInflation) && fredInflation > -100 && fredInflation < 100) {
           // Validate that inflation is a reasonable value (between -100% and 100%)
-          console.log('✅ FRED inflation rate fetched:', fredInflation, '%');
+          console.log(' FRED inflation rate fetched:', fredInflation, '%');
           setInflationData(prev => ({
             ...prev,
             current: fredInflation,
           }));
         } else {
-          console.warn('⚠️ FRED API returned invalid inflation value:', fredInflation, '. Using default inflation:', inflationData.current, '%');
+          console.warn(' FRED API returned invalid inflation value:', fredInflation, '. Using default inflation:', inflationData.current, '%');
         }
 
         // Fetch historical inflation data (last 5 years)
@@ -89,7 +89,7 @@ export const BeleggenPage: React.FC = () => {
           // Convert to yearly format for display
           const yearlyData: { [year: number]: number } = {};
           
-          historicalData.forEach(item => {
+          historicalData.forEach(item =>{
             const year = parseInt(item.date.substring(0, 4));
             // Validate that the value is reasonable (between -100% and 100%)
             if (!isNaN(item.value) && item.value > -100 && item.value < 100) {
@@ -107,22 +107,22 @@ export const BeleggenPage: React.FC = () => {
             .map(([year, rate]) => ({ year: parseInt(year), rate }))
             .sort((a, b) => a.year - b.year);
 
-          console.log('✅ FRED historical inflation data (processed):', historical);
+          console.log(' FRED historical inflation data (processed):', historical);
 
           if (historical.length > 0) {
             setInflationData(prev => ({
               ...prev,
               historical: historical,
             }));
-            console.log('✅ Updated inflation data with FRED historical data. New historical:', historical);
+            console.log(' Updated inflation data with FRED historical data. New historical:', historical);
           } else {
-            console.warn('⚠️ No valid historical data processed from FRED. Keeping default data.');
+            console.warn(' No valid historical data processed from FRED. Keeping default data.');
           }
         } else {
-          console.warn('⚠️ No historical data received from FRED API. Using default historical data.');
+          console.warn(' No historical data received from FRED API. Using default historical data.');
         }
       } catch (error) {
-        console.error('❌ Failed to fetch inflation from FRED:', error);
+        console.error(' Failed to fetch inflation from FRED:', error);
         console.warn('Using default inflation data:', inflationData);
         // Keep default value
       }
@@ -132,7 +132,7 @@ export const BeleggenPage: React.FC = () => {
   }, []);
 
   // Helper function to generate mock periodReturns based on 1D change
-  const generateMockPeriodReturns = (baseChange: number): PeriodReturns => {
+  const generateMockPeriodReturns = (baseChange: number): PeriodReturns =>{
     // Generate realistic returns for different periods based on 1D change
     // Longer periods typically have higher cumulative returns
     return {
@@ -331,7 +331,7 @@ export const BeleggenPage: React.FC = () => {
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   // Fetch real data from Alpha Vantage
-  const fetchInvestmentData = async (forceRefresh: boolean = false) => {
+  const fetchInvestmentData = async (forceRefresh: boolean = false) =>{
       // Check if API key is configured
       console.log('API Key check:', ALPHA_VANTAGE_CONFIG.API_KEY ? 'Found' : 'Not found');
       console.log('API Key length:', ALPHA_VANTAGE_CONFIG.API_KEY.length);
@@ -347,7 +347,7 @@ export const BeleggenPage: React.FC = () => {
         setUseMockData(true);
         setIsLoading(false);
         setRawInvestments(mockInvestments);
-        const adjustedMock = mockInvestments.map(inv => {
+        const adjustedMock = mockInvestments.map(inv =>{
           const inflationRate = inflationData.current / 100;
           const adjustedValue = inv.currentValue * (1 - inflationRate);
           return { ...inv, inflationAdjusted: adjustedValue };
@@ -379,7 +379,7 @@ export const BeleggenPage: React.FC = () => {
                 console.log('Successfully fetched historical returns for cached data:', historicalReturns.length);
                 
                 // Merge historical returns into cached investments
-                historicalReturns.forEach(hist => {
+                historicalReturns.forEach(hist =>{
                   const investment = cachedData.find(inv => inv.symbol === hist.symbol);
                   if (investment) {
                     investment.periodReturns = hist.periodReturns;
@@ -398,7 +398,7 @@ export const BeleggenPage: React.FC = () => {
           
           const cacheAge = getCacheAge();
           setRawInvestments(cachedData);
-          const adjustedInvestments = cachedData.map(inv => {
+          const adjustedInvestments = cachedData.map(inv =>{
             const inflationRate = inflationData.current / 100;
             const adjustedValue = inv.currentValue * (1 - inflationRate);
             return { ...inv, inflationAdjusted: adjustedValue };
@@ -413,7 +413,7 @@ export const BeleggenPage: React.FC = () => {
           console.log('No cache available, using mock data. Click "Ververs Data" to fetch from API.');
           setUseMockData(true);
           setRawInvestments(mockInvestments);
-          const adjustedMock = mockInvestments.map(inv => {
+          const adjustedMock = mockInvestments.map(inv =>{
             const inflationRate = inflationData.current / 100;
             const adjustedValue = inv.currentValue * (1 - inflationRate);
             return { ...inv, inflationAdjusted: adjustedValue };
@@ -478,7 +478,7 @@ export const BeleggenPage: React.FC = () => {
           if (yahooQuotes.length > 0) {
             stockQuotes = yahooQuotes;
             usedYahooFinance = true;
-            console.log(`✅ Successfully fetched ${yahooQuotes.length} stocks from Yahoo Finance`);
+            console.log(`Successfully fetched ${yahooQuotes.length} stocks from Yahoo Finance`);
           }
         } catch (yahooError: any) {
           console.warn('Yahoo Finance batch fetch failed, falling back to Alpha Vantage:', yahooError);
@@ -606,7 +606,7 @@ export const BeleggenPage: React.FC = () => {
             console.log('Number of investments with historical data:', historicalReturns.length);
             
             // Merge historical returns into fetched investments
-            historicalReturns.forEach(hist => {
+            historicalReturns.forEach(hist =>{
               const investment = fetchedInvestments.find(inv => inv.symbol === hist.symbol);
               if (investment) {
                 investment.periodReturns = hist.periodReturns;
@@ -629,7 +629,7 @@ export const BeleggenPage: React.FC = () => {
         console.log('Number of investments:', fetchedInvestments.length);
         
         // Check if we got any real data (not all mock)
-        const hasRealData = fetchedInvestments.some(inv => {
+        const hasRealData = fetchedInvestments.some(inv =>{
           // Check if this is real data by comparing with mock values
           const mockInv = mockInvestments.find(m => m.symbol === inv.symbol);
           if (!mockInv) return true; // New investment, must be real
@@ -646,7 +646,7 @@ export const BeleggenPage: React.FC = () => {
           // Store raw data first
           setRawInvestments(fetchedInvestments);
           // Then calculate inflation-adjusted values
-          const adjustedInvestments = fetchedInvestments.map(inv => {
+          const adjustedInvestments = fetchedInvestments.map(inv =>{
             const inflationRate = inflationData.current / 100;
             const adjustedValue = inv.currentValue * (1 - inflationRate);
             return { ...inv, inflationAdjusted: adjustedValue };
@@ -662,7 +662,7 @@ export const BeleggenPage: React.FC = () => {
           // No data fetched at all
           setUseMockData(true);
           setRawInvestments(mockInvestments);
-          const adjustedMock = mockInvestments.map(inv => {
+          const adjustedMock = mockInvestments.map(inv =>{
             const inflationRate = inflationData.current / 100;
             const adjustedValue = inv.currentValue * (1 - inflationRate);
             return { ...inv, inflationAdjusted: adjustedValue };
@@ -675,7 +675,7 @@ export const BeleggenPage: React.FC = () => {
         setUseMockData(true);
         setRawInvestments(mockInvestments);
         // Calculate inflation-adjusted for mock data too
-        const adjustedMock = mockInvestments.map(inv => {
+        const adjustedMock = mockInvestments.map(inv =>{
           const inflationRate = inflationData.current / 100;
           const adjustedValue = inv.currentValue * (1 - inflationRate);
           return { ...inv, inflationAdjusted: adjustedValue };
@@ -688,21 +688,21 @@ export const BeleggenPage: React.FC = () => {
   };
 
   // Load cached data or mock data on mount (don't auto-fetch to save API calls)
-  useEffect(() => {
+  useEffect(() =>{
     fetchInvestmentData(false); // Only load from cache, don't fetch if no cache
   }, []);
 
-  const handleRefresh = () => {
+  const handleRefresh = () =>{
     fetchInvestmentData(true); // Force refresh, bypass cache
   };
 
   // Bereken inflatie-gecorrigeerde waarden wanneer inflatie, periode of return periode verandert
-  useEffect(() => {
+  useEffect(() =>{
     // Only recalculate if we have raw investments
     if (rawInvestments.length > 0) {
       console.log('Recalculating inflation-adjusted values for', rawInvestments.length, 'investments');
       console.log('Selected return period:', selectedReturnPeriod);
-      const adjustedInvestments = rawInvestments.map(inv => {
+      const adjustedInvestments = rawInvestments.map(inv =>{
         const inflationRate = inflationData.current / 100;
         const adjustedValue = inv.currentValue * (1 - inflationRate);
         return { ...inv, inflationAdjusted: adjustedValue };
@@ -713,7 +713,7 @@ export const BeleggenPage: React.FC = () => {
   }, [selectedPeriod, inflationData, rawInvestments, selectedReturnPeriod]);
 
   // Bereken gemiddelde inflatie voor de geselecteerde periode
-  const getAverageInflationForPeriod = (): number => {
+  const getAverageInflationForPeriod = (): number =>{
     const currentYear = new Date().getFullYear();
     const periodYears = selectedPeriod === '1Y' ? 1 : selectedPeriod === '3Y' ? 3 : selectedPeriod === '5Y' ? 5 : 10;
     const startYear = currentYear - periodYears + 1;
@@ -730,7 +730,7 @@ export const BeleggenPage: React.FC = () => {
     return sum / periodData.length;
   };
 
-  const getNominalReturn = (investment: InvestmentData): number => {
+  const getNominalReturn = (investment: InvestmentData): number =>{
     // Use the selected return period, fallback to 1D if not available
     const periodReturn = investment.periodReturns?.[selectedReturnPeriod];
     const fallback = investment.changePercent;
@@ -742,7 +742,7 @@ export const BeleggenPage: React.FC = () => {
     return periodReturn ?? fallback;
   };
 
-  const calculateRealReturn = (investment: InvestmentData) => {
+  const calculateRealReturn = (investment: InvestmentData) =>{
     const nominalReturn = getNominalReturn(investment);
     // Gebruik gemiddelde inflatie voor de periode in plaats van alleen huidige inflatie
     const avgInflation = getAverageInflationForPeriod();
@@ -750,7 +750,7 @@ export const BeleggenPage: React.FC = () => {
     return realReturn;
   };
 
-  const calculatePurchasingPowerLoss = (amount: number) => {
+  const calculatePurchasingPowerLoss = (amount: number) =>{
     // Gebruik gemiddelde inflatie voor de periode
     const avgInflation = getAverageInflationForPeriod();
     const inflationRate = avgInflation / 100;
@@ -759,8 +759,7 @@ export const BeleggenPage: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="container-custom px-4 py-8">
-        {/* Header */}
+      <div className="container-custom px-4 py-8">{/* Header */}
         <div className="max-w-6xl mx-auto mb-12">
           <div className="flex items-center mb-8">
             <Link
@@ -770,18 +769,15 @@ export const BeleggenPage: React.FC = () => {
               <ArrowLeft className="w-6 h-6 text-white" />
             </Link>
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                {t('investing.title')}
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t('investing.title')}
               </h1>
-              <p className="text-lg text-white/80 max-w-3xl leading-relaxed">
-                {t('investing.subtitle')}
+              <p className="text-lg text-white/80 max-w-3xl leading-relaxed">{t('investing.subtitle')}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto">
-          {/* Error/Info Banner */}
+        <div className="max-w-6xl mx-auto">{/* Error/Info Banner */}
           {(error || useMockData || !ALPHA_VANTAGE_CONFIG.API_KEY) && (
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -790,22 +786,19 @@ export const BeleggenPage: React.FC = () => {
             >
               <div className="flex items-start">
                 <AlertCircle className="w-5 h-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
-                <div className="flex-1">
-                  {!ALPHA_VANTAGE_CONFIG.API_KEY ? (
+                <div className="flex-1">{!ALPHA_VANTAGE_CONFIG.API_KEY ? (
                     <div>
                       <p className="text-yellow-300 font-semibold mb-1">{t('investing.errorMessages.apiKeyNotConfigured')}</p>
-                      <p className="text-yellow-200/80 text-sm">
-                        {t('investing.errorMessages.addApiKey')} <code className="bg-yellow-500/20 px-1 rounded">VITE_ALPHA_VANTAGE_API_KEY</code> {t('investing.errorMessages.toEnvFile')}
+                      <p className="text-yellow-200/80 text-sm">{t('investing.errorMessages.addApiKey')} <code className="bg-yellow-500/20 px-1 rounded">VITE_ALPHA_VANTAGE_API_KEY</code>{t('investing.errorMessages.toEnvFile')}
                         <br />
-                        <strong className="text-yellow-300">{t('investing.errorMessages.important')}</strong> {t('investing.errorMessages.restartServer')}
+                        <strong className="text-yellow-300">{t('investing.errorMessages.important')}</strong>{t('investing.errorMessages.restartServer')}
                         <br />
                         <a 
                           href="https://www.alphavantage.co/support/#api-key" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-yellow-300 underline hover:text-yellow-200"
-                        >
-                          {t('investing.errorMessages.getApiKey')}
+                        >{t('investing.errorMessages.getApiKey')}
                         </a>
                       </p>
                       <p className="text-yellow-200/60 text-xs mt-2">
@@ -815,11 +808,9 @@ export const BeleggenPage: React.FC = () => {
                   ) : useMockData ? (
                     <div>
                       <p className="text-yellow-300 font-semibold mb-1">{t('investing.errorMessages.usingMockData')}</p>
-                      <p className="text-yellow-200/80 text-sm">
-                        {error || t('investing.errorMessages.cannotFetchData')}
+                      <p className="text-yellow-200/80 text-sm">{error || t('investing.errorMessages.cannotFetchData')}
                       </p>
-                      <p className="text-yellow-200/60 text-xs mt-2">
-                        {t('investing.errorMessages.checkConsole')}
+                      <p className="text-yellow-200/60 text-xs mt-2">{t('investing.errorMessages.checkConsole')}
                       </p>
                     </div>
                   ) : null}
@@ -836,8 +827,7 @@ export const BeleggenPage: React.FC = () => {
               className="bg-dark-secondary/50 backdrop-blur-sm border border-white/10 rounded-xl p-8 mb-8 text-center"
             >
               <Loader2 className="w-8 h-8 text-neon-green mx-auto mb-4 animate-spin" />
-              <p className="text-white/70">
-                {t('investing.errorMessages.fetchingData')}
+              <p className="text-white/70">{t('investing.errorMessages.fetchingData')}
                 <br />
                 <span className="text-sm text-white/50">{t('investing.errorMessages.mayTakeTime')}</span>
                 <br />
@@ -875,13 +865,11 @@ export const BeleggenPage: React.FC = () => {
                 <DollarSign className="w-6 h-6 mr-3 text-neon-green" />
                 Huidige Inflatie (Nederland/EU)
               </h2>
-              <div className="flex items-center gap-4">
-                {lastUpdated && !isLoading && (
+              <div className="flex items-center gap-4">{lastUpdated && !isLoading && (
                   <div className="flex flex-col items-end">
                     <span className="text-white/50 text-xs">
                       Laatst bijgewerkt: {lastUpdated.toLocaleTimeString('nl-NL')}
-                    </span>
-                    {getCacheAge() !== null && getCacheAge()! < 60 && (
+                    </span>{getCacheAge() !== null && getCacheAge()! < 60 && (
                       <span className="text-neon-green/70 text-xs">
                         Cache: {getCacheAge()} min geleden
                       </span>
@@ -896,8 +884,7 @@ export const BeleggenPage: React.FC = () => {
                 >
                   <RefreshCw className={`w-5 h-5 text-neon-green ${isLoading ? 'animate-spin' : ''}`} />
                 </button>
-                <div className="flex gap-2">
-                  {(['1Y', '3Y', '5Y', '10Y'] as const).map((period) => (
+                <div className="flex gap-2">{(['1Y', '3Y', '5Y', '10Y'] as const).map((period) => (
                     <button
                       key={period}
                       onClick={() => setSelectedPeriod(period)}
@@ -906,8 +893,7 @@ export const BeleggenPage: React.FC = () => {
                           ? 'bg-neon-green text-dark-bg'
                           : 'bg-dark-bg/50 text-white/70 hover:bg-dark-bg/70'
                       }`}
-                    >
-                      {period}
+                    >{period}
                     </button>
                   ))}
                 </div>
@@ -917,16 +903,14 @@ export const BeleggenPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-dark-bg/50 rounded-lg p-4 border border-white/10">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-white/60 text-sm">Gemiddelde Inflatie ({selectedPeriod})</p>
-                  {FRED_CONFIG.API_KEY && (
+                  <p className="text-white/60 text-sm">Gemiddelde Inflatie ({selectedPeriod})</p>{FRED_CONFIG.API_KEY && (
                     <span className="text-xs px-2 py-1 bg-neon-green/20 text-neon-green rounded">
                       FRED API
                     </span>
                   )}
                 </div>
                 <p className="text-3xl font-bold text-neon-green">{getAverageInflationForPeriod().toFixed(2)}%</p>
-                <p className="text-white/50 text-xs mt-2">
-                  {FRED_CONFIG.API_KEY ? 'Real-time data' : 'Default waarde'} • Huidig: {inflationData.current}%
+                <p className="text-white/50 text-xs mt-2">{FRED_CONFIG.API_KEY ? 'Real-time data' : 'Default waarde'} • Huidig: {inflationData.current}%
                 </p>
               </div>
               <div className="bg-dark-bg/50 rounded-lg p-4 border border-white/10">
@@ -938,18 +922,14 @@ export const BeleggenPage: React.FC = () => {
               </div>
               <div className="bg-dark-bg/50 rounded-lg p-4 border border-white/10">
                 <p className="text-white/60 text-sm mb-2">Benodigd Rendement ({selectedPeriod})</p>
-                <p className="text-3xl font-bold text-neon-blue">
-                  {getAverageInflationForPeriod().toFixed(1)}%+
+                <p className="text-3xl font-bold text-neon-blue">{getAverageInflationForPeriod().toFixed(1)}%+
                 </p>
                 <p className="text-white/50 text-xs mt-2">Om koopkracht te behouden</p>
               </div>
-            </div>
-
-            {/* Inflatie Grafiek (Simple Bar Chart) */}
+            </div>{/* Inflatie Grafiek (Simple Bar Chart) */}
             <div className="mt-6">
               <h3 className="text-lg font-semibold text-white mb-4">Historische Inflatie ({selectedPeriod})</h3>
-              <div className="flex items-end gap-2 h-48">
-                {(() => {
+              <div className="flex items-end gap-2 h-48">{(() =>{
                   // Filter historische data op basis van selectedPeriod
                   const currentYear = new Date().getFullYear();
                   const periodYears = selectedPeriod === '1Y' ? 1 : selectedPeriod === '3Y' ? 3 : selectedPeriod === '5Y' ? 5 : 10;
@@ -970,10 +950,9 @@ export const BeleggenPage: React.FC = () => {
                       <div className="w-full bg-dark-bg/50 rounded-t border border-white/10 relative h-full">
                         <div
                           className="bg-gradient-to-t from-neon-green/80 to-neon-green rounded-t transition-all duration-500 absolute bottom-0 w-full"
-                          style={{ height: `${(data.rate / maxRate) * 100}%` }}
+                          style={{ height: `${(data.rate / maxRate) * 100}%`}}
                         />
-                        <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-white/70 text-xs whitespace-nowrap">
-                          {data.rate.toFixed(1)}%
+                        <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-white/70 text-xs whitespace-nowrap">{data.rate.toFixed(1)}%
                         </div>
                       </div>
                       <div className="text-white/60 text-xs mt-2">{data.year}</div>
@@ -982,21 +961,17 @@ export const BeleggenPage: React.FC = () => {
                 })()}
               </div>
             </div>
-          </motion.div>
-
-          {/* Investeringen Vergelijking */}
+          </motion.div>{/* Investeringen Vergelijking */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
               <h2 className="text-2xl font-bold text-white flex items-center">
                 <BarChart3 className="w-6 h-6 mr-3 text-neon-blue" />
                 Investeringen vs Inflatie
               </h2>
-              <div className="flex items-center gap-4">
-                {/* Global Period Selection */}
+              <div className="flex items-center gap-4">{/* Global Period Selection */}
                 <div className="flex items-center gap-2">
                   <span className="text-white/70 text-sm">Rendement Periode:</span>
-                  <div className="flex gap-1">
-                    {(['1D', '1W', '1M', '3M', '1Y', '5Y', '10Y', '20Y', '50Y'] as const).map((period) => (
+                  <div className="flex gap-1">{(['1D', '1W', '1M', '3M', '1Y', '5Y', '10Y', '20Y', '50Y'] as const).map((period) => (
                       <button
                         key={period}
                         onClick={() => setSelectedReturnPeriod(period)}
@@ -1006,8 +981,7 @@ export const BeleggenPage: React.FC = () => {
                             : 'bg-dark-bg/50 text-white/70 hover:bg-dark-bg/70'
                         }`}
                         title={`Toon rendement voor ${period}`}
-                      >
-                        {period}
+                      >{period}
                       </button>
                     ))}
                   </div>
@@ -1022,9 +996,7 @@ export const BeleggenPage: React.FC = () => {
                   <span>{isLoading ? 'Data ophalen...' : 'Ververs Data'}</span>
                 </button>
               </div>
-            </div>
-
-            {/* Info banner */}
+            </div>{/* Info banner */}
             <div className="mb-4 p-3 bg-dark-bg/50 rounded-lg border border-white/10">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="text-sm text-white/70">
@@ -1039,16 +1011,13 @@ export const BeleggenPage: React.FC = () => {
                       • Cache: {getCacheAge()} min geleden
                     </span>
                   )}
-                </div>
-                {investments.length < 10 && (
+                </div>{investments.length < 10 && (
                   <div className="text-xs text-yellow-400/80">
-                    ⚠️ Mogelijk oude cache. Klik op "Ververs Data" voor alle {12 + 1} investeringen
+                    Mogelijk oude cache. Klik op "Ververs Data" voor alle {12 + 1} investeringen
                   </div>
                 )}
               </div>
-            </div>
-
-            {investments.length === 0 && !isLoading && (
+            </div>{investments.length === 0 && !isLoading && (
               <div className="text-center py-12">
                 <p className="text-white/60">Geen investeringsdata beschikbaar</p>
               </div>
@@ -1065,8 +1034,7 @@ export const BeleggenPage: React.FC = () => {
                 }`}
               >
                 Alle
-              </button>
-              {Array.from(new Set(investments.map(inv => inv.category))).map((category) => (
+              </button>{Array.from(new Set(investments.map(inv => inv.category))).map((category) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
@@ -1075,16 +1043,14 @@ export const BeleggenPage: React.FC = () => {
                       ? 'bg-neon-blue text-dark-bg'
                       : 'bg-dark-bg/50 text-white/70 hover:bg-dark-bg/70'
                   }`}
-                >
-                  {category}
+                >{category}
                 </button>
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {investments
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">{investments
                 .filter(inv => selectedCategory === null || inv.category === selectedCategory)
-                .map((investment, index) => {
+                .map((investment, index) =>{
                 const realReturn = calculateRealReturn(investment);
                 const isPositive = realReturn > 0;
 
@@ -1100,8 +1066,7 @@ export const BeleggenPage: React.FC = () => {
                       <div>
                         <h3 className="text-xl font-bold text-white">{investment.name}</h3>
                         <p className="text-white/60 text-sm">{investment.symbol}</p>
-                      </div>
-                      {isPositive ? (
+                      </div>{isPositive ? (
                         <TrendingUp className="w-6 h-6 text-neon-green" />
                       ) : (
                         <TrendingDown className="w-6 h-6 text-red-400" />
@@ -1110,15 +1075,13 @@ export const BeleggenPage: React.FC = () => {
 
                     <div className="mb-4">
                       <div className="flex items-center justify-between mb-1">
-                        <p className="text-white/60 text-sm">Huidige Waarde</p>
-                        {!useMockData && investment.symbol !== 'BTC' && (
+                        <p className="text-white/60 text-sm">Huidige Waarde</p>{!useMockData && investment.symbol !== 'BTC' && (
                           <span className="px-2 py-0.5 bg-neon-green/20 text-neon-green rounded-full text-xs font-medium border border-neon-green/30">
                             Live
                           </span>
                         )}
                       </div>
-                      <p className="text-2xl font-bold text-white">
-                        {investment.symbol === 'BTC' ? '₿' : investment.symbol === 'XAUUSD' ? '$' : '$'}
+                      <p className="text-2xl font-bold text-white">{investment.symbol === 'BTC' ? '₿' : investment.symbol === 'XAUUSD' ? '$' : '$'}
                         {investment.currentValue.toLocaleString('nl-NL', {
                           minimumFractionDigits: investment.symbol === 'XAUUSD' ? 2 : 2,
                           maximumFractionDigits: investment.symbol === 'XAUUSD' ? 2 : 2
@@ -1131,12 +1094,10 @@ export const BeleggenPage: React.FC = () => {
                       <div className="flex justify-between">
                         <span className="text-white/60 text-sm">
                           Nominaal Rendement ({selectedReturnPeriod})
-                        </span>
-                        {(() => {
+                        </span>{(() =>{
                           const nominalReturn = getNominalReturn(investment);
                           return (
-                            <span className={`font-semibold ${nominalReturn >= 0 ? 'text-neon-green' : 'text-red-400'}`}>
-                              {nominalReturn >= 0 ? '+' : ''}{nominalReturn.toFixed(2)}%
+                            <span className={`font-semibold ${nominalReturn >= 0 ? 'text-neon-green' : 'text-red-400'}`}>{nominalReturn >= 0 ? '+' : ''}{nominalReturn.toFixed(2)}%
                             </span>
                           );
                         })()}
@@ -1147,21 +1108,17 @@ export const BeleggenPage: React.FC = () => {
                       </div>
                       <div className="flex justify-between pt-2 border-t border-white/10">
                         <span className="text-white font-semibold">Reëel Rendement</span>
-                        <span className={`font-bold text-lg ${isPositive ? 'text-neon-green' : 'text-red-400'}`}>
-                          {isPositive ? '+' : ''}{realReturn.toFixed(2)}%
+                        <span className={`font-bold text-lg ${isPositive ? 'text-neon-green' : 'text-red-400'}`}>{isPositive ? '+' : ''}{realReturn.toFixed(2)}%
                         </span>
                       </div>
                     </div>
 
                     <div className="mb-4">
-                      <span className="px-3 py-1 bg-neon-blue/20 text-neon-blue rounded-full text-xs font-medium border border-neon-blue/30">
-                        {investment.category}
+                      <span className="px-3 py-1 bg-neon-blue/20 text-neon-blue rounded-full text-xs font-medium border border-neon-blue/30">{investment.category}
                       </span>
                     </div>
 
-                    <p className="text-white/50 text-sm mb-4">{investment.description}</p>
-
-                    {/* Visual Performance Bar */}
+                    <p className="text-white/50 text-sm mb-4">{investment.description}</p>{/* Visual Performance Bar */}
                     <div className="mt-4">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="flex-1 h-2 bg-dark-bg rounded-full overflow-hidden">
@@ -1169,16 +1126,14 @@ export const BeleggenPage: React.FC = () => {
                             className={`h-full transition-all duration-500 ${
                               isPositive ? 'bg-neon-green' : 'bg-red-400'
                             }`}
-                            style={{ width: `${Math.min(Math.abs(realReturn) * 10, 100)}%` }}
+                            style={{ width: `${Math.min(Math.abs(realReturn) * 10, 100)}%`}}
                           />
                         </div>
-                        <span className={`text-xs font-medium ${isPositive ? 'text-neon-green' : 'text-red-400'}`}>
-                          {realReturn > 0 ? '✓' : '✗'}
+                        <span className={`text-xs font-medium ${isPositive ? 'text-neon-green' : 'text-red-400'}`}>{realReturn > 0 ? '' : ''}
                         </span>
                       </div>
-                      <p className="text-white/40 text-xs text-center">
-                        {isPositive 
-                          ? `Overtreft inflatie met ${realReturn.toFixed(2)}%` 
+                      <p className="text-white/40 text-xs text-center">{isPositive 
+                          ? `Overtreft inflatie met ${realReturn.toFixed(2)}%`
                           : `Onder inflatie met ${Math.abs(realReturn).toFixed(2)}%`
                         }
                       </p>
@@ -1187,9 +1142,7 @@ export const BeleggenPage: React.FC = () => {
                 );
               })}
             </div>
-          </div>
-
-          {/* Informatie Sectie */}
+          </div>{/* Informatie Sectie */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1207,8 +1160,7 @@ export const BeleggenPage: React.FC = () => {
                   je koopkracht toeneemt, terwijl een negatief rendement betekent dat je koopkracht afneemt, 
                   zelfs als je investering in waarde stijgt.
                 </p>
-                <div className="text-white/60 text-sm">
-                  {ALPHA_VANTAGE_CONFIG.API_KEY ? (
+                <div className="text-white/60 text-sm">{ALPHA_VANTAGE_CONFIG.API_KEY ? (
                     <>
                       <p><strong>Data Bronnen:</strong></p>
                       <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
@@ -1216,15 +1168,14 @@ export const BeleggenPage: React.FC = () => {
                         <li><strong>Alpha Vantage:</strong> Goud (XAU/USD) - {getRemainingQuota()}/25 calls vandaag</li>
                         <li><strong>CoinGecko:</strong> Bitcoin/cryptocurrency (gratis, geen API key nodig)</li>
                         <li><strong>FRED API:</strong> Inflatie data (optioneel, onbeperkt gratis)</li>
-                      </ul>
-                      {getRemainingQuota() < 5 && getRemainingQuota() > 0 && (
+                      </ul>{getRemainingQuota() < 5 && getRemainingQuota() > 0 && (
                         <p className="text-xs mt-2 text-yellow-400 font-semibold">
-                          ⚠️ Alpha Vantage quota laag: {getRemainingQuota()} calls over
+                          Alpha Vantage quota laag: {getRemainingQuota()} calls over
                         </p>
                       )}
                       {getRemainingQuota() === 0 && (
                         <p className="text-xs mt-2 text-red-400 font-semibold">
-                          ⚠️ Alpha Vantage quota opgebruikt. Goud data gebruikt cache/mock data.
+                          Alpha Vantage quota opgebruikt. Goud data gebruikt cache/mock data.
                         </p>
                       )}
                       <p className="text-xs mt-2 text-white/50">

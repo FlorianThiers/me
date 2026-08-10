@@ -6,7 +6,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'table',
     name: 'Tafel',
     category: 'furniture',
-    icon: '🪑',
+    icon: 'Tb',
     defaultLayer: 'building',
     defaultSize: { width: 80, height: 80 },
     defaultProperties: {
@@ -20,7 +20,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'chair',
     name: 'Stoel',
     category: 'furniture',
-    icon: '💺',
+    icon: 'Ch',
     defaultLayer: 'building',
     defaultSize: { width: 40, height: 50 },
     defaultProperties: {
@@ -34,7 +34,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'sofa',
     name: 'Bank',
     category: 'furniture',
-    icon: '🛋️',
+    icon: 'Sf',
     defaultLayer: 'building',
     defaultSize: { width: 120, height: 60 },
     defaultProperties: {
@@ -48,7 +48,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'bed',
     name: 'Bed',
     category: 'furniture',
-    icon: '🛏️',
+    icon: 'Bd',
     defaultLayer: 'building',
     defaultSize: { width: 100, height: 140 },
     defaultProperties: {
@@ -63,7 +63,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'wall',
     name: 'Muur',
     category: 'building',
-    icon: '🧱',
+    icon: 'Bk',
     defaultLayer: 'building',
     defaultSize: { width: 100, height: 20 },
     defaultProperties: {
@@ -76,7 +76,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'door',
     name: 'Deur',
     category: 'building',
-    icon: '🚪',
+    icon: 'Dr',
     defaultLayer: 'building',
     defaultSize: { width: 40, height: 80 },
     defaultProperties: {
@@ -89,7 +89,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'window',
     name: 'Raam',
     category: 'building',
-    icon: '🪟',
+    icon: 'Wn',
     defaultLayer: 'building',
     defaultSize: { width: 60, height: 60 },
     defaultProperties: {
@@ -102,7 +102,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'foundation',
     name: 'Fundering',
     category: 'foundation',
-    icon: '⬛',
+    icon: 'Fl',
     defaultLayer: 'ground',
     defaultSize: { width: 150, height: 150 },
     defaultProperties: {
@@ -117,7 +117,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'pipe',
     name: 'Leiding',
     category: 'water',
-    icon: '🔵',
+    icon: 'Pl',
     defaultLayer: 'water',
     defaultSize: { width: 80, height: 10 },
     defaultProperties: {
@@ -131,7 +131,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'channel',
     name: 'Kanaal',
     category: 'water',
-    icon: '💧',
+    icon: 'Wt',
     defaultLayer: 'water',
     defaultSize: { width: 100, height: 30 },
     defaultProperties: {
@@ -145,7 +145,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'pond',
     name: 'Vijver',
     category: 'water',
-    icon: '🌊',
+    icon: 'Wv',
     defaultLayer: 'water',
     defaultSize: { width: 120, height: 120 },
     defaultProperties: {
@@ -159,7 +159,7 @@ export const staticLibraryItems: LibraryItem[] = [
     id: 'fountain',
     name: 'Fontein',
     category: 'water',
-    icon: '⛲',
+    icon: 'Fn',
     defaultLayer: 'water',
     defaultSize: { width: 60, height: 60 },
     defaultProperties: {
