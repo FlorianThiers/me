@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, Download, Upload, ChevronLeft, ChevronRight, Settings, Package, FileImage, FileText } from 'lucide-react';
+import { ArrowLeft, Download, Upload, ChevronLeft, ChevronRight, Settings, Package, FileImage, FileText, Home } from 'lucide-react';
 import { DesignCanvas } from '../components/gardenDesigner/DesignCanvas';
 import { Toolbar } from '../components/gardenDesigner/Toolbar';
 import { LayersPanel } from '../components/gardenDesigner/LayersPanel';
@@ -836,8 +836,9 @@ export const GardenDesignPage: React.FC = () => {
             <ArrowLeft className="w-5 h-5 text-white" />
           </Link>
           <div>
-            <h1 className="text-xl font-bold text-white">
-              🏡 {designData.name}
+            <h1 className="text-xl font-bold text-white flex items-center gap-2">
+              <Home className="w-5 h-5 text-neon-green/80" />
+              {designData.name}
             </h1>
           </div>
         </div>
