@@ -43,26 +43,50 @@ function emptyDay(date: string): DayUsage {
 }
 
 function redisConfigured(): boolean {
-  return Boolean(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
+  return Boolean(redisBaseUrl() && process.env.UPSTASH_REDIS_REST_TOKEN?.trim());
 }
 
-async function redisGet(key: string): Promise<string | null> {
-  const url = process.env.UPSTASH_REDIS_REST_URL!;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN!;
-  const res = await fetch(`${url}/get/${encodeURIComponent(key)}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!res.ok) return null;
-  const data = (await res.json()) as { result?: string | null };
-  return data.result ?? null;
+function redisBaseUrl(): string | null {
+  const raw = process.env.UPSTASH_REDIS_REST_URL?.trim().replace(/^["']|["']$/g, '');
+  if (!raw) return null;
+  try {
+    // Reject obviously broken hosts early
+    const u = new URL(raw);
+    if (!u.hostname.includes('.')) return null;
+    return raw.replace(/\/$/, '');
+  } catch {
+    return null;
+  }
 }
 
-async function redisSet(key: string, value: string): Promise<void> {
-  const url = process.env.UPSTASH_REDIS_REST_URL!;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN!;
-  await fetch(`${url}/set/${encodeURIComponent(key)}/${encodeURIComponent(value)}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+async function redisGet(key: string): Promise<{ ok: boolean; value: string | null }> {
+  const url = redisBaseUrl();
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN?.trim();
+  if (!url || !token) return { ok: false, value: null };
+  try {
+    const res = await fetch(`${url}/get/${encodeURIComponent(key)}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (!res.ok) return { ok: false, value: null };
+    const data = (await res.json()) as { result?: string | null };
+    return { ok: true, value: data.result ?? null };
+  } catch {
+    return { ok: false, value: null };
+  }
+}
+
+async function redisSet(key: string, value: string): Promise<boolean> {
+  const url = redisBaseUrl();
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN?.trim();
+  if (!url || !token) return false;
+  try {
+    const res = await fetch(`${url}/set/${encodeURIComponent(key)}/${encodeURIComponent(value)}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
 }
 
 function keyFor(date: string): string {
@@ -71,29 +95,35 @@ function keyFor(date: string): string {
 
 export async function loadUsage(date = brusselsDate()): Promise<DayUsage> {
   if (redisConfigured()) {
-    const raw = await redisGet(keyFor(date));
-    if (raw) {
-      try {
-        const parsed = JSON.parse(raw) as DayUsage;
-        parsed.storage = 'upstash';
-        return parsed;
-      } catch {
-        /* fall through */
+    const got = await redisGet(keyFor(date));
+    if (got.ok) {
+      if (got.value) {
+        try {
+          const parsed = JSON.parse(got.value) as DayUsage;
+          parsed.storage = 'upstash';
+          return parsed;
+        } catch {
+          /* fresh day below */
+        }
       }
+      const fresh = emptyDay(date);
+      fresh.storage = 'upstash';
+      return fresh;
     }
-    const fresh = emptyDay(date);
-    fresh.storage = 'upstash';
-    return fresh;
+    // Upstash unreachable / bad URL → memory (do not 500)
   }
   return memory.get(keyFor(date)) ?? emptyDay(date);
 }
 
 export async function saveUsage(usage: DayUsage): Promise<void> {
   if (redisConfigured()) {
-    usage.storage = 'upstash';
-    await redisSet(keyFor(usage.date), JSON.stringify(usage));
-    return;
+    const ok = await redisSet(keyFor(usage.date), JSON.stringify({ ...usage, storage: 'upstash' }));
+    if (ok) {
+      usage.storage = 'upstash';
+      return;
+    }
   }
+  usage.storage = 'memory';
   memory.set(keyFor(usage.date), usage);
 }
 

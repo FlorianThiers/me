@@ -14,17 +14,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       ? req.query.date
       : new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Brussels' });
 
-  const usage = await loadUsage(date);
-  const providers = usageSummary(usage);
+  try {
+    const usage = await loadUsage(date);
+    const providers = usageSummary(usage);
 
-  return res.status(200).json({
-    success: true,
-    date,
-    storage: usage.storage,
-    lastActiveProvider: usage.lastActiveProvider,
-    configuredCount: configuredProviders().length,
-    poolSize: PROVIDER_POOL.length,
-    providers,
-    recentEvents: usage.events.slice(0, 20),
-  });
+    return res.status(200).json({
+      success: true,
+      date,
+      storage: usage.storage,
+      lastActiveProvider: usage.lastActiveProvider,
+      configuredCount: configuredProviders().length,
+      poolSize: PROVIDER_POOL.length,
+      providers,
+      recentEvents: usage.events.slice(0, 20),
+    });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : 'Usage load failed';
+    return res.status(503).json({ success: false, error: msg });
+  }
 }

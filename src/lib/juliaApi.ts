@@ -32,6 +32,20 @@ export type CaptureResponse = {
   error?: string;
 };
 
+async function readJson<T extends { success?: boolean; error?: string }>(
+  res: Response,
+): Promise<T> {
+  const text = await res.text();
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    return {
+      success: false,
+      error: text.trim().slice(0, 200) || res.statusText || `HTTP ${res.status}`,
+    } as T;
+  }
+}
+
 export async function juliaCapture(payload: {
   date: string;
   kind: 'water' | 'food';
@@ -43,7 +57,7 @@ export async function juliaCapture(payload: {
     headers: authHeaders(),
     body: JSON.stringify(payload),
   });
-  const data = (await res.json()) as CaptureResponse;
+  const data = await readJson<CaptureResponse>(res);
   if (!res.ok) {
     return { success: false, error: data.error ?? res.statusText };
   }
@@ -67,7 +81,7 @@ export async function juliaChat(payload: {
     headers: authHeaders(),
     body: JSON.stringify(payload),
   });
-  const data = (await res.json()) as ChatResponse & { tokensIn?: number };
+  const data = await readJson<ChatResponse & { tokensIn?: number }>(res);
   if (!res.ok) {
     return { success: false, error: data.error ?? res.statusText };
   }
@@ -109,7 +123,7 @@ export type UsageResponse = {
 export async function juliaUsage(date?: string): Promise<UsageResponse> {
   const q = date ? `?date=${encodeURIComponent(date)}` : '';
   const res = await fetch(`/api/julia/usage${q}`, { headers: authHeaders() });
-  const data = (await res.json()) as UsageResponse;
+  const data = await readJson<UsageResponse>(res);
   if (!res.ok) {
     return { success: false, error: data.error ?? res.statusText };
   }
