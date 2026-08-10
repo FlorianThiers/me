@@ -36,10 +36,15 @@ export const ScalePanel: React.FC<ScalePanelProps> = ({
     });
   };
 
-  // Preview: 100 pixels = X units
-  const previewPixels = 100;
-  // const previewValue = pixelsToUnit(previewPixels, scale);
-  const previewFormatted = formatDimension(previewPixels, scale);
+  // Preview: how long is 100 px / 1 m in this scale
+  const preview100 = formatDimension(100, scale);
+  const oneMeterPx = scale.unit === 'm'
+    ? scale.pixelsPerUnit
+    : scale.unit === 'cm'
+      ? scale.pixelsPerUnit * 100
+      : scale.unit === 'mm'
+        ? scale.pixelsPerUnit * 1000
+        : scale.pixelsPerUnit / 1000;
 
   return (
     <div className="bg-dark-secondary/50 backdrop-blur-sm border border-white/10 rounded-xl p-4">
@@ -49,10 +54,9 @@ export const ScalePanel: React.FC<ScalePanelProps> = ({
       </h3>
 
       <div className="space-y-4">
-        {/* Pixels per Unit */}
         <div>
           <label className="block text-white/80 text-sm font-medium mb-2">
-            1 pixel =
+            1 {scale.unit} =
           </label>
           <div className="flex gap-2">
             <input
@@ -63,6 +67,9 @@ export const ScalePanel: React.FC<ScalePanelProps> = ({
               step="0.1"
               className="flex-1 px-3 py-2 bg-dark-bg border border-white/20 rounded-lg text-white text-sm focus:border-neon-green focus:outline-none focus:ring-2 focus:ring-neon-green/20 transition-all"
             />
+            <span className="px-3 py-2 bg-dark-bg/60 border border-white/10 rounded-lg text-white/60 text-sm whitespace-nowrap">
+              px
+            </span>
             <select
               value={scale.unit}
               onChange={(e) => handleUnitChange(e.target.value as Unit)}
@@ -74,9 +81,11 @@ export const ScalePanel: React.FC<ScalePanelProps> = ({
               <option value="km">km</option>
             </select>
           </div>
+          <p className="text-white/40 text-xs mt-1.5">
+            Standaard voor verbouw: 1 cm = 1 px
+          </p>
         </div>
 
-        {/* Display Format */}
         <div>
           <label className="block text-white/80 text-sm font-medium mb-2">
             Weergave Format
@@ -93,11 +102,13 @@ export const ScalePanel: React.FC<ScalePanelProps> = ({
           </select>
         </div>
 
-        {/* Preview */}
-        <div className="pt-3 border-t border-white/10">
-          <p className="text-white/60 text-xs mb-1">Preview:</p>
+        <div className="pt-3 border-t border-white/10 space-y-1">
+          <p className="text-white/60 text-xs">Preview:</p>
           <p className="text-neon-green text-sm font-medium">
-            {previewPixels} pixels = {previewFormatted}
+            100 px = {preview100}
+          </p>
+          <p className="text-white/50 text-xs font-mono">
+            1 m = {Math.round(oneMeterPx)} px
           </p>
         </div>
       </div>

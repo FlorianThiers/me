@@ -12,11 +12,14 @@ export const DimensionDisplay: React.FC<DimensionDisplayProps> = ({
   scale
 }) => {
   const dimensions = element.properties.dimensions;
-  const displayUnit = element.properties.displayUnit || scale.unit;
+  const displayUnit = element.properties.displayUnit;
 
   if (!dimensions) {
     return null;
   }
+
+  const len = (px: number) => formatDimension(px, scale, displayUnit);
+  const area = (px2: number) => formatArea(px2, scale, displayUnit);
 
   const renderDimension = () => {
     switch (element.type) {
@@ -26,9 +29,7 @@ export const DimensionDisplay: React.FC<DimensionDisplayProps> = ({
             <div className="space-y-1">
               <div className="flex justify-between text-sm">
                 <span className="text-white/70">Lengte:</span>
-                <span className="text-neon-green font-medium">
-                  {formatDimension(dimensions.length, { ...scale, unit: displayUnit }, displayUnit)}
-                </span>
+                <span className="text-neon-green font-medium">{len(dimensions.length)}</span>
               </div>
             </div>
           );
@@ -37,29 +38,22 @@ export const DimensionDisplay: React.FC<DimensionDisplayProps> = ({
 
       case 'circle':
         if (dimensions.diameter) {
-          // const radius = dimensions.diameter / 2;
           return (
             <div className="space-y-1">
               <div className="flex justify-between text-sm">
                 <span className="text-white/70">Diameter:</span>
-                <span className="text-neon-green font-medium">
-                  {formatDimension(dimensions.diameter, { ...scale, unit: displayUnit }, displayUnit)}
-                </span>
+                <span className="text-neon-green font-medium">{len(dimensions.diameter)}</span>
               </div>
-              {dimensions.area && (
+              {dimensions.area != null && (
                 <div className="flex justify-between text-sm">
                   <span className="text-white/70">Oppervlakte:</span>
-                  <span className="text-neon-green font-medium">
-                    {formatArea(dimensions.area, { ...scale, unit: displayUnit }, displayUnit)}
-                  </span>
+                  <span className="text-neon-green font-medium">{area(dimensions.area)}</span>
                 </div>
               )}
-              {dimensions.perimeter && (
+              {dimensions.perimeter != null && (
                 <div className="flex justify-between text-sm">
                   <span className="text-white/70">Omtrek:</span>
-                  <span className="text-neon-green font-medium">
-                    {formatDimension(dimensions.perimeter, { ...scale, unit: displayUnit }, displayUnit)}
-                  </span>
+                  <span className="text-neon-green font-medium">{len(dimensions.perimeter)}</span>
                 </div>
               )}
             </div>
@@ -71,36 +65,28 @@ export const DimensionDisplay: React.FC<DimensionDisplayProps> = ({
       case 'library-item':
         return (
           <div className="space-y-1">
-            {dimensions.width && (
+            {dimensions.width != null && (
               <div className="flex justify-between text-sm">
                 <span className="text-white/70">Breedte:</span>
-                <span className="text-neon-green font-medium">
-                  {formatDimension(dimensions.width, { ...scale, unit: displayUnit }, displayUnit)}
-                </span>
+                <span className="text-neon-green font-medium">{len(dimensions.width)}</span>
               </div>
             )}
-            {dimensions.height && (
+            {dimensions.height != null && (
               <div className="flex justify-between text-sm">
-                <span className="text-white/70">Hoogte:</span>
-                <span className="text-neon-green font-medium">
-                  {formatDimension(dimensions.height, { ...scale, unit: displayUnit }, displayUnit)}
-                </span>
+                <span className="text-white/70">Diepte:</span>
+                <span className="text-neon-green font-medium">{len(dimensions.height)}</span>
               </div>
             )}
-            {dimensions.area && (
+            {dimensions.area != null && (
               <div className="flex justify-between text-sm">
                 <span className="text-white/70">Oppervlakte:</span>
-                <span className="text-neon-green font-medium">
-                  {formatArea(dimensions.area, { ...scale, unit: displayUnit }, displayUnit)}
-                </span>
+                <span className="text-neon-green font-medium">{area(dimensions.area)}</span>
               </div>
             )}
-            {dimensions.perimeter && (
+            {dimensions.perimeter != null && (
               <div className="flex justify-between text-sm">
                 <span className="text-white/70">Omtrek:</span>
-                <span className="text-neon-green font-medium">
-                  {formatDimension(dimensions.perimeter, { ...scale, unit: displayUnit }, displayUnit)}
-                </span>
+                <span className="text-neon-green font-medium">{len(dimensions.perimeter)}</span>
               </div>
             )}
           </div>
@@ -109,20 +95,16 @@ export const DimensionDisplay: React.FC<DimensionDisplayProps> = ({
       case 'polygon':
         return (
           <div className="space-y-1">
-            {dimensions.area && (
+            {dimensions.area != null && (
               <div className="flex justify-between text-sm">
                 <span className="text-white/70">Oppervlakte:</span>
-                <span className="text-neon-green font-medium">
-                  {formatArea(dimensions.area, { ...scale, unit: displayUnit }, displayUnit)}
-                </span>
+                <span className="text-neon-green font-medium">{area(dimensions.area)}</span>
               </div>
             )}
-            {dimensions.perimeter && (
+            {dimensions.perimeter != null && (
               <div className="flex justify-between text-sm">
                 <span className="text-white/70">Omtrek:</span>
-                <span className="text-neon-green font-medium">
-                  {formatDimension(dimensions.perimeter, { ...scale, unit: displayUnit }, displayUnit)}
-                </span>
+                <span className="text-neon-green font-medium">{len(dimensions.perimeter)}</span>
               </div>
             )}
           </div>

@@ -55,6 +55,11 @@ export const NameInputDialog: React.FC<NameInputDialogProps> = ({
 
     switch (element.type) {
       case 'line':
+        if (element.properties.isContour) {
+          const elev = element.properties.contourElevation ?? 0;
+          const sign = elev >= 0 ? '+' : '';
+          parts.push(`Hoogte: ${sign}${elev.toFixed(2)} m`);
+        }
         const length = calculateLineLength(
           element.x,
           element.y,

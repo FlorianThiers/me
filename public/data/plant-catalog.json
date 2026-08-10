@@ -1,0 +1,858 @@
+{
+  "version": "1",
+  "exportedAt": "2026-07-08T01:36:54.959616+00:00",
+  "source": "merged",
+  "plants": [
+    {
+      "slug": "potato",
+      "name": "Aardappel",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "sowOutdoorsWeeks": "14-16",
+      "harvestWindow": "7-10",
+      "daysToHarvest": 100,
+      "frostSensitive": false,
+      "spacingCm": 35,
+      "library": {
+        "icon": "🥔",
+        "fillColor": "#d97706",
+        "strokeColor": "#b45309",
+        "widthCm": 45,
+        "heightCm": 45
+      }
+    },
+    {
+      "slug": "aardappel-patat",
+      "name": "Aardappel (patat)",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "soil": [],
+      "sowIndoorsWeeks": null,
+      "sowOutdoorsWeeks": "14-16",
+      "harvestWindow": "7-10",
+      "daysToHarvest": 100,
+      "frostSensitive": false,
+      "spacingCm": 35,
+      "nutrition": {
+        "kcalPer100g": 17,
+        "proteinPer100g": 1.2,
+        "carbsPer100g": 3.1,
+        "fatPer100g": 0.3,
+        "fiberPer100g": 1
+      },
+      "library": {
+        "icon": "🥔",
+        "fillColor": "#d97706",
+        "strokeColor": "#b45309",
+        "widthCm": 45,
+        "heightCm": 45
+      }
+    },
+    {
+      "slug": "strawberry",
+      "name": "Aardbei",
+      "category": "Fruit",
+      "plantType": "perennial",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "sowOutdoorsWeeks": "12-16",
+      "harvestWindow": "5-7",
+      "daysToHarvest": 90,
+      "frostSensitive": false,
+      "spacingCm": 30,
+      "library": {
+        "icon": "🍓",
+        "fillColor": "#f43f5e",
+        "strokeColor": "#e11d48",
+        "widthCm": 35,
+        "heightCm": 35
+      }
+    },
+    {
+      "slug": "appelboom",
+      "name": "Appelboom",
+      "category": "Fruit",
+      "plantType": "perennial",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "soil": [],
+      "sowIndoorsWeeks": null,
+      "sowOutdoorsWeeks": null,
+      "harvestWindow": null,
+      "daysToHarvest": null,
+      "frostSensitive": null,
+      "spacingCm": null,
+      "nutrition": {
+        "kcalPer100g": null,
+        "proteinPer100g": null,
+        "carbsPer100g": null,
+        "fatPer100g": null,
+        "fiberPer100g": null
+      },
+      "library": {
+        "icon": "🌱",
+        "fillColor": "#22c55e",
+        "strokeColor": "#16a34a",
+        "widthCm": 40,
+        "heightCm": 40
+      }
+    },
+    {
+      "slug": "basil",
+      "name": "Basilicum",
+      "category": "Kruid",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "sowIndoorsWeeks": "12-16",
+      "sowOutdoorsWeeks": "20-24",
+      "harvestWindow": "6-9",
+      "daysToHarvest": 50,
+      "frostSensitive": true,
+      "spacingCm": 25,
+      "library": {
+        "icon": "🌿",
+        "fillColor": "#4ade80",
+        "strokeColor": "#22c55e",
+        "widthCm": 30,
+        "heightCm": 40
+      }
+    },
+    {
+      "slug": "blauwe-bes",
+      "name": "Blauwe bes",
+      "category": "Fruit",
+      "plantType": "perennial",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "soil": [],
+      "sowIndoorsWeeks": null,
+      "sowOutdoorsWeeks": null,
+      "harvestWindow": null,
+      "daysToHarvest": null,
+      "frostSensitive": null,
+      "spacingCm": null,
+      "nutrition": {
+        "kcalPer100g": null,
+        "proteinPer100g": null,
+        "carbsPer100g": null,
+        "fatPer100g": null,
+        "fiberPer100g": null
+      },
+      "library": {
+        "icon": "🌱",
+        "fillColor": "#22c55e",
+        "strokeColor": "#16a34a",
+        "widthCm": 40,
+        "heightCm": 40
+      }
+    },
+    {
+      "slug": "beans",
+      "name": "Bonen",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "sowOutdoorsWeeks": "20-28",
+      "harvestWindow": "7-9",
+      "daysToHarvest": 60,
+      "frostSensitive": true,
+      "spacingCm": 15,
+      "library": {
+        "icon": "🫘",
+        "fillColor": "#84cc16",
+        "strokeColor": "#65a30d",
+        "widthCm": 40,
+        "heightCm": 50
+      }
+    },
+    {
+      "slug": "zucchini",
+      "name": "Courgette",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "high",
+      "sowIndoorsWeeks": "16-18",
+      "sowOutdoorsWeeks": "20-22",
+      "harvestWindow": "7-10",
+      "daysToHarvest": 55,
+      "frostSensitive": true,
+      "spacingCm": 80,
+      "library": {
+        "icon": "🥒",
+        "fillColor": "#22c55e",
+        "strokeColor": "#16a34a",
+        "widthCm": 70,
+        "heightCm": 70
+      }
+    },
+    {
+      "slug": "courgette",
+      "name": "Courgette",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "high",
+      "soil": [],
+      "sowIndoorsWeeks": "16-18",
+      "sowOutdoorsWeeks": "20-22",
+      "harvestWindow": "7-10",
+      "daysToHarvest": 55,
+      "frostSensitive": true,
+      "spacingCm": 80,
+      "nutrition": {
+        "kcalPer100g": 23,
+        "proteinPer100g": 2.9,
+        "carbsPer100g": 3.6,
+        "fatPer100g": 0.4,
+        "fiberPer100g": 2.2
+      },
+      "library": {
+        "icon": "🥒",
+        "fillColor": "#22c55e",
+        "strokeColor": "#16a34a",
+        "widthCm": 70,
+        "heightCm": 70
+      }
+    },
+    {
+      "slug": "druif",
+      "name": "Druif",
+      "category": "Fruit",
+      "plantType": "perennial",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "soil": [],
+      "sowIndoorsWeeks": null,
+      "sowOutdoorsWeeks": null,
+      "harvestWindow": null,
+      "daysToHarvest": null,
+      "frostSensitive": null,
+      "spacingCm": null,
+      "nutrition": {
+        "kcalPer100g": null,
+        "proteinPer100g": null,
+        "carbsPer100g": null,
+        "fatPer100g": null,
+        "fiberPer100g": null
+      },
+      "library": {
+        "icon": "🌱",
+        "fillColor": "#22c55e",
+        "strokeColor": "#16a34a",
+        "widthCm": 40,
+        "heightCm": 40
+      }
+    },
+    {
+      "slug": "ficus",
+      "name": "Ficus",
+      "category": "Kamerplant",
+      "plantType": "houseplant",
+      "active": true,
+      "sun": "partial",
+      "water": "medium",
+      "frostSensitive": true,
+      "spacingCm": 50,
+      "library": {
+        "icon": "🌳",
+        "fillColor": "#16a34a",
+        "strokeColor": "#15803d",
+        "widthCm": 50,
+        "heightCm": 70
+      }
+    },
+    {
+      "slug": "grass",
+      "name": "Gras",
+      "category": "Gras",
+      "plantType": "grass",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "spacingCm": 0,
+      "library": {
+        "icon": "🌱",
+        "fillColor": "#22c55e",
+        "strokeColor": "#16a34a",
+        "widthCm": 100,
+        "heightCm": 100
+      }
+    },
+    {
+      "slug": "ivy",
+      "name": "Klimop",
+      "category": "Bloem",
+      "plantType": "climber",
+      "active": true,
+      "sun": "partial",
+      "water": "medium",
+      "spacingCm": 30,
+      "library": {
+        "icon": "🌿",
+        "fillColor": "#10b981",
+        "strokeColor": "#059669",
+        "widthCm": 40,
+        "heightCm": 40
+      }
+    },
+    {
+      "slug": "lavender",
+      "name": "Lavendel",
+      "category": "Kruid",
+      "plantType": "perennial",
+      "active": true,
+      "sun": "full",
+      "water": "low",
+      "spacingCm": 40,
+      "library": {
+        "icon": "💜",
+        "fillColor": "#a855f7",
+        "strokeColor": "#9333ea",
+        "widthCm": 45,
+        "heightCm": 55
+      }
+    },
+    {
+      "slug": "look-knoflook",
+      "name": "Look (knoflook)",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "low",
+      "soil": [],
+      "sowIndoorsWeeks": null,
+      "sowOutdoorsWeeks": "10-14",
+      "harvestWindow": "7-8",
+      "daysToHarvest": 110,
+      "frostSensitive": false,
+      "spacingCm": 10,
+      "nutrition": {
+        "kcalPer100g": 40,
+        "proteinPer100g": 1.1,
+        "carbsPer100g": 9.3,
+        "fatPer100g": 0.5,
+        "fiberPer100g": 1.7
+      },
+      "library": {
+        "icon": "🧅",
+        "fillColor": "#fbbf24",
+        "strokeColor": "#f59e0b",
+        "widthCm": 25,
+        "heightCm": 25
+      }
+    },
+    {
+      "slug": "monstera",
+      "name": "Monstera",
+      "category": "Kamerplant",
+      "plantType": "houseplant",
+      "active": true,
+      "sun": "partial",
+      "water": "medium",
+      "frostSensitive": true,
+      "spacingCm": 60,
+      "library": {
+        "icon": "🌿",
+        "fillColor": "#22c55e",
+        "strokeColor": "#16a34a",
+        "widthCm": 60,
+        "heightCm": 60
+      }
+    },
+    {
+      "slug": "mulch",
+      "name": "Mulch",
+      "category": "Gras",
+      "plantType": "mulch",
+      "active": true,
+      "sun": "full",
+      "water": "low",
+      "spacingCm": 0,
+      "library": {
+        "icon": "🟤",
+        "fillColor": "#92400e",
+        "strokeColor": "#78350f",
+        "widthCm": 100,
+        "heightCm": 100
+      }
+    },
+    {
+      "slug": "oyster-mushroom",
+      "name": "Oesterzwam",
+      "category": "Paddestoel",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "shade",
+      "water": "high",
+      "sowIndoorsWeeks": "1-52",
+      "harvestWindow": "1-12",
+      "daysToHarvest": 21,
+      "frostSensitive": false,
+      "spacingCm": 20,
+      "library": {
+        "icon": "🍄",
+        "fillColor": "#d4d4d8",
+        "strokeColor": "#a1a1aa",
+        "widthCm": 35,
+        "heightCm": 35
+      }
+    },
+    {
+      "slug": "pepper",
+      "name": "Paprika",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "sowIndoorsWeeks": "10-12",
+      "sowOutdoorsWeeks": "20-22",
+      "harvestWindow": "7-10",
+      "daysToHarvest": 75,
+      "frostSensitive": true,
+      "spacingCm": 45,
+      "library": {
+        "icon": "🫑",
+        "fillColor": "#ef4444",
+        "strokeColor": "#dc2626",
+        "widthCm": 40,
+        "heightCm": 55
+      }
+    },
+    {
+      "slug": "parsley",
+      "name": "Peterselie",
+      "category": "Kruid",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "partial",
+      "water": "medium",
+      "sowOutdoorsWeeks": "12-28",
+      "harvestWindow": "5-10",
+      "daysToHarvest": 70,
+      "frostSensitive": false,
+      "spacingCm": 20,
+      "library": {
+        "icon": "🌿",
+        "fillColor": "#10b981",
+        "strokeColor": "#059669",
+        "widthCm": 25,
+        "heightCm": 35
+      }
+    },
+    {
+      "slug": "pothos",
+      "name": "Pothos",
+      "category": "Kamerplant",
+      "plantType": "houseplant",
+      "active": true,
+      "sun": "partial",
+      "water": "medium",
+      "frostSensitive": true,
+      "spacingCm": 40,
+      "library": {
+        "icon": "🪴",
+        "fillColor": "#4ade80",
+        "strokeColor": "#22c55e",
+        "widthCm": 40,
+        "heightCm": 50
+      }
+    },
+    {
+      "slug": "prei",
+      "name": "Prei",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "soil": [],
+      "sowIndoorsWeeks": null,
+      "sowOutdoorsWeeks": null,
+      "harvestWindow": "Herfst-winter, afhankelijk van ras",
+      "daysToHarvest": null,
+      "frostSensitive": null,
+      "spacingCm": null,
+      "nutrition": {
+        "kcalPer100g": 149,
+        "proteinPer100g": 6.4,
+        "carbsPer100g": 33,
+        "fatPer100g": 0.3,
+        "fiberPer100g": 2.1
+      },
+      "library": {
+        "icon": "🌱",
+        "fillColor": "#22c55e",
+        "strokeColor": "#16a34a",
+        "widthCm": 40,
+        "heightCm": 40
+      }
+    },
+    {
+      "slug": "pruimenboom",
+      "name": "Pruimenboom",
+      "category": "Fruit",
+      "plantType": "perennial",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "soil": [],
+      "sowIndoorsWeeks": null,
+      "sowOutdoorsWeeks": null,
+      "harvestWindow": null,
+      "daysToHarvest": null,
+      "frostSensitive": null,
+      "spacingCm": null,
+      "nutrition": {
+        "kcalPer100g": null,
+        "proteinPer100g": null,
+        "carbsPer100g": null,
+        "fatPer100g": null,
+        "fiberPer100g": null
+      },
+      "library": {
+        "icon": "🌱",
+        "fillColor": "#22c55e",
+        "strokeColor": "#16a34a",
+        "widthCm": 40,
+        "heightCm": 40
+      }
+    },
+    {
+      "slug": "rose",
+      "name": "Roos",
+      "category": "Bloem",
+      "plantType": "perennial",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "spacingCm": 50,
+      "library": {
+        "icon": "🌹",
+        "fillColor": "#ec4899",
+        "strokeColor": "#db2777",
+        "widthCm": 50,
+        "heightCm": 60
+      }
+    },
+    {
+      "slug": "lettuce",
+      "name": "Sla",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "partial",
+      "water": "medium",
+      "sowOutdoorsWeeks": "12-36",
+      "harvestWindow": "5-10",
+      "daysToHarvest": 45,
+      "frostSensitive": false,
+      "spacingCm": 25,
+      "library": {
+        "icon": "🥬",
+        "fillColor": "#84cc16",
+        "strokeColor": "#65a30d",
+        "widthCm": 50,
+        "heightCm": 50
+      }
+    },
+    {
+      "slug": "spinach",
+      "name": "Spinazie",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "partial",
+      "water": "medium",
+      "sowOutdoorsWeeks": "10-40",
+      "harvestWindow": "4-10",
+      "daysToHarvest": 40,
+      "frostSensitive": false,
+      "spacingCm": 15,
+      "library": {
+        "icon": "🥬",
+        "fillColor": "#16a34a",
+        "strokeColor": "#15803d",
+        "widthCm": 35,
+        "heightCm": 35
+      }
+    },
+    {
+      "slug": "tomato",
+      "name": "Tomaat",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "soil": [
+        "leem"
+      ],
+      "sowIndoorsWeeks": "10-12",
+      "sowOutdoorsWeeks": "20-22",
+      "harvestWindow": "7-10",
+      "daysToHarvest": 80,
+      "frostSensitive": true,
+      "spacingCm": 50,
+      "library": {
+        "icon": "🍅",
+        "fillColor": "#ef4444",
+        "strokeColor": "#dc2626",
+        "widthCm": 40,
+        "heightCm": 60
+      }
+    },
+    {
+      "slug": "onion",
+      "name": "Ui",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "low",
+      "sowOutdoorsWeeks": "10-14",
+      "harvestWindow": "7-8",
+      "daysToHarvest": 110,
+      "frostSensitive": false,
+      "spacingCm": 10,
+      "library": {
+        "icon": "🧅",
+        "fillColor": "#fbbf24",
+        "strokeColor": "#f59e0b",
+        "widthCm": 25,
+        "heightCm": 25
+      }
+    },
+    {
+      "slug": "ui",
+      "name": "Ui",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "low",
+      "soil": [],
+      "sowIndoorsWeeks": null,
+      "sowOutdoorsWeeks": "10-14",
+      "harvestWindow": "7-8",
+      "daysToHarvest": 110,
+      "frostSensitive": false,
+      "spacingCm": 10,
+      "nutrition": {
+        "kcalPer100g": 18,
+        "proteinPer100g": 0.9,
+        "carbsPer100g": 3.9,
+        "fatPer100g": 0.2,
+        "fiberPer100g": 1.2
+      },
+      "library": {
+        "icon": "🧅",
+        "fillColor": "#fbbf24",
+        "strokeColor": "#f59e0b",
+        "widthCm": 25,
+        "heightCm": 25
+      }
+    },
+    {
+      "slug": "vlinderstruik",
+      "name": "Vlinderstruik",
+      "category": "Bloem",
+      "plantType": "perennial",
+      "active": true,
+      "sun": "partial",
+      "water": "medium",
+      "soil": [],
+      "sowIndoorsWeeks": null,
+      "sowOutdoorsWeeks": null,
+      "harvestWindow": null,
+      "daysToHarvest": null,
+      "frostSensitive": null,
+      "spacingCm": null,
+      "nutrition": {
+        "kcalPer100g": null,
+        "proteinPer100g": null,
+        "carbsPer100g": null,
+        "fatPer100g": null,
+        "fiberPer100g": null
+      },
+      "library": {
+        "icon": "🌱",
+        "fillColor": "#22c55e",
+        "strokeColor": "#16a34a",
+        "widthCm": 40,
+        "heightCm": 40
+      }
+    },
+    {
+      "slug": "carrot",
+      "name": "Wortel",
+      "category": "Groente",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "sowOutdoorsWeeks": "14-28",
+      "harvestWindow": "7-11",
+      "daysToHarvest": 70,
+      "frostSensitive": false,
+      "spacingCm": 8,
+      "library": {
+        "icon": "🥕",
+        "fillColor": "#f97316",
+        "strokeColor": "#ea580c",
+        "widthCm": 30,
+        "heightCm": 40
+      }
+    }
+  ],
+  "gardenCrops": [
+    {
+      "id": "396bb6cffa838135a370f4d79d78a1d1",
+      "name": "Look (knoflook)",
+      "catalogSlug": "look-knoflook",
+      "cultivar": null,
+      "zone": "Nergens meer terug te vinden in de tuin",
+      "status": "Gepland",
+      "sowedOn": null,
+      "harvestFrom": null,
+      "harvestTo": null,
+      "notes": null,
+      "inCatalog": true
+    },
+    {
+      "id": "396bb6cffa83813e96e0e8f7fda15660",
+      "name": "Vlinderstruik",
+      "catalogSlug": "vlinderstruik",
+      "cultivar": null,
+      "zone": "Voortuin (zuiden) — struik en bloemen doen het goed",
+      "status": "Groeiend",
+      "sowedOn": null,
+      "harvestFrom": null,
+      "harvestTo": null,
+      "notes": null,
+      "inCatalog": true
+    },
+    {
+      "id": "396bb6cffa83814290cbd136b6a12fc6",
+      "name": "Prei",
+      "catalogSlug": "prei",
+      "cultivar": null,
+      "zone": "Tuin — bloeit nu; per ongeluk stengel gebruikt bij onkruid wieden",
+      "status": "Groeiend",
+      "sowedOn": null,
+      "harvestFrom": null,
+      "harvestTo": null,
+      "notes": null,
+      "inCatalog": true
+    },
+    {
+      "id": "396bb6cffa838190876fe83025991a44",
+      "name": "Blauwe bessen (blueberries)",
+      "catalogSlug": "blauwe-bes",
+      "cultivar": null,
+      "zone": "Deels rijp, worden al opgegeten",
+      "status": "Oogstbaar",
+      "sowedOn": null,
+      "harvestFrom": null,
+      "harvestTo": null,
+      "notes": null,
+      "inCatalog": true
+    },
+    {
+      "id": "396bb6cffa838198bba6f45cecbcc460",
+      "name": "Ui",
+      "catalogSlug": "ui",
+      "cultivar": null,
+      "zone": "1 ui opgesplitst in 3 (nu opgedeeld); andere uien zien er goed bulky uit",
+      "status": "Groeiend",
+      "sowedOn": null,
+      "harvestFrom": null,
+      "harvestTo": null,
+      "notes": null,
+      "inCatalog": true
+    },
+    {
+      "id": "396bb6cffa838199af39e34b41bf84d2",
+      "name": "Druiven (2 druivelaren)",
+      "catalogSlug": "druif",
+      "cultivar": null,
+      "zone": "Eerste trosjes komen aan op beide druivelaren",
+      "status": "Groeiend",
+      "sowedOn": null,
+      "harvestFrom": null,
+      "harvestTo": null,
+      "notes": null,
+      "inCatalog": true
+    },
+    {
+      "id": "396bb6cffa8381aaa4e9d05f13a2d20c",
+      "name": "Nieuwe uitjes",
+      "catalogSlug": "ui",
+      "cultivar": null,
+      "zone": "Nieuwe scheuten groeien goed",
+      "status": "Groeiend",
+      "sowedOn": null,
+      "harvestFrom": null,
+      "harvestTo": null,
+      "notes": null,
+      "inCatalog": true
+    },
+    {
+      "id": "396bb6cffa8381b08063c13512c354ad",
+      "name": "Patatjes",
+      "catalogSlug": "aardappel-patat",
+      "cultivar": null,
+      "zone": "Flink aangetast door slakken",
+      "status": "Groeiend",
+      "sowedOn": null,
+      "harvestFrom": null,
+      "harvestTo": null,
+      "notes": null,
+      "inCatalog": true
+    },
+    {
+      "id": "396bb6cffa8381ef99dee4226b17aacb",
+      "name": "Pruimenboom",
+      "catalogSlug": "pruimenboom",
+      "cultivar": null,
+      "zone": "Erg bossig — snoei-vraag gesteld op wandeling",
+      "status": "Groeiend",
+      "sowedOn": null,
+      "harvestFrom": null,
+      "harvestTo": null,
+      "notes": null,
+      "inCatalog": true
+    },
+    {
+      "id": "396bb6cffa8381f5947edcb54d04a022",
+      "name": "Appelboom",
+      "catalogSlug": "appelboom",
+      "cultivar": null,
+      "zone": "Appels groeien goed",
+      "status": "Groeiend",
+      "sowedOn": null,
+      "harvestFrom": null,
+      "harvestTo": null,
+      "notes": null,
+      "inCatalog": true
+    }
+  ]
+}

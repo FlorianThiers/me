@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft, Download, Upload, ChevronLeft, ChevronRight, Settings, Package } from 'lucide-react';
+import { ArrowLeft, Download, Upload, ChevronLeft, ChevronRight, Settings, Package, FileImage, FileText } from 'lucide-react';
 import { DesignCanvas } from '../components/gardenDesigner/DesignCanvas';
 import { Toolbar } from '../components/gardenDesigner/Toolbar';
 import { LayersPanel } from '../components/gardenDesigner/LayersPanel';
@@ -10,11 +10,35 @@ import { ObjectsPanel } from '../components/gardenDesigner/ObjectsPanel';
 import { PropertiesPanel } from '../components/gardenDesigner/PropertiesPanel';
 import { ObjectLibrary } from '../components/gardenDesigner/ObjectLibrary';
 import { NameInputDialog } from '../components/gardenDesigner/NameInputDialog';
-import type { DesignElement, DesignData, ToolType, LayerType, Folder, LibraryItem } from '../types/gardenDesigner';
+import type { DesignElement, DesignData, ToolType, LayerType, Folder, LibraryItem, ViewState, ViewMode, PlanProjection } from '../types/gardenDesigner';
 import { generateId, generateFolderId, copyElement, incrementName } from '../utils/designUtils';
 // import { isElementVisible } from '../utils/designUtils';
 import { updateElementDimensions } from '../utils/dimensionCalculation';
 import { ScalePanel } from '../components/gardenDesigner/ScalePanel';
+import { ZoomControls } from '../components/gardenDesigner/ZoomControls';
+import { CanvasStatusBar } from '../components/gardenDesigner/CanvasStatusBar';
+import { PlanAxisOverlay } from '../components/gardenDesigner/PlanAxisOverlay';
+import { Garden3DViewport } from '../components/gardenDesigner/Garden3DViewport';
+import { ViewModeToggle } from '../components/gardenDesigner/ViewModeToggle';
+import { PlanProjectionToggle } from '../components/gardenDesigner/PlanProjectionToggle';
+import { usePlantCatalog } from '../hooks/usePlantCatalog';
+import { DEFAULT_VIEW, zoomToBounds, getElementsBounds, stepZoomAtPoint } from '../utils/viewUtils';
+import { getDefaultElevation } from '../utils/elevationUtils';
+import { getVisibleElementsForView, getProjectionBounds } from '../utils/planProjectionUtils';
+import { DEFAULT_SCALE, normalizeScale, unitToPixels } from '../utils/unitUtils';
+import {
+  autosaveHasWork,
+  clearGardenAutosave,
+  formatAutosaveLabel,
+  readGardenAutosave,
+  writeGardenAutosave,
+  type GardenAutosavePayload
+} from '../utils/gardenAutosave';
+import { DEFAULT_WALL_THICKNESS_CM } from '../utils/wallUtils';
+import { DEFAULT_DOOR_WIDTH_CM, DEFAULT_WINDOW_WIDTH_CM } from '../utils/openingUtils';
+import { downloadPlanPng, printPlanPdf } from '../utils/gardenExport';
+
+const DESIGN_VERSION = '1.1';
 
 // Navigation header is 64px (h-16), page header is 48px (h-12), status bar is 40px
 const NAV_HEIGHT = 64;
@@ -24,6 +48,7 @@ const TOTAL_HEADER_HEIGHT = NAV_HEIGHT + PAGE_HEADER_HEIGHT + STATUS_BAR_HEIGHT;
 
 export const GardenDesignPage: React.FC = () => {
   const { t } = useTranslation();
+  const { catalog, libraryItems, loading: catalogLoading } = usePlantCatalog();
   // Dynamic canvas size based on viewport
   const [canvasSize, setCanvasSize] = useState({ 
     width: window.innerWidth, 
@@ -40,8 +65,9 @@ export const GardenDesignPage: React.FC = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
   const [designData, setDesignData] = useState<DesignData>({
-    version: '1.0',
+    version: DESIGN_VERSION,
     name: t('gardenDesign.newDesign'),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
@@ -55,27 +81,198 @@ export const GardenDesignPage: React.FC = () => {
       plants: true,
       water: true
     },
-    scale: {
-      pixelsPerUnit: 10,
-      unit: 'cm',
-      displayFormat: 'auto'
-    }
+    scale: { ...DEFAULT_SCALE },
+    terrain: { referenceElevation: 0 },
+    viewMode: 'split'
   });
+
+  const [viewMode, setViewMode] = useState<ViewMode>('split');
+  const [planProjection, setPlanProjection] = useState<PlanProjection>('top');
 
   const [activeTool, setActiveTool] = useState<ToolType>('select');
   const [activeLayer, setActiveLayer] = useState<LayerType>('ground');
   const [selectedElementIds, setSelectedElementIds] = useState<string[]>([]);
+  const [viewState, setViewState] = useState<ViewState>(DEFAULT_VIEW);
+  const [cursorWorld, setCursorWorld] = useState<{ x: number; y: number } | null>(null);
+  const [spacePressed, setSpacePressed] = useState(false);
   const [nameDialogOpen, setNameDialogOpen] = useState(false);
   const [pendingElement, setPendingElement] = useState<Omit<DesignElement, 'id' | 'name'> | null>(null);
   const [copiedElements, setCopiedElements] = useState<DesignElement[]>([]);
+  const [pendingAutosave, setPendingAutosave] = useState<GardenAutosavePayload | null>(null);
+  const [autosaveHint, setAutosaveHint] = useState<string | null>(null);
+  const [wallThicknessCm, setWallThicknessCm] = useState(DEFAULT_WALL_THICKNESS_CM);
+  const [doorWidthCm, setDoorWidthCm] = useState(DEFAULT_DOOR_WIDTH_CM);
+  const [windowWidthCm, setWindowWidthCm] = useState(DEFAULT_WINDOW_WIDTH_CM);
+  const [exportOpen, setExportOpen] = useState(false);
+  const skipNextAutosave = useRef(true);
+  const hydratedRef = useRef(false);
+
+  // Offer restore from localStorage once on mount
+  useEffect(() => {
+    const draft = readGardenAutosave();
+    if (autosaveHasWork(draft)) {
+      setPendingAutosave(draft);
+    }
+    hydratedRef.current = true;
+  }, []);
+
+  // Debounced autosave
+  useEffect(() => {
+    if (!hydratedRef.current) return;
+    if (pendingAutosave) return; // wait until user accepts/discards
+    if (skipNextAutosave.current) {
+      skipNextAutosave.current = false;
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      const payload: GardenAutosavePayload = {
+        savedAt: new Date().toISOString(),
+        designData: {
+          ...designData,
+          version: DESIGN_VERSION,
+          view: viewState,
+          viewMode,
+          planProjection,
+          updatedAt: new Date().toISOString()
+        },
+        viewState,
+        viewMode,
+        planProjection
+      };
+      writeGardenAutosave(payload);
+      setAutosaveHint(`Autosave ${formatAutosaveLabel(payload.savedAt)}`);
+    }, 800);
+
+    return () => window.clearTimeout(timer);
+  }, [designData, viewState, viewMode, planProjection, pendingAutosave]);
+
+  const applyLoadedDesign = useCallback(
+    (loadedData: DesignData, opts?: { viewState?: ViewState }) => {
+      const projection = loadedData.planProjection ?? 'top';
+      const scale = normalizeScale(loadedData.scale, loadedData.version);
+      const normalized: DesignData = {
+        ...loadedData,
+        version: DESIGN_VERSION,
+        scale,
+        folders: loadedData.folders ?? []
+      };
+      setDesignData(normalized);
+      setViewMode(loadedData.viewMode ?? 'split');
+      setPlanProjection(projection);
+      setSelectedElementIds([]);
+
+      const planW =
+        (loadedData.viewMode ?? 'split') === 'split'
+          ? Math.floor(canvasSize.width / 2)
+          : canvasSize.width;
+
+      if (opts?.viewState) {
+        setViewState(opts.viewState);
+        return;
+      }
+      if (loadedData.view) {
+        setViewState(loadedData.view);
+        return;
+      }
+      const bounds = getProjectionBounds(
+        normalized.elements,
+        normalized.folders,
+        normalized.layerVisibility,
+        projection,
+        normalized.scale
+      );
+      if (bounds) {
+        setViewState(zoomToBounds(bounds, planW, canvasSize.height));
+      }
+    },
+    [canvasSize.width, canvasSize.height]
+  );
+
+  const handleRestoreAutosave = () => {
+    if (!pendingAutosave) return;
+    skipNextAutosave.current = true;
+    applyLoadedDesign(pendingAutosave.designData, {
+      viewState: pendingAutosave.viewState
+    });
+    setPendingAutosave(null);
+    setAutosaveHint(`Hersteld · ${formatAutosaveLabel(pendingAutosave.savedAt)}`);
+  };
+
+  const handleDiscardAutosave = () => {
+    clearGardenAutosave();
+    setPendingAutosave(null);
+    setAutosaveHint(null);
+  };
   
   // Panel visibility states
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const [rightPanelOpen, setRightPanelOpen] = useState(true);
 
+  const showPlan = viewMode === 'plan' || viewMode === 'split';
+  const show3D = viewMode === 'iso' || viewMode === 'split';
+  const planWidth = viewMode === 'split' ? Math.floor(canvasSize.width / 2) : canvasSize.width;
+  const planHeight = canvasSize.height;
+  const planReadOnly = planProjection !== 'top';
+
+  const displayElements = useMemo(
+    () =>
+      getVisibleElementsForView(
+        designData.elements,
+        designData.folders,
+        designData.layerVisibility,
+        planProjection,
+        designData.scale
+      ),
+    [designData.elements, designData.folders, designData.layerVisibility, planProjection, designData.scale]
+  );
+
+  const fitPlanView = (projection: PlanProjection = planProjection) => {
+    const bounds = getProjectionBounds(
+      designData.elements,
+      designData.folders,
+      designData.layerVisibility,
+      projection,
+      designData.scale
+    );
+    if (bounds) {
+      setViewState(zoomToBounds(bounds, planWidth, planHeight));
+    }
+  };
+
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+
+      if (e.code === 'Space') {
+        setSpacePressed(true);
+      }
+
+      // Tool hotkeys (Figma / Illustrator style)
+      if (!e.ctrlKey && !e.metaKey && !e.altKey) {
+        const toolMap: Record<string, ToolType> = {
+          v: 'select',
+          h: 'hand',
+          r: 'rectangle',
+          o: 'circle',
+          l: 'line',
+          p: 'polygon',
+          n: 'freehand',
+          c: 'contour',
+          w: 'wall',
+          m: 'room',
+          d: 'door',
+          i: 'window'
+        };
+        const tool = toolMap[e.key.toLowerCase()];
+        if (tool) {
+          e.preventDefault();
+          setActiveTool(tool);
+          return;
+        }
+      }
+
       // Ctrl/Cmd + S: Save
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
@@ -91,22 +288,142 @@ export const GardenDesignPage: React.FC = () => {
         e.preventDefault();
         handlePaste();
       }
+      // Zoom shortcuts (Figma)
+      if (e.ctrlKey || e.metaKey) {
+        const pw = viewMode === 'split' ? Math.floor(canvasSize.width / 2) : canvasSize.width;
+        const ph = canvasSize.height;
+        const centerX = pw / 2;
+        const centerY = ph / 2;
+        if (e.key === '0') {
+          e.preventDefault();
+          const bounds = getProjectionBounds(
+            designData.elements,
+            designData.folders,
+            designData.layerVisibility,
+            planProjection,
+            designData.scale
+          );
+          if (bounds) setViewState(zoomToBounds(bounds, pw, ph));
+        } else if (e.key === '1') {
+          e.preventDefault();
+          setViewState({ zoom: 1, panX: centerX, panY: centerY });
+        } else if (e.key === '2' && selectedElementIds.length > 0) {
+          e.preventDefault();
+          const selected = designData.elements.filter(el => selectedElementIds.includes(el.id));
+          const bounds = getElementsBounds(selected);
+          if (bounds) setViewState(zoomToBounds(bounds, pw, ph));
+        } else if (e.key === '=' || e.key === '+') {
+          e.preventDefault();
+          setViewState(prev => stepZoomAtPoint(prev, centerX, centerY, 'in'));
+        } else if (e.key === '-') {
+          e.preventDefault();
+          setViewState(prev => stepZoomAtPoint(prev, centerX, centerY, 'out'));
+        }
+      }
       // Delete/Backspace: Delete selected
       if ((e.key === 'Delete' || e.key === 'Backspace') && selectedElementIds.length > 0) {
         e.preventDefault();
         handleDeleteElements(selectedElementIds);
       }
-      // Escape: Deselect
+      // Escape: Deselect / cancel
       if (e.key === 'Escape') {
         setSelectedElementIds([]);
       }
     };
 
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (e.code === 'Space') setSpacePressed(false);
+    };
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedElementIds, copiedElements]);
+    window.addEventListener('keyup', handleKeyUp);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [selectedElementIds, copiedElements, designData.elements, designData.folders, designData.layerVisibility, designData.scale, canvasSize, viewMode, planProjection, selectedElementIds.length]);
 
   const handleElementCreate = (elementData: Omit<DesignElement, 'id' | 'name'>) => {
+    if (elementData.properties?.isContour) {
+      const elev = elementData.properties.contourElevation ?? 0;
+      const sign = elev >= 0 ? '+' : '';
+      const autoName = `Contour ${sign}${elev.toFixed(2)} m`;
+      let newElement: DesignElement = {
+        ...elementData,
+        id: generateId(),
+        name: autoName,
+        elevation: elementData.elevation ?? getDefaultElevation(elementData)
+      };
+      newElement = updateElementDimensions(newElement);
+      setDesignData(prev => ({
+        ...prev,
+        elements: [...prev.elements, newElement],
+        updatedAt: new Date().toISOString()
+      }));
+      setSelectedElementIds([newElement.id]);
+      return;
+    }
+    if (elementData.properties?.isWall) {
+      const wallCount = designData.elements.filter(el => el.properties.isWall).length + 1;
+      let newElement: DesignElement = {
+        ...elementData,
+        id: generateId(),
+        name: `Muur ${wallCount}`,
+        elevation: elementData.elevation ?? getDefaultElevation(elementData)
+      };
+      newElement = updateElementDimensions(newElement);
+      setDesignData(prev => ({
+        ...prev,
+        elements: [...prev.elements, newElement],
+        layerVisibility: { ...prev.layerVisibility, building: true },
+        updatedAt: new Date().toISOString()
+      }));
+      setActiveLayer('building');
+      setSelectedElementIds([newElement.id]);
+      return;
+    }
+    if (elementData.properties?.isRoom) {
+      const roomCount = designData.elements.filter(el => el.properties.isRoom).length + 1;
+      let newElement: DesignElement = {
+        ...elementData,
+        id: generateId(),
+        name: `Kamer ${roomCount}`,
+        elevation: elementData.elevation ?? getDefaultElevation(elementData)
+      };
+      newElement = updateElementDimensions(newElement);
+      setDesignData(prev => ({
+        ...prev,
+        elements: [...prev.elements, newElement],
+        layerVisibility: { ...prev.layerVisibility, building: true },
+        updatedAt: new Date().toISOString()
+      }));
+      setActiveLayer('building');
+      setSelectedElementIds([newElement.id]);
+      return;
+    }
+    if (elementData.properties?.isOpening) {
+      const kind = elementData.properties.openingKind === 'window' ? 'Raam' : 'Deur';
+      const count =
+        designData.elements.filter(
+          el => el.properties.openingKind === elementData.properties.openingKind
+        ).length + 1;
+      let newElement: DesignElement = {
+        ...elementData,
+        id: generateId(),
+        name: `${kind} ${count}`,
+        elevation: elementData.elevation ?? getDefaultElevation(elementData)
+      };
+      newElement = updateElementDimensions(newElement);
+      setDesignData(prev => ({
+        ...prev,
+        elements: [...prev.elements, newElement],
+        layerVisibility: { ...prev.layerVisibility, building: true },
+        updatedAt: new Date().toISOString()
+      }));
+      setActiveLayer('building');
+      setSelectedElementIds([newElement.id]);
+      return;
+    }
     setPendingElement(elementData);
     setNameDialogOpen(true);
   };
@@ -116,7 +433,8 @@ export const GardenDesignPage: React.FC = () => {
       let newElement: DesignElement = {
         ...pendingElement,
         id: generateId(),
-        name
+        name,
+        elevation: pendingElement.elevation ?? getDefaultElevation(pendingElement)
       };
       
       // Calculate dimensions
@@ -229,7 +547,8 @@ export const GardenDesignPage: React.FC = () => {
       const copied = copyElement(el, 20);
       const withName = {
         ...copied,
-        name: incrementName(el.name)
+        name: incrementName(el.name),
+        elevation: el.elevation ?? getDefaultElevation(el)
       };
       return updateElementDimensions(withName);
     });
@@ -333,28 +652,68 @@ export const GardenDesignPage: React.FC = () => {
     }));
   };
 
+  const handleFolderExpandAll = () => {
+    setDesignData(prev => ({
+      ...prev,
+      folders: prev.folders.map(f => ({ ...f, expanded: true }))
+    }));
+  };
+
+  const handleFolderCollapseAll = () => {
+    setDesignData(prev => ({
+      ...prev,
+      folders: prev.folders.map(f => ({ ...f, expanded: false }))
+    }));
+  };
+
+  const handlePlanProjectionChange = (next: PlanProjection) => {
+    setPlanProjection(next);
+    const bounds = getProjectionBounds(
+      designData.elements,
+      designData.folders,
+      designData.layerVisibility,
+      next,
+      designData.scale
+    );
+    if (bounds) {
+      setViewState(zoomToBounds(bounds, planWidth, planHeight));
+    }
+  };
+
   const handleLibraryItemSelect = (item: LibraryItem) => {
+    // Library footprints are centimeters → canvas pixels via current scale
+    const width = unitToPixels(item.defaultSize.width, 'cm', designData.scale);
+    const height = unitToPixels(item.defaultSize.height, 'cm', designData.scale);
     const elementData: Omit<DesignElement, 'id' | 'name'> = {
       type: 'library-item',
       layer: item.defaultLayer,
-      x: canvasSize.width / 2 - item.defaultSize.width / 2,
-      y: canvasSize.height / 2 - item.defaultSize.height / 2,
-      width: item.defaultSize.width,
-      height: item.defaultSize.height,
+      x: canvasSize.width / 2 - width / 2,
+      y: canvasSize.height / 2 - height / 2,
+      width,
+      height,
       visible: true,
       locked: false,
       properties: {
         ...item.defaultProperties,
         fillColor: item.defaultProperties.fillColor || '#00ff88',
         strokeColor: item.defaultProperties.strokeColor || '#00ff88',
-        strokeWidth: item.defaultProperties.strokeWidth || 2
+        strokeWidth: item.defaultProperties.strokeWidth || 2,
+        catalogSlug: item.defaultProperties.catalogSlug || item.id
       }
     };
     handleElementCreate(elementData);
   };
 
   const handleSave = () => {
-    const dataStr = JSON.stringify(designData, null, 2);
+    const dataToSave: DesignData = {
+      ...designData,
+      version: DESIGN_VERSION,
+      view: viewState,
+      viewMode,
+      planProjection,
+      updatedAt: new Date().toISOString()
+    };
+    const dataStr = JSON.stringify(dataToSave, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
@@ -362,6 +721,32 @@ export const GardenDesignPage: React.FC = () => {
     link.download = `${designData.name.replace(/\s+/g, '-')}-${Date.now()}.json`;
     link.click();
     URL.revokeObjectURL(url);
+  };
+
+  const exportOpts = () => ({
+    designData: {
+      ...designData,
+      version: DESIGN_VERSION,
+      view: viewState,
+      viewMode,
+      planProjection
+    },
+    elements: designData.elements,
+    title: designData.name
+  });
+
+  const handleExportPng = () => {
+    const ok = downloadPlanPng(exportOpts());
+    setExportOpen(false);
+    if (!ok) alert('Geen objecten om te exporteren — teken eerst een plan.');
+    else setAutosaveHint('PNG geëxporteerd');
+  };
+
+  const handleExportPdf = () => {
+    const ok = printPlanPdf(exportOpts());
+    setExportOpen(false);
+    if (!ok) alert('Geen objecten om te exporteren — teken eerst een plan. (Popup geblokkeerd?)');
+    else setAutosaveHint('Print/PDF geopend');
   };
 
   const handleLoad = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -372,19 +757,75 @@ export const GardenDesignPage: React.FC = () => {
     reader.onload = (event) => {
       try {
         const loadedData = JSON.parse(event.target?.result as string) as DesignData;
-        setDesignData(loadedData);
-        setSelectedElementIds([]);
+        skipNextAutosave.current = true;
+        applyLoadedDesign(loadedData);
+        setPendingAutosave(null);
       } catch (error) {
         alert(t('gardenDesign.errorLoading'));
       }
     };
     reader.readAsText(file);
+    e.target.value = '';
   };
 
   const selectedElements = designData.elements.filter(el => selectedElementIds.includes(el.id));
 
+  const handleZoomIn = () => {
+    const cx = planWidth / 2;
+    const cy = planHeight / 2;
+    setViewState(prev => stepZoomAtPoint(prev, cx, cy, 'in'));
+  };
+
+  const handleZoomOut = () => {
+    const cx = planWidth / 2;
+    const cy = planHeight / 2;
+    setViewState(prev => stepZoomAtPoint(prev, cx, cy, 'out'));
+  };
+
+  const handleZoomFit = () => {
+    fitPlanView();
+  };
+
+  const handleZoomSelection = () => {
+    const selected = designData.elements.filter(el => selectedElementIds.includes(el.id));
+    const bounds = getElementsBounds(selected);
+    if (bounds) setViewState(zoomToBounds(bounds, planWidth, planHeight));
+  };
+
+  const handleZoom100 = () => {
+    setViewState({ zoom: 1, panX: planWidth / 2, panY: planHeight / 2 });
+  };
+
   return (
     <div className="h-screen flex flex-col bg-dark-bg overflow-hidden pt-16">
+      {pendingAutosave && (
+        <div className="z-30 flex items-center justify-between gap-3 px-4 py-2 bg-neon-green/15 border-b border-neon-green/40 text-sm text-white">
+          <span>
+            Concept gevonden van{' '}
+            <span className="text-neon-green font-medium">
+              {formatAutosaveLabel(pendingAutosave.savedAt)}
+            </span>
+            {' '}({pendingAutosave.designData.elements.length} objecten). Herstellen?
+          </span>
+          <div className="flex gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={handleRestoreAutosave}
+              className="px-3 py-1 rounded-lg bg-neon-green text-dark-bg font-medium hover:bg-neon-green/90"
+            >
+              Herstellen
+            </button>
+            <button
+              type="button"
+              onClick={handleDiscardAutosave}
+              className="px-3 py-1 rounded-lg border border-white/20 text-white/70 hover:bg-white/5"
+            >
+              Weggooien
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Compact Header - Starts below navigation */}
       <div className="flex items-center justify-between px-4 py-2 bg-dark-secondary/80 backdrop-blur-sm border-b border-white/10 z-20 h-12">
         <div className="flex items-center gap-3">
@@ -400,7 +841,14 @@ export const GardenDesignPage: React.FC = () => {
             </h1>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
+          {autosaveHint && !pendingAutosave && (
+            <span className="text-white/40 text-xs hidden md:inline">{autosaveHint}</span>
+          )}
+          <ViewModeToggle viewMode={viewMode} onChange={setViewMode} />
+          {showPlan && (
+            <PlanProjectionToggle projection={planProjection} onChange={handlePlanProjectionChange} />
+          )}
           <label className="cursor-pointer px-3 py-1.5 bg-dark-secondary border border-white/20 rounded-lg text-white hover:border-neon-green/50 transition-all duration-300 flex items-center gap-2 text-sm">
             <Upload className="w-4 h-4" />
             Openen
@@ -411,6 +859,36 @@ export const GardenDesignPage: React.FC = () => {
               className="hidden"
             />
           </label>
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setExportOpen(v => !v)}
+              className="px-3 py-1.5 bg-dark-secondary border border-white/20 rounded-lg text-white hover:border-neon-green/50 transition-all duration-300 flex items-center gap-2 text-sm"
+            >
+              <FileImage className="w-4 h-4" />
+              Export
+            </button>
+            {exportOpen && (
+              <div className="absolute right-0 top-full mt-1 z-40 min-w-[180px] rounded-lg border border-white/15 bg-dark-secondary shadow-xl py-1">
+                <button
+                  type="button"
+                  onClick={handleExportPng}
+                  className="w-full px-3 py-2 text-left text-sm text-white/90 hover:bg-white/5 flex items-center gap-2"
+                >
+                  <FileImage className="w-4 h-4 text-neon-green" />
+                  PNG met schaal
+                </button>
+                <button
+                  type="button"
+                  onClick={handleExportPdf}
+                  className="w-full px-3 py-2 text-left text-sm text-white/90 hover:bg-white/5 flex items-center gap-2"
+                >
+                  <FileText className="w-4 h-4 text-neon-green" />
+                  PDF (print)
+                </button>
+              </div>
+            )}
+          </div>
           <button
             onClick={handleSave}
             className="px-3 py-1.5 bg-neon-green/20 border border-neon-green/50 rounded-lg text-neon-green hover:bg-neon-green/30 transition-all duration-300 flex items-center gap-2 text-sm"
@@ -423,23 +901,71 @@ export const GardenDesignPage: React.FC = () => {
 
       {/* Main Layout - Full Screen Canvas with Overlay Panels */}
       <div className="flex-1 relative overflow-hidden" style={{ height: `calc(100vh - ${NAV_HEIGHT + PAGE_HEADER_HEIGHT}px)` }}>
-        {/* Canvas - Full Screen */}
-        <div className="absolute inset-0 bg-dark-bg">
-          <DesignCanvas
-            width={canvasSize.width}
-            height={canvasSize.height}
-            elements={designData.elements}
-            selectedElementIds={selectedElementIds}
-            activeTool={activeTool}
-            activeLayer={activeLayer}
-            layerVisibility={designData.layerVisibility}
-            scale={designData.scale}
-            onElementCreate={handleElementCreate}
-            onElementSelect={handleElementSelect}
-            onElementMove={handleElementMove}
-            onElementResize={handleElementResize}
+        <div className="absolute inset-0 flex bg-dark-bg">
+          {showPlan && (
+            <div
+              className={`relative h-full ${show3D && viewMode === 'split' ? 'w-1/2 border-r border-white/10' : 'w-full'}`}
+            >
+              <DesignCanvas
+                width={planWidth}
+                height={planHeight}
+                elements={displayElements}
+                selectedElementIds={selectedElementIds}
+                activeTool={activeTool}
+                activeLayer={activeLayer}
+                layerVisibility={designData.layerVisibility}
+                scale={designData.scale}
+                viewState={viewState}
+                planProjection={planProjection}
+                readOnly={planReadOnly}
+                sourceElements={designData.elements}
+                wallThicknessCm={wallThicknessCm}
+                doorWidthCm={doorWidthCm}
+                windowWidthCm={windowWidthCm}
+                onViewStateChange={setViewState}
+                onCursorWorldMove={setCursorWorld}
+                onElementCreate={handleElementCreate}
+                onElementSelect={handleElementSelect}
+                onElementMove={handleElementMove}
+                onElementResize={handleElementResize}
+              />
+              <PlanAxisOverlay className="absolute inset-0 z-10" projection={planProjection} />
+              {planReadOnly && (
+                <div className="absolute top-3 right-3 z-20 px-2 py-1 rounded bg-amber-500/15 border border-amber-400/30 text-[10px] text-amber-200/90 max-w-[220px]">
+                  Gevel: alleen bekijken — behalve <strong>Deur/Raam</strong> (klik op muur; Y = dorpelhoogte)
+                </div>
+              )}
+            </div>
+          )}
+          {show3D && (
+            <div className={`h-full ${viewMode === 'split' ? 'w-1/2' : 'w-full'}`}>
+              <Garden3DViewport
+                className="w-full h-full"
+                elements={designData.elements}
+                folders={designData.folders}
+                scale={designData.scale}
+                layerVisibility={designData.layerVisibility}
+                selectedElementIds={selectedElementIds}
+                onElementSelect={(id) => handleElementSelect(id, false)}
+              />
+            </div>
+          )}
+        </div>
+
+        {/* Zoom controls — plan view only */}
+        {showPlan && (
+        <div className="absolute bottom-14 right-4 z-30">
+          <ZoomControls
+            zoom={viewState.zoom}
+            onZoomIn={handleZoomIn}
+            onZoomOut={handleZoomOut}
+            onZoomFit={handleZoomFit}
+            onZoomSelection={handleZoomSelection}
+            onZoom100={handleZoom100}
+            hasSelection={selectedElementIds.length > 0}
           />
         </div>
+        )}
 
         {/* Left Panel Overlay */}
         <AnimatePresence>
@@ -467,8 +993,14 @@ export const GardenDesignPage: React.FC = () => {
                 <Toolbar
                   activeTool={activeTool}
                   activeLayer={activeLayer}
+                  wallThicknessCm={wallThicknessCm}
+                  doorWidthCm={doorWidthCm}
+                  windowWidthCm={windowWidthCm}
                   onToolChange={setActiveTool}
                   onLayerChange={setActiveLayer}
+                  onWallThicknessChange={setWallThicknessCm}
+                  onDoorWidthChange={setDoorWidthCm}
+                  onWindowWidthChange={setWindowWidthCm}
                 />
                 <LayersPanel
                   activeLayer={activeLayer}
@@ -527,11 +1059,19 @@ export const GardenDesignPage: React.FC = () => {
                   onFolderRename={handleFolderRename}
                   onFolderDelete={handleFolderDelete}
                   onElementDelete={handleElementDelete}
+                  onFolderExpandAll={handleFolderExpandAll}
+                  onFolderCollapseAll={handleFolderCollapseAll}
                 />
-                <ObjectLibrary onItemSelect={handleLibraryItemSelect} />
+                <ObjectLibrary
+                  libraryItems={libraryItems}
+                  catalog={catalog}
+                  loading={catalogLoading}
+                  onItemSelect={handleLibraryItemSelect}
+                />
                 <PropertiesPanel
                   selectedElements={selectedElements}
                   scale={designData.scale}
+                  catalog={catalog}
                   onElementUpdate={handleElementUpdate}
                 />
               </div>
@@ -562,26 +1102,15 @@ export const GardenDesignPage: React.FC = () => {
           </motion.button>
         )}
 
-        {/* Status Bar - Bottom */}
-        <div className="absolute bottom-0 left-0 right-0 bg-dark-secondary/80 backdrop-blur-sm border-t border-white/10 px-4 py-2 z-20">
-          <div className="flex items-center justify-between text-sm text-white/60">
-            <div className="flex items-center gap-4">
-              <div>
-                <span className="text-neon-green">Laag:</span>{' '}
-                {activeLayer === 'ground' ? 'Platte Grond' :
-                 activeLayer === 'building' ? 'Bouw' :
-                 activeLayer === 'plants' ? 'Planten' : 'Water'}
-              </div>
-              <div>
-                <span className="text-neon-green">{t('gardenDesign.tool')}</span>{' '}
-                {t(`gardenDesign.tools.${activeTool}`)}
-              </div>
-            </div>
-            <div className="text-white/40">
-              {designData.elements.length} {designData.elements.length === 1 ? t('gardenDesign.object') : t('gardenDesign.objects')}
-            </div>
-          </div>
-        </div>
+        <CanvasStatusBar
+          activeLayer={activeLayer}
+          activeTool={activeTool}
+          objectCount={designData.elements.length}
+          zoom={viewState.zoom}
+          cursorWorld={cursorWorld}
+          scale={designData.scale}
+          isSpacePan={spacePressed}
+        />
       </div>
 
       {/* Name Input Dialog */}

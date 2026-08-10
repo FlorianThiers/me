@@ -113,3 +113,11 @@ export function isElementVisible(
   
   return true;
 }
+
+export function filterVisibleElements(
+  elements: DesignElement[],
+  folders: Folder[],
+  layerVisibility: Record<string, boolean>
+): DesignElement[] {
+  return elements.filter(el => isElementVisible(el, folders, layerVisibility));
+}

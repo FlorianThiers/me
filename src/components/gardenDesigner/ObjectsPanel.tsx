@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { DesignElement, Folder } from '../../types/gardenDesigner';
 import { Eye, EyeOff, Folder as FolderIcon, FolderOpen, ChevronRight, ChevronDown, Plus, MoreVertical, Trash2, Edit2 } from 'lucide-react';
-import { getFolderPath } from '../../utils/designUtils';
+import { getFolderPath, getAllElementsInFolderHierarchy } from '../../utils/designUtils';
 
 interface ObjectsPanelProps {
   elements: DesignElement[];
@@ -16,6 +16,8 @@ interface ObjectsPanelProps {
   onFolderRename: (folderId: string, newName: string) => void;
   onFolderDelete: (folderId: string) => void;
   onElementDelete: (elementId: string) => void;
+  onFolderExpandAll?: () => void;
+  onFolderCollapseAll?: () => void;
 }
 
 export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
@@ -30,7 +32,9 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
   onFolderCreate,
   onFolderRename,
   onFolderDelete,
-  onElementDelete
+  onElementDelete,
+  onFolderExpandAll,
+  onFolderCollapseAll
 }) => {
   const [draggedElementId, setDraggedElementId] = useState<string | null>(null);
   const [draggedFolderId, setDraggedFolderId] = useState<string | null>(null);
@@ -104,8 +108,7 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
   const renderFolder = (folder: Folder, depth: number = 0): React.ReactNode => {
     const childFolders = folders.filter(f => f.parentId === folder.id);
     const folderElements = elements.filter(el => el.folderId === folder.id);
-    // const allVisible = getAllElementsInFolderHierarchy(elements, folders, folder.id)
-    //   .every(el => el.visible);
+    const itemCount = getAllElementsInFolderHierarchy(elements, folders, folder.id).length;
 
     return (
       <div key={folder.id} className="select-none">
@@ -153,7 +156,10 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
               autoFocus
             />
           ) : (
-            <span className="flex-1 text-white/80 text-sm">{folder.name}</span>
+            <>
+              <span className="flex-1 text-white/80 text-sm truncate">{folder.name}</span>
+              <span className="text-[10px] text-white/30 font-mono tabular-nums">{itemCount}</span>
+            </>
           )}
           
           <button
@@ -244,13 +250,35 @@ export const ObjectsPanel: React.FC<ObjectsPanelProps> = ({
     <div className="bg-dark-secondary/50 backdrop-blur-sm border border-white/10 rounded-xl p-4">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-bold text-white">Objecten</h3>
-        <button
-          onClick={() => handleNewFolder()}
-          className="p-1.5 bg-neon-green/20 border border-neon-green/50 rounded text-neon-green hover:bg-neon-green/30 transition-all"
-          title="Nieuwe map"
-        >
-          <Plus className="w-4 h-4" />
-        </button>
+        <div className="flex items-center gap-1">
+          {onFolderExpandAll && (
+            <button
+              type="button"
+              onClick={onFolderExpandAll}
+              className="px-2 py-1 text-[10px] rounded border border-white/10 text-white/50 hover:text-white hover:bg-white/5"
+              title="Alles uitklappen"
+            >
+              Uit
+            </button>
+          )}
+          {onFolderCollapseAll && (
+            <button
+              type="button"
+              onClick={onFolderCollapseAll}
+              className="px-2 py-1 text-[10px] rounded border border-white/10 text-white/50 hover:text-white hover:bg-white/5"
+              title="Alles inklappen"
+            >
+              In
+            </button>
+          )}
+          <button
+            onClick={() => handleNewFolder()}
+            className="p-1.5 bg-neon-green/20 border border-neon-green/50 rounded text-neon-green hover:bg-neon-green/30 transition-all"
+            title="Nieuwe map"
+          >
+            <Plus className="w-4 h-4" />
+          </button>
+        </div>
       </div>
       
       <div className="space-y-1 max-h-96 overflow-y-auto">
