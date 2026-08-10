@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T09:43:28.675987+00:00",
+  "generatedAt": "2026-08-10T09:48:21.619155+00:00",
   "date": "2026-08-10",
   "isDemo": false,
   "priorityLegend": [
@@ -11,23 +11,7 @@
       "id": "garden",
       "label": "Tuin — oogstbaar",
       "priority": 1,
-      "items": [
-        {
-          "id": "396bb6cf-fa83-8190-876f-e83025991a44",
-          "name": "Blauwe bessen (blueberries)",
-          "location": "Tuin",
-          "subLocation": null,
-          "category": "Groente",
-          "quantity": null,
-          "unit": null,
-          "expiry": null,
-          "daysToExpiry": null,
-          "status": "Oogstbaar",
-          "frozen": false,
-          "priority": 1,
-          "source": "garden"
-        }
-      ]
+      "items": []
     },
     {
       "id": "fridge",
@@ -67,9 +51,9 @@
     }
   ],
   "stats": {
-    "totalItems": 1,
+    "totalItems": 0,
     "fridgeFresh": 0,
     "freezer": 0,
-    "gardenReady": 1
+    "gardenReady": 0
   }
 }
