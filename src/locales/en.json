@@ -192,6 +192,7 @@
     "loading": "Loading stock…",
     "loadError": "Could not load stock.",
     "demoNotice": "Demo or empty export — fill Pantry Stock in Notion.",
+    "returnHint": "Back from a trip? Harvest garden-ready crops first, restock the fridge in Notion Pantry, then re-run the home-stock export.",
     "expiringTitle": "Expiring soon (fridge)",
     "expired": "expired",
     "expiresToday": "today",

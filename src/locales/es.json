@@ -192,6 +192,7 @@
     "loading": "Cargando stock…",
     "loadError": "No se pudo cargar el stock.",
     "demoNotice": "Demo o export vacío — rellena Pantry Stock en Notion.",
+    "returnHint": "¿Vuelves de viaje? Primero cosecha lo listo del jardín, rellena la nevera en Notion Pantry y vuelve a exportar home-stock.",
     "expiringTitle": "Caduca pronto (nevera)",
     "expired": "caducado",
     "expiresToday": "hoy",

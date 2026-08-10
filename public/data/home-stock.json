@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-08-10T09:43:28.675987+00:00",
+  "date": "2026-08-10",
+  "isDemo": false,
+  "priorityLegend": [
+    "Tuin oogstbaar → koelkast vers (THT) → droogschap → kasten → bergkot/garage → diepvries"
+  ],
+  "expiringSoon": [],
+  "sections": [
+    {
+      "id": "garden",
+      "label": "Tuin — oogstbaar",
+      "priority": 1,
+      "items": [
+        {
+          "id": "396bb6cf-fa83-8190-876f-e83025991a44",
+          "name": "Blauwe bessen (blueberries)",
+          "location": "Tuin",
+          "subLocation": null,
+          "category": "Groente",
+          "quantity": null,
+          "unit": null,
+          "expiry": null,
+          "daysToExpiry": null,
+          "status": "Oogstbaar",
+          "frozen": false,
+          "priority": 1,
+          "source": "garden"
+        }
+      ]
+    },
+    {
+      "id": "fridge",
+      "label": "Koelkast — vers",
+      "priority": 2,
+      "items": []
+    },
+    {
+      "id": "dry",
+      "label": "Droogschap",
+      "priority": 3,
+      "items": []
+    },
+    {
+      "id": "cabinets",
+      "label": "Keukenkasten",
+      "priority": 4,
+      "items": []
+    },
+    {
+      "id": "bergkot",
+      "label": "Bergkot",
+      "priority": 5,
+      "items": []
+    },
+    {
+      "id": "garage",
+      "label": "Garage",
+      "priority": 6,
+      "items": []
+    },
+    {
+      "id": "freezer",
+      "label": "Diepvries",
+      "priority": 7,
+      "items": []
+    }
+  ],
+  "stats": {
+    "totalItems": 1,
+    "fridgeFresh": 0,
+    "freezer": 0,
+    "gardenReady": 1
+  }
+}

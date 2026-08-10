@@ -193,6 +193,7 @@
     "loading": "Voorraad laden…",
     "loadError": "Kon voorraad niet laden.",
     "demoNotice": "Demo- of lege export — vul Pantry Stock in Notion.",
+    "returnHint": "Terug van weg? Eerst tuin oogsten (oogstbaar), koelkast vullen in Notion Pantry, daarna home-stock export opnieuw draaien.",
     "expiringTitle": "Bijna verlopen (koelkast)",
     "expired": "verlopen",
     "expiresToday": "vandaag",

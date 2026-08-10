@@ -34,6 +34,7 @@ import { MoltbookPage } from './pages/MoltbookPage';
 import { MandelbrotPage } from './pages/MandelbrotPage';
 import { JuliaPage } from './pages/JuliaPage';
 import { JuliaUsagePage } from './pages/JuliaUsagePage';
+import { StockPage } from './pages/StockPage';
 import { LifeRhythmPage } from './pages/LifeRhythmPage';
 import { CvPage } from './pages/CvPage';
 import { Footer } from './components/Footer';
@@ -95,6 +96,7 @@ function App() {
               <Route path="/sports/dancing" element={<DancingPage />} />
               <Route path="/cultivation" element={<CultivationPage />} />
               <Route path="/cooking" element={<CookingPage />} />
+              <Route path="/stock" element={<StockPage />} />
               <Route path="/garden-designer" element={<GardenDesignPage />} />
               <Route path="/beleggen" element={<BeleggenPage />} />
               <Route path="/moltbook" element={<MoltbookPage />} />
