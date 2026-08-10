@@ -432,6 +432,12 @@
       "apiKeyToggle": "API-sleutel",
       "apiKeyPlaceholder": "JULIA_API_SECRET",
       "apiKeySave": "Opslaan",
+      "ttsOffShort": "Stil",
+      "ttsOnShort": "Spraak",
+      "ttsOff": "Voorlezen uit — antwoorden alleen als tekst",
+      "ttsOn": "Voorlezen aan — browser-spraak (robotachtig)",
+      "ttsHint": "Mic alleen op aanvraag (Luisteren). Voorlezen staat standaard uit — zet Spraak aan of gebruik Voorlees eenmalig.",
+      "speakOnce": "Voorlees",
       "unsupported": "Gebruik het tekstveld hieronder.",
       "copyCmd": "Kopieer capture-commando",
       "copied": "Gekopieerd",
@@ -441,6 +447,23 @@
         "meal": "Menu",
         "protein": "Eiwit"
       }
+    },
+    "chat": {
+      "title": "Julia chat",
+      "you": "Jij",
+      "julia": "Julia",
+      "empty": "Stel een vraag of log water/merci — zoals Cursor: thread onderaan composer.",
+      "placeholder": "Bericht aan Julia… (Enter = stuur, Shift+Enter = nieuwe regel)",
+      "composerHint": "Enter stuurt · Shift+Enter nieuwe regel · Stop annuleert · Edit rewindt de thread",
+      "send": "Stuur",
+      "stop": "Stop",
+      "thinking": "Bezig",
+      "copy": "Kopieer",
+      "edit": "Bewerk",
+      "regenerate": "Opnieuw genereren",
+      "saveResend": "Opslaan & opnieuw",
+      "cancel": "Annuleer",
+      "newChat": "Wis thread"
     },
     "usage": {
       "link": "Usage",

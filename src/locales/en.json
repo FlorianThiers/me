@@ -431,6 +431,12 @@
       "apiKeyToggle": "API key",
       "apiKeyPlaceholder": "JULIA_API_SECRET",
       "apiKeySave": "Save",
+      "ttsOffShort": "Mute",
+      "ttsOnShort": "Speak",
+      "ttsOff": "Read-aloud off — replies as text only",
+      "ttsOn": "Read-aloud on — browser speech (robotic)",
+      "ttsHint": "Mic is on-demand only (Listen). Read-aloud is off by default — enable Speak or use Read once.",
+      "speakOnce": "Read aloud",
       "unsupported": "Use the text field below.",
       "copyCmd": "Copy capture command",
       "copied": "Copied",
@@ -440,6 +446,23 @@
         "meal": "Menu",
         "protein": "Protein"
       }
+    },
+    "chat": {
+      "title": "Julia chat",
+      "you": "You",
+      "julia": "Julia",
+      "empty": "Ask something or log water/merci — Cursor-style thread with composer at the bottom.",
+      "placeholder": "Message Julia… (Enter = send, Shift+Enter = newline)",
+      "composerHint": "Enter sends · Shift+Enter newline · Stop cancels · Edit rewinds the thread",
+      "send": "Send",
+      "stop": "Stop",
+      "thinking": "Working",
+      "copy": "Copy",
+      "edit": "Edit",
+      "regenerate": "Regenerate",
+      "saveResend": "Save & resend",
+      "cancel": "Cancel",
+      "newChat": "Clear thread"
     },
     "usage": {
       "link": "Usage",

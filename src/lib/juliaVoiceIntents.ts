@@ -17,6 +17,20 @@ export const VOICE_QUICK_ACTIONS: VoiceQuickAction[] = [
   { id: 'protein', labelKey: 'julia.voice.quick.protein', phrase: 'hoeveel eiwit vandaag' },
 ];
 
+const TTS_PREF_KEY = 'julia-tts-enabled';
+
+/** Default off — browser TTS is opt-in only. */
+export function getTtsEnabled(): boolean {
+  if (typeof window === 'undefined') return false;
+  return localStorage.getItem(TTS_PREF_KEY) === '1';
+}
+
+export function setTtsEnabled(on: boolean): void {
+  if (typeof window === 'undefined') return;
+  localStorage.setItem(TTS_PREF_KEY, on ? '1' : '0');
+  if (!on) stopSpeak();
+}
+
 export function parseJuliaIntent(
   text: string,
   life: JuliaLifeSnapshot | undefined,
@@ -85,11 +99,24 @@ export function ttsAvailable(): boolean {
   return typeof window !== 'undefined' && 'speechSynthesis' in window;
 }
 
-export function speakNl(text: string): void {
+export function stopSpeak(): void {
   if (!ttsAvailable()) return;
   window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
+}
+
+/** Browser TTS — only when getTtsEnabled() is true. */
+export function speakNl(text: string): void {
+  if (!ttsAvailable() || !getTtsEnabled() || !text.trim()) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text.trim());
   u.lang = 'nl-BE';
+  u.rate = 0.95;
+  u.pitch = 1;
+  const voices = window.speechSynthesis.getVoices();
+  const nl =
+    voices.find((v) => /^nl(-|$)/i.test(v.lang) && /belgium|be|flemish|nederlands/i.test(v.name)) ||
+    voices.find((v) => /^nl(-|$)/i.test(v.lang));
+  if (nl) u.voice = nl;
   window.speechSynthesis.speak(u);
 }
 

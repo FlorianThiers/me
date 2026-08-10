@@ -46,22 +46,33 @@ async function readJson<T extends { success?: boolean; error?: string }>(
   }
 }
 
-export async function juliaCapture(payload: {
-  date: string;
-  kind: 'water' | 'food';
-  liters?: number;
-  preset?: string;
-}): Promise<CaptureResponse> {
-  const res = await fetch('/api/julia/capture', {
-    method: 'POST',
-    headers: authHeaders(),
-    body: JSON.stringify(payload),
-  });
-  const data = await readJson<CaptureResponse>(res);
-  if (!res.ok) {
-    return { success: false, error: data.error ?? res.statusText };
+export async function juliaCapture(
+  payload: {
+    date: string;
+    kind: 'water' | 'food';
+    liters?: number;
+    preset?: string;
+  },
+  opts?: { signal?: AbortSignal },
+): Promise<CaptureResponse> {
+  try {
+    const res = await fetch('/api/julia/capture', {
+      method: 'POST',
+      headers: authHeaders(),
+      body: JSON.stringify(payload),
+      signal: opts?.signal,
+    });
+    const data = await readJson<CaptureResponse>(res);
+    if (!res.ok) {
+      return { success: false, error: data.error ?? res.statusText };
+    }
+    return data;
+  } catch (e) {
+    if (e instanceof DOMException && e.name === 'AbortError') {
+      return { success: false, error: 'aborted' };
+    }
+    throw e;
   }
-  return data;
 }
 
 export type ChatResponse = {
@@ -71,21 +82,32 @@ export type ChatResponse = {
   error?: string;
 };
 
-export async function juliaChat(payload: {
-  message: string;
-  date: string;
-  lifeSummary?: string;
-}): Promise<ChatResponse> {
-  const res = await fetch('/api/julia/chat', {
-    method: 'POST',
-    headers: authHeaders(),
-    body: JSON.stringify(payload),
-  });
-  const data = await readJson<ChatResponse & { tokensIn?: number }>(res);
-  if (!res.ok) {
-    return { success: false, error: data.error ?? res.statusText };
+export async function juliaChat(
+  payload: {
+    message: string;
+    date: string;
+    lifeSummary?: string;
+  },
+  opts?: { signal?: AbortSignal },
+): Promise<ChatResponse> {
+  try {
+    const res = await fetch('/api/julia/chat', {
+      method: 'POST',
+      headers: authHeaders(),
+      body: JSON.stringify(payload),
+      signal: opts?.signal,
+    });
+    const data = await readJson<ChatResponse & { tokensIn?: number }>(res);
+    if (!res.ok) {
+      return { success: false, error: data.error ?? res.statusText };
+    }
+    return data;
+  } catch (e) {
+    if (e instanceof DOMException && e.name === 'AbortError') {
+      return { success: false, error: 'aborted' };
+    }
+    throw e;
   }
-  return data;
 }
 
 export type UsageProvider = {

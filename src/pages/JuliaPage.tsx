@@ -10,7 +10,7 @@ import { OrbitBadge } from '../components/orbit/OrbitBadge';
 import { OrbitPanel } from '../components/orbit/OrbitPanel';
 import { LifeTodayPanel } from '../components/orbit/LifeTodayPanel';
 import { OrbitIcon, type OrbitIconName } from '../components/orbit/icons/OrbitIcons';
-import { JuliaVoicePanel } from '../components/orbit/JuliaVoicePanel';
+import { JuliaChatPanel } from '../components/orbit/JuliaChatPanel';
 import { MealWeekBoard } from '../components/orbit/MealWeekBoard';
 import { JuliaOrbBackground } from '../components/orbit/JuliaOrbBackground';
 import { FractalOrbitStrip } from '../components/orbit/FractalOrbitStrip';
@@ -138,9 +138,7 @@ export const JuliaPage: React.FC = () => {
             transition={{ delay: 0.18 }}
             className="mb-8"
           >
-            <OrbitPanel title={t('julia.voice.title')} titleClassName="text-orbit-violet">
-              <JuliaVoicePanel life={snapshot.life} date={snapshot.date} />
-            </OrbitPanel>
+            <JuliaChatPanel life={snapshot.life} date={snapshot.date} />
           </motion.div>
         )}
 
