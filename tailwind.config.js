@@ -15,6 +15,13 @@ export default {
         'neon-purple': '#8800ff',
         'neon-yellow': '#ff8800',
         'neon-orange': '#ff6600',
+        'orbit-violet': '#7c5cbf',
+        'orbit-cyan': '#3db8d9',
+        'orbit-deep': '#1a1030',
+        'orbit-surface': 'rgba(26, 26, 26, 0.6)',
+      },
+      boxShadow: {
+        'orbit-glow': '0 0 50px rgba(124, 92, 191, 0.25)',
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],

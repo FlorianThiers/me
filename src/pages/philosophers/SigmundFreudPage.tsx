@@ -7,7 +7,7 @@ import { ArrowLeft, Brain, BookOpen, Users, Calendar, MapPin, Award, Shield } fr
 export const SigmundFreudPage: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <div className="min-h-screen pt-20 bg-dark-secondary relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
       {/* Decoratieve achtergrond elementen */}
       <div 
         className="absolute top-0 left-0 w-full h-full opacity-5"

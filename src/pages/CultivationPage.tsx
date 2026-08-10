@@ -13,7 +13,6 @@ export const CultivationPage: React.FC = () => {
       title: t('cultivation.projects.houseplants.title'),
       description: t('cultivation.projects.houseplants.description'),
       details: t('cultivation.projects.houseplants.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '🌱',
       color: 'from-green-400 to-emerald-600',
       projects: [
         {
@@ -35,7 +34,6 @@ export const CultivationPage: React.FC = () => {
       title: t('cultivation.projects.indoorTent.title'),
       description: t('cultivation.projects.indoorTent.description'),
       details: t('cultivation.projects.indoorTent.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '🏠',
       color: 'from-blue-400 to-cyan-600',
       projects: [
         {
@@ -57,7 +55,6 @@ export const CultivationPage: React.FC = () => {
       title: t('cultivation.projects.fungi.title'),
       description: t('cultivation.projects.fungi.description'),
       details: t('cultivation.projects.fungi.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '🍄',
       color: 'from-purple-400 to-pink-600',
       projects: [
         {
@@ -79,7 +76,6 @@ export const CultivationPage: React.FC = () => {
       title: t('cultivation.projects.vegetableGarden.title'),
       description: t('cultivation.projects.vegetableGarden.description'),
       details: t('cultivation.projects.vegetableGarden.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '🥕',
       color: 'from-orange-400 to-red-600',
       projects: [
         {
@@ -101,7 +97,6 @@ export const CultivationPage: React.FC = () => {
       title: t('cultivation.projects.automation.title'),
       description: t('cultivation.projects.automation.description'),
       details: t('cultivation.projects.automation.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '🤖',
       color: 'from-indigo-400 to-purple-600',
       projects: [
         {
@@ -123,7 +118,6 @@ export const CultivationPage: React.FC = () => {
       title: t('cultivation.projects.monitoring.title'),
       description: t('cultivation.projects.monitoring.description'),
       details: t('cultivation.projects.monitoring.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '📊',
       color: 'from-teal-400 to-cyan-600',
       projects: [
         {
@@ -143,7 +137,7 @@ export const CultivationPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 bg-dark-bg">
+    <div className="min-h-screen">
       <div className="container-custom px-4 py-8">
         
         {/* Header */}
@@ -156,8 +150,9 @@ export const CultivationPage: React.FC = () => {
               <ArrowLeft className="w-6 h-6 text-white" />
             </Link>
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                🌱 {t('cultivation.title')}
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 flex items-center gap-3">
+                <TreePine className="w-10 h-10 text-neon-green" />
+                {t('cultivation.title')}
               </h1>
               <p className="text-lg text-white/80 max-w-3xl leading-relaxed">
                 {t('cultivation.description')}
@@ -180,7 +175,7 @@ export const CultivationPage: React.FC = () => {
                 {/* Photo Section */}
                 <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center border-b border-white/10">
                   <div className="text-center">
-                    <div className="text-6xl mb-4">{project.photoPlaceholder}</div>
+                    <div className="mb-4 flex justify-center text-neon-green">{project.icon}</div>
                     <p className="text-white/60 text-sm">{t('cultivation.photoPlaceholder')} {project.title}</p>
                   </div>
                 </div>
@@ -253,17 +248,17 @@ export const CultivationPage: React.FC = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
-                <div className="text-4xl mb-4">🌱</div>
+                <TreePine className="w-8 h-8 text-neon-green mb-4" />
                 <h3 className="text-xl font-bold text-neon-green mb-3">{t('cultivation.philosophyCards.nature.title')}</h3>
                 <p className="text-white/70">{t('cultivation.philosophyCards.nature.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
-                <div className="text-4xl mb-4">🔬</div>
+                <Cpu className="w-8 h-8 text-neon-green mb-4" />
                 <h3 className="text-xl font-bold text-neon-green mb-3">{t('cultivation.philosophyCards.science.title')}</h3>
                 <p className="text-white/70">{t('cultivation.philosophyCards.science.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
-                <div className="text-4xl mb-4">🧘</div>
+                <Sun className="w-8 h-8 text-neon-green mb-4" />
                 <h3 className="text-xl font-bold text-neon-green mb-3">{t('cultivation.philosophyCards.mindfulness.title')}</h3>
                 <p className="text-white/70">{t('cultivation.philosophyCards.mindfulness.description')}</p>
               </div>

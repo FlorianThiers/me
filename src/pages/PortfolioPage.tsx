@@ -3,7 +3,7 @@ import { PortfolioSection } from '../components/PortfolioSection';
 
 export const PortfolioPage: React.FC = () => {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
         <PortfolioSection />
     </div>
   );

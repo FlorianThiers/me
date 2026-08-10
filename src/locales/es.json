@@ -4,6 +4,8 @@
     "skills": "Habilidades",
     "journey": "Trayectoria",
     "goals": "Objetivos",
+    "julia": "Julia",
+    "mandelbrot": "El conjunto",
     "interests": "Intereses",
     "cv": "CV"
   },
@@ -165,7 +167,7 @@
     "viewOrDownload": "Ver o descargar CV",
     "backHome": "Volver al inicio",
     "saveAsPdf": "Guardar como PDF",
-    "printHint": "Consejo: activa \"Gráficos de fondo\" y desactiva \"Encabezados y pies de página\" para una página oscura sin bordes blancos.",
+    "printHint": "Consejo: en impresión pon Márgenes en \"Ninguno\", activa \"Gráficos de fondo\" y desactiva \"Encabezados y pies de página\".",
     "updated": "Última actualización",
     "summary": "Resumen",
     "experience": "Experiencia",
@@ -179,10 +181,364 @@
   "footer": {
     "description": "Construyendo el futuro, una línea de código a la vez.",
     "rights": "Todos los derechos reservados.",
-    "madeWith": "Hecho con ❤️ y ☕"
+    "madeWith": "Hecho con cuidado"
+  },
+  "stock": {
+    "link": "Despensa",
+    "title": "Stock en casa",
+    "subtitle": "Jardín primero, luego nevera fresca. Congelado = congelador, menor prioridad.",
+    "priorityLegend": "Cosecha → nevera fresca (caducidad) → despensa seca → armarios → cobertizo/garaje → congelador",
+    "backCooking": "Volver a cocina",
+    "loading": "Cargando stock…",
+    "loadError": "No se pudo cargar el stock.",
+    "demoNotice": "Demo o export vacío — rellena Pantry Stock en Notion.",
+    "expiringTitle": "Caduca pronto (nevera)",
+    "expired": "caducado",
+    "expiresToday": "hoy",
+    "expiresIn": "{{days}}d",
+    "expiresOn": "hasta {{date}}",
+    "frozen": "congelado",
+    "freezerHint": "Mismos alimentos congelados — reserva.",
+    "fridgeHint": "Fruta, verdura, carne y pescado — por fecha de caducidad.",
+    "itemCount": "{{count}} items",
+    "empty": "Nada aquí",
+    "sections": {
+      "garden": "Jardín — listo para cosechar",
+      "fridge": "Nevera — fresco",
+      "dry": "Despensa seca",
+      "cabinets": "Armarios de cocina",
+      "bergkot": "Cobertizo",
+      "garage": "Garaje",
+      "freezer": "Congelador"
+    },
+    "categories": {
+      "fruit": "Fruta",
+      "groente": "Verdura",
+      "vlees": "Carne",
+      "vis": "Pescado",
+      "zuivel": "Lácteos",
+      "overig": "Otro"
+    },
+    "units": {
+      "st": "uds",
+      "g": "g",
+      "kg": "kg",
+      "l": "L",
+      "pak": "paq",
+      "bak": "bandeja",
+      "zak": "bolsa",
+      "portie": "ración"
+    },
+    "stats": {
+      "garden": "Jardín: {{n}}",
+      "fridge": "Nevera: {{n}}",
+      "freezer": "Congelador: {{n}}",
+      "dry": "Despensa seca: {{n}}",
+      "cabinets": "Armarios: {{n}}",
+      "total": "Total: {{n}}"
+    }
+  },
+  "mandelbrot": {
+    "title": "El conjunto de Mandelbrot",
+    "subtitle": "Un camino de aprendizaje infinito — zoom eterno, nunca del todo aprendido, cada rama conectada.",
+    "metaphor": {
+      "title": "Por qué este sitio es un fractal",
+      "p1": "El conjunto de Mandelbrot es un mapa de complejidad infinita. Cuanto más zoom, más estructuras — como una curva de aprendizaje que nunca termina.",
+      "p2": "Cada página permanece en un hito — zoom suave, rotación y color. La página hub recorre todos los valles; meditación usa una mandala orbit trap.",
+      "p3": "Julia es una rebanada de hoy — un valor c en el borde. Mandelbrot es todo el viaje. Siempre estás en algún punto del conjunto.",
+      "juliaCta": "Órbita de hoy — abrir Julia"
+    },
+    "map": {
+      "title": "Valles en el conjunto",
+      "subtitle": "Cada región es una metáfora. Los fondos hacen zoom a esa coordenada — excepto en este hub, donde el tour conecta todos los valles.",
+      "openPage": "Abrir página",
+      "backgroundOnly": "Solo fondo del hub"
+    },
+    "pages": {
+      "title": "Páginas en el camino",
+      "subtitle": "Cada ruta es otra rama — mismo conjunto, mismo lenguaje de animación que Julia."
+    },
+    "links": {
+      "wiki": "Mandelbrot en Wikipedia",
+      "gif": "Zoom animado"
+    },
+    "strip": {
+      "aria": "Enlaces fractal orbit",
+      "onTheSet": "En el conjunto de Mandelbrot",
+      "tagline": "Cada página comparte el mismo camino infinito — zoom y color como el orbe Julia, sin saltos a coordenadas fijas.",
+      "juliaLink": "Julia — rebanada de hoy",
+      "mandelbrotLink": "El camino infinito — hub Mandelbrot",
+      "wiki": "Mandelbrot (Wikipedia)",
+      "juliaWiki": "Conjunto de Julia (Wikipedia)",
+      "hubLink": "Ver {{place}} en el mapa",
+      "tourLabel": "Tour por todos los valles",
+      "orbitTrapLabel": "Orbit trap — mandala",
+      "orbitTrapMetaphor": "Meditación — la órbita de z flota por trampas flor y cruz, girando lentamente como un mandala.",
+      "orbitTrapWiki": "Orbit trap (Wikipedia)"
+    },
+    "orbitTraps": {
+      "mandala5": {
+        "label": "Orbit trap — mandala 5",
+        "metaphor": "Meditación — z flota por trampas flor y cruz, girando como un mandala."
+      },
+      "mandala7": {
+        "label": "Orbit trap — expansión 7",
+        "metaphor": "Expansión de consciencia — siete pétalos, cada órbita una capa más afuera."
+      },
+      "mandala8": {
+        "label": "Orbit trap — arquetipo 8",
+        "metaphor": "Jung — simetría octuple, sombra y self en la misma trampa."
+      },
+      "flower": {
+        "label": "Orbit trap — floración",
+        "metaphor": "Cultivo — seis pétalos, crecimiento de semilla a órbita plena."
+      },
+      "sacred": {
+        "label": "Orbit trap — geometría sagrada",
+        "metaphor": "Bentov — cruz y círculo capturan cada órbita, holograma del todo."
+      },
+      "spiral": {
+        "label": "Orbit trap — espiral",
+        "metaphor": "Baile — trampa espiral log, cuerpo y ritmo en flujo repetido."
+      },
+      "spiralFlow": {
+        "label": "Orbit trap — espiral flow",
+        "metaphor": "Dapo Flow Star — espiral más tensa, rotación rápida, movimiento puro."
+      },
+      "ring": {
+        "label": "Orbit trap — anillos",
+        "metaphor": "Música — anillos concéntricos como pulsos y armonías."
+      },
+      "grid": {
+        "label": "Orbit trap — cuadrícula",
+        "metaphor": "Portfolio — la cuadrícula estructura el caos en proyectos y patrones."
+      },
+      "gridSkills": {
+        "label": "Orbit trap — cuadrícula skills",
+        "metaphor": "Skills — cuadrícula fina, cada celda una competencia que atrapa la órbita."
+      },
+      "gridMarkets": {
+        "label": "Orbit trap — cuadrícula mercados",
+        "metaphor": "Inversión — anillos y cuadrícula, órbitas como patrones de precio."
+      },
+      "filament": {
+        "label": "Orbit trap — filamentos",
+        "metaphor": "Quantum — trampas de onda angular como filamentos en superposición."
+      },
+      "neural": {
+        "label": "Orbit trap — neural",
+        "metaphor": "Redes neuronales — nodos en anillo capturan z, sinapsis como gradientes."
+      }
+    },
+    "locations": {
+      "overview": {
+        "name": "Vista amplia",
+        "metaphor": "Todo el camino de aprendizaje — nunca terminado, siempre conectado."
+      },
+      "elephant": {
+        "name": "Valle del elefante",
+        "metaphor": "Órbita diaria y ritmo trabajo-vida — Julia vive cerca."
+      },
+      "seahorse": {
+        "name": "Valle del caballito de mar",
+        "metaphor": "Mente como ordenador — patrones, memoria, estructuras anidadas."
+      },
+      "lightning": {
+        "name": "Rayo",
+        "metaphor": "Música y cocina — ritmo, energía, chispas."
+      },
+      "misiurewicz": {
+        "name": "Punto Misiurewicz",
+        "metaphor": "Filosofía y meditación — bordes donde estructura encuentra caos."
+      },
+      "spiral": {
+        "name": "Espiral",
+        "metaphor": "Deportes y cuerpo — flujo, repetición, movimiento."
+      },
+      "mini": {
+        "name": "Mini Mandelbrot",
+        "metaphor": "Hub de intereses — pequeños mundos que reflejan el todo."
+      }
+    }
+  },
+  "julia": {
+    "badge": "Workflow OS · demo pública",
+    "badgeLive": "Workflow OS · en vivo",
+    "sportTypeToday": "Tipo de deporte hoy: {{type}}",
+    "title": "Julia",
+    "subtitle": "Tu órbita entre trabajo y vida — un briefing fractal inspirado en el conjunto de Julia.",
+    "workPanel": "Resumen trabajo",
+    "lifePanel": "Ritmo de vida",
+    "orbLabel": "Órbita de hoy",
+    "todayThread": "Hilo del día",
+    "lifeRhythmLink": "Abrir ritmo de vida",
+    "lifeToday": {
+      "title": "Life OS hoy",
+      "mealTonight": "Cena",
+      "mealToday": "Comida",
+      "noMealPlanned": "Sin planificar",
+      "noData": "Sin snapshot Life — exporta vía workflow-os.",
+      "protein": "Proteína",
+      "water": "Agua",
+      "fiber": "Fibra",
+      "kcal": "Kcal",
+      "macroLine": "Grasa {{fat}}g · Carb {{carbs}}g · Fibra {{fiber}}g",
+      "microGapsTitle": "Posibles carencias hoy",
+      "micro": {
+        "magnesium": "Magnesio",
+        "calcium": "Calcio",
+        "iron": "Hierro",
+        "zinc": "Zinc",
+        "potassium": "Potasio",
+        "vitaminD": "Vitamina D",
+        "vitaminB12": "Vitamina B12",
+        "folate": "Ácido fólico"
+      },
+      "nutritionAnchor": "Nutrición {{pct}}%",
+      "movement": "{{min}} min movimiento"
+    },
+    "mealPlan": {
+      "title": "Menú (esta semana)",
+      "empty": "Sin plan semanal — planifica en Notion o el domingo."
+    },
+    "voice": {
+      "title": "Habla con Julia",
+      "start": "Escuchar",
+      "stop": "Parar",
+      "send": "Enviar",
+      "placeholder": "Escribe: vaso de agua, merci, qué comemos…",
+      "textMode": "Modo texto",
+      "firefoxHint": "Firefox y DuckDuckGo no tienen API de micrófono — usa el campo de texto o botones rápidos. TTS sí funciona. Mic: Brave o Chrome/Edge.",
+      "hints": "Botones rápidos o escribe tu pregunta. Capture a Notion; preguntas libres vía pool LLM.",
+      "busy": "Procesando…",
+      "apiKeyRequired": "Configura tu clave API Julia (igual que JULIA_API_SECRET en Vercel).",
+      "apiKeyToggle": "Clave API",
+      "apiKeyPlaceholder": "JULIA_API_SECRET",
+      "apiKeySave": "Guardar",
+      "unsupported": "Usa el campo de texto.",
+      "copyCmd": "Copiar comando",
+      "copied": "Copiado",
+      "quick": {
+        "water": "Agua",
+        "merci": "Merci",
+        "meal": "Menú",
+        "protein": "Proteína"
+      }
+    },
+    "usage": {
+      "link": "Uso",
+      "title": "Uso del pool LLM",
+      "subtitle": "Peticiones y tokens por proveedor hoy — un proveedor activo por pregunta.",
+      "back": "Volver a Julia",
+      "refresh": "Actualizar",
+      "needKey": "Clave API requerida — introdúcela abajo.",
+      "loadFailed": "Error al cargar uso",
+      "memoryWarning": "Uso en memoria (sin Upstash) — se reinicia en cold start.",
+      "dateLabel": "Fecha {{date}}",
+      "storage": "almacenamiento: {{mode}}",
+      "requests": "Peticiones",
+      "tokens": "Tokens",
+      "status": "Estado"
+    },
+    "demoNotice": "Solo datos de ejemplo — no conectado a sistemas en vivo.",
+    "demo": {
+      "greeting": "Buenos días. Cuatro intents, un hilo coherente.",
+      "deep": "Bloque profundo por la mañana — un paso significativo.",
+      "body": "Caminata suave o slackline ligera — amable con las rodillas.",
+      "life": "Un intent de hogar u hobby — sin exigir perfección.",
+      "admin": "Correo y recados — tiempo acotado.",
+      "work1": "Release de plataforma y pruebas de integración",
+      "work2": "Mejoras de flujo para el equipo",
+      "work3": "Planificar la siguiente iteración",
+      "lifeTeaser": "Sueño, deporte, hobbies y hogar — anclas flexibles, sin horario rígido."
+    },
+    "intents": {
+      "deep": "Deep",
+      "body": "Body",
+      "life": "Life",
+      "admin": "Admin"
+    },
+    "links": {
+      "wiki": "Conjunto de Julia (Wikipedia)",
+      "gif": "Julia sets animados (GIF)",
+      "video": "Julia circling (vídeo)"
+    },
+    "planning": {
+      "title": "Horizontes de planificación",
+      "subtitle": "Elige ventana y dominio — demo de cómo trabajo, deporte, comida y sueño encajan. Sin horario rígido.",
+      "toolLabel": "Canónico en",
+      "horizons": { "day": "Día", "week": "Semana", "month": "Mes", "year": "Año" },
+      "domains": { "work": "Trabajo", "sport": "Deporte", "nutrition": "Comida", "sleep": "Sueño" },
+      "nowTitle": "Qué funciona ahora",
+      "nowBody": "Briefing del orb + hilo del día + esta cuadrícula. Datos de ejemplo — usa Todoist, Notion y tu day-log.",
+      "nextTitle": "Siguiente paso",
+      "nextBody": "Script de exportación del vault → Julia lee un JSON seguro. Misma cuadrícula, tus anclas.",
+      "notYetTitle": "Aún no",
+      "notYetBody": "Sin chat de voz — hablar con Julia viene después. La planificación sigue siendo visual + enlaces.",
+      "actions": {
+        "openTodoist": "Abrir en Todoist",
+        "openSport": "Abrir etiqueta deporte",
+        "openNotion": "Abrir en Notion",
+        "openLifeRhythm": "Abrir ritmo de vida",
+        "openCooking": "Abrir cocina",
+        "openSports": "Abrir deportes",
+        "openGoals": "Abrir metas",
+        "openFeatureFlow": "Abrir Feature Flow"
+      },
+      "cells": {
+        "day": {
+          "work": { "body": "Top 3 trabajo + bloque profundo antes de reuniones.", "tool": "workflow-os day-log" },
+          "sport": { "body": "Tipo de split hoy (A/B/C/D) — amable con rodillas.", "tool": "Todoist @sport" },
+          "nutrition": { "body": "Proteína primero; ligero déficit si semana de pérdida.", "tool": "Notion menú semanal" },
+          "sleep": { "body": "Wind-down 22:30; buffer sin pantallas.", "tool": "Todoist recurrente" }
+        },
+        "week": {
+          "work": { "body": "Prioridades + hilos; máx. 3 carry-overs.", "tool": "Notion Tasks" },
+          "sport": { "body": "3–4 sesiones: push, pull, piernas suave, caminata recovery.", "tool": "life-rhythm + calendario" },
+          "nutrition": { "body": "2× meal prep; lista de compras.", "tool": "Notion + Todoist" },
+          "sleep": { "body": "Objetivo 7–8h media; una noche sin pantallas tarde.", "tool": "Google Calendar soft block" }
+        },
+        "month": {
+          "work": { "body": "Hitos; cerrar ítems FF en testing.", "tool": "Notion Feature Flow" },
+          "sport": { "body": "Subir condición; deload si molesta la rodilla.", "tool": "/sports + life-rhythm" },
+          "nutrition": { "body": "Déficit sostenible o mantenimiento.", "tool": "/cooking notas" },
+          "sleep": { "body": "Arreglar una fuga de sueño.", "tool": "Revisión semanal" }
+        },
+        "year": {
+          "work": { "body": "Trayectoria: Servelec, LifeGroup, side projects.", "tool": "/goals + Notion" },
+          "sport": { "body": "Movimiento a largo plazo + hobbies outdoor.", "tool": "anclas life-rhythm" },
+          "nutrition": { "body": "Hábitos que sobreviven semanas ocupadas.", "tool": "Notion MySpace hub" },
+          "sleep": { "body": "Ritmo crónico > noches perfectas.", "tool": "Revisión anual" }
+        }
+      }
+    },
+    "lifeRhythm": {
+      "title": "Ritmo de vida",
+      "intro": "Anclas semanales con margen — deporte, nutrición, hobbies y hogar.",
+      "back": "Volver a Julia",
+      "anchors": {
+        "sleep": "Sueño",
+        "nutrition": "Nutrición",
+        "sport": "Deporte",
+        "hobby": "Hobbies",
+        "home": "Hogar"
+      },
+      "links": {
+        "sports": "Deporte y movimiento",
+        "cooking": "Cocina y nutrición",
+        "garden": "Jardín y hogar",
+        "music": "Música"
+      }
+    }
   },
   "interests": {
     "intro": "Más allá de mis habilidades profesionales, tengo diversos intereses que dan forma a mi perspectiva y contribuyen a mi enfoque creativo para resolver problemas.",
+    "lifeRhythm": {
+      "title": "Ritmo de vida",
+      "description": "Un hilo flexible por sueño, deporte, hobbies y hogar — parte de mi Workflow OS en Julia.",
+      "details": ["Anclas semanales", "Split deportivo", "Hobbies", "Proyectos hogar", "Hilo del día"],
+      "explore": "Explorar ritmo de vida"
+    },
     "meditation": {
       "title": "Meditación",
       "description": "Practico meditación regularmente para calmar mi mente, mejorar la concentración y encontrar paz interior. Esto también me ayuda en mi trabajo creativo.",
@@ -1151,9 +1507,11 @@
     "tool": "Herramienta:",
     "tools": {
       "select": "Seleccionar",
+      "hand": "Mano",
       "rectangle": "Rectángulo",
       "circle": "Círculo",
       "line": "Línea",
+      "contour": "Curva de nivel",
       "polygon": "Polígono",
       "freehand": "Mano Alzada"
     }

@@ -55,7 +55,7 @@ export const DapoFlowStarPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20 bg-dark-bg">
+    <div className="min-h-screen">
       <div className="container-custom px-4 py-8">
         
         {/* Header */}

@@ -29,7 +29,7 @@ export const CvPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen pt-20 pb-16 cv-page bg-dark-bg">
+    <div className="min-h-screen pb-16 cv-page print:min-h-0 print:pt-0 print:pb-0 print:bg-[#0a0a0a]">
       <div className="cv-no-print container-custom px-4 mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <Link
@@ -53,22 +53,28 @@ export const CvPage: React.FC = () => {
         <p className="text-white/50 text-sm mt-3">{t('cv.printHint')}</p>
       </div>
 
-      <div className="cv-print-wrap container-custom px-4 max-w-4xl mx-auto">
-        <article className="cv-sheet relative overflow-hidden rounded-2xl border border-neon-green/25 bg-gradient-to-b from-dark-secondary to-dark-bg shadow-2xl shadow-neon-green/10">
+      <div className="cv-print-wrap w-full max-w-4xl mx-auto px-4 print:max-w-none print:mx-0 print:px-0">
+        <article className="cv-sheet relative overflow-hidden rounded-2xl border border-neon-green/25 bg-gradient-to-b from-dark-secondary to-dark-bg shadow-2xl shadow-neon-green/10 print:rounded-none print:border-0 print:shadow-none print:bg-transparent">
           <div
-            className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neon-green via-neon-blue to-neon-pink"
+            className="cv-screen-accent absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neon-green via-neon-blue to-neon-pink"
             aria-hidden="true"
           />
           <div
-            className="absolute -top-24 -right-24 w-64 h-64 bg-neon-blue/10 rounded-full blur-3xl pointer-events-none"
+            className="cv-screen-accent absolute -top-24 -right-24 w-64 h-64 bg-neon-blue/10 rounded-full blur-3xl pointer-events-none"
             aria-hidden="true"
           />
           <div
-            className="absolute -bottom-24 -left-24 w-64 h-64 bg-neon-green/10 rounded-full blur-3xl pointer-events-none"
+            className="cv-screen-accent absolute -bottom-24 -left-24 w-64 h-64 bg-neon-green/10 rounded-full blur-3xl pointer-events-none"
             aria-hidden="true"
           />
 
-          <div className="relative p-6 md:p-10">
+          {/* Page 1 — header, summary, experience */}
+          <div className="cv-print-page relative p-6 md:p-10">
+            <div
+              className="cv-print-accent absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neon-green via-neon-blue to-neon-pink opacity-0 print:opacity-100"
+              aria-hidden="true"
+            />
+
             <header className="cv-header flex flex-col md:flex-row gap-6 md:gap-8 border-b border-white/10 pb-8 mb-8">
               <div className="shrink-0 mx-auto md:mx-0">
                 <div className="w-36 h-36 md:w-40 md:h-40 rounded-2xl overflow-hidden border-2 border-neon-green/40 shadow-lg shadow-neon-green/20 ring-2 ring-neon-blue/20">
@@ -153,6 +159,13 @@ export const CvPage: React.FC = () => {
                 ))}
               </div>
             </section>
+          </div>
+
+          <div className="cv-print-page cv-page-break relative p-6 md:p-10">
+            <div
+              className="cv-print-accent absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neon-green via-neon-blue to-neon-pink opacity-0 print:opacity-100"
+              aria-hidden="true"
+            />
 
             <section className="cv-section mb-7">
               <h2 className="cv-section-title">{t('cv.selectedProjects')}</h2>

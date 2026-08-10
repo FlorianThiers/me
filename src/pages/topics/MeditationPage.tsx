@@ -451,7 +451,7 @@ export const MeditationPage: React.FC = () => {
   });
 
   return (
-    <div className="min-h-screen pt-20 bg-dark-secondary relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
       {/* Decoratieve achtergrond elementen */}
       <div 
         className="absolute top-0 left-0 w-full h-full opacity-5"
@@ -469,7 +469,7 @@ export const MeditationPage: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-8"
+            className="mb-8 orbit-readable-panel rounded-2xl p-6 md:p-8"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6 neon-text">
               Meditatie & CPU Training
@@ -611,7 +611,7 @@ export const MeditationPage: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                className={`bg-dark-secondary/50 backdrop-blur-sm border rounded-xl p-6 hover:border-neon-green/50 transition-all duration-300 group relative ${
+                className={`orbit-readable-panel border rounded-xl p-6 hover:border-neon-green/50 transition-all duration-300 group relative ${
                   technique.personalExperience 
                     ? 'border-neon-green/30 shadow-lg shadow-neon-green/10' 
                     : 'border-white/10'
@@ -796,7 +796,7 @@ export const MeditationPage: React.FC = () => {
             Veelgestelde Vragen over Meditatie
           </h2>
           <div className="space-y-6">
-            <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
+            <div className="orbit-readable-panel rounded-lg p-6 border border-white/10">
               <h3 className="text-xl font-bold text-neon-green mb-3">Welke meditatie is het beste voor mij?</h3>
               <p className="text-white/70 leading-relaxed">
                 Dat hangt volledig af van je intentie. Meditatie helpt je bij ontspannen, mindfulness training, 
@@ -806,7 +806,7 @@ export const MeditationPage: React.FC = () => {
               </p>
             </div>
             
-            <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
+            <div className="orbit-readable-panel rounded-lg p-6 border border-white/10">
               <h3 className="text-xl font-bold text-neon-green mb-3">Kan je zelf leren mediteren?</h3>
               <p className="text-white/70 leading-relaxed">
                 Helemaal zonder instructie mediteren is mogelijk, maar begeleide meditatie is vaak wel een 
@@ -816,7 +816,7 @@ export const MeditationPage: React.FC = () => {
               </p>
             </div>
             
-            <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
+            <div className="orbit-readable-panel rounded-lg p-6 border border-white/10">
               <h3 className="text-xl font-bold text-neon-green mb-3">Kan je liggend mediteren?</h3>
               <p className="text-white/70 leading-relaxed">
                 Liggende meditatie wordt vaak gebruikt bij slaapmeditatie of zeer ontspannende vormen van 
@@ -825,7 +825,7 @@ export const MeditationPage: React.FC = () => {
               </p>
             </div>
             
-            <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
+            <div className="orbit-readable-panel rounded-lg p-6 border border-white/10">
               <h3 className="text-xl font-bold text-neon-green mb-3">Hoe weet je of je goed mediteert?</h3>
               <p className="text-white/70 leading-relaxed">
                 Mensen gebruiken meditatie om te ontspannen, gedachten te organiseren, nieuwe inzichten te 
@@ -834,7 +834,7 @@ export const MeditationPage: React.FC = () => {
               </p>
             </div>
             
-            <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
+            <div className="orbit-readable-panel rounded-lg p-6 border border-white/10">
               <h3 className="text-xl font-bold text-neon-green mb-3">Hoe vaak mag je mediteren?</h3>
               <p className="text-white/70 leading-relaxed">
                 Sommige mensen mediteren één of twee uur per dag. Er zijn zelfs mensen die het langer doen, 

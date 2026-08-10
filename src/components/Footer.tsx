@@ -6,6 +6,7 @@ import { Github, Linkedin, Twitter, Mail, Heart, Coffee } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { t } = useTranslation();
+  const year = new Date().getFullYear();
 
   const socialLinks = [
     {
@@ -44,7 +45,7 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-dark-secondary border-t border-white/10 relative overflow-hidden">
+    <footer className="relative z-30 bg-dark-bg border-t border-white/10 overflow-hidden isolate">
       {/* Decoratieve achtergrond elementen */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5">
         <div className="absolute top-10 left-20 w-64 h-64 bg-neon-green rounded-full blur-3xl" />
@@ -159,7 +160,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 gap-4">
             {/* Copyright */}
             <div className="text-white/60 text-xs sm:text-sm text-center sm:text-left">
-              © 2025 Florian Thiers. {t('footer.rights')}
+              © {year} Florian Thiers. {t('footer.rights')}
             </div>
 
             {/* Made with Love */}

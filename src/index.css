@@ -28,6 +28,12 @@
   .section-padding {
     @apply py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8;
   }
+
+  /** Readable cards on orbit/fractal pages — use on panels that sit over WebGL bg */
+  .orbit-readable-panel {
+    background-color: rgba(10, 10, 10, 0.88);
+    @apply backdrop-blur-lg border border-white/10 shadow-lg shadow-black/40;
+  }
   
   .container-custom {
     @apply max-w-7xl mx-auto;
@@ -130,17 +136,33 @@
   .border-neon-orange\/50 { border-color: rgba(255, 102, 0, 0.5); }
 }
 
-/* CV print — full-bleed dark page (enable Background graphics in print dialog) */
+/* CV print — full-bleed A4 dark pages + split after Experience */
 @page {
-  size: A4;
+  size: A4 portrait;
   margin: 0;
-  background: #0a0a0a;
 }
 
 @media print {
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+  }
+
+  /* Print only CV content — ignore App/nav/footer layout */
+  body.cv-print-mode * {
+    visibility: hidden;
+  }
+
+  body.cv-print-mode .cv-sheet,
+  body.cv-print-mode .cv-sheet * {
+    visibility: visible;
+  }
+
+  body.cv-print-mode .cv-sheet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm;
   }
 
   html,
@@ -152,6 +174,9 @@
     background: #0a0a0a !important;
     color: #ffffff !important;
     margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-height: 0 !important;
   }
 
   .cv-no-print,
@@ -161,32 +186,69 @@
     display: none !important;
   }
 
-  .cv-page {
-    min-height: 100vh !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    background: #0a0a0a !important;
-  }
-
-  .cv-print-wrap {
+  .cv-page,
+  .cv-print-wrap,
+  .cv-sheet {
     max-width: none !important;
     width: 100% !important;
-    padding: 10mm 12mm !important;
+    padding: 0 !important;
     margin: 0 !important;
-  }
-
-  .cv-sheet {
-    max-width: 100% !important;
-    width: 100% !important;
-    min-height: calc(100vh - 20mm);
-    border-radius: 0 !important;
+    background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%) !important;
+    overflow: visible !important;
   }
 
-  .cv-sheet .pointer-events-none {
+  .cv-screen-accent {
     display: none !important;
+  }
+
+  .cv-print-page {
+    position: relative;
+    box-sizing: border-box;
+    width: 210mm !important;
+    max-width: none !important;
+    min-height: 297mm;
+    margin: 0 !important;
+    padding: 14mm 16mm;
+    background-color: #0a0a0a !important;
+    background-image: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 45%, #0a0a0a 100%) !important;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  /* Full-bleed bleed layer — extends past content box to paper edges */
+  .cv-print-page::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background-color: #0a0a0a;
+    background-image: inherit;
+  }
+
+  .cv-print-page:first-of-type {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .cv-page-break {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .cv-section {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .cv-header {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
   }
 
   .neon-text {

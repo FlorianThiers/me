@@ -40,8 +40,7 @@ export const SportsPage: React.FC = () => {
   }));
 
   return (
-    <div className="min-h-screen pt-20 bg-dark-bg">
-      <div className="container-custom px-4 py-8">
+    <div className="container-custom px-4 py-8">
         
         {/* Header */}
         <div className="max-w-6xl mx-auto mb-12">
@@ -188,6 +187,5 @@ export const SportsPage: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };

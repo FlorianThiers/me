@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat, Calendar, Home, TrendingUp, MessageSquare } from 'lucide-react';
+import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat, Calendar, Home, TrendingUp, MessageSquare, Orbit } from 'lucide-react';
 import { ChakraCalendar } from '../components/ChakraCalendar';
 import { DevelopmentNoticePopup } from '../components/DevelopmentNoticePopup';
 
@@ -11,6 +11,15 @@ export const InterestsPage: React.FC = () => {
   const [expandedCard, setExpandedCard] = React.useState<string | null>(null);
 
   const interests = [
+    {
+      key: 'lifeRhythm',
+      icon: <Orbit className="w-8 h-8" />,
+      title: t('interests.lifeRhythm.title'),
+      description: t('interests.lifeRhythm.description'),
+      details: t('interests.lifeRhythm.details', { returnObjects: true }) as string[],
+      link: '/life-rhythm',
+      explore: t('interests.lifeRhythm.explore')
+    },
     {
       key: 'meditation',
       icon: <Brain className="w-8 h-8" />,
@@ -138,7 +147,7 @@ export const InterestsPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
       <DevelopmentNoticePopup />
       <div className="container-custom px-4 py-8">
         
@@ -324,6 +333,6 @@ export const InterestsPage: React.FC = () => {
 
         </div>
       </div>
-    </div>
+    </>
   );
 };

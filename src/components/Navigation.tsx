@@ -40,6 +40,8 @@ export const Navigation: React.FC<NavigationProps> = ({
     { path: '/skills', label: t('nav.skills') },
     { path: '/journey', label: t('nav.journey') },
     { path: '/goals', label: t('nav.goals') },
+    { path: '/julia', label: t('nav.julia') },
+    { path: '/mandelbrot', label: t('nav.mandelbrot') },
     { path: '/interests', label: t('nav.interests') },
   ];
 

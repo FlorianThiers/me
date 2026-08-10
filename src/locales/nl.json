@@ -5,6 +5,8 @@
     "skills": "Vaardigheden",
     "journey": "Reis",
     "goals": "Doelen",
+    "julia": "Julia",
+    "mandelbrot": "De Set",
     "interests": "Interesses",
     "cv": "CV"
   },
@@ -166,7 +168,7 @@
     "viewOrDownload": "Bekijk of download CV",
     "backHome": "Terug naar home",
     "saveAsPdf": "Opslaan als PDF",
-    "printHint": "Tip: zet in afdrukken \"Achtergrondafbeeldingen\" AAN en \"Kop- en voetteksten\" UIT voor een volledige donkere pagina zonder witte rand.",
+    "printHint": "Tip: zet in afdrukken Marges op \"Geen\", \"Achtergrondafbeeldingen\" AAN en \"Kop- en voetteksten\" UIT voor een volledige donkere pagina.",
     "updated": "Laatst bijgewerkt",
     "summary": "Profiel",
     "experience": "Ervaring",
@@ -180,10 +182,363 @@
   "footer": {
     "description": "De toekomst bouwen, regel voor regel code.",
     "rights": "Alle rechten voorbehouden.",
-    "madeWith": "Gemaakt met ❤️ en ☕"
+    "madeWith": "Met zorg gemaakt"
+  },
+  "stock": {
+    "link": "Voorraad",
+    "title": "Voorraad thuis",
+    "subtitle": "Tuin eerst, dan vers in de koelkast. Ingevroren = diepvries, lagere kook-prioriteit.",
+    "priorityLegend": "Tuin oogstbaar → koelkast vers (THT) → droogschap → kasten → bergkot/garage → diepvries",
+    "backCooking": "Terug naar koken",
+    "loading": "Voorraad laden…",
+    "loadError": "Kon voorraad niet laden.",
+    "demoNotice": "Demo- of lege export — vul Pantry Stock in Notion.",
+    "expiringTitle": "Bijna verlopen (koelkast)",
+    "expired": "verlopen",
+    "expiresToday": "vandaag",
+    "expiresIn": "nog {{days}} d",
+    "expiresOn": "tot {{date}}",
+    "frozen": "diepvries",
+    "freezerHint": "Zelfde producten als vers, maar ingevroren — gebruik als backup.",
+    "fridgeHint": "Fruit, groente, vlees en vis — eerst opmaken op THT.",
+    "itemCount": "{{count}} items",
+    "empty": "Niets hier",
+    "sections": {
+      "garden": "Tuin — oogstbaar",
+      "fridge": "Koelkast — vers",
+      "dry": "Droogschap",
+      "cabinets": "Keukenkasten",
+      "bergkot": "Bergkot",
+      "garage": "Garage",
+      "freezer": "Diepvries"
+    },
+    "categories": {
+      "fruit": "Fruit",
+      "groente": "Groente",
+      "vlees": "Vlees",
+      "vis": "Vis",
+      "zuivel": "Zuivel",
+      "overig": "Overig"
+    },
+    "units": {
+      "st": "st",
+      "g": "g",
+      "kg": "kg",
+      "l": "L",
+      "pak": "pak",
+      "bak": "bak",
+      "zak": "zak",
+      "portie": "portie"
+    },
+    "stats": {
+      "garden": "Tuin: {{n}}",
+      "fridge": "Koelkast: {{n}}",
+      "freezer": "Diepvries: {{n}}",
+      "dry": "Droogschap: {{n}}",
+      "cabinets": "Kasten: {{n}}",
+      "total": "Totaal: {{n}}"
+    }
+  },
+  "mandelbrot": {
+    "title": "De Mandelbrot-set",
+    "subtitle": "Een oneindig leerpad — voor altijd inzoomen, nooit uitgeleerd, elke vertakking verbonden.",
+    "metaphor": {
+      "title": "Waarom deze site een fractal is",
+      "p1": "De Mandelbrot-set is een kaart van oneindige complexiteit. Hoe dieper je zoomt, hoe meer structuren verschijnen — net als een leercurve die nooit eindigt.",
+      "p2": "Elke pagina blijft op één landmark — of een orbit trap met eigen vorm. De hub-pagina De Set vliegt door alle dalen.",
+      "p3": "Julia is één slice van vandaag — één c-waarde op de rand. De Mandelbrot is de hele reis. Je bent altijd ergens op de set; je bent nooit klaar met verkennen.",
+      "juliaCta": "Orbit van vandaag — open Julia"
+    },
+    "map": {
+      "title": "Dalend op de set",
+      "subtitle": "Elke benoemde regio is een metafoor. Achtergronden zoomen naar dat coördinaat — behalve op deze hub, waar de tour alle dalen verbindt.",
+      "openPage": "Open pagina",
+      "backgroundOnly": "Alleen hub-achtergrond"
+    },
+    "pages": {
+      "title": "Pagina's op het pad",
+      "subtitle": "Elke vallei heeft zijn eigen animatieritme — dezelfde techniek als de Julia-orb, vast coördinaat per pagina."
+    },
+    "links": {
+      "wiki": "Mandelbrot op Wikipedia",
+      "gif": "Geanimeerde zoom"
+    },
+    "strip": {
+      "aria": "Fractal orbit links",
+      "onTheSet": "Op de Mandelbrot-set",
+      "hubLink": "Bekijk {{place}} op de kaart",
+      "juliaLink": "Julia — slice van vandaag",
+      "mandelbrotLink": "Het oneindige pad — Mandelbrot hub",
+      "wiki": "Mandelbrot (Wikipedia)",
+      "juliaWiki": "Julia-set (Wikipedia)",
+      "tourLabel": "Tour door alle dalen",
+      "orbitTrapLabel": "Orbit trap — mandala",
+      "orbitTrapMetaphor": "Meditatie — de orbit van z zweeft langs bloem- en kruis-traps, langzaam draaiend als een mandala.",
+      "orbitTrapWiki": "Orbit trap (Wikipedia)"
+    },
+    "orbitTraps": {
+      "mandala5": {
+        "label": "Orbit trap — 5-voud mandala",
+        "metaphor": "Meditatie — z zweeft langs bloem- en kruis-traps, langzaam draaiend als een mandala."
+      },
+      "mandala7": {
+        "label": "Orbit trap — 7-voud expansie",
+        "metaphor": "Bewustzijnsexpansie — zeven bloemblaadjes, elke orbit een laag verder naar buiten."
+      },
+      "mandala8": {
+        "label": "Orbit trap — 8-voud archetype",
+        "metaphor": "Jung — achtvoudige symmetrie, schaduw en zelf in dezelfde trap."
+      },
+      "flower": {
+        "label": "Orbit trap — bloei",
+        "metaphor": "Kweek — zes bloemblaadjes, groei van zaad naar volle orbit."
+      },
+      "sacred": {
+        "label": "Orbit trap — sacred geometry",
+        "metaphor": "Bentov — kruis en cirkel vangen elke orbit, hologram van het geheel."
+      },
+      "spiral": {
+        "label": "Orbit trap — spiraal",
+        "metaphor": "Dans — log-spiraal trap, lichaam en ritme in herhalende flow."
+      },
+      "spiralFlow": {
+        "label": "Orbit trap — flow spiraal",
+        "metaphor": "Dapo Flow Star — strakkere spiraal, snellere rotatie, pure beweging."
+      },
+      "ring": {
+        "label": "Orbit trap — ringen",
+        "metaphor": "Muziek — concentrische ring-traps als pulserende beats en harmonieën."
+      },
+      "grid": {
+        "label": "Orbit trap — raster",
+        "metaphor": "Portfolio — grid-trap structureert chaos in projecten en patronen."
+      },
+      "gridSkills": {
+        "label": "Orbit trap — vaardigheidsraster",
+        "metaphor": "Skills — fijner raster, elke cel een competency die orbit vangt."
+      },
+      "gridMarkets": {
+        "label": "Orbit trap — marktraster",
+        "metaphor": "Beleggen — cyclische ringen en grid, orbits als koerspatronen."
+      },
+      "filament": {
+        "label": "Orbit trap — filaments",
+        "metaphor": "Quantum — hoek-golf traps als bliksemfilamenten in superpositie."
+      },
+      "neural": {
+        "label": "Orbit trap — neuronen",
+        "metaphor": "Neural networks — knopen op een ring vangen z, synapsen als kleurgradatie."
+      }
+    },
+    "locations": {
+      "overview": {
+        "name": "Breed overzicht",
+        "metaphor": "Het hele leerpad — nooit af, altijd verbonden."
+      },
+      "elephant": {
+        "name": "Olifantendal",
+        "metaphor": "Dagelijkse orbit en werk-leven ritme — Julia leeft hier in de buurt."
+      },
+      "seahorse": {
+        "name": "Zeepaardendal",
+        "metaphor": "Mind as computer — patronen, geheugen, geneste structuren."
+      },
+      "lightning": {
+        "name": "Bliksem",
+        "metaphor": "Muziek en koken — ritme, energie, plotselinge vonken."
+      },
+      "misiurewicz": {
+        "name": "Misiurewicz-punt",
+        "metaphor": "Filosofie en meditatie — randen waar structuur chaos ontmoet."
+      },
+      "spiral": {
+        "name": "Spiraal",
+        "metaphor": "Sport en lichaam — flow, herhaling, beweging naar binnen en buiten."
+      },
+      "mini": {
+        "name": "Mini Mandelbrot",
+        "metaphor": "Interesses hub — kleine werelden die het geheel spiegelen."
+      }
+    }
+  },
+  "julia": {
+    "badge": "Workflow OS · publieke demo",
+    "badgeLive": "Workflow OS · live",
+    "sportTypeToday": "Sporttype vandaag: {{type}}",
+    "title": "Julia",
+    "subtitle": "Je orbit door werk en leven — een fractale briefing geïnspireerd op de Julia-set.",
+    "workPanel": "Werk snapshot",
+    "lifePanel": "Life rhythm",
+    "orbLabel": "Orbit vandaag",
+    "todayThread": "Dag-thread",
+    "lifeRhythmLink": "Open life rhythm",
+    "lifeToday": {
+      "title": "Life OS vandaag",
+      "mealTonight": "Avondmaaltijd",
+      "mealToday": "Maaltijd",
+      "noMealPlanned": "Nog niet gepland",
+      "noData": "Nog geen Life snapshot — export via workflow-os.",
+      "protein": "Eiwit",
+      "water": "Water",
+      "fiber": "Vezels",
+      "kcal": "Kcal",
+      "macroLine": "Vet {{fat}}g · Koolh {{carbs}}g · Vezels {{fiber}}g",
+      "microGapsTitle": "Mogelijke tekorten vandaag",
+      "micro": {
+        "magnesium": "Magnesium",
+        "calcium": "Calcium",
+        "iron": "IJzer",
+        "zinc": "Zink",
+        "potassium": "Kalium",
+        "vitaminD": "Vitamine D",
+        "vitaminB12": "Vitamine B12",
+        "folate": "Foliumzuur"
+      },
+      "nutritionAnchor": "Voeding {{pct}}%",
+      "movement": "{{min}} min beweging"
+    },
+    "mealPlan": {
+      "title": "Menu (deze week)",
+      "empty": "Nog geen weekmenu — plan in Notion of start op zondag."
+    },
+    "voice": {
+      "title": "Praat met Julia",
+      "start": "Luisteren",
+      "stop": "Stop",
+      "send": "Stuur",
+      "placeholder": "Typ: glas water, merci, wat eten we…",
+      "textMode": "Tekstmodus",
+      "firefoxHint": "Firefox en DuckDuckGo hebben geen mic-API — gebruik het tekstveld of de snelknoppen. TTS-antwoord werkt wel. Mic: Brave of Chrome/Edge.",
+      "hints": "Snelknoppen of typ je vraag. Capture gaat naar Notion; vrije vragen via LLM-pool.",
+      "busy": "Bezig…",
+      "apiKeyRequired": "Stel je Julia API-sleutel in (zelfde als JULIA_API_SECRET op Vercel).",
+      "apiKeyToggle": "API-sleutel",
+      "apiKeyPlaceholder": "JULIA_API_SECRET",
+      "apiKeySave": "Opslaan",
+      "unsupported": "Gebruik het tekstveld hieronder.",
+      "copyCmd": "Kopieer capture-commando",
+      "copied": "Gekopieerd",
+      "quick": {
+        "water": "Water",
+        "merci": "Merci",
+        "meal": "Menu",
+        "protein": "Eiwit"
+      }
+    },
+    "usage": {
+      "link": "Usage",
+      "title": "LLM-pool usage",
+      "subtitle": "Requests en tokens per provider vandaag — één actieve provider per vraag.",
+      "back": "Terug naar Julia",
+      "refresh": "Ververs",
+      "needKey": "API-sleutel vereist — vul hieronder in.",
+      "loadFailed": "Usage laden mislukt",
+      "memoryWarning": "Usage is in-memory (geen Upstash) — telt reset bij cold start. Zet UPSTASH_REDIS_REST_* op Vercel voor persistente telling.",
+      "dateLabel": "Datum {{date}}",
+      "storage": "opslag: {{mode}}",
+      "requests": "Requests",
+      "tokens": "Tokens",
+      "status": "Status"
+    },
+    "demoNotice": "Alleen voorbeelddata — niet gekoppeld aan live systemen.",
+    "demo": {
+      "greeting": "Goedemorgen. Vier intents, één rode draad.",
+      "deep": "Ochtend deep block — één zinvolle stap afwerken.",
+      "body": "Rustwandeling of lichte slackline — knie-vriendelijk.",
+      "life": "Eén huis- of hobby-intent — geen perfectie-eis.",
+      "admin": "Mail triage en kleine taken — begrensde tijd.",
+      "work1": "Platform release & integratietests",
+      "work2": "Workflow-verbeteringen voor het team",
+      "work3": "Volgende iteratie plannen met stakeholders",
+      "lifeTeaser": "Slaap, sport-split, hobby's en huisprojecten — flexibele ankers, geen strakke planning."
+    },
+    "intents": {
+      "deep": "Deep",
+      "body": "Body",
+      "life": "Life",
+      "admin": "Admin"
+    },
+    "links": {
+      "wiki": "Julia-set (Wikipedia)",
+      "gif": "Morphing Julia sets (GIF)",
+      "video": "Julia circling (video)"
+    },
+    "planning": {
+      "title": "Planningshorizonten",
+      "subtitle": "Kies een venster en domein — demo van hoe werk, sport, eten en slaap samenhangen. Geen strakke planning.",
+      "toolLabel": "Canoniek in",
+      "horizons": { "day": "Dag", "week": "Week", "month": "Maand", "year": "Jaar" },
+      "domains": { "work": "Werk", "sport": "Sport", "nutrition": "Eten", "sleep": "Slaap" },
+      "nowTitle": "Wat nu werkt",
+      "nowBody": "Orb-briefing + dag-thread (4 intents) + dit raster. Voorbeelddata — gebruik Todoist, Notion en je day-log voor echte taken.",
+      "nextTitle": "Volgende stap",
+      "nextBody": "Vault-exportscript → Julia leest een veilige JSON-snapshot. Zelfde grid, jouw ankers.",
+      "notYetTitle": "Nog niet",
+      "notYetBody": "Geen voice chat — praten met Julia komt later. Planning blijft visueel + links naar je tools.",
+      "actions": {
+        "openTodoist": "Open in Todoist",
+        "openSport": "Open sport-label",
+        "openNotion": "Open in Notion",
+        "openLifeRhythm": "Open life rhythm",
+        "openCooking": "Open koken",
+        "openSports": "Open sport",
+        "openGoals": "Open doelen",
+        "openFeatureFlow": "Open Feature Flow"
+      },
+      "cells": {
+        "day": {
+          "work": { "body": "Top 3 werk + deep block vóór meetings.", "tool": "workflow-os day-log" },
+          "sport": { "body": "Split type vandaag (A/B/C/D) — knie-vriendelijk.", "tool": "Todoist @sport" },
+          "nutrition": { "body": "Eiwit eerst; licht tekort indien vet-verlies week.", "tool": "Notion weekmenu" },
+          "sleep": { "body": "Wind-down 22:30; schermen uit buffer.", "tool": "Todoist recurring" }
+        },
+        "week": {
+          "work": { "body": "Feature-prioriteiten + threads; max 3 carry-overs.", "tool": "Notion Tasks" },
+          "sport": { "body": "3–4 sessies: push, pull, benen licht, recovery wandeling.", "tool": "life-rhythm + calendar" },
+          "nutrition": { "body": "2× meal prep; boodschappenlijst.", "tool": "Notion + Todoist" },
+          "sleep": { "body": "Gemiddeld 7–8u; één avond geen late schermen.", "tool": "Google Calendar soft block" }
+        },
+        "month": {
+          "work": { "body": "Milestones shippen; FF testing items sluiten.", "tool": "Notion Feature Flow" },
+          "sport": { "body": "Conditie opbouwen; deload bij knie klacht.", "tool": "/sports + life-rhythm" },
+          "nutrition": { "body": "Houdbaar tekort of onderhoud; energie volgen.", "tool": "/cooking notities" },
+          "sleep": { "body": "Eén slaaplek fixen (cafeïne, laat werk, …).", "tool": "Weekreview" }
+        },
+        "year": {
+          "work": { "body": "Carrière: Servelec, LifeGroup, side projects.", "tool": "/goals + Notion" },
+          "sport": { "body": "Lange termijn: kracht + outdoor hobby's.", "tool": "life-rhythm ankers" },
+          "nutrition": { "body": "Gewoontes die drukke weken overleven.", "tool": "Notion MySpace hub" },
+          "sleep": { "body": "Chronisch ritme > perfecte nachten.", "tool": "Jaarlijkse goals review" }
+        }
+      }
+    },
+    "lifeRhythm": {
+      "title": "Life rhythm",
+      "intro": "Week-ankers met ruimte — sport, voeding, hobby's en huis, zonder minutenplanning.",
+      "back": "Terug naar Julia",
+      "anchors": {
+        "sleep": "Slaap",
+        "nutrition": "Voeding",
+        "sport": "Sport",
+        "hobby": "Hobby's",
+        "home": "Huis"
+      },
+      "links": {
+        "sports": "Sport & beweging",
+        "cooking": "Koken & voeding",
+        "garden": "Tuin & huis",
+        "music": "Muziek"
+      }
+    }
   },
   "interests": {
     "intro": "Beyond my professional skills, I have diverse interests that shape my perspective and contribute to my creative approach to problem-solving.",
+    "lifeRhythm": {
+      "title": "Life rhythm",
+      "description": "Een flexibele rode draad door slaap, sport, hobby's en huis — onderdeel van mijn Workflow OS op Julia.",
+      "details": ["Week-ankers", "Sport-split", "Hobby's", "Huisprojecten", "Dag-thread"],
+      "explore": "Verken life rhythm"
+    },
     "meditation": {
       "title": "Meditatie",
       "description": "Ik beoefen regelmatig meditatie om mijn geest te kalmeren, focus te verbeteren en innerlijke rust te vinden. Dit helpt me ook in mijn creatieve werk.",
@@ -1152,9 +1507,11 @@
     "tool": "Tool:",
     "tools": {
       "select": "Selecteren",
+      "hand": "Hand",
       "rectangle": "Rechthoek",
       "circle": "Cirkel",
       "line": "Lijn",
+      "contour": "Hoogtelijn",
       "polygon": "Polygoon",
       "freehand": "Vrijhand"
     }

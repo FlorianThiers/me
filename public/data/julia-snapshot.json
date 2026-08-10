@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-08-10T08:10:52+02:00",
+  "date": "2026-08-10",
+  "greeting": "Goedemorgen. Vier intents, één rode draad.",
+  "workTop3": [
+    "Platform release and integration",
+    "Workflow improvements",
+    "Stakeholder alignment"
+  ],
+  "intents": [
+    {
+      "id": "deep",
+      "label": "deep",
+      "text": "Morning deep block — one meaningful step."
+    },
+    {
+      "id": "body",
+      "label": "body",
+      "text": "Recovery walk or light movement — knee-friendly."
+    },
+    {
+      "id": "life",
+      "label": "life",
+      "text": "One home or hobby intent."
+    },
+    {
+      "id": "admin",
+      "label": "admin",
+      "text": "Mail triage and small errands — bounded time."
+    }
+  ],
+  "weekConstraint": null,
+  "sportTypeToday": null,
+  "anchors": {
+    "sleep": 75,
+    "nutrition": 0,
+    "sport": 50,
+    "hobby": 40,
+    "home": 35
+  },
+  "links": {
+    "dayLog": null,
+    "todoistToday": "https://app.todoist.com/app/today",
+    "todoistSport": "https://app.todoist.com/app/label/sport",
+    "todoistHome": "https://app.todoist.com/app/label/huis",
+    "todoistFood": "https://app.todoist.com/app/label/eten",
+    "notionMySpace": "https://www.notion.so/MySpace-391bb6cffa8381b18221e5d231626b7b",
+    "notionLifeDay": "https://www.notion.so/34c5e1c3ca0a4fa79479bc5b68a23d93"
+  },
+  "isDemo": false,
+  "life": {
+    "mealTonight": null,
+    "mealLunch": null,
+    "proteinG": 0,
+    "proteinTargetG": 140,
+    "waterL": 0,
+    "waterTargetL": 2.5,
+    "kcal": 0,
+    "fatG": 0,
+    "carbsG": 0,
+    "fiberG": 0,
+    "fiberTargetG": 30,
+    "macros": {
+      "proteinG": 0,
+      "fatG": 0,
+      "carbsG": 0,
+      "fiberG": 0,
+      "fiberTargetG": 30,
+      "kcal": 0
+    },
+    "movementMin": 0,
+    "lifeEntries": 0,
+    "pantryAlerts": [],
+    "micro": null,
+    "microGaps": null,
+    "mealPlan": null
+  }
+}

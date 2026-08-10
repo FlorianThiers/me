@@ -5,7 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 
 export const AIConsciousnessPage: React.FC = () => {
   return (
-    <div className="min-h-screen pt-20 bg-dark-secondary relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
       <div className="container-custom px-4 py-8 relative z-10">
         <div className="text-center mb-16">
           <motion.div

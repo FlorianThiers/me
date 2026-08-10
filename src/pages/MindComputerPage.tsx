@@ -38,8 +38,7 @@ export const MindComputerPage: React.FC = () => {
     }));
 
     return (
-        <div className="min-h-screen bg-dark-bg text-white py-20">
-            <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 py-10 text-white">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: -30 }}
@@ -586,7 +585,7 @@ export const MindComputerPage: React.FC = () => {
                             <div className="space-y-2 text-white/80 text-sm">
                                 {computerComponents[currentDiagram].computerEquivalent.map((equivalent, index) => (
                                     <div key={index} className="flex items-start space-x-2">
-                                        <span className="text-neon-blue mt-1">⚡</span>
+                                        <Zap className="w-4 h-4 text-neon-blue mt-0.5 shrink-0" />
                                         <span>{equivalent}</span>
                                     </div>
                                 ))}
@@ -626,8 +625,9 @@ export const MindComputerPage: React.FC = () => {
                         className="bg-dark-secondary/50 backdrop-blur-sm border border-white/10 rounded-xl p-6 sm:p-8"
                     >
                         <div className="text-center mb-6">
-                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
-                                🧠 {t('mindComputer.preliminarySchema')}
+                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center justify-center gap-2">
+                                <Brain className="w-6 h-6 text-orbit-violet" />
+                                {t('mindComputer.preliminarySchema')}
                             </h3>
                             <p className="text-white/70 mb-6 max-w-3xl mx-auto text-sm sm:text-base">
                                 {t('mindComputer.preliminaryDescription')}
@@ -807,7 +807,6 @@ export const MindComputerPage: React.FC = () => {
                         ))}
                     </div>
                 </div>
-            </div>
         </div>
     );
 };

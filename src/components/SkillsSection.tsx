@@ -12,6 +12,10 @@ import {
   Shield
 } from 'lucide-react';
 
+function skillInitial(name: string): string {
+  return name.replace(/[^A-Za-z0-9]/g, '').slice(0, 2).toUpperCase();
+}
+
 export const SkillsSection: React.FC = () => {
   const { t } = useTranslation();
 
@@ -22,13 +26,13 @@ export const SkillsSection: React.FC = () => {
       icon: Code,
       color: 'neon-orange',
       skills: [
-        { name: 'JavaScript', level: 88, icon: '🟨' },
-        { name: 'Python', level: 85, icon: '🐍' },
-        { name: 'SQL', level: 82, icon: '🗄️' },
-        { name: 'Java', level: 75, icon: '☕' },
-        { name: 'C++', level: 70, icon: '⚡' },
-        { name: 'C#', level: 68, icon: '💎' },
-        { name: 'Kotlin', level: 60, icon: '💜' },
+        { name: 'JavaScript', level: 88 },
+        { name: 'Python', level: 85 },
+        { name: 'SQL', level: 82 },
+        { name: 'Java', level: 75 },
+        { name: 'C++', level: 70 },
+        { name: 'C#', level: 68 },
+        { name: 'Kotlin', level: 60 },
       ]
     },
     {
@@ -37,13 +41,13 @@ export const SkillsSection: React.FC = () => {
       icon: Globe,
       color: 'neon-blue',
       skills: [
-        { name: 'React', level: 95, icon: '⚛️' },
-        { name: 'TypeScript', level: 90, icon: '📘' },
-        { name: 'Tailwind CSS', level: 85, icon: '🎨' },
-        { name: 'HTML', level: 80, icon: '🌐' },
-        { name: 'Three.js', level: 75, icon: '🎮' },
-        { name: 'CSS', level: 70, icon: '🟪' },
-        { name: 'SCSS', level: 65, icon: '🎨' },
+        { name: 'React', level: 95 },
+        { name: 'TypeScript', level: 90 },
+        { name: 'Tailwind CSS', level: 85 },
+        { name: 'HTML', level: 80 },
+        { name: 'Three.js', level: 75 },
+        { name: 'CSS', level: 70 },
+        { name: 'SCSS', level: 65 },
       ]
     },
     {
@@ -52,13 +56,13 @@ export const SkillsSection: React.FC = () => {
       icon: Code,
       color: 'neon-green',
       skills: [
-        { name: 'Python', level: 85, icon: '🐍' },
-        { name: 'FastAPI', level: 83, icon: '⚡' },
-        { name: 'Node.js', level: 82, icon: '🟢' },
-        { name: 'PHP', level: 80, icon: '🐘' },
-        { name: 'Express.js', level: 78, icon: '🚀' },
-        { name: 'REST APIs', level: 76, icon: '🌐' },
-        { name: 'GraphQL', level: 75, icon: '🔗' },
+        { name: 'Python', level: 85 },
+        { name: 'FastAPI', level: 83 },
+        { name: 'Node.js', level: 82 },
+        { name: 'PHP', level: 80 },
+        { name: 'Express.js', level: 78 },
+        { name: 'REST APIs', level: 76 },
+        { name: 'GraphQL', level: 75 },
       ]
     },
     {
@@ -67,11 +71,11 @@ export const SkillsSection: React.FC = () => {
       icon: Database,
       color: 'neon-yellow',
       skills: [
-        { name: 'Supabase', level: 90, icon: '⚡' },
-        { name: 'PostgreSQL', level: 85, icon: '🐘' },
-        { name: 'MySQL', level: 80, icon: '🐬' },
-        { name: 'MongoDB', level: 70, icon: '🍃' },
-        { name: 'Firebase', level: 65, icon: '🔥' },
+        { name: 'Supabase', level: 90 },
+        { name: 'PostgreSQL', level: 85 },
+        { name: 'MySQL', level: 80 },
+        { name: 'MongoDB', level: 70 },
+        { name: 'Firebase', level: 65 },
       ]
     },
     {
@@ -80,11 +84,11 @@ export const SkillsSection: React.FC = () => {
       icon: Wrench,
       color: 'neon-pink',
       skills: [
-        { name: 'Cursor', level: 90, icon: '✏️' },
-        { name: 'VS Code', level: 88, icon: '💻' },
-        { name: 'Git', level: 80, icon: '📚' },
-        { name: 'IntelliJ', level: 75, icon: '🧠' },
-        { name: 'Linux', level: 60, icon: '🐧' },
+        { name: 'Cursor', level: 90 },
+        { name: 'VS Code', level: 88 },
+        { name: 'Git', level: 80 },
+        { name: 'IntelliJ', level: 75 },
+        { name: 'Linux', level: 60 },
       ]
     },
     {
@@ -93,24 +97,24 @@ export const SkillsSection: React.FC = () => {
       icon: Zap,
       color: 'neon-purple',
       skills: [
-        { name: 'Next.js', level: 91, icon: '⚡' },
-        { name: 'CMS', level: 85, icon: '📝' },
-        { name: 'Express.js', level: 78, icon: '🚀' },
-        { name: 'Laravel', level: 75, icon: '💜' },
-        { name: 'React Native', level: 60, icon: '📱' },
+        { name: 'Next.js', level: 91 },
+        { name: 'CMS', level: 85 },
+        { name: 'Express.js', level: 78 },
+        { name: 'Laravel', level: 75 },
+        { name: 'React Native', level: 60 },
         
       ]
     },
   ];
 
   const additionalSkills = [
-    { name: 'Machine Learning', icon: '🧠', description: 'AI-driven development, TensorFlow, PyTorch' },
-    { name: 'Mobile Development', icon: '📱', description: 'React Native, Flutter, Mobile-first design' },
-    { name: 'Testing', icon: '🧪', description: 'Jest, Cypress, Unit & Integration testing' },
-    { name: 'Performance', icon: '⚡', description: 'Web Vitals, Lighthouse, Optimization' },
-    { name: 'Enterprise & B2B', icon: '🏢', description: 'Servelec platform, integrations, admin workflows' },
-    { name: 'IoT & Robotics', icon: '🤖', description: 'Vijverstofzuigers, robot development' },
-    { name: 'AI Integration', icon: '🤖', description: 'ChatGPT, AI-driven solutions' },
+    { name: 'Machine Learning', description: 'AI-driven development, TensorFlow, PyTorch' },
+    { name: 'Mobile Development', description: 'React Native, Flutter, Mobile-first design' },
+    { name: 'Testing', description: 'Jest, Cypress, Unit & Integration testing' },
+    { name: 'Performance', description: 'Web Vitals, Lighthouse, Optimization' },
+    { name: 'Enterprise & B2B', description: 'Servelec platform, integrations, admin workflows' },
+    { name: 'IoT & Robotics', description: 'Vijverstofzuigers, robot development' },
+    { name: 'AI Integration', description: 'ChatGPT, AI-driven solutions' },
   ];
 
   // Functie om de juiste kleur te krijgen voor percentage bars
@@ -213,7 +217,12 @@ export const SkillsSection: React.FC = () => {
                     >
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-2">
-                          <span className="text-lg" aria-hidden="true">{skill.icon}</span>
+                          <span
+                            className={`w-6 h-6 rounded text-[10px] font-bold flex items-center justify-center ${colorClasses.bgOpacity} ${colorClasses.text}`}
+                            aria-hidden="true"
+                          >
+                            {skillInitial(skill.name)}
+                          </span>
                           <span className="text-white font-medium">{skill.name}</span>
                         </div>
                         <span className={`${colorClasses.text} font-bold text-sm`} aria-label={`${skill.name} skill level: ${skill.level}%`}>
@@ -269,8 +278,10 @@ export const SkillsSection: React.FC = () => {
               role="listitem"
             >
               <div className="bg-dark-bg rounded-lg p-6 border border-white/10 hover:border-neon-green/50 transition-all duration-300 text-center hover:scale-105">
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
-                  {skill.icon}
+                <div className="mb-3 flex justify-center" aria-hidden="true">
+                  <span className="w-10 h-10 rounded-lg bg-neon-green/15 text-neon-green text-xs font-bold flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    {skillInitial(skill.name)}
+                  </span>
                 </div>
                 <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-neon-green transition-colors duration-300">
                   {skill.name}

@@ -3,9 +3,15 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Heart, Star, Clock, Users, Utensils, Flame, Leaf, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useJuliaSnapshot } from '../hooks/useJuliaSnapshot';
+import { OrbitBadge } from '../components/orbit/OrbitBadge';
+import { LifeNutritionRings } from '../components/orbit/LifeNutritionRings';
+import { LifeMicroGaps } from '../components/orbit/LifeMicroGaps';
+import { MealWeekBoard } from '../components/orbit/MealWeekBoard';
 
 export const CookingPage: React.FC = () => {
   const { t } = useTranslation();
+  const { snapshot, isLive, isDemo } = useJuliaSnapshot();
 
   const cookingCategories = [
     {
@@ -13,7 +19,6 @@ export const CookingPage: React.FC = () => {
       title: t('cooking.categories.healthy.title'),
       description: t('cooking.categories.healthy.description'),
       details: t('cooking.categories.healthy.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '🥗',
       color: 'from-green-400 to-emerald-600',
       recipes: [
         {
@@ -39,7 +44,6 @@ export const CookingPage: React.FC = () => {
       title: t('cooking.categories.experimental.title'),
       description: t('cooking.categories.experimental.description'),
       details: t('cooking.categories.experimental.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '🔥',
       color: 'from-red-400 to-orange-600',
       recipes: [
         {
@@ -65,7 +69,6 @@ export const CookingPage: React.FC = () => {
       title: t('cooking.categories.traditional.title'),
       description: t('cooking.categories.traditional.description'),
       details: t('cooking.categories.traditional.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '🍝',
       color: 'from-yellow-400 to-orange-600',
       recipes: [
         {
@@ -91,7 +94,6 @@ export const CookingPage: React.FC = () => {
       title: t('cooking.categories.vegetarian.title'),
       description: t('cooking.categories.vegetarian.description'),
       details: t('cooking.categories.vegetarian.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '🌱',
       color: 'from-green-400 to-teal-600',
       recipes: [
         {
@@ -117,7 +119,6 @@ export const CookingPage: React.FC = () => {
       title: t('cooking.categories.special.title'),
       description: t('cooking.categories.special.description'),
       details: t('cooking.categories.special.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '🎉',
       color: 'from-purple-400 to-pink-600',
       recipes: [
         {
@@ -143,7 +144,6 @@ export const CookingPage: React.FC = () => {
       title: t('cooking.categories.quick.title'),
       description: t('cooking.categories.quick.description'),
       details: t('cooking.categories.quick.details', { returnObjects: true }) as string[],
-      photoPlaceholder: '⚡',
       color: 'from-blue-400 to-cyan-600',
       recipes: [
         {
@@ -189,7 +189,7 @@ export const CookingPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 bg-dark-bg">
+    <div className="min-h-screen">
       <div className="container-custom px-4 py-8">
         
         {/* Header */}
@@ -202,8 +202,9 @@ export const CookingPage: React.FC = () => {
               <ArrowLeft className="w-6 h-6 text-white" />
             </Link>
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                👨‍🍳 {t('cooking.title')}
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 flex items-center gap-3">
+                <Utensils className="w-10 h-10 text-neon-green" />
+                {t('cooking.title')}
               </h1>
               <p className="text-lg text-white/80 max-w-3xl leading-relaxed">
                 {t('cooking.description')}
@@ -211,6 +212,63 @@ export const CookingPage: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {snapshot.life && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-6xl mx-auto mb-10 rounded-2xl border border-orbit-violet/25 bg-dark-secondary/60 p-5 md:p-6"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold text-white">{t('julia.lifeToday.title')}</span>
+                <OrbitBadge isLive={isLive && !isDemo} />
+              </div>
+              <div className="flex gap-3">
+                <Link to="/stock" className="text-xs text-orbit-cyan hover:text-neon-green transition-colors">
+                  {t('stock.link')} →
+                </Link>
+                <Link to="/julia" className="text-xs text-neon-green hover:text-neon-blue transition-colors">
+                  Julia →
+                </Link>
+              </div>
+            </div>
+            {snapshot.life.mealTonight && (
+              <p className="text-white/80 text-sm mb-4">
+                <span className="text-white/45 uppercase text-[10px] tracking-wider mr-2">
+                  {t('julia.lifeToday.mealTonight')}
+                </span>
+                {snapshot.life.mealTonight}
+              </p>
+            )}
+            <LifeNutritionRings life={snapshot.life} compact />
+            {(snapshot.life.fiberG ?? 0) > 0 && (
+              <p className="text-xs text-white/50 text-center mt-2">
+                {t('julia.lifeToday.macroLine', {
+                  fat: Math.round(snapshot.life.fatG ?? 0),
+                  carbs: Math.round(snapshot.life.carbsG ?? 0),
+                  fiber: Math.round(snapshot.life.fiberG ?? 0),
+                })}
+              </p>
+            )}
+            {snapshot.life.microGaps && snapshot.life.microGaps.length > 0 && (
+              <div className="mt-3">
+                <LifeMicroGaps gaps={snapshot.life.microGaps} />
+              </div>
+            )}
+          </motion.div>
+        )}
+
+        {snapshot.mealPlan && snapshot.mealPlan.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-6xl mx-auto mb-10 rounded-2xl border border-neon-green/20 bg-dark-secondary/50 p-5 md:p-6"
+          >
+            <h2 className="text-lg font-semibold text-white mb-4">{t('julia.mealPlan.title')}</h2>
+            <MealWeekBoard slots={snapshot.mealPlan} today={snapshot.date} />
+          </motion.div>
+        )}
 
         {/* Cooking Categories Grid */}
         <div className="max-w-6xl mx-auto">
@@ -226,7 +284,7 @@ export const CookingPage: React.FC = () => {
                 {/* Photo Section */}
                 <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center border-b border-white/10">
                   <div className="text-center">
-                    <div className="text-6xl mb-4">{category.photoPlaceholder}</div>
+                    <div className="mb-4 flex justify-center text-neon-green">{category.icon}</div>
                     <p className="text-white/60 text-sm">{t('cooking.photoPlaceholder')} {category.title}</p>
                   </div>
                 </div>
@@ -315,17 +373,17 @@ export const CookingPage: React.FC = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
-                <div className="text-4xl mb-4">🌿</div>
+                <Leaf className="w-8 h-8 text-neon-green mb-4" />
                 <h3 className="text-xl font-bold text-neon-green mb-3">{t('cooking.philosophyCards.fresh.title')}</h3>
                 <p className="text-white/70">{t('cooking.philosophyCards.fresh.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
-                <div className="text-4xl mb-4">🎨</div>
+                <Star className="w-8 h-8 text-neon-green mb-4" />
                 <h3 className="text-xl font-bold text-neon-green mb-3">{t('cooking.philosophyCards.creativity.title')}</h3>
                 <p className="text-white/70">{t('cooking.philosophyCards.creativity.description')}</p>
               </div>
               <div className="bg-dark-secondary/30 rounded-lg p-6 border border-white/10">
-                <div className="text-4xl mb-4">❤️</div>
+                <Heart className="w-8 h-8 text-neon-green mb-4" />
                 <h3 className="text-xl font-bold text-neon-green mb-3">{t('cooking.philosophyCards.love.title')}</h3>
                 <p className="text-white/70">{t('cooking.philosophyCards.love.description')}</p>
               </div>
