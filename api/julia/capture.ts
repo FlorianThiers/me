@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { requireAuth } from './_lib/auth';
-import { addFood, addWater } from './_lib/notion';
-import { recordUsage } from './_lib/quotaStore';
+import { requireAuth } from './_lib/auth.js';
+import { addFood, addWater } from './_lib/notion.js';
+import { recordUsage } from './_lib/quotaStore.js';
 
 type CaptureBody = {
   date?: string;

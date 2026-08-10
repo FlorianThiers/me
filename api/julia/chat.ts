@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { requireAuth } from './_lib/auth';
-import { routeChat } from './_lib/llmRouter';
+import { requireAuth } from './_lib/auth.js';
+import { routeChat } from './_lib/llmRouter.js';
 
 type ChatBody = {
   message?: string;

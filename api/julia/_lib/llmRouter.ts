@@ -1,6 +1,6 @@
-import type { ProviderId } from './providerPool';
-import { PROVIDER_POOL, providerApiKey } from './providerPool';
-import { isProviderAvailable, loadUsage, recordUsage, type DayUsage } from './quotaStore';
+import type { ProviderId } from './providerPool.js';
+import { PROVIDER_POOL, providerApiKey } from './providerPool.js';
+import { isProviderAvailable, loadUsage, recordUsage, type DayUsage } from './quotaStore.js';
 
 export type ChatResult = {
   text: string;

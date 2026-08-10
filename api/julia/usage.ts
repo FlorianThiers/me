@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { requireAuth } from './_lib/auth';
-import { loadUsage, usageSummary } from './_lib/quotaStore';
-import { configuredProviders, PROVIDER_POOL } from './_lib/providerPool';
+import { requireAuth } from './_lib/auth.js';
+import { loadUsage, usageSummary } from './_lib/quotaStore.js';
+import { configuredProviders, PROVIDER_POOL } from './_lib/providerPool.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'GET') {

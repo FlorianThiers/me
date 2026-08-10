@@ -1,5 +1,5 @@
-import type { ProviderId } from './providerPool';
-import { PROVIDER_POOL } from './providerPool';
+import type { ProviderId } from './providerPool.js';
+import { PROVIDER_POOL } from './providerPool.js';
 
 export type UsageEvent = {
   ts: string;
