@@ -12,13 +12,13 @@
   "hero": {
     "title": "Hola, soy Flor",
     "subtitle": "Desarrollador Full-Stack y Entusiasta de la Tecnología",
-    "description": "Desarrollo productos full-stack para Servelec y Urban Culture en Gante — desde plataformas B2B hasta hubs comunitarios. React, TypeScript, Next.js, Supabase, Python.",
+    "description": "Desarrollo productos full-stack para LifeGroup y Urban Culture en Gante — desde plataformas B2B hasta hubs comunitarios. React, TypeScript, Next.js, Supabase, Python.",
     "cta": "Trabajemos Juntos",
     "scroll": "Desplázate para explorar"
   },
   "about": {
     "title": "Sobre Mí",
-    "description": "Soy un desarrollador apasionado con más de 7 años de experiencia. Construyo plataformas web para Servelec y el hub Urban Culture para ParkSports y Corridor en Gante — como miembro de la junta de LifeGroup. Proyectos propios: ImmoGen y Vijverstofzuigers.",
+    "description": "Soy un desarrollador apasionado con más de 7 años de experiencia. Construyo plataformas web para LifeGroup y el hub Urban Culture para ParkSports y Corridor en Gante — como miembro de la junta de LifeGroup. Proyectos propios: ImmoGen y Vijverstofzuigers.",
     "experience": "Años de Experiencia",
     "projects": "Proyectos",
     "skills": "Habilidades Principales",
@@ -57,12 +57,12 @@
     "letsWorkTogether": "Trabajemos Juntos",
     "events": {
       "event1": {
-        "title": "Servelec y Urban Culture",
-        "company": "LifeGroup · Servelec · Urban Culture",
+        "title": "LifeGroup y Urban Culture",
+        "company": "LifeGroup · Urban Culture",
         "location": "Bélgica",
-        "description": "Desarrollo full-stack para la plataforma B2B de Servelec y el sitio paraguas Urban Culture Gent. Miembro de la junta de LifeGroup — ingeniería y gobernanza.",
+        "description": "Desarrollo full-stack para una plataforma B2B privada y el sitio paraguas Urban Culture Gent. Miembro de la junta de LifeGroup — ingeniería y gobernanza.",
         "achievements": [
-          "Plataforma B2B Servelec",
+          "Plataforma B2B de operaciones",
           "Hub Urban Culture (ParkSports + Corridor)",
           "Junta LifeGroup + entrega"
         ]
@@ -113,7 +113,7 @@
     "robotsBouwen": "Construir Más Robots",
     "robotsBouwenDesc": "Crear soluciones robóticas adicionales para diversas aplicaciones, enfocándose en automatización y sostenibilidad.",
     "soloprojecten": "Completar Proyectos en Solitario",
-    "soloprojectenDesc": "Completar ImmoGen y sitios de clientes como Vijverstofzuigers — junto con la entrega continua de Servelec y Urban Culture.",
+    "soloprojectenDesc": "Completar ImmoGen y sitios de clientes como Vijverstofzuigers — junto con la entrega continua de LifeGroup y Urban Culture.",
     "parksportsCommunity": "Hacer crecer Urban Culture y ParkSports",
     "parksportsCommunityDesc": "Expandir el paraguas Urban Culture y la comunidad ParkSports — spots, eventos y participación en el deporte urbano de Gante.",
     "immogenSamenwerkers": "Encontrar Colaboradores para Immogen",
@@ -569,7 +569,7 @@
         },
         "year": {
           "work": {
-            "body": "Trayectoria: Servelec, LifeGroup, side projects.",
+            "body": "Trayectoria: LifeGroup, Urban Culture, side projects.",
             "tool": "/goals + Notion"
           },
           "sport": {

@@ -12,13 +12,13 @@
   "hero": {
     "title": "Hi, I'm Flor",
     "subtitle": "Full-Stack Developer & Tech Enthusiast",
-    "description": "Building full-stack products for Servelec and Urban Culture in Ghent — from B2B platforms to community hubs. React, TypeScript, Next.js, Supabase, Python.",
+    "description": "Building full-stack products for LifeGroup and Urban Culture in Ghent — from B2B platforms to community hubs. React, TypeScript, Next.js, Supabase, Python.",
     "cta": "Let's Work Together",
     "scroll": "Scroll to explore"
   },
   "about": {
     "title": "About Me",
-    "description": "I'm a passionate developer with 7+ years of experience. I build web platforms for Servelec and the Urban Culture hub for ParkSports & Corridor in Ghent — while serving on the LifeGroup board. Side projects include ImmoGen and Vijverstofzuigers.",
+    "description": "I'm a passionate developer with 7+ years of experience. I build web platforms for LifeGroup and the Urban Culture hub for ParkSports & Corridor in Ghent — while serving on the LifeGroup board. Side projects include ImmoGen and Vijverstofzuigers.",
     "experience": "Years Experience",
     "projects": "Projects",
     "skills": "Core Skills",
@@ -57,12 +57,12 @@
     "letsWorkTogether": "Let's Work Together",
     "events": {
       "event1": {
-        "title": "Servelec & Urban Culture",
-        "company": "LifeGroup · Servelec · Urban Culture",
+        "title": "LifeGroup & Urban Culture",
+        "company": "LifeGroup · Urban Culture",
         "location": "Belgium",
-        "description": "Full-stack development for Servelec's B2B platform and the Urban Culture Gent umbrella site. Board member at LifeGroup — engineering plus governance.",
+        "description": "Full-stack development for a private B2B operations platform and the Urban Culture Gent umbrella site. Board member at LifeGroup — engineering plus governance.",
         "achievements": [
-          "Servelec B2B platform",
+          "B2B operations platform",
           "Urban Culture hub (ParkSports + Corridor)",
           "LifeGroup board + delivery"
         ]
@@ -113,7 +113,7 @@
     "robotsBouwen": "Build More Robots",
     "robotsBouwenDesc": "Create additional robotic solutions for various applications, focusing on automation and sustainability.",
     "soloprojecten": "Complete Solo Projects",
-    "soloprojectenDesc": "Finish ImmoGen and client sites such as Vijverstofzuigers — alongside ongoing Servelec and Urban Culture delivery.",
+    "soloprojectenDesc": "Finish ImmoGen and client sites such as Vijverstofzuigers — alongside ongoing LifeGroup and Urban Culture delivery.",
     "parksportsCommunity": "Grow Urban Culture & ParkSports",
     "parksportsCommunityDesc": "Expand the Urban Culture umbrella and ParkSports community — spots, events and member engagement across Ghent's urban sports scene.",
     "immogenSamenwerkers": "Find Immogen Collaborators",
@@ -591,7 +591,7 @@
         },
         "year": {
           "work": {
-            "body": "Career arc: Servelec, LifeGroup, side projects.",
+            "body": "Career arc: LifeGroup, Urban Culture, side projects.",
             "tool": "/goals + Notion"
           },
           "sport": {

@@ -29,7 +29,7 @@ export interface CvContent {
 
 const sharedProjects = [
   {
-    name: 'Servelec Platform',
+    name: 'B2B Operations Platform',
     stack: 'Next.js, TypeScript, Supabase',
     description: 'Private B2B platform for operations, admin tools and system integrations.',
   },
@@ -63,15 +63,15 @@ const contentByLocale: Record<CvLocale, CvContent> = {
   en: {
     headline: 'Full-Stack Developer · React · TypeScript · Python · AI workflows',
     summary:
-      'Developer with 7+ years of hands-on experience. Builds web platforms for Servelec and the Urban Culture hub (ParkSports + Corridor) while serving on the LifeGroup board. Side projects include ImmoGen and client sites.',
+      'Developer with 7+ years of hands-on experience. Builds web platforms for LifeGroup and the Urban Culture hub (ParkSports + Corridor) while serving on the LifeGroup board. Side projects include ImmoGen and client sites.',
     experience: [
       {
         period: '2025 — present',
         role: 'Developer & board member',
-        org: 'LifeGroup · Servelec · Urban Culture',
+        org: 'LifeGroup · Urban Culture',
         location: 'Belgium',
         bullets: [
-          'Develop and maintain Servelec\'s B2B web platform and internal tools.',
+          'Develop and maintain a private B2B web platform and internal tools.',
           'Combine engineering with board responsibilities at LifeGroup.',
           'Drive automation, integrations and pragmatic delivery in a small team.',
         ],
@@ -104,15 +104,15 @@ const contentByLocale: Record<CvLocale, CvContent> = {
   nl: {
     headline: 'Full-Stack Developer · React · TypeScript · Python · AI workflows',
     summary:
-      'Developer met 7+ jaar praktijkervaring. Bouwt webplatformen voor Servelec en de Urban Culture hub (ParkSports + Corridor) als bestuurder bij LifeGroup. Side projects: ImmoGen en klantsites.',
+      'Developer met 7+ jaar praktijkervaring. Bouwt webplatformen voor LifeGroup en de Urban Culture hub (ParkSports + Corridor) als bestuurder bij LifeGroup. Side projects: ImmoGen en klantsites.',
     experience: [
       {
         period: '2025 — heden',
         role: 'Developer & bestuurder',
-        org: 'LifeGroup · Servelec · Urban Culture',
+        org: 'LifeGroup · Urban Culture',
         location: 'België',
         bullets: [
-          'Ontwikkelt en onderhoudt het B2B-webplatform en interne tools voor Servelec.',
+          'Ontwikkelt en onderhoudt een privé B2B-webplatform en interne tools.',
           'Combineert engineering met bestuursrollen bij LifeGroup.',
           'Automation, integraties en pragmatische oplevering in een klein team.',
         ],
@@ -145,15 +145,15 @@ const contentByLocale: Record<CvLocale, CvContent> = {
   es: {
     headline: 'Desarrollador Full-Stack · React · TypeScript · Python · flujos con IA',
     summary:
-      'Desarrollador con más de 7 años de experiencia. Construye plataformas web para Servelec y el hub Urban Culture (ParkSports + Corridor) como miembro de la junta de LifeGroup. Proyectos propios: ImmoGen y sitios de clientes.',
+      'Desarrollador con más de 7 años de experiencia. Construye plataformas web para LifeGroup y el hub Urban Culture (ParkSports + Corridor) como miembro de la junta de LifeGroup. Proyectos propios: ImmoGen y sitios de clientes.',
     experience: [
       {
         period: '2025 — actualidad',
         role: 'Desarrollador y miembro de junta',
-        org: 'LifeGroup · Servelec · Urban Culture',
+        org: 'LifeGroup · Urban Culture',
         location: 'Bélgica',
         bullets: [
-          'Desarrollo y mantenimiento de la plataforma B2B y herramientas internas de Servelec.',
+          'Desarrollo y mantenimiento de una plataforma B2B privada y herramientas internas.',
           'Combina ingeniería con responsabilidades de junta en LifeGroup.',
           'Automatización, integraciones y entrega pragmática en equipo pequeño.',
         ],

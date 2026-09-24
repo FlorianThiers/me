@@ -24,10 +24,10 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     id: 8,
-    title: 'Servelec Platform',
+    title: 'B2B Operations Platform',
     description:
       'B2B operations platform for inventory, warehouse workflows, service requests and multi-brand admin — built with modern full-stack tooling.',
-    image: '/projects/servelec.png',
+    image: '/projects/portfolio.png',
     technologies: ['Next.js', 'TypeScript', 'Supabase', 'shadcn/ui', 'Vitest'],
     github: 'https://github.com/FlorianThiers',
     category: 'Enterprise / Full-Stack',

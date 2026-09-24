@@ -112,7 +112,7 @@ export const SkillsSection: React.FC = () => {
     { name: 'Mobile Development', description: 'React Native, Flutter, Mobile-first design' },
     { name: 'Testing', description: 'Jest, Cypress, Unit & Integration testing' },
     { name: 'Performance', description: 'Web Vitals, Lighthouse, Optimization' },
-    { name: 'Enterprise & B2B', description: 'Servelec platform, integrations, admin workflows' },
+    { name: 'Enterprise & B2B', description: 'B2B operations platform, integrations, admin workflows' },
     { name: 'IoT & Robotics', description: 'Vijverstofzuigers, robot development' },
     { name: 'AI Integration', description: 'ChatGPT, AI-driven solutions' },
   ];
