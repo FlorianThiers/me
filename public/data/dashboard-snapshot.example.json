@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-01T12:00:00+02:00",
+  "date": "2026-10-01",
+  "isDemo": true,
+  "exportNote": "Voorbeelddata - geen echte metingen",
+  "stats": {
+    "meta": {
+      "source": "demo",
+      "asOf": "2026-10-01T12:00:00+02:00",
+      "isDemo": true
+    },
+    "stock": {
+      "total": 7,
+      "byLocation": {
+        "koelkast": 3,
+        "diepvries": 2,
+        "kast": 2,
+        "overig": 0
+      },
+      "byCategory": {
+        "Vlees": 3,
+        "Vis": 1,
+        "Fruit": 1,
+        "Groente": 1,
+        "Overig": 1
+      },
+      "byLocationCategory": {
+        "koelkast": {
+          "Vlees": 1,
+          "Vis": 1,
+          "Fruit": 1
+        },
+        "diepvries": {
+          "Groente": 1,
+          "Vlees": 1
+        },
+        "kast": {
+          "Overig": 2
+        },
+        "overig": {}
+      },
+      "expiringSoon": [
+        {
+          "name": "Zalm",
+          "location": "koelkast",
+          "daysToExpiry": 1
+        },
+        {
+          "name": "Kipfilet",
+          "location": "koelkast",
+          "daysToExpiry": 2
+        },
+        {
+          "name": "Aardbeien",
+          "location": "koelkast",
+          "daysToExpiry": 3
+        }
+      ],
+      "expiredCount": 0,
+      "expiringCount": 3,
+      "gardenReady": 2,
+      "generatedAt": "2026-10-01T12:00:00+02:00",
+      "isDemo": true
+    }
+  },
+  "tasks": {
+    "meta": {
+      "source": "demo",
+      "asOf": "2026-10-01T12:00:00+02:00",
+      "isDemo": true
+    },
+    "today": 5,
+    "overdue": 2,
+    "completedThisWeek": 9,
+    "weekStart": "2026-09-28"
+  },
+  "workouts": {
+    "meta": {
+      "source": "demo",
+      "asOf": "2026-10-01T12:00:00+02:00",
+      "isDemo": true
+    },
+    "sessionsPerWeek": [
+      {
+        "weekStart": "2026-08-10",
+        "count": 1
+      },
+      {
+        "weekStart": "2026-08-17",
+        "count": 2
+      },
+      {
+        "weekStart": "2026-08-24",
+        "count": 3
+      },
+      {
+        "weekStart": "2026-08-31",
+        "count": 2
+      },
+      {
+        "weekStart": "2026-09-07",
+        "count": 3
+      },
+      {
+        "weekStart": "2026-09-14",
+        "count": 2
+      },
+      {
+        "weekStart": "2026-09-21",
+        "count": 3
+      },
+      {
+        "weekStart": "2026-09-28",
+        "count": 1
+      }
+    ],
+    "lastSession": {
+      "date": "2026-09-30",
+      "type": "B pull",
+      "title": "Pull (voorbeeld)"
+    },
+    "streakWeeks": 8,
+    "totalLogged": 17,
+    "nextPlanned": {
+      "due": "2026-10-01",
+      "title": "Workout A push + core"
+    }
+  },
+  "mood": {
+    "meta": {
+      "source": "demo",
+      "asOf": "2026-10-01T12:00:00+02:00",
+      "isDemo": true
+    },
+    "waterGoalL": 2.5,
+    "days": [
+      {
+        "date": "2026-09-25",
+        "mood": 3,
+        "waterL": 1.8,
+        "sleepH": 6.5
+      },
+      {
+        "date": "2026-09-26",
+        "mood": 4,
+        "waterL": 2.2,
+        "sleepH": 7.5
+      },
+      {
+        "date": "2026-09-27",
+        "mood": 3,
+        "waterL": 1.5,
+        "sleepH": 7.0
+      },
+      {
+        "date": "2026-09-28",
+        "mood": 2,
+        "waterL": 1.2,
+        "sleepH": 5.5
+      },
+      {
+        "date": "2026-09-29",
+        "mood": 4,
+        "waterL": 2.6,
+        "sleepH": 7.0
+      },
+      {
+        "date": "2026-09-30",
+        "mood": 4,
+        "waterL": 2.4,
+        "sleepH": 8.0
+      },
+      {
+        "date": "2026-10-01",
+        "mood": 5,
+        "waterL": 1.9,
+        "sleepH": 7.5
+      }
+    ],
+    "lastKnown": {
+      "mood": null,
+      "water": null,
+      "sleep": null
+    }
+  },
+  "garden": {
+    "meta": {
+      "source": "demo",
+      "asOf": "2026-10-01T12:00:00+02:00",
+      "isDemo": true
+    },
+    "total": 12,
+    "counts": {
+      "Gepland": 4,
+      "Gezaaid": 2,
+      "Groeiend": 4,
+      "Oogstbaar": 2,
+      "Geoogst": 0,
+      "Afgerond": 0
+    },
+    "harvestable": 2
+  }
+}

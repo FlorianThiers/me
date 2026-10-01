@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './i18n';
@@ -40,6 +40,10 @@ import { CvPage } from './pages/CvPage';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollToTopButton } from './components/ScrollToTopButton';
+import { DASHBOARD_ENABLED } from './lib/dashboardFlag';
+
+// Lokaal persoonlijk dashboard (sidenav + sub-routes): alleen in dev of met VITE_ENABLE_DASHBOARD=1 (niet in de Vercel-build).
+const DashboardRoutes = DASHBOARD_ENABLED ? lazy(() => import('./pages/DashboardRoutes')) : null;
 
 function App() {
   const { i18n } = useTranslation();
@@ -67,6 +71,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/julia" element={<JuliaPage />} />
+            {DashboardRoutes && (
+              <Route path="/dashboard/*" element={<Suspense fallback={null}><DashboardRoutes /></Suspense>} />
+            )}
 
             <Route element={<OrbitLayout />}>
               <Route path="/cv" element={<CvPage />} />

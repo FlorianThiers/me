@@ -44,8 +44,8 @@ export const ContactSection: React.FC = () => {
       console.warn('Formspree form ID is not configured. Please add VITE_FORMSPREE_FORM_ID to your .env file.');
     } else if (service === 'sendgrid' && !import.meta.env.VITE_SENDGRID_API_KEY) {
       console.warn('SendGrid API key is not configured. Please add VITE_SENDGRID_API_KEY to your .env file.');
-    } else if (service === 'resend' && !import.meta.env.VITE_RESEND_API_KEY) {
-      console.warn('Resend API key is not configured. Please add VITE_RESEND_API_KEY to your .env file.');
+    } else if (service === 'resend' || service === 'brevo') {
+      // Keys live on Vercel (RESEND_API_KEY); client uses /api/contact only.
     }
   }, []);
 
