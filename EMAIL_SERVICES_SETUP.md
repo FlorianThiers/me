@@ -1,6 +1,8 @@
-# Email Services Setup - Alternatieven voor Resend
+# Email Services Setup
 
-Omdat Resend max domains heeft bereikt, zijn hier alternatieven die je kunt gebruiken:
+**Canoniek (2026-10):** contactform via **Resend** en `/api/contact` (`RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL` op Vercel). `VITE_EMAIL_SERVICE=resend` (default). Geen client-side `VITE_RESEND_API_KEY`.
+
+Onderstaande alternatieven blijven voor fallback/experiment:
 
 ## 🚀 Aanbevolen: Web3Forms (Geen SMS nodig!)
 

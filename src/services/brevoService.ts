@@ -11,8 +11,7 @@ export interface BrevoResponse {
 }
 
 /**
- * Send email via Brevo through the Vercel serverless route (/api/contact).
- * API key stays server-side (BREVO_API_KEY), not in the client bundle.
+ * Legacy alias: same server route as Resend (/api/contact). Prefer VITE_EMAIL_SERVICE=resend.
  */
 export const sendEmailViaBrevo = async (emailData: EmailData): Promise<BrevoResponse> => {
   try {
