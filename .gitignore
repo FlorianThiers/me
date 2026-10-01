@@ -36,4 +36,5 @@ moltbook-registration.json
 *credentials*.ps1
 MOLTBOOK_INFO.md
 
-
+# Persoonlijk dashboard (lokaal, bevat persoonlijke data)
+public/data/dashboard-snapshot.json

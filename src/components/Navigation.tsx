@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Globe, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { DASHBOARD_ENABLED } from '../lib/dashboardFlag';
 
 interface NavigationProps {
   onLanguageChange: (lang: string) => void;
@@ -43,7 +44,12 @@ export const Navigation: React.FC<NavigationProps> = ({
     { path: '/julia', label: t('nav.julia') },
     { path: '/mandelbrot', label: t('nav.mandelbrot') },
     { path: '/interests', label: t('nav.interests') },
+    // Alleen localhost/dev (of VITE_ENABLE_DASHBOARD=1): link naar het persoonlijke dashboard.
+    ...(DASHBOARD_ENABLED ? [{ path: '/dashboard', label: 'Dashboard' }] : []),
   ];
+
+  const isActive = (path: string) =>
+    location.pathname === path || (path === '/dashboard' && location.pathname.startsWith('/dashboard/'));
 
   return (
     <motion.nav
@@ -78,7 +84,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                 <Link
                   to={item.path}
                   className={`text-white/80 hover:text-neon-green transition-colors duration-200 font-medium ${
-                    location.pathname === item.path ? 'text-neon-green' : ''
+                    isActive(item.path) ? 'text-neon-green' : ''
                   }`}
                 >
                   {item.label}
@@ -143,7 +149,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         {/* Mobile Navigation */}
         <motion.div
           className={`md:hidden overflow-hidden transition-all duration-300 ${
-            isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            isOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className="py-4 space-y-2">
@@ -152,7 +158,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                 key={item.path}
                 to={item.path}
                 className={`block w-full text-left px-4 py-2 text-white/80 hover:text-neon-green hover:bg-white/5 rounded-lg transition-all duration-200 ${
-                  location.pathname === item.path ? 'text-neon-green bg-white/10' : ''
+                  isActive(item.path) ? 'text-neon-green bg-white/10' : ''
                 }`}
                 onClick={() => setIsOpen(false)}
               >
