@@ -62,7 +62,7 @@ const makeRequest = async <T>(
   }
 
   try {
-    const response = await fetch(`${MOLTBOOK_CONFIG.BASE_URL}${endpoint}`, {
+    const response = await fetch(`${MOLTBOOK_CONFIG.BASE_URL}${encodeURIComponent(endpoint)}`, {
       ...options,
       headers: {
         'Authorization': `Bearer ${apiKey}`,

@@ -2,8 +2,8 @@
 // API key can be set via environment variable or will be loaded from user input
 
 export const MOLTBOOK_CONFIG = {
-  API_KEY: import.meta.env.VITE_MOLTBOOK_API_KEY || '',
-  BASE_URL: 'https://www.moltbook.com/api/v1',
+  API_KEY: '', // Moltbook key lives server-side (MOLTBOOK_API_KEY); stored key = owner access key (JULIA_API_SECRET)
+  BASE_URL: '/api/moltbook?path=',
   // Rate limits from Moltbook API
   RATE_LIMITS: {
     POSTS: {
