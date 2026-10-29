@@ -372,6 +372,7 @@ export function importUserLibraryJson(raw: string): number {
       studioName: s.studioName || 'My Songs',
       genre,
       livecode: s.livecode,
+      revision: typeof s.revision === 'number' ? s.revision : 1,
       user: true,
       updatedAt: new Date().toISOString(),
     });
