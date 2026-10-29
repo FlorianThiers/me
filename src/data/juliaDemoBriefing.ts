@@ -118,6 +118,11 @@ export const demoSnapshot: JuliaSnapshot = {
     fiberG: 15,
     fiberTargetG: 30,
     movementMin: 0,
+    sleepHours: 7.2,
+    sleepTargetH: 7.5,
+    meditationMin: 10,
+    meditationStreakDays: 4,
+    moodScore: 4,
     lifeEntries: 6,
     pantryAlerts: [],
     microGaps: [

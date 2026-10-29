@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Activity, ChefHat, Home, Music, ArrowLeft } from 'lucide-react';
+import { Activity, ChefHat, Home, Music, ArrowLeft, Brain } from 'lucide-react';
 import { weekAnchors } from '../data/juliaDemoBriefing';
 import { useJuliaSnapshot } from '../hooks/useJuliaSnapshot';
 import { OrbitIcon } from '../components/orbit/icons/OrbitIcons';
@@ -11,8 +11,9 @@ import type { OrbitIconName } from '../components/orbit/icons/OrbitIcons';
 
 const toolLinks = [
   { to: '/sports', icon: Activity, labelKey: 'julia.lifeRhythm.links.sports' },
+  { to: '/topics/meditation', icon: Brain, labelKey: 'julia.lifeRhythm.links.meditation' },
   { to: '/cooking', icon: ChefHat, labelKey: 'julia.lifeRhythm.links.cooking' },
-  { to: '/garden-designer', icon: Home, labelKey: 'julia.lifeRhythm.links.garden' },
+  { to: '/garden-care', icon: Home, labelKey: 'julia.lifeRhythm.links.garden' },
   { to: '/music', icon: Music, labelKey: 'julia.lifeRhythm.links.music' },
 ] as const;
 

@@ -137,3 +137,46 @@ export async function addFood(date: string, presetKey: string): Promise<string> 
   });
   return page.id as string;
 }
+
+export type LifeLogCategory = 'Sleep' | 'Movement' | 'Meditation' | 'Mood';
+export type LifeIntensity = 'Sedentary' | 'Light' | 'Active';
+
+export async function addLifeLog(opts: {
+  date: string;
+  category: LifeLogCategory;
+  title: string;
+  minutes?: number;
+  energy?: number;
+  intensity?: LifeIntensity;
+  notes?: string;
+}): Promise<string> {
+  const dayId = await ensureLifeDay(opts.date);
+  const now = new Date().toISOString();
+  const props: Record<string, unknown> = {
+    Name: { title: [{ text: { content: opts.title.slice(0, 200) } }] },
+    Categorie: { select: { name: opts.category } },
+    'Entry type': { select: { name: 'Log' } },
+    Source: { select: { name: 'Manual' } },
+    'Life Day': { relation: [{ id: dayId }] },
+    Tijd: { date: { start: opts.date } },
+    Status: { select: { name: 'Captured' } },
+    Notes: {
+      rich_text: [{ text: { content: (opts.notes || `julia capture API · ${now}`).slice(0, 2000) } }],
+    },
+  };
+  if (typeof opts.minutes === 'number' && opts.minutes > 0) {
+    props['Duur (min)'] = { number: Math.round(opts.minutes) };
+  }
+  if (typeof opts.energy === 'number' && opts.energy >= 1 && opts.energy <= 5) {
+    props['Energie (1-5)'] = { number: Math.round(opts.energy) };
+  }
+  if (opts.intensity) {
+    props.Intensiteit = { select: { name: opts.intensity } };
+  }
+
+  const page = await notionRequest('POST', '/pages', {
+    parent: { database_id: LIFE_ENTRY_DB },
+    properties: props,
+  });
+  return page.id as string;
+}

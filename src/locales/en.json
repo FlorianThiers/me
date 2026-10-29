@@ -277,7 +277,31 @@
     },
     "links": {
       "wiki": "Mandelbrot on Wikipedia",
-      "gif": "Animated zoom"
+      "gif": "Animated zoom",
+      "squaredMosaic": "Squared mosaics — same neighborhood, different machine"
+    },
+    "explorer": {
+      "title": "Fractal explorer — Mandelbrot ↔ Julia",
+      "subtitle": "Move over the Mandelbrot set (or tap) to pick c. The matching Julia set updates on the right. Click in Julia to set z₀ and play the orbit.",
+      "mandelbrotPanel": "Parameter plane (c)",
+      "juliaPanel": "Dynamic plane (z)",
+      "mandelbrotAria": "Interactive Mandelbrot set, pick c",
+      "juliaAria": "Julia set for chosen c, pick starting z₀",
+      "mandelbrotHint": "Desktop: hover. Mobile: drag. White dot = current c.",
+      "juliaHint": "Green line = orbit z₀→z₁→… Red = current z. Gold dashed = φ spiral (reference).",
+      "connected": "c inside Mandelbrot — Julia is connected",
+      "dust": "c outside Mandelbrot — Julia dust",
+      "playOrbit": "Play orbit",
+      "pauseOrbit": "Pause",
+      "step": "Step {{current}} / {{max}}",
+      "spiralGuide": "φ spiral guide",
+      "goldenNote": "Fibonacci bulbs on the cardioid (1/2, 2/3, 3/5, 5/8…) approach the golden mean 1/φ. Log spirals on the set look golden but are usually not exact φ spirals — Siegel discs at golden mean are quasi-periodic.",
+      "juliaHub": "Julia hub — today's orbit",
+      "presetsLabel": "Presets",
+      "presets": {
+        "goldenMean": "Golden mean (1/φ)",
+        "fibonacci": "Fib {{num}}/{{den}}"
+      }
     },
     "strip": {
       "aria": "Fractal orbit links",
@@ -377,6 +401,86 @@
       }
     }
   },
+  "squaredMosaic": {
+    "back": "Back to Interests",
+    "title": "Secrets of the squared mosaic",
+    "subtitle": "Three drawings of one object — and an honest link to the Mandelbrot set on this site.",
+    "intro": "A squared mosaic tiles a rectangle with smaller squares. Unexpected silhouettes (a rabbit, a letter) can appear — not because the equations draw animals, but because consistent side lengths can outline a shape your eye already knows.",
+    "credit": "Inspired by popular explanations of squared rectangles and electric networks (e.g. Aiyopasta, Numberphile, Brooks–Smith–Stone–Tutte).",
+    "diagram": {
+      "aria": "Three views of the same structure: mosaic, electric network, circular network",
+      "mosaic": "Squared mosaic",
+      "mosaicHint": "Side lengths that fit",
+      "network": "Electric network",
+      "networkHint": "Currents = sizes",
+      "circular": "Circular network",
+      "circularHint": "Same graph in a disk"
+    },
+    "threeFaces": {
+      "title": "Three faces, one object",
+      "p1": "Horizontal seams become nodes. Each square becomes a wire (often resistance 1). Voltage height and current width must obey Kirchhoff — then the mosaic snaps into place.",
+      "p2": "The circular picture is usually not a second theory. It is the same planar network redrawn with boundary nodes on a circle (a circular planar network). Geometry vs wiring vs embedding — one correspondence.",
+      "p3": "That is the secret: mosaic, circuit, and circle are three interfaces to the same linear algebra."
+    },
+    "kirchhoff": {
+      "title": "Why the sizes are fixed",
+      "p1": "Current into a node equals current out — squares along a seam add up. Around a loop, voltage sums to zero — vertical joins match. Ohm links voltage drop to current.",
+      "p2": "So the network does not decorate the mosaic; it determines the mosaic. Design a graph, solve for currents, then draw squares.",
+      "p3": "Hidden shapes live in layer one (your silhouette reading). The math only sees positive consistent lengths."
+    },
+    "mandelbrotLink": {
+      "title": "How this couples to our Mandelbrot",
+      "p1": "On Orbit OS, Mandelbrot is the infinite learning map: zoom forever, every page a valley. Squared mosaics sit nearby because both are about structure that looks organic once you change the drawing — not because they are the same equation.",
+      "p2": "Honest link: Kirchhoff voltages are discrete harmonic functions (potential theory). Mandelbrot lives in complex dynamics. Same mathematical neighborhood — complex analysis / potential — different machines. A circular network morph can look Mandelbrot-like (body + bulbs + filaments); that is scale hierarchy plus pareidolia, not z²+c.",
+      "p3": "We keep this page next to The Set so the site can hold both: fractal metaphor for the journey, and linear networks for tilings that hide unexpected shapes."
+    },
+    "ctaMandelbrot": "Open the Mandelbrot hub",
+    "ctaHint": "Same Orbit OS path — different machine under the hood."
+  },
+  "careLayers": {
+    "back": "Back to Interests",
+    "title": "Caring without the fairy tale",
+    "subtitle": "One word, several layers — and why “are we just pretending?” is not a yes/no question.",
+    "intro": "Culture sells “love” as one feeling: the one, forever, proof enough. In practice, performance, arrangement, care, and a specific bond overlap. Confusion follows not because people are empty, but because we have too few words.",
+    "credit": "A mental model — not a biography, not a verdict on your relationship.",
+    "diagram": {
+      "aria": "Four concentric relationship layers plus shared reality at the center",
+      "myth": "Myth / performance",
+      "mythHint": "Scripts that keep the situation standing",
+      "arrangement": "Arrangement",
+      "arrangementHint": "Comfort, safety, image, fear of loss",
+      "care": "Care / attachment",
+      "careHint": "Tend, prefer, hurt when lost, a void that can shift",
+      "specific": "This particular bond",
+      "specificHint": "Unique contour — a replacement never feels the same",
+      "shared": "Shared reality",
+      "sharedHint": "What you both mean today — visible, not only slogans"
+    },
+    "bothAnd": {
+      "title": "Pretending and not",
+      "p1": "Yes: people perform — roles, timing, social expectation — to keep a situation upright.",
+      "p2": "No: not everything is theatre. Taking the question seriously already points past performance alone.",
+      "p3": "So the answer is both: performance holds frames; care and specific bonds stay real even when the myth is oversold."
+    },
+    "careShape": {
+      "title": "The shape of care",
+      "p1": "Without the fairy tale, “caring for” looks like attachment: you tend it, you like having it near, loss hurts, the need underneath can later land elsewhere.",
+      "p2": "Replacement fills the category, not the contour. “Never the same” is not proof of soulmates — it is proof of history.",
+      "p3": "With people a second will appears: choose, refuse, change. Care without treating the other as a tool stays ethics; extraction dressed as love stays extraction."
+    },
+    "oneWord": {
+      "title": "One word for too much",
+      "p1": "Sex, intimacy, loyalty, comfort, and “the one” often get stuffed under one label. They overlap sometimes; they are not the same.",
+      "p2": "Other cultures sometimes let love grow inside family or economic frames. We make romantic authenticity the entry ticket — then every wobble feels like fraud.",
+      "p3": "Distrust of the institution can be healthy. Cynicism that says nobody feels anything is another myth."
+    },
+    "sharedReality": {
+      "title": "Visibility over rulebooks",
+      "p1": "Thick rules — mono or poly — often stifle more than they protect when they try to solve fear that conversation did not.",
+      "p2": "More useful: what is allowed today in behaviour, not only in slogans; what happens when that changes; whether “I need this” means “then we do not fit”.",
+      "p3": "Shared reality is the care layer between people. Secret second worlds break that layer — whatever fairy tale you recited."
+    }
+  },
   "julia": {
     "badge": "Workflow OS · public demo",
     "badgeLive": "Workflow OS · live",
@@ -411,7 +515,11 @@
         "folate": "Folate"
       },
       "nutritionAnchor": "Nutrition {{pct}}%",
-      "movement": "{{min}} min movement"
+      "movement": "{{min}} min movement",
+      "sleep": "{{hours}}h sleep",
+      "meditation": "{{min}} min meditation",
+      "streak": "{{days}}d streak",
+      "mood": "mood {{score}}/5"
     },
     "mealPlan": {
       "title": "Menu (this week)",
@@ -422,7 +530,7 @@
       "start": "Listen",
       "stop": "Stop",
       "send": "Send",
-      "placeholder": "Type: glass of water, merci, what's for dinner…",
+      "placeholder": "Type: glass of water, slept 7 hours, walked 40 min, 10 min meditation…",
       "textMode": "Text mode",
       "firefoxHint": "Firefox and DuckDuckGo have no mic API — use the text field or quick buttons. TTS replies still work. Mic: Brave or Chrome/Edge.",
       "hints": "Quick buttons or type your question. Capture goes to Notion; free-form questions use the LLM pool.",
@@ -443,6 +551,9 @@
       "quick": {
         "water": "Water",
         "merci": "Merci",
+        "sleep": "Sleep",
+        "walk": "Walk",
+        "sit": "Sit",
         "meal": "Menu",
         "protein": "Protein"
       }
@@ -622,6 +733,7 @@
       },
       "links": {
         "sports": "Sports & movement",
+        "meditation": "Meditation",
         "cooking": "Cooking & nutrition",
         "garden": "Garden & home",
         "music": "Music"
@@ -724,6 +836,28 @@
         "Creative Techniques"
       ]
     },
+    "squaredMosaic": {
+      "title": "Squared mosaics",
+      "description": "How square tilings, electric networks, and circular drawings are one object — and why they sit next to the Mandelbrot set on this site.",
+      "details": [
+        "Square tilings",
+        "Kirchhoff networks",
+        "Hidden shapes",
+        "Orbit OS link"
+      ],
+      "explore": "Explore squared mosaics"
+    },
+    "careLayers": {
+      "title": "Caring without the fairy tale",
+      "description": "Why “are we just pretending?” is not yes/no — layers of performance, arrangement, care, and specific bond.",
+      "details": [
+        "Both/and",
+        "Care vs myth",
+        "One word, too much",
+        "Shared reality"
+      ],
+      "explore": "Explore care layers"
+    },
     "photography": {
       "title": "Photography",
       "description": "I enjoy capturing moments and exploring visual storytelling through photography and videography.",
@@ -816,6 +950,17 @@
         "Knowledge Exchange"
       ],
       "explore": "Open Moltbook Agent"
+    },
+    "buildingTogether": {
+      "title": "Building together",
+      "description": "I'm building several ventures — from water tech to urban sport — and I believe real jobs appear when a project grows, not the other way around. When a concrete role opens up, my network gets the first chance to help build it.",
+      "details": [
+        "Jobs from growth",
+        "Network first",
+        "Concrete roles",
+        "Flanders & Ghent",
+        "Ventures & friends"
+      ]
     },
     "howInterestsShape": {
       "title": "How These Interests Shape My Work",

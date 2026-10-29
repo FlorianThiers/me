@@ -278,7 +278,31 @@
     },
     "links": {
       "wiki": "Mandelbrot op Wikipedia",
-      "gif": "Geanimeerde zoom"
+      "gif": "Geanimeerde zoom",
+      "squaredMosaic": "Squared mosaics — dezelfde buurt, andere machine"
+    },
+    "explorer": {
+      "title": "Fractal explorer — Mandelbrot ↔ Julia",
+      "subtitle": "Beweeg over de Mandelbrot-set (of tik) om c te kiezen. Rechts zie je de bijbehorende Julia-set. Klik in Julia om z₀ te kiezen en speel de orbit af.",
+      "mandelbrotPanel": "Parameter-vlak (c)",
+      "juliaPanel": "Dynamisch vlak (z)",
+      "mandelbrotAria": "Interactieve Mandelbrot-set, kies c",
+      "juliaAria": "Julia-set voor gekozen c, kies startpunt z₀",
+      "mandelbrotHint": "Desktop: hover. Mobiel: sleep. Witte stip = huidige c.",
+      "juliaHint": "Groene lijn = orbit z₀→z₁→… Rood = huidige z. Gouden stippellijn = φ-spiraal (referentie).",
+      "connected": "c binnen Mandelbrot — Julia is samenhangend",
+      "dust": "c buiten Mandelbrot — Julia dust (losse stof)",
+      "playOrbit": "Speel orbit",
+      "pauseOrbit": "Pauze",
+      "step": "Stap {{current}} / {{max}}",
+      "spiralGuide": "φ-spiraal guide",
+      "goldenNote": "Fibonacci-bulbs op de cardioid (1/2, 2/3, 3/5, 5/8…) naderen de golden mean 1/φ. Log-spiralen op de set lijken op φ maar zijn meestal geen exacte golden spiral — wel quasi-periodieke Siegel-discs bij golden mean.",
+      "juliaHub": "Julia hub — orbit van vandaag",
+      "presetsLabel": "Presets",
+      "presets": {
+        "goldenMean": "Golden mean (1/φ)",
+        "fibonacci": "Fib {{num}}/{{den}}"
+      }
     },
     "strip": {
       "aria": "Fractal orbit links",
@@ -378,6 +402,86 @@
       }
     }
   },
+  "squaredMosaic": {
+    "back": "Terug naar Interests",
+    "title": "Secrets of the squared mosaic",
+    "subtitle": "Drie tekeningen van één object — en een eerlijke koppeling met de Mandelbrot-set op deze site.",
+    "intro": "Een squared mosaic betegelt een rechthoek met kleinere vierkanten. Onverwachte silhouetten (een konijn, een letter) kunnen verschijnen — niet omdat de vergelijkingen dieren tekenen, maar omdat consistente zijlengtes een vorm kunnen omlijnen die jouw oog al herkent.",
+    "credit": "Geïnspireerd door populaire uitleg van squared rectangles en elektrische netwerken (o.a. Aiyopasta, Numberphile, Brooks–Smith–Stone–Tutte).",
+    "diagram": {
+      "aria": "Drie views van dezelfde structuur: mozaïek, elektrisch netwerk, circulair netwerk",
+      "mosaic": "Squared mosaic",
+      "mosaicHint": "Zijlengtes die passen",
+      "network": "Elektrisch netwerk",
+      "networkHint": "Stromen = maten",
+      "circular": "Circulair netwerk",
+      "circularHint": "Zelfde graaf in een schijf"
+    },
+    "threeFaces": {
+      "title": "Drie gezichten, één object",
+      "p1": "Horizontale naden worden knopen. Elk vierkant wordt een draad (vaak weerstand 1). Spanningshoogte en stroombreedte moeten Kirchhoff volgen — dan valt de mozaïek op z'n plek.",
+      "p2": "Het cirkelbeeld is meestal geen tweede theorie. Het is hetzelfde planaire netwerk, opnieuw getekend met randknopen op een cirkel (circular planar network). Meetkunde vs bedrading vs embedding — één correspondentie.",
+      "p3": "Dat is het geheim: mozaïek, circuit en cirkel zijn drie interfaces op dezelfde lineaire algebra."
+    },
+    "kirchhoff": {
+      "title": "Waarom de maten vastliggen",
+      "p1": "Stroom in een knoop = stroom eruit — vierkanten langs een naad tellen op. Rond een lus is de spanningsomtrek nul — verticale aansluitingen kloppen. Ohm koppelt spanningsval aan stroom.",
+      "p2": "Het netwerk versiert de mozaïek dus niet; het bepaalt de mozaïek. Ontwerp een graaf, los stromen op, teken dan vierkanten.",
+      "p3": "Verborgen vormen zitten in laag één (jouw silhouet-lezing). De wiskunde ziet alleen positieve, consistente lengtes."
+    },
+    "mandelbrotLink": {
+      "title": "Hoe dit koppelt aan onze Mandelbrot",
+      "p1": "Op Orbit OS is Mandelbrot de oneindige leermap: zoom forever, elke pagina een vallei. Squared mosaics staan ernaast omdat beide over structuur gaan die organisch oogt zodra je de tekening wisselt — niet omdat het dezelfde vergelijking is.",
+      "p2": "Eerlijke link: Kirchhoff-spanningen zijn discrete harmonische functies (potentiaaltheorie). Mandelbrot leeft in complexe dynamica. Zelfde wiskundige buurt — complexe analyse / potentiaal — andere machines. Een circulaire netwerk-morph kan Mandelbrot-achtig ogen (romp + bollen + filamenten); dat is schaalhiërarchie plus pareidolia, geen z²+c.",
+      "p3": "We houden deze pagina naast The Set zodat de site beide kan dragen: fractale metafoor voor de reis, en lineaire netwerken voor tilings die onverwachte vormen verbergen."
+    },
+    "ctaMandelbrot": "Open de Mandelbrot-hub",
+    "ctaHint": "Zelfde Orbit OS-pad — andere machine onder de motorkap."
+  },
+  "careLayers": {
+    "back": "Terug naar Interests",
+    "title": "Houden van zonder sprookje",
+    "subtitle": "Eén woord, meerdere lagen — en waarom “doen we alsof?” geen ja/nee-vraag is.",
+    "intro": "Cultuur verkoopt “houden van” als één gevoel: de ware, forever, bewijs genoeg. In de praktijk overlappen prestatie, arrangement, zorg en een unieke band. Verwarring volgt niet omdat mensen leeg zijn, maar omdat we te weinig woorden hebben.",
+    "credit": "Een mentaal model — geen biografie, geen oordeel over jouw relatie.",
+    "diagram": {
+      "aria": "Vier concentrische lagen van relatie plus gedeelde werkelijkheid in het centrum",
+      "myth": "Mythe / performance",
+      "mythHint": "Scripts om de situatie in stand te houden",
+      "arrangement": "Arrangement",
+      "arrangementHint": "Comfort, veiligheid, imago, angst voor verlies",
+      "care": "Zorg / gehechtheid",
+      "careHint": "Verzorgen, graag zien, pijn bij verlies, leegte die kan verschuiven",
+      "specific": "Dit exemplaar",
+      "specificHint": "Unieke contour — vervanging voelt nooit hetzelfde",
+      "shared": "Gedeelde werkelijkheid",
+      "sharedHint": "Wat jullie vandaag allebei bedoelen — zichtbaar, niet alleen in slogans"
+    },
+    "bothAnd": {
+      "title": "Alsof én niet alsof",
+      "p1": "Ja: mensen doen alsof — rollen, timing, sociale verwachting — om een situatie overeind te houden.",
+      "p2": "Nee: niet alles is toneel. Wie die vraag serieus stelt, raakt al iets wat performance alleen niet verklaart.",
+      "p3": "Het antwoord is dus beide: performance houdt kaders overeind; zorg en specifieke banden blijven echt, ook als de mythe overdreven is."
+    },
+    "careShape": {
+      "title": "De vorm van zorg",
+      "p1": "Zonder sprookje lijkt “houden van” structureel op gehechtheid: je draagt er zorg voor, je ziet het graag, verlies doet pijn, de behoefte erachter kan later ergens anders landen.",
+      "p2": "Vervanging vult de categorie, niet de contour. Dat “nooit hetzelfde” is geen bewijs van soulmates — wel van geschiedenis.",
+      "p3": "Bij mensen komt er een tweede wil bij: kiezen, afwijzen, veranderen. Zorg zonder die ander tot gebruiksgoed te maken blijft ethiek; extractie vermomd als liefde blijft extractie."
+    },
+    "oneWord": {
+      "title": "Één woord voor te veel",
+      "p1": "Seks, intimiteit, loyaliteit, comfort en “de ware” worden vaak onder één label gepropt. Ze overlappen soms; ze zijn niet hetzelfde.",
+      "p2": "Andere culturen laten liefde soms groeien binnen familie- of economische kaders. Wij maken romantische authenticiteit tot toegangskaart — dan voelt elke wankeling als bedrog.",
+      "p3": "Wantrouwen in het instituut is dan gezond. Cynisme dat zegt dat niemand iets voelt, is een andere mythe."
+    },
+    "sharedReality": {
+      "title": "Zichtbaarheid boven reglement",
+      "p1": "Dikke regels — mono of poly — verstikken vaak meer dan ze beschermen wanneer ze angst moeten oplossen die gesprek niet oploste.",
+      "p2": "Bruikbaarder: wat mag vandaag in gedrag, niet alleen in slogans; wat gebeurt er als dat verandert; of “ik heb dit nodig” betekent “dan passen we niet”.",
+      "p3": "Gedeelde werkelijkheid is de zorg-laag tussen mensen. Geheime tweede werelden breken die laag — ongeacht welk sprookje jullie uitspraken."
+    }
+  },
   "julia": {
     "badge": "Workflow OS · publieke demo",
     "badgeLive": "Workflow OS · live",
@@ -412,7 +516,11 @@
         "folate": "Foliumzuur"
       },
       "nutritionAnchor": "Voeding {{pct}}%",
-      "movement": "{{min}} min beweging"
+      "movement": "{{min}} min beweging",
+      "sleep": "{{hours}}u slaap",
+      "meditation": "{{min}} min meditatie",
+      "streak": "{{days}}d streak",
+      "mood": "mood {{score}}/5"
     },
     "mealPlan": {
       "title": "Menu (deze week)",
@@ -423,7 +531,7 @@
       "start": "Luisteren",
       "stop": "Stop",
       "send": "Stuur",
-      "placeholder": "Typ: glas water, merci, wat eten we…",
+      "placeholder": "Typ: glas water, 7 uur geslapen, 40 min gewandeld, 10 min meditatie…",
       "textMode": "Tekstmodus",
       "firefoxHint": "Firefox en DuckDuckGo hebben geen mic-API — gebruik het tekstveld of de snelknoppen. TTS-antwoord werkt wel. Mic: Brave of Chrome/Edge.",
       "hints": "Snelknoppen of typ je vraag. Capture gaat naar Notion; vrije vragen via LLM-pool.",
@@ -444,6 +552,9 @@
       "quick": {
         "water": "Water",
         "merci": "Merci",
+        "sleep": "Slaap",
+        "walk": "Wandeling",
+        "sit": "Meditatie",
         "meal": "Menu",
         "protein": "Eiwit"
       }
@@ -623,6 +734,7 @@
       },
       "links": {
         "sports": "Sport & beweging",
+        "meditation": "Meditatie",
         "cooking": "Koken & voeding",
         "garden": "Tuin & huis",
         "music": "Muziek"
@@ -725,6 +837,28 @@
         "Creatieve Technieken"
       ]
     },
+    "squaredMosaic": {
+      "title": "Squared mosaics",
+      "description": "Hoe vierkanten-mozaïeken, elektrische netwerken en circulaire tekeningen één object zijn — en waarom ze naast de Mandelbrot-set op deze site staan.",
+      "details": [
+        "Vierkanten-tilings",
+        "Kirchhoff-netwerken",
+        "Verborgen vormen",
+        "Orbit OS-koppeling"
+      ],
+      "explore": "Verken squared mosaics"
+    },
+    "careLayers": {
+      "title": "Houden van zonder sprookje",
+      "description": "Waarom “doen we alsof?” geen ja/nee is — lagen van performance, arrangement, zorg en unieke band.",
+      "details": [
+        "Alsof én niet",
+        "Zorg vs mythe",
+        "Één woord, te veel",
+        "Gedeelde werkelijkheid"
+      ],
+      "explore": "Verken care layers"
+    },
     "photography": {
       "title": "Fotografie",
       "description": "Ik geniet van het vastleggen van momenten en het verkennen van visuele verhalen door fotografie en videografie.",
@@ -817,6 +951,17 @@
         "Kennisuitwisseling"
       ],
       "explore": "Open Moltbook Agent"
+    },
+    "buildingTogether": {
+      "title": "Samen bouwen",
+      "description": "Ik richt meerdere projecten op — van watertech tot urban sport — en geloof dat echte jobs ontstaan wanneer een venture groeit, niet andersom. Wanneer er een concrete rol is, krijgt mijn netwerk als eerste de kans mee te bouwen.",
+      "details": [
+        "Jobs door groei",
+        "Netwerk eerst",
+        "Concrete rollen",
+        "Vlaanderen & Gent",
+        "Ventures & vrienden"
+      ]
     },
     "howInterestsShape": {
       "title": "Hoe Deze Interesses Mijn Werk Vormen",

@@ -4,7 +4,7 @@ import { isPointInElement, snapToGrid, GRID_SIZE } from '../../utils/canvasUtils
 import { drawElement } from '../../utils/canvasUtils';
 import { isPointNear, calculateLineLength, calculateCircleArea, calculateRectangleArea, calculatePolygonArea, calculatePerimeter } from '../../utils/areaUtils';
 import { formatDimension, formatArea } from '../../utils/unitUtils';
-import { screenToWorld, worldToScreen, applyWheelNavigation } from '../../utils/viewUtils';
+import { screenToWorld, worldToScreen, applyWheelNavigation, zoomAtPoint } from '../../utils/viewUtils';
 import { getAdaptiveGridStep } from '../../utils/canvasUtils';
 import {
   createWallElementData,
@@ -90,6 +90,13 @@ export const DesignCanvas: React.FC<DesignCanvasProps> = ({
   const [spacePressed, setSpacePressed] = useState(false);
   const [altPressed, setAltPressed] = useState(false);
   const [openingHover, setOpeningHover] = useState<WallHit | null>(null);
+  const activePointersRef = useRef(new Map<number, { x: number; y: number }>());
+  const pinchRef = useRef<{
+    distance: number;
+    midX: number;
+    midY: number;
+    view: ViewState;
+  } | null>(null);
 
   const isPanMode = activeTool === 'hand' || spacePressed;
   const hitElements = sourceElements ?? elements;
@@ -528,6 +535,28 @@ export const DesignCanvas: React.FC<DesignCanvasProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
     canvas.setPointerCapture(e.pointerId);
+    activePointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    if (activePointersRef.current.size === 2) {
+      const pts = [...activePointersRef.current.values()];
+      const midX = (pts[0].x + pts[1].x) / 2;
+      const midY = (pts[0].y + pts[1].y) / 2;
+      const distance = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
+      const rect = canvas.getBoundingClientRect();
+      const sx = canvas.width / rect.width;
+      const sy = canvas.height / rect.height;
+      pinchRef.current = {
+        distance: Math.max(distance, 1),
+        midX: (midX - rect.left) * sx,
+        midY: (midY - rect.top) * sy,
+        view: { ...viewRef.current }
+      };
+      setIsPanning(false);
+      setIsDragging(false);
+      setIsDrawing(false);
+      e.preventDefault();
+      return;
+    }
 
     if (e.button === 1 || (e.button === 0 && isPanMode)) {
       setIsPanning(true);
@@ -619,6 +648,31 @@ export const DesignCanvas: React.FC<DesignCanvasProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    if (activePointersRef.current.has(e.pointerId)) {
+      activePointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    }
+
+    if (pinchRef.current && activePointersRef.current.size >= 2) {
+      const pts = [...activePointersRef.current.values()];
+      const midClientX = (pts[0].x + pts[1].x) / 2;
+      const midClientY = (pts[0].y + pts[1].y) / 2;
+      const distance = Math.max(Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y), 1);
+      const rect = canvas.getBoundingClientRect();
+      const sx = canvas.width / rect.width;
+      const sy = canvas.height / rect.height;
+      const midX = (midClientX - rect.left) * sx;
+      const midY = (midClientY - rect.top) * sy;
+      const factor = distance / pinchRef.current.distance;
+      const zoomed = zoomAtPoint(pinchRef.current.view, pinchRef.current.midX, pinchRef.current.midY, factor);
+      onViewStateChange({
+        ...zoomed,
+        panX: zoomed.panX + (midX - pinchRef.current.midX),
+        panY: zoomed.panY + (midY - pinchRef.current.midY)
+      });
+      e.preventDefault();
+      return;
+    }
+
     if (isPanning) {
       onViewStateChange({
         ...viewState,
@@ -677,6 +731,10 @@ export const DesignCanvas: React.FC<DesignCanvasProps> = ({
 
   const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
+    activePointersRef.current.delete(e.pointerId);
+    if (activePointersRef.current.size < 2) {
+      pinchRef.current = null;
+    }
     if (canvas?.hasPointerCapture(e.pointerId)) {
       canvas.releasePointerCapture(e.pointerId);
     }

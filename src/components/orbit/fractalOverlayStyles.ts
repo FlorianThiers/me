@@ -8,6 +8,9 @@ export const FRACTAL_OVERLAY: Record<FractalBackgroundKind, string> = {
     'absolute inset-0 bg-gradient-to-b from-dark-bg/84 via-dark-bg/72 to-dark-bg/93',
   orbitTrap:
     'absolute inset-0 bg-gradient-to-b from-dark-bg/88 via-dark-bg/76 to-dark-bg/95',
+  static:
+    'absolute inset-0 bg-gradient-to-b from-dark-bg/80 via-dark-bg/65 to-dark-bg/90',
+  none: '',
 };
 
 /** Opaque panel for orbit strip + long-scroll footer transition. */

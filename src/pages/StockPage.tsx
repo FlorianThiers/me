@@ -15,13 +15,18 @@ export const StockPage: React.FC = () => {
     <div className="relative min-h-screen pb-16">
       <div className="container-custom px-4 py-8 max-w-3xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-          <Link
-            to="/cooking"
-            className="inline-flex items-center gap-1 text-sm text-white/50 hover:text-orbit-cyan mb-4"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            {t('stock.backCooking')}
-          </Link>
+          <div className="flex items-center gap-4 mb-4">
+            <Link
+              to="/cooking"
+              className="inline-flex items-center gap-1 text-sm text-white/50 hover:text-orbit-cyan"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              {t('stock.backCooking')}
+            </Link>
+            <Link to="/garden-care" className="text-xs text-neon-green hover:text-neon-blue">
+              Garden care →
+            </Link>
+          </div>
           <div className="flex items-start justify-between gap-4 flex-wrap">
             <div>
               <div className="flex items-center gap-2 mb-2">

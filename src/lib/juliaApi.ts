@@ -22,6 +22,9 @@ function authHeaders(): HeadersInit {
   };
 }
 
+export type CaptureKind = 'water' | 'food' | 'sleep' | 'movement' | 'meditation' | 'mood';
+export type SportType = 'A' | 'B' | 'C' | 'D';
+
 export type CaptureResponse = {
   success: boolean;
   date?: string;
@@ -29,6 +32,12 @@ export type CaptureResponse = {
   waterL?: number;
   addedL?: number;
   entryId?: string;
+  hours?: number;
+  sleepHours?: number;
+  minutes?: number;
+  meditationMin?: number;
+  sportType?: SportType | null;
+  moodScore?: number;
   error?: string;
 };
 
@@ -49,9 +58,16 @@ async function readJson<T extends { success?: boolean; error?: string }>(
 export async function juliaCapture(
   payload: {
     date: string;
-    kind: 'water' | 'food';
+    kind: CaptureKind;
     liters?: number;
     preset?: string;
+    minutes?: number;
+    hours?: number;
+    sportType?: SportType;
+    energy?: number;
+    intensity?: 'Sedentary' | 'Light' | 'Active';
+    moodScore?: number;
+    moodNote?: string;
   },
   opts?: { signal?: AbortSignal },
 ): Promise<CaptureResponse> {
@@ -159,6 +175,10 @@ export function lifeSummaryLine(life?: JuliaLifeSnapshot): string | undefined {
   const parts: string[] = [];
   if (life.proteinG != null) parts.push(`eiwit ${Math.round(life.proteinG)}g`);
   if (life.waterL != null) parts.push(`water ${life.waterL}L`);
+  if (life.sleepHours) parts.push(`slaap ${life.sleepHours}u`);
+  if (life.movementMin) parts.push(`beweging ${life.movementMin}min`);
+  if (life.meditationMin) parts.push(`meditatie ${life.meditationMin}min`);
+  if (life.moodScore) parts.push(`mood ${life.moodScore}/5`);
   if (life.kcal != null) parts.push(`kcal ${Math.round(life.kcal)}`);
   if (life.mealTonight) parts.push(`avond ${life.mealTonight}`);
   else if (life.mealLunch) parts.push(`lunch ${life.mealLunch}`);

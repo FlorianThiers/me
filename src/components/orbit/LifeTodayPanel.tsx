@@ -84,6 +84,30 @@ export const LifeTodayPanel: React.FC<Props> = ({
         )}
       </div>
 
+      {(life.sleepHours || life.meditationMin) ? (
+        <div className="flex items-center justify-between text-xs text-white/50">
+          {life.sleepHours ? (
+            <span>{t('julia.lifeToday.sleep', { hours: life.sleepHours })}</span>
+          ) : (
+            <span />
+          )}
+          {(life.meditationMin ?? 0) > 0 && (
+            <span>
+              {t('julia.lifeToday.meditation', { min: life.meditationMin })}
+              {(life.meditationStreakDays ?? 0) > 0
+                ? ` · ${t('julia.lifeToday.streak', { days: life.meditationStreakDays })}`
+                : ''}
+            </span>
+          )}
+        </div>
+      ) : null}
+
+      {life.moodScore != null && life.moodScore > 0 && (
+        <div className="flex items-center gap-1.5 text-xs text-white/50">
+          <span>{t('julia.lifeToday.mood', { score: life.moodScore })}</span>
+        </div>
+      )}
+
       {life.pantryAlerts.length > 0 && (
         <ul className="space-y-1.5 border-t border-white/10 pt-3">
           {life.pantryAlerts.slice(0, 3).map((alert) => (

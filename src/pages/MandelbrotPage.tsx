@@ -9,6 +9,7 @@ import {
   PAGE_MANDELBROT,
   type MandelbrotSpotId,
 } from '../data/pageMandelbrotConfig';
+import { FractalExplorer } from '../components/fractal/FractalExplorer';
 
 function pagesForSpot(spotId: MandelbrotSpotId): string[] {
   return Object.entries(PAGE_MANDELBROT)
@@ -58,6 +59,14 @@ export const MandelbrotPage: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15 }}
+      >
+        <FractalExplorer />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
         className="mb-10"
       >
@@ -102,6 +111,13 @@ export const MandelbrotPage: React.FC = () => {
       </motion.div>
 
       <div className="flex flex-wrap justify-center gap-4 text-sm">
+        <Link
+          to="/squared-mosaic"
+          className="inline-flex items-center gap-1 text-white/50 hover:text-neon-green transition-colors"
+        >
+          {t('mandelbrot.links.squaredMosaic')}
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
         <a
           href="https://en.wikipedia.org/wiki/Mandelbrot_set"
           target="_blank"

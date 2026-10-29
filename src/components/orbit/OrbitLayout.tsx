@@ -1,24 +1,20 @@
-import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import { MandelbrotOrbBackground } from './MandelbrotOrbBackground';
-import { MandelbrotMorphOrbBackground } from './MandelbrotMorphOrbBackground';
-import { OrbitTrapOrbBackground } from './OrbitTrapOrbBackground';
+import React, { Suspense } from 'react';
+import { OrbitFractalBackground } from './OrbitFractalBackground';
 import { FractalOrbitStrip } from './FractalOrbitStrip';
 import { ORBIT_STRIP_PANEL } from './fractalOverlayStyles';
 import { getPageFractalConfig } from '../../data/pageMandelbrotConfig';
+import { Outlet, useLocation } from 'react-router-dom';
 
-/** Per-route fractal background + fractal strip. */
+/** Per-route fractal background + fractal strip. Backgrounds lazy-load Three.js. */
 export const OrbitLayout: React.FC = () => {
   const { pathname } = useLocation();
   const config = getPageFractalConfig(pathname);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      {config.kind === 'mandelbrotMorph' && <MandelbrotMorphOrbBackground />}
-      {config.kind === 'orbitTrap' && config.orbitTrap && (
-        <OrbitTrapOrbBackground {...config.orbitTrap} />
-      )}
-      {config.kind === 'mandelbrot' && <MandelbrotOrbBackground view={config.view} />}
+      <Suspense fallback={null}>
+        <OrbitFractalBackground config={config} />
+      </Suspense>
 
       <div className="relative z-10 pt-20 min-h-screen flex flex-col">
         <div className="flex-1">

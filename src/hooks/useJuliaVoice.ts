@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { JuliaLifeSnapshot } from '../types/juliaSnapshot';
 import { getJuliaApiKey, juliaCapture, juliaChat, lifeSummaryLine } from '../lib/juliaApi';
 import {
+  captureReply,
   getTtsEnabled,
   parseJuliaIntent,
   setTtsEnabled,
@@ -72,20 +73,22 @@ export function useJuliaVoice(life: JuliaLifeSnapshot | undefined, date: string)
         kind: parsed.captureKind,
         liters: parsed.liters,
         preset: parsed.preset,
+        minutes: parsed.minutes,
+        hours: parsed.hours,
+        sportType: parsed.sportType,
+        energy: parsed.energy,
+        intensity: parsed.intensity,
+        moodScore: parsed.moodScore,
+        moodNote: parsed.moodNote,
       });
       setBusy(false);
       if (!res.success) {
         setApiError(res.error ?? 'Capture mislukt');
         return;
       }
-      if (parsed.captureKind === 'water') {
-        const msg = `Water gelogd — totaal ${res.waterL ?? '?'} L in Notion.`;
-        setApiMessage(msg);
-        speakNl(`Water gelogd. Je zit aan ${res.waterL} liter.`);
-      } else {
-        setApiMessage('Merci gelogd in Notion.');
-        speakNl('Merci gelogd.');
-      }
+      const reply = captureReply(parsed, res);
+      setApiMessage(reply.text);
+      speakNl(reply.speak);
     },
     [date],
   );

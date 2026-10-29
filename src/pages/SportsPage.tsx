@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Activity, Mountain, Waves, Snowflake, MountainSnow, Zap, Music } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useJuliaSnapshot } from '../hooks/useJuliaSnapshot';
 
 export const SportsPage: React.FC = () => {
   const { t } = useTranslation();
+  const { snapshot } = useJuliaSnapshot();
 
   const sportKeys = ['slacklining', 'dailyTraining', 'dapoFlowStar', 'dancing', 'bouldering', 'snowboarding', 'surfing'];
   const sportIcons = [
@@ -58,6 +60,16 @@ export const SportsPage: React.FC = () => {
               <p className="text-lg text-white/80 max-w-3xl leading-relaxed">
                 {t('sports.subtitle')}
               </p>
+              {(snapshot.life?.movementMin || snapshot.sportTypeToday) && (
+                <p className="text-orbit-cyan text-sm mt-3">
+                  {snapshot.life?.movementMin
+                    ? t('julia.lifeToday.movement', { min: snapshot.life.movementMin })
+                    : null}
+                  {snapshot.sportTypeToday
+                    ? ` · ${t('julia.sportTypeToday', { type: snapshot.sportTypeToday })}`
+                    : null}
+                </p>
+              )}
             </div>
           </div>
         </div>

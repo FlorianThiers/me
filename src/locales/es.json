@@ -277,7 +277,32 @@
     },
     "links": {
       "wiki": "Mandelbrot en Wikipedia",
-      "gif": "Zoom animado"
+      "gif": "Zoom animado",
+      "squaredMosaic": "Mosaicos cuadrados — mismo barrio, otra máquina"
+    },
+    "explorer": {
+      "title": "Explorador fractal — Mandelbrot ↔ Julia",
+      "subtitle": "Pasa el ratón sobre el conjunto de Mandelbrot (o toca) para elegir c. A la derecha ves el Julia correspondiente. Haz clic en Julia para z₀ y reproduce la órbita.",
+      "mandelbrotPanel": "Plano de parámetros (c)",
+      "juliaPanel": "Plano dinámico (z)",
+      "mandelbrotAria": "Conjunto de Mandelbrot interactivo, elige c",
+      "juliaAria": "Conjunto de Julia para c elegido, elige z₀",
+      "mandelbrotHint": "Escritorio: hover. Móvil: arrastra. Punto blanco = c actual.",
+      "juliaHint": "Línea verde = órbita z₀→z₁→… Rojo = z actual. Oro = espiral φ (referencia).",
+      "connected": "c dentro de Mandelbrot — Julia conexo",
+      "dust": "c fuera de Mandelbrot — polvo Julia",
+      "playOrbit": "Reproducir órbita",
+      "pauseOrbit": "Pausa",
+      "step": "Paso {{current}} / {{max}}",
+      "spiralGuide": "Guía espiral φ",
+      "goldenNote": "Bulbos Fibonacci en la cardioide (1/2, 2/3, 3/5, 5/8…) se acercan a la media áurea 1/φ.",
+      "juliaHub": "Hub Julia — órbita de hoy",
+      "presetsLabel": "Presets",
+      "presetsLabel": "Presets",
+      "presets": {
+        "goldenMean": "Media áurea (1/φ)",
+        "fibonacci": "Fib {{num}}/{{den}}"
+      }
     },
     "strip": {
       "aria": "Enlaces fractal orbit",
@@ -378,6 +403,86 @@
       }
     }
   },
+  "squaredMosaic": {
+    "back": "Volver a Intereses",
+    "title": "Secretos del mosaico cuadrado",
+    "subtitle": "Tres dibujos de un solo objeto — y un vínculo honesto con el conjunto de Mandelbrot en este sitio.",
+    "intro": "Un mosaico cuadrado embaldosa un rectángulo con cuadrados más pequeños. Pueden aparecer siluetas inesperadas (un conejo, una letra) — no porque las ecuaciones dibujen animales, sino porque longitudes de lado coherentes pueden delinear una forma que tu ojo ya conoce.",
+    "credit": "Inspirado en explicaciones populares de squared rectangles y redes eléctricas (p. ej. Aiyopasta, Numberphile, Brooks–Smith–Stone–Tutte).",
+    "diagram": {
+      "aria": "Tres vistas de la misma estructura: mosaico, red eléctrica, red circular",
+      "mosaic": "Mosaico cuadrado",
+      "mosaicHint": "Lados que encajan",
+      "network": "Red eléctrica",
+      "networkHint": "Corrientes = tamaños",
+      "circular": "Red circular",
+      "circularHint": "El mismo grafo en un disco"
+    },
+    "threeFaces": {
+      "title": "Tres caras, un objeto",
+      "p1": "Las costuras horizontales se vuelven nodos. Cada cuadrado se vuelve un cable (a menudo resistencia 1). Altura de voltaje y ancho de corriente deben obedecer a Kirchhoff — entonces el mosaico encaja.",
+      "p2": "La imagen circular no suele ser una segunda teoría. Es la misma red planar redibujada con nodos de borde en un círculo (circular planar network). Geometría vs cableado vs embedding — una correspondencia.",
+      "p3": "Ese es el secreto: mosaico, circuito y círculo son tres interfaces a la misma álgebra lineal."
+    },
+    "kirchhoff": {
+      "title": "Por qué los tamaños están fijos",
+      "p1": "Corriente que entra en un nodo = corriente que sale — los cuadrados a lo largo de una costura suman. Alrededor de un bucle, el voltaje suma cero — los empalmes verticales coinciden. Ohm vincula la caída de voltaje a la corriente.",
+      "p2": "Así que la red no decora el mosaico; lo determina. Diseña un grafo, resuelve corrientes, luego dibuja cuadrados.",
+      "p3": "Las formas ocultas viven en la capa uno (tu lectura de silueta). La matemática solo ve longitudes positivas y coherentes."
+    },
+    "mandelbrotLink": {
+      "title": "Cómo se acopla a nuestro Mandelbrot",
+      "p1": "En Orbit OS, Mandelbrot es el mapa infinito de aprendizaje: zoom forever, cada página un valle. Los mosaicos cuadrados viven cerca porque ambos tratan de estructura que parece orgánica al cambiar el dibujo — no porque sean la misma ecuación.",
+      "p2": "Vínculo honesto: los voltajes de Kirchhoff son funciones armónicas discretas (teoría del potencial). Mandelbrot vive en dinámica compleja. Mismo barrio matemático — análisis complejo / potencial — máquinas distintas. Un morph de red circular puede parecer Mandelbrot (cuerpo + bulbos + filamentos); eso es jerarquía de escalas más pareidolia, no z²+c.",
+      "p3": "Mantenemos esta página junto a The Set para que el sitio sostenga ambos: metáfora fractal para el viaje, y redes lineales para embaldosados que ocultan formas inesperadas."
+    },
+    "ctaMandelbrot": "Abrir el hub de Mandelbrot",
+    "ctaHint": "Misma ruta Orbit OS — otra máquina bajo el capó."
+  },
+  "careLayers": {
+    "back": "Volver a Intereses",
+    "title": "Cuidar sin el cuento de hadas",
+    "subtitle": "Una palabra, varias capas — y por qué “¿solo fingimos?” no es sí/no.",
+    "intro": "La cultura vende “querer” como un solo sentimiento: el indicado, para siempre, prueba suficiente. En la práctica se solapan actuación, arreglo, cuidado y un vínculo concreto. La confusión no viene de que la gente esté vacía, sino de que nos faltan palabras.",
+    "credit": "Un modelo mental — no una biografía, no un veredicto sobre tu relación.",
+    "diagram": {
+      "aria": "Cuatro capas concéntricas de relación más realidad compartida en el centro",
+      "myth": "Mito / actuación",
+      "mythHint": "Guiones que sostienen la situación",
+      "arrangement": "Arreglo",
+      "arrangementHint": "Comodidad, seguridad, imagen, miedo a perder",
+      "care": "Cuidado / apego",
+      "careHint": "Cuidar, preferir, dolor al perder, un vacío que puede desplazarse",
+      "specific": "Este vínculo concreto",
+      "specificHint": "Contorno único — un reemplazo nunca se siente igual",
+      "shared": "Realidad compartida",
+      "sharedHint": "Lo que ambos quieren decir hoy — visible, no solo eslóganes"
+    },
+    "bothAnd": {
+      "title": "Fingir y no fingir",
+      "p1": "Sí: la gente actúa — roles, timing, expectativa social — para mantener una situación en pie.",
+      "p2": "No: no todo es teatro. Tomarse la pregunta en serio ya apunta más allá de la sola actuación.",
+      "p3": "Así que la respuesta es ambas: la actuación sostiene marcos; el cuidado y los vínculos concretos siguen siendo reales aunque el mito se venda de más."
+    },
+    "careShape": {
+      "title": "La forma del cuidado",
+      "p1": "Sin el cuento, “cuidar de” se parece al apego: lo atiendes, te gusta tenerlo cerca, la pérdida duele, la necesidad de fondo puede aterrizar luego en otro sitio.",
+      "p2": "El reemplazo llena la categoría, no el contorno. “Nunca igual” no prueba almas gemelas — prueba historia.",
+      "p3": "Con personas aparece una segunda voluntad: elegir, rechazar, cambiar. Cuidar sin tratar al otro como herramienta es ética; la extracción disfrazada de amor sigue siendo extracción."
+    },
+    "oneWord": {
+      "title": "Una palabra para demasiado",
+      "p1": "Sexo, intimidad, lealtad, comodidad y “el indicado” suelen meterse bajo una sola etiqueta. A veces se solapan; no son lo mismo.",
+      "p2": "Otras culturas a veces dejan crecer el amor dentro de marcos familiares o económicos. Nosotros hacemos de la autenticidad romántica la entrada — entonces cada bamboleo se siente como fraude.",
+      "p3": "Desconfiar de la institución puede ser sano. El cinismo que dice que nadie siente nada es otro mito."
+    },
+    "sharedReality": {
+      "title": "Visibilidad antes que reglamento",
+      "p1": "Reglas gruesas — mono o poli — a menudo ahogan más de lo que protegen cuando intentan resolver un miedo que la conversación no resolvió.",
+      "p2": "Más útil: qué está permitido hoy en conducta, no solo en eslóganes; qué pasa si eso cambia; si “necesito esto” significa “entonces no encajamos”.",
+      "p3": "La realidad compartida es la capa de cuidado entre personas. Segundos mundos secretos rompen esa capa — digan el cuento que digan."
+    }
+  },
   "julia": {
     "badge": "Workflow OS · demo pública",
     "badgeLive": "Workflow OS · en vivo",
@@ -412,7 +517,11 @@
         "folate": "Ácido fólico"
       },
       "nutritionAnchor": "Nutrición {{pct}}%",
-      "movement": "{{min}} min movimiento"
+      "movement": "{{min}} min movimiento",
+      "sleep": "{{hours}}h sueño",
+      "meditation": "{{min}} min meditación",
+      "streak": "{{days}}d racha",
+      "mood": "ánimo {{score}}/5"
     },
     "mealPlan": {
       "title": "Menú (esta semana)",
@@ -423,7 +532,7 @@
       "start": "Escuchar",
       "stop": "Parar",
       "send": "Enviar",
-      "placeholder": "Escribe: vaso de agua, merci, qué comemos…",
+      "placeholder": "Escribe: vaso de agua, 7 horas de sueño, 40 min caminando, 10 min meditación…",
       "textMode": "Modo texto",
       "firefoxHint": "Firefox y DuckDuckGo no tienen API de micrófono — usa el campo de texto o botones rápidos. TTS sí funciona. Mic: Brave o Chrome/Edge.",
       "hints": "Botones rápidos o escribe tu pregunta. Capture a Notion; preguntas libres vía pool LLM.",
@@ -438,6 +547,9 @@
       "quick": {
         "water": "Agua",
         "merci": "Merci",
+        "sleep": "Sueño",
+        "walk": "Caminar",
+        "sit": "Meditación",
         "meal": "Menú",
         "protein": "Proteína"
       }
@@ -600,6 +712,7 @@
       },
       "links": {
         "sports": "Deporte y movimiento",
+        "meditation": "Meditación",
         "cooking": "Cocina y nutrición",
         "garden": "Jardín y hogar",
         "music": "Música"
@@ -702,6 +815,28 @@
         "Técnicas Creativas"
       ]
     },
+    "squaredMosaic": {
+      "title": "Mosaicos cuadrados",
+      "description": "Cómo los embaldosados de cuadrados, las redes eléctricas y los dibujos circulares son un solo objeto — y por qué viven junto al conjunto de Mandelbrot en este sitio.",
+      "details": [
+        "Embaldosados",
+        "Redes de Kirchhoff",
+        "Formas ocultas",
+        "Vínculo Orbit OS"
+      ],
+      "explore": "Explorar mosaicos cuadrados"
+    },
+    "careLayers": {
+      "title": "Cuidar sin el cuento de hadas",
+      "description": "Por qué “¿solo fingimos?” no es sí/no — capas de actuación, arreglo, cuidado y vínculo concreto.",
+      "details": [
+        "Ambas cosas",
+        "Cuidado vs mito",
+        "Una palabra, demasiado",
+        "Realidad compartida"
+      ],
+      "explore": "Explorar capas de cuidado"
+    },
     "photography": {
       "title": "Fotografía",
       "description": "Disfruto capturando momentos y explorando la narrativa visual a través de la fotografía y videografía.",
@@ -794,6 +929,17 @@
         "Intercambio de Conocimientos"
       ],
       "explore": "Abrir Agente Moltbook"
+    },
+    "buildingTogether": {
+      "title": "Construir juntos",
+      "description": "Estoy levantando varios proyectos — de watertech a urban sport — y creo que los empleos reales surgen cuando crece un venture, no al revés. Cuando hay un rol concreto, mi red tiene la primera oportunidad de construir conmigo.",
+      "details": [
+        "Empleos por crecimiento",
+        "Red primero",
+        "Roles concretos",
+        "Flandes y Gante",
+        "Ventures y amigos"
+      ]
     },
     "howInterestsShape": {
       "title": "Cómo Estos Intereses Dan Forma a Mi Trabajo",

@@ -175,6 +175,98 @@ export function downloadPlanPng(opts: PlanExportOptions, filename?: string): boo
   return true;
 }
 
+/**
+ * Vector SVG of plan footprints (rects/circles/polygons/paths).
+ * Complex canvas styling is simplified; use PNG for pixel-perfect chrome.
+ */
+export function downloadPlanSvg(opts: PlanExportOptions, filename?: string): boolean {
+  const {
+    designData,
+    elements,
+    title = designData.name,
+    paddingPx = 40,
+    chromePx = 72,
+    background = '#ffffff',
+  } = opts;
+
+  const visible = visibleElements(elements, designData.layerVisibility);
+  const bounds = getElementsBounds(visible);
+  if (!bounds) return false;
+
+  const contentW = Math.max(bounds.maxX - bounds.minX, 100);
+  const contentH = Math.max(bounds.maxY - bounds.minY, 100);
+  const width = Math.ceil(contentW + paddingPx * 2);
+  const height = Math.ceil(contentH + paddingPx * 2 + chromePx);
+  const ox = paddingPx - bounds.minX;
+  const oy = paddingPx + chromePx - 24 - bounds.minY;
+  const dateStr = new Date().toLocaleDateString('nl-BE');
+
+  const shapes = visible
+    .map((el) => elementToSvg(el, ox, oy))
+    .filter(Boolean)
+    .join('\n');
+
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+  <rect width="100%" height="100%" fill="${background}"/>
+  <text x="${paddingPx}" y="28" font-family="system-ui,sans-serif" font-size="18" font-weight="700" fill="#111827">${escapeHtml(title)}</text>
+  <text x="${paddingPx}" y="48" font-family="system-ui,sans-serif" font-size="12" fill="#4b5563">Verbouwingsplan · ${dateStr} · SVG</text>
+  <g id="plan">
+${shapes}
+  </g>
+  <text x="${paddingPx}" y="${height - 16}" font-family="system-ui,sans-serif" font-size="11" fill="#111827">1 ${designData.scale.unit} = ${designData.scale.pixelsPerUnit} px</text>
+</svg>`;
+
+  const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename ?? `${sanitizeFilename(opts.designData.name)}-plan.svg`;
+  link.click();
+  URL.revokeObjectURL(url);
+  return true;
+}
+
+function elementToSvg(el: DesignElement, ox: number, oy: number): string {
+  const fill = el.properties.fillColor ?? 'none';
+  const stroke = el.properties.strokeColor ?? '#111827';
+  const sw = el.properties.strokeWidth ?? 1.5;
+  const rot = el.rotation ?? 0;
+  const cx = el.x + el.width / 2;
+  const cy = el.y + el.height / 2;
+  const transform =
+    rot !== 0
+      ? ` transform="rotate(${rot} ${ox + cx} ${oy + cy})"`
+      : '';
+
+  if (el.type === 'circle') {
+    const r = Math.max(el.width, el.height) / 2;
+    return `    <circle cx="${ox + cx}" cy="${oy + cy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"${transform}/>`;
+  }
+
+  if (el.type === 'line' && el.properties.path && el.properties.path.length >= 2) {
+    const d = el.properties.path
+      .map((p, i) => `${i === 0 ? 'M' : 'L'} ${ox + p.x} ${oy + p.y}`)
+      .join(' ');
+    return `    <path d="${d}" fill="none" stroke="${stroke}" stroke-width="${sw}"/>`;
+  }
+
+  if ((el.type === 'polygon' || el.type === 'freehand' || el.type === 'library-item') && el.properties.points?.length) {
+    const pts = el.properties.points.map((p) => `${ox + p.x},${oy + p.y}`).join(' ');
+    return `    <polygon points="${pts}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"${transform}/>`;
+  }
+
+  if (el.properties.path?.length) {
+    const d = el.properties.path
+      .map((p, i) => `${i === 0 ? 'M' : 'L'} ${ox + p.x} ${oy + p.y}`)
+      .join(' ');
+    return `    <path d="${d}" fill="${fill === 'none' ? 'none' : fill}" stroke="${stroke}" stroke-width="${sw}"/>`;
+  }
+
+  // rectangle / default footprint
+  return `    <rect x="${ox + el.x}" y="${oy + el.y}" width="${Math.max(el.width, 1)}" height="${Math.max(el.height, 1)}" fill="${fill}" stroke="${stroke}" stroke-width="${sw}"${transform}/>`;
+}
+
 /** Open a print window so the user can Save as PDF (no extra dependency). */
 export function printPlanPdf(opts: PlanExportOptions): boolean {
   const canvas = renderPlanCanvas(opts);

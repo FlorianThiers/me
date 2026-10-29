@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat, Calendar, Home, TrendingUp, MessageSquare, Orbit } from 'lucide-react';
+import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat, Calendar, Home, TrendingUp, MessageSquare, Orbit, Handshake, Grid3x3, Layers } from 'lucide-react';
 import { ChakraCalendar } from '../components/ChakraCalendar';
 import { DevelopmentNoticePopup } from '../components/DevelopmentNoticePopup';
 
@@ -75,6 +75,24 @@ export const InterestsPage: React.FC = () => {
       explore: t('interests.music.explore')
     },
     {
+      key: 'squaredMosaic',
+      icon: <Grid3x3 className="w-8 h-8" />,
+      title: t('interests.squaredMosaic.title'),
+      description: t('interests.squaredMosaic.description'),
+      details: t('interests.squaredMosaic.details', { returnObjects: true }) as string[],
+      link: '/squared-mosaic',
+      explore: t('interests.squaredMosaic.explore')
+    },
+    {
+      key: 'careLayers',
+      icon: <Layers className="w-8 h-8" />,
+      title: t('interests.careLayers.title'),
+      description: t('interests.careLayers.description'),
+      details: t('interests.careLayers.details', { returnObjects: true }) as string[],
+      link: '/care-layers',
+      explore: t('interests.careLayers.explore')
+    },
+    {
       key: 'learning',
       icon: <BookOpen className="w-8 h-8" />,
       title: t('interests.learning.title'),
@@ -142,6 +160,13 @@ export const InterestsPage: React.FC = () => {
       details: t('interests.moltbook.details', { returnObjects: true }) as string[],
       link: '/moltbook',
       explore: t('interests.moltbook.explore')
+    },
+    {
+      key: 'buildingTogether',
+      icon: <Handshake className="w-8 h-8" />,
+      title: t('interests.buildingTogether.title'),
+      description: t('interests.buildingTogether.description'),
+      details: t('interests.buildingTogether.details', { returnObjects: true }) as string[]
     },
 
   ];

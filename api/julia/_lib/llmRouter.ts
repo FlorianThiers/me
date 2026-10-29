@@ -111,7 +111,7 @@ export async function routeChat(
 ): Promise<ChatResult> {
   const usage = await loadUsage(context.date);
   const system = [
-    'Je bent Julia, een beknopte NL-BE assistent voor Life OS (voeding, water, dagritme).',
+    'Je bent Julia, een beknopte NL-BE assistent voor Life OS (voeding, water, slaap, beweging, meditatie).',
     'Geef korte, praktische antwoorden. Geen medisch advies. Geen code of deploy.',
     context.lifeSummary ? `Context vandaag: ${context.lifeSummary}` : '',
   ]

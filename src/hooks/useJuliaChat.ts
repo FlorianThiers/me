@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { JuliaLifeSnapshot } from '../types/juliaSnapshot';
 import { getJuliaApiKey, juliaCapture, juliaChat, lifeSummaryLine } from '../lib/juliaApi';
 import {
+  captureReply,
   getTtsEnabled,
   parseJuliaIntent,
   setTtsEnabled,
@@ -170,6 +171,13 @@ export function useJuliaChat(life: JuliaLifeSnapshot | undefined, date: string) 
               kind: parsed.captureKind,
               liters: parsed.liters,
               preset: parsed.preset,
+              minutes: parsed.minutes,
+              hours: parsed.hours,
+              sportType: parsed.sportType,
+              energy: parsed.energy,
+              intensity: parsed.intensity,
+              moodScore: parsed.moodScore,
+              moodNote: parsed.moodNote,
             },
             { signal: ac.signal },
           );
@@ -199,26 +207,19 @@ export function useJuliaChat(life: JuliaLifeSnapshot | undefined, date: string) 
             ]);
             return;
           }
-          const content =
-            parsed.captureKind === 'water'
-              ? `Water gelogd — totaal ${res.waterL ?? '?'} L in Notion.`
-              : 'Merci gelogd in Notion.';
+          const reply = captureReply(parsed, res);
           setMessages((prev) => [
             ...prev,
             {
               id: uid(),
               role: 'assistant',
-              content,
+              content: reply.text,
               createdAt: Date.now(),
               status: 'done',
               meta: parsed.label,
             },
           ]);
-          speakNl(
-            parsed.captureKind === 'water'
-              ? `Water gelogd. Je zit aan ${res.waterL} liter.`
-              : 'Merci gelogd.',
-          );
+          speakNl(reply.speak);
           return;
         }
 

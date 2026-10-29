@@ -23,16 +23,17 @@ export const FractalOrbitStrip: React.FC<Props> = ({
   const { t } = useTranslation();
   const isJulia = pagePath.startsWith('/julia');
   const isMandelbrot = pagePath === '/mandelbrot';
-  const isOrbitTrap = fractalKind === 'orbitTrap' && orbitTrap;
+  const isOrbitTrap = Boolean(orbitTrap) && fractalKind !== 'none';
+  const trap = orbitTrap;
 
   const locationLabel = isMandelbrot
-    ? t('mandelbrot.strip.tourLabel')
-    : isOrbitTrap
-      ? t(`mandelbrot.orbitTraps.${orbitTrap.labelKey}.label`)
+    ? t('mandelbrot.explorer.title')
+    : isOrbitTrap && trap
+      ? t(`mandelbrot.orbitTraps.${trap.labelKey}.label`)
       : t(view.nameKey);
 
-  const metaphor = isOrbitTrap
-    ? t(`mandelbrot.orbitTraps.${orbitTrap.metaphorKey}.metaphor`)
+  const metaphor = isOrbitTrap && trap
+    ? t(`mandelbrot.orbitTraps.${trap.metaphorKey}.metaphor`)
     : t(view.metaphorKey);
 
   return (

@@ -2,11 +2,13 @@ import { ORBIT_TRAP_BY_ROUTE, resolveOrbitTrap, type OrbitTrapSettings } from '.
 
 /**
  * Per-page fractal backgrounds:
- * - mandelbrot: ONE fixed valley, local breathe / rotate / colour
- * - mandelbrotMorph: hub tour through all valleys (/mandelbrot only)
- * - orbitTrap: Julia orbit trap variants (see orbitTrapPresets.ts)
+ * - static: one-shot CPU image (default — no WebGL loop)
+ * - mandelbrot: live WebGL valley (opt-in only)
+ * - mandelbrotMorph: hub tour (legacy)
+ * - orbitTrap: Julia orbit trap WebGL (legacy — use static + strip label)
+ * - none: plain dark background (legacy escape hatch)
  */
-export type FractalBackgroundKind = 'mandelbrot' | 'mandelbrotMorph' | 'orbitTrap';
+export type FractalBackgroundKind = 'static' | 'mandelbrot' | 'mandelbrotMorph' | 'orbitTrap' | 'none';
 
 export type MandelbrotSpotId =
   | 'overview'
@@ -48,7 +50,7 @@ const spot = (
   rotationSpeed: 0.04,
   zoomSpeed: 0.55,
   colorPhase: 0,
-  iterations: 150,
+  iterations: 96,
   nameKey: `mandelbrot.locations.${id}.name`,
   metaphorKey: `mandelbrot.locations.${id}.metaphor`,
   ...overrides,
@@ -118,7 +120,8 @@ export const MANDELBROT_MORPH_TOUR: Pick<
 export const ORBIT_TRAP_ROUTES = Object.keys(ORBIT_TRAP_BY_ROUTE);
 
 export const PAGE_MANDELBROT: Record<string, PageFractalEntry> = {
-  '/mandelbrot': { spotId: 'overview', fractalKind: 'mandelbrotMorph' },
+  '/mandelbrot': { spotId: 'overview', fractalKind: 'static' },
+  '/squared-mosaic': { spotId: 'seahorse', zoomLevel: 2.6, colorPhase: 0.4 },
   '/cv': { spotId: 'overview', colorPhase: 0.1 },
   '/portfolio': { spotId: 'mini' },
   '/skills': { spotId: 'seahorse' },
@@ -163,12 +166,11 @@ export function getMandelbrotViewForPath(pathname: string): MandelbrotViewConfig
 export function getPageFractalConfig(pathname: string): PageFractalConfig {
   const entry = PAGE_MANDELBROT[pathname] ?? DEFAULT_PAGE;
   const orbitTrap = resolveOrbitTrap(pathname);
-  const kind =
-    entry.fractalKind ?? (orbitTrap ? 'orbitTrap' : 'mandelbrot');
+  const kind: FractalBackgroundKind = entry.fractalKind ?? 'static';
 
   return {
     kind,
     view: getMandelbrotViewForPath(pathname),
-    orbitTrap: kind === 'orbitTrap' ? orbitTrap : undefined,
+    orbitTrap,
   };
 }

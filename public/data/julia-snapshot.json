@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-10T08:10:52+02:00",
-  "date": "2026-08-10",
+  "generatedAt": "2026-10-27T12:24:49+01:00",
+  "date": "2026-10-27",
   "greeting": "Goedemorgen. Vier intents, één rode draad.",
   "workTop3": [
     "Platform release and integration",
@@ -70,7 +70,13 @@
     },
     "movementMin": 0,
     "lifeEntries": 0,
-    "pantryAlerts": [],
+    "pantryAlerts": [
+      "Gehakt tartaar (varken) — THT 2026-10-07",
+      "Camembert — THT 2026-10-08",
+      "Kipfilet (koelkast) — THT 2026-10-09",
+      "Kippenbillen met vel — THT 2026-10-10",
+      "Zalm — THT 2026-10-10"
+    ],
     "micro": null,
     "microGaps": null,
     "mealPlan": null

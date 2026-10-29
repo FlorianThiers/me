@@ -36,7 +36,7 @@ import {
 } from '../utils/gardenAutosave';
 import { DEFAULT_WALL_THICKNESS_CM } from '../utils/wallUtils';
 import { DEFAULT_DOOR_WIDTH_CM, DEFAULT_WINDOW_WIDTH_CM } from '../utils/openingUtils';
-import { downloadPlanPng, printPlanPdf } from '../utils/gardenExport';
+import { downloadPlanPng, downloadPlanSvg, printPlanPdf } from '../utils/gardenExport';
 
 const DESIGN_VERSION = '1.1';
 
@@ -749,6 +749,13 @@ export const GardenDesignPage: React.FC = () => {
     else setAutosaveHint('Print/PDF geopend');
   };
 
+  const handleExportSvg = () => {
+    const ok = downloadPlanSvg(exportOpts());
+    setExportOpen(false);
+    if (!ok) alert('Geen objecten om te exporteren — teken eerst een plan.');
+    else setAutosaveHint('SVG geëxporteerd');
+  };
+
   const handleLoad = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -827,32 +834,33 @@ export const GardenDesignPage: React.FC = () => {
       )}
 
       {/* Compact Header - Starts below navigation */}
-      <div className="flex items-center justify-between px-4 py-2 bg-dark-secondary/80 backdrop-blur-sm border-b border-white/10 z-20 h-12">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between gap-2 px-2 sm:px-4 py-2 bg-dark-secondary/80 backdrop-blur-sm border-b border-white/10 z-20 min-h-12">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0 shrink">
           <Link
             to="/interests"
-            className="p-2 rounded-lg bg-dark-secondary/50 border border-white/10 hover:border-neon-green/50 transition-all duration-300"
+            className="p-2.5 sm:p-2 rounded-lg bg-dark-secondary/50 border border-white/10 hover:border-neon-green/50 transition-all duration-300 touch-manipulation"
+            aria-label="Terug"
           >
             <ArrowLeft className="w-5 h-5 text-white" />
           </Link>
-          <div>
-            <h1 className="text-xl font-bold text-white flex items-center gap-2">
-              <Home className="w-5 h-5 text-neon-green/80" />
-              {designData.name}
+          <div className="min-w-0">
+            <h1 className="text-base sm:text-xl font-bold text-white flex items-center gap-2 truncate">
+              <Home className="w-5 h-5 text-neon-green/80 shrink-0" />
+              <span className="truncate">{designData.name}</span>
             </h1>
           </div>
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-1.5 sm:gap-2 items-center overflow-x-auto max-w-[65%] sm:max-w-none pb-0.5 touch-pan-x">
           {autosaveHint && !pendingAutosave && (
-            <span className="text-white/40 text-xs hidden md:inline">{autosaveHint}</span>
+            <span className="text-white/40 text-xs hidden lg:inline shrink-0">{autosaveHint}</span>
           )}
           <ViewModeToggle viewMode={viewMode} onChange={setViewMode} />
           {showPlan && (
             <PlanProjectionToggle projection={planProjection} onChange={handlePlanProjectionChange} />
           )}
-          <label className="cursor-pointer px-3 py-1.5 bg-dark-secondary border border-white/20 rounded-lg text-white hover:border-neon-green/50 transition-all duration-300 flex items-center gap-2 text-sm">
+          <label className="cursor-pointer px-2.5 sm:px-3 py-2 sm:py-1.5 bg-dark-secondary border border-white/20 rounded-lg text-white hover:border-neon-green/50 transition-all duration-300 flex items-center gap-2 text-sm shrink-0 touch-manipulation">
             <Upload className="w-4 h-4" />
-            Openen
+            <span className="hidden sm:inline">Openen</span>
             <input
               type="file"
               accept=".json"
@@ -860,29 +868,37 @@ export const GardenDesignPage: React.FC = () => {
               className="hidden"
             />
           </label>
-          <div className="relative">
+          <div className="relative shrink-0">
             <button
               type="button"
               onClick={() => setExportOpen(v => !v)}
-              className="px-3 py-1.5 bg-dark-secondary border border-white/20 rounded-lg text-white hover:border-neon-green/50 transition-all duration-300 flex items-center gap-2 text-sm"
+              className="px-2.5 sm:px-3 py-2 sm:py-1.5 bg-dark-secondary border border-white/20 rounded-lg text-white hover:border-neon-green/50 transition-all duration-300 flex items-center gap-2 text-sm touch-manipulation"
             >
               <FileImage className="w-4 h-4" />
-              Export
+              <span className="hidden sm:inline">Export</span>
             </button>
             {exportOpen && (
               <div className="absolute right-0 top-full mt-1 z-40 min-w-[180px] rounded-lg border border-white/15 bg-dark-secondary shadow-xl py-1">
                 <button
                   type="button"
                   onClick={handleExportPng}
-                  className="w-full px-3 py-2 text-left text-sm text-white/90 hover:bg-white/5 flex items-center gap-2"
+                  className="w-full px-3 py-2.5 text-left text-sm text-white/90 hover:bg-white/5 flex items-center gap-2 touch-manipulation"
                 >
                   <FileImage className="w-4 h-4 text-neon-green" />
                   PNG met schaal
                 </button>
                 <button
                   type="button"
+                  onClick={handleExportSvg}
+                  className="w-full px-3 py-2.5 text-left text-sm text-white/90 hover:bg-white/5 flex items-center gap-2 touch-manipulation"
+                >
+                  <FileText className="w-4 h-4 text-neon-green" />
+                  SVG (vector)
+                </button>
+                <button
+                  type="button"
                   onClick={handleExportPdf}
-                  className="w-full px-3 py-2 text-left text-sm text-white/90 hover:bg-white/5 flex items-center gap-2"
+                  className="w-full px-3 py-2.5 text-left text-sm text-white/90 hover:bg-white/5 flex items-center gap-2 touch-manipulation"
                 >
                   <FileText className="w-4 h-4 text-neon-green" />
                   PDF (print)
@@ -892,10 +908,10 @@ export const GardenDesignPage: React.FC = () => {
           </div>
           <button
             onClick={handleSave}
-            className="px-3 py-1.5 bg-neon-green/20 border border-neon-green/50 rounded-lg text-neon-green hover:bg-neon-green/30 transition-all duration-300 flex items-center gap-2 text-sm"
+            className="px-2.5 sm:px-3 py-2 sm:py-1.5 bg-neon-green/20 border border-neon-green/50 rounded-lg text-neon-green hover:bg-neon-green/30 transition-all duration-300 flex items-center gap-2 text-sm shrink-0 touch-manipulation"
           >
             <Download className="w-4 h-4" />
-            {t('gardenDesign.save')}
+            <span className="hidden sm:inline">{t('gardenDesign.save')}</span>
           </button>
         </div>
       </div>
@@ -1086,7 +1102,8 @@ export const GardenDesignPage: React.FC = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => setLeftPanelOpen(true)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-dark-secondary/90 backdrop-blur-sm border border-white/10 rounded-lg hover:border-neon-green/50 transition-all duration-300 shadow-lg"
+            className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-40 p-3.5 sm:p-3 min-w-11 min-h-11 bg-dark-secondary/90 backdrop-blur-sm border border-white/10 rounded-lg hover:border-neon-green/50 transition-all duration-300 shadow-lg touch-manipulation"
+            aria-label="Tools openen"
           >
             <ChevronRight className="w-5 h-5 text-white" />
           </motion.button>
@@ -1097,7 +1114,8 @@ export const GardenDesignPage: React.FC = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => setRightPanelOpen(true)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 bg-dark-secondary/90 backdrop-blur-sm border border-white/10 rounded-lg hover:border-neon-green/50 transition-all duration-300 shadow-lg"
+            className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-40 p-3.5 sm:p-3 min-w-11 min-h-11 bg-dark-secondary/90 backdrop-blur-sm border border-white/10 rounded-lg hover:border-neon-green/50 transition-all duration-300 shadow-lg touch-manipulation"
+            aria-label="Objecten openen"
           >
             <ChevronLeft className="w-5 h-5 text-white" />
           </motion.button>

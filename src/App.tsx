@@ -1,49 +1,63 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Suspense, useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './i18n';
 import { Navigation } from './components/Navigation';
-import { OrbitLayout } from './components/orbit/OrbitLayout';
-import { HomePage } from './pages/HomePage';
-import { PortfolioPage } from './pages/PortfolioPage';
-import { SkillsPage } from './pages/SkillsPage';
-import { JourneyPage } from './pages/JourneyPage';
-import { GoalsPage } from './pages/GoalsPage';
-import { InterestsPage } from './pages/InterestsPage';
-import { MindComputerPage } from './pages/MindComputerPage';
-import { CarlJungPage } from './pages/philosophers/CarlJungPage';
-import { WilliamJamesPage } from './pages/philosophers/WilliamJamesPage';
-import { SigmundFreudPage } from './pages/philosophers/SigmundFreudPage';
-import { AlanTuringPage } from './pages/philosophers/AlanTuringPage';
-import { ItzhakBentovPage } from './pages/philosophers/ItzhakBentovPage';
-import { SubstancesPage } from './pages/topics/SubstancesPage';
-import { MeditationPage } from './pages/topics/MeditationPage';
-import { QuantumPage } from './pages/topics/QuantumPage';
-import { AIConsciousnessPage } from './pages/topics/AIConsciousnessPage';
-import { NeuralNetworksPage } from './pages/topics/NeuralNetworksPage';
-import { ConsciousnessExpansionPage } from './pages/topics/ConsciousnessExpansionPage';
-import { MusicPage } from './pages/MusicPage';
-import { SportsPage } from './pages/SportsPage';
-import { DapoFlowStarPage } from './pages/sports/DapoFlowStarPage';
-import { DancingPage } from './pages/sports/DancingPage';
-import { CultivationPage } from './pages/CultivationPage';
-import { CookingPage } from './pages/CookingPage';
-import { GardenDesignPage } from './pages/GardenDesignPage';
-import { BeleggenPage } from './pages/BeleggenPage';
-import { MoltbookPage } from './pages/MoltbookPage';
-import { MandelbrotPage } from './pages/MandelbrotPage';
-import { JuliaPage } from './pages/JuliaPage';
-import { JuliaUsagePage } from './pages/JuliaUsagePage';
-import { StockPage } from './pages/StockPage';
-import { LifeRhythmPage } from './pages/LifeRhythmPage';
-import { CvPage } from './pages/CvPage';
+import {
+  HomePage,
+  PortfolioPage,
+  SkillsPage,
+  JourneyPage,
+  GoalsPage,
+  InterestsPage,
+  MindComputerPage,
+  CarlJungPage,
+  WilliamJamesPage,
+  SigmundFreudPage,
+  AlanTuringPage,
+  ItzhakBentovPage,
+  SubstancesPage,
+  MeditationPage,
+  QuantumPage,
+  AIConsciousnessPage,
+  NeuralNetworksPage,
+  ConsciousnessExpansionPage,
+  MusicPage,
+  SportsPage,
+  DapoFlowStarPage,
+  DancingPage,
+  CultivationPage,
+  CookingPage,
+  GardenDesignPage,
+  GardenCarePage,
+  BeleggenPage,
+  MoltbookPage,
+  MandelbrotPage,
+  SquaredMosaicPage,
+  CareLayersPage,
+  JuliaPage,
+  JuliaUsagePage,
+  StockPage,
+  LifeRhythmPage,
+  CvPage,
+  OrbitLayout,
+  OrbitRouterPage,
+} from './pages/lazyPages';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollToTopButton } from './components/ScrollToTopButton';
 
-function App() {
+const PageFallback = () => (
+  <div className="min-h-[40vh] flex items-center justify-center text-white/35 text-sm" aria-hidden="true">
+    …
+  </div>
+);
+
+function AppShell() {
   const { i18n } = useTranslation();
+  const { pathname } = useLocation();
   const [currentLanguage, setCurrentLanguage] = useState('en');
+  const studio = pathname === '/music';
 
   const handleLanguageChange = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -55,18 +69,19 @@ function App() {
   }, [i18n.language]);
 
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="App relative">
-        <Navigation
-          onLanguageChange={handleLanguageChange}
-          currentLanguage={currentLanguage}
-        />
+    <div className="App relative">
+      <Navigation
+        onLanguageChange={handleLanguageChange}
+        currentLanguage={currentLanguage}
+      />
 
-        <main className="relative z-10">
+      <main className="relative z-10">
+        <Suspense fallback={<PageFallback />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/julia" element={<JuliaPage />} />
+            <Route path="/orbit" element={<OrbitRouterPage />} />
+            <Route path="/music" element={<MusicPage />} />
 
             <Route element={<OrbitLayout />}>
               <Route path="/cv" element={<CvPage />} />
@@ -75,6 +90,8 @@ function App() {
               <Route path="/journey" element={<JourneyPage />} />
               <Route path="/goals" element={<GoalsPage />} />
               <Route path="/mandelbrot" element={<MandelbrotPage />} />
+              <Route path="/squared-mosaic" element={<SquaredMosaicPage />} />
+              <Route path="/care-layers" element={<CareLayersPage />} />
               <Route path="/julia/usage" element={<JuliaUsagePage />} />
               <Route path="/life-rhythm" element={<LifeRhythmPage />} />
               <Route path="/interests" element={<InterestsPage />} />
@@ -90,7 +107,6 @@ function App() {
               <Route path="/topics/ai-consciousness" element={<AIConsciousnessPage />} />
               <Route path="/topics/neural-networks" element={<NeuralNetworksPage />} />
               <Route path="/topics/consciousness-expansion" element={<ConsciousnessExpansionPage />} />
-              <Route path="/music" element={<MusicPage />} />
               <Route path="/sports" element={<SportsPage />} />
               <Route path="/sports/dapo-flow-star" element={<DapoFlowStarPage />} />
               <Route path="/sports/dancing" element={<DancingPage />} />
@@ -98,15 +114,25 @@ function App() {
               <Route path="/cooking" element={<CookingPage />} />
               <Route path="/stock" element={<StockPage />} />
               <Route path="/garden-designer" element={<GardenDesignPage />} />
+              <Route path="/garden-care" element={<GardenCarePage />} />
               <Route path="/beleggen" element={<BeleggenPage />} />
               <Route path="/moltbook" element={<MoltbookPage />} />
             </Route>
           </Routes>
-        </main>
+        </Suspense>
+      </main>
 
-        <Footer />
-        <ScrollToTopButton />
-      </div>
+      {!studio && <Footer />}
+      {!studio && <ScrollToTopButton />}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AppShell />
     </Router>
   );
 }

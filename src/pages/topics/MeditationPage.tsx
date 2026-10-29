@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Brain, Cpu, Lightbulb, BookOpen, Users, Star, Heart, Eye, Music, TreePine, Circle, Target, Waves, Moon, Sun, Zap } from 'lucide-react';
+import { MeditationTimer } from '../../components/orbit/MeditationTimer';
 
 export const MeditationPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -495,6 +496,10 @@ export const MeditationPage: React.FC = () => {
               <span>Terug naar Mind as Computer</span>
             </Link>
           </motion.div>
+        </div>
+
+        <div className="max-w-xl mx-auto mb-16">
+          <MeditationTimer />
         </div>
 
         {/* Main Content */}

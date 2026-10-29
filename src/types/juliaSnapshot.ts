@@ -51,6 +51,11 @@ export type JuliaLifeSnapshot = {
   fiberTargetG?: number;
   macros?: JuliaLifeMacros;
   movementMin: number;
+  sleepHours?: number;
+  sleepTargetH?: number;
+  meditationMin?: number;
+  meditationStreakDays?: number;
+  moodScore?: number;
   lifeEntries: number;
   pantryAlerts: string[];
   micro?: Record<string, number>;
@@ -58,6 +63,40 @@ export type JuliaLifeSnapshot = {
 };
 
 
+
+export type JuliaRouterLane = {
+  id: string;
+  label: string;
+  status: 'active' | 'waiting' | 'idle';
+  focus: string;
+  cursorWorkspace?: string;
+  notionFfUrl?: string;
+};
+
+export type JuliaRouterQueueItem = {
+  priority: string;
+  title: string;
+  nextAction: string;
+  contextPath?: string;
+  owner?: string;
+};
+
+export type JuliaRouterRun = {
+  title: string;
+  path: string;
+  status: string;
+};
+
+export type JuliaRouter = {
+  lanes: JuliaRouterLane[];
+  agentQueue: JuliaRouterQueueItem[];
+  activeRuns: JuliaRouterRun[];
+  horizons: {
+    weekConstraint: string | null;
+    carryOver: string[];
+  };
+  sessionsHint?: string;
+};
 
 export type JuliaSnapshot = {
 
@@ -112,6 +151,8 @@ export type JuliaSnapshot = {
   mealPlan?: JuliaMealPlanSlot[];
 
   isDemo: boolean;
+
+  router?: JuliaRouter;
 
 };
 
