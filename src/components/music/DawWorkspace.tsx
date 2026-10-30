@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { TRACK_COLORS, VOCAL_FX_PRESET } from '../../music/defaults';
 import { parseProject, parseRepl, patchBinding } from '../../music/dsl';
+import { useLiveSetKeys } from '../../hooks/useLiveSetKeys';
 import { MusicEngine } from '../../music/engine';
 import { saveOutputDeviceId } from '../../music/outputDevices';
 import { loadMasterVolume, saveMasterVolume } from '../../music/masterVolume';
@@ -54,10 +55,12 @@ import type {
   TrackId,
   WavetableParams,
 } from '../../music/types';
+import type { LiveSetKeyBinding } from '../../music/liveSetKeys';
 import { STEPS_PER_BAR, TRACK_IDS } from '../../music/types';
 import { FL } from '../../music/flTerms';
 import { initialOutputDeviceId } from './AudioOutputSelect';
 import { ChannelRack } from './ChannelRack';
+import { LiveSetGrid } from './LiveSetGrid';
 import { LivecodeTerminal } from './LivecodeTerminal';
 import { Mixer } from './Mixer';
 import { metaFromGenre, MusicMetaProvider } from './MusicMetaContext';
@@ -73,6 +76,9 @@ import { Visualizer } from './Visualizer';
 
 const PANEL_STORAGE = 'myspace-studio-panels-v2';
 const SPLIT_STORAGE = 'myspace-studio-splits-v2';
+const KEYBOARD_MODE_STORAGE = 'myspace-studio-keyboard-mode';
+
+export type StudioKeyboardMode = 'piano' | 'liveSet';
 
 type PanelVisibility = Record<PanelKey, boolean>;
 
@@ -163,6 +169,24 @@ function firstOpenRightTab(panels: PanelVisibility): RightTab {
   return 'visualizer';
 }
 
+function loadKeyboardMode(): StudioKeyboardMode {
+  try {
+    const raw = localStorage.getItem(KEYBOARD_MODE_STORAGE);
+    if (raw === 'piano' || raw === 'liveSet') return raw;
+  } catch {
+    /* ignore */
+  }
+  return 'liveSet';
+}
+
+function saveKeyboardMode(mode: StudioKeyboardMode) {
+  try {
+    localStorage.setItem(KEYBOARD_MODE_STORAGE, mode);
+  } catch {
+    /* ignore */
+  }
+}
+
 export const DawWorkspace: React.FC = () => {
   const [songListTick, setSongListTick] = useState(0);
   const songs = useMemo(() => listSongs(), [songListTick]);
@@ -174,6 +198,9 @@ export const DawWorkspace: React.FC = () => {
   const [selected, setSelected] = useState<TrackId>('kick');
   const [paintScene, setPaintScene] = useState(1);
   const [keysOn, setKeysOn] = useState(true);
+  const [keyboardMode, setKeyboardMode] = useState<StudioKeyboardMode>(loadKeyboardMode);
+  const [liveSetBindings, setLiveSetBindings] = useState<Record<string, LiveSetKeyBinding>>({});
+  const [liveSetUiTick, setLiveSetUiTick] = useState(0);
   const [octave, setOctave] = useState(4);
   const [selectedLane, setSelectedLane] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -184,6 +211,12 @@ export const DawWorkspace: React.FC = () => {
   const [snapBars, setSnapBars] = useState<1 | 2 | 4>(1);
   const [bpmDraft, setBpmDraft] = useState<string | null>(null);
   const beatRef = useRef<BeatInfo>({ step: 0, patternStep: 0, bar: 0, scene: 1 });
+  const [beatDisplay, setBeatDisplay] = useState<BeatInfo>({
+    step: 0,
+    patternStep: 0,
+    bar: 0,
+    scene: 1,
+  });
   const [repl, setRepl] = useState('');
   const [vizMode, setVizMode] = useState<'waveform' | 'spectrum' | 'both'>('both');
   const [status, setStatus] = useState('ready');
@@ -197,6 +230,7 @@ export const DawWorkspace: React.FC = () => {
 
   const onEngineBeat = useCallback((info: BeatInfo) => {
     beatRef.current = info;
+    setBeatDisplay(info);
   }, []);
 
   const parsed = useMemo(() => parseProject(code), [code]);
@@ -446,6 +480,12 @@ export const DawWorkspace: React.FC = () => {
     }
   }, [project, looping, metronome, swing, paintScene]);
 
+  const onKeyboardMode = useCallback((mode: StudioKeyboardMode) => {
+    setKeyboardMode(mode);
+    saveKeyboardMode(mode);
+    setStatus(mode === 'piano' ? 'keys · piano' : 'keys · live set');
+  }, []);
+
   const onOutputDevice = useCallback(async (deviceId: string) => {
     setOutputDeviceId(deviceId);
     saveOutputDeviceId(deviceId);
@@ -539,6 +579,23 @@ export const DawWorkspace: React.FC = () => {
       fromUiRef.current = false;
     }, 0);
   }, []);
+
+  const onLiveSetSceneLaunched = useCallback(
+    (scene1: number) => {
+      patchUi('scene', scene1);
+      setPaintScene(scene1);
+    },
+    [patchUi],
+  );
+
+  useLiveSetKeys({
+    enabled: keysOn && keyboardMode === 'liveSet',
+    getEngine: () => engineRef.current,
+    bindings: liveSetBindings,
+    onSceneLaunched: onLiveSetSceneLaunched,
+    onStatus: setStatus,
+    onAction: () => setLiveSetUiTick((n) => n + 1),
+  });
 
   const onCodeChange = useCallback((next: string) => {
     setCode(next);
@@ -647,6 +704,41 @@ export const DawWorkspace: React.FC = () => {
     if ('launch' in parsedLine) {
       patchUi('scene', parsedLine.launch);
       setPaintScene(parsedLine.launch);
+      setRepl('');
+      return;
+    }
+    if ('replLaunch' in parsedLine) {
+      engineRef.current?.launchClip(parsedLine.replLaunch.track, parsedLine.replLaunch.slot);
+      setLiveSetUiTick((n) => n + 1);
+      setStatus(`launch ${parsedLine.replLaunch.track} · ${parsedLine.replLaunch.slot}`);
+      setRepl('');
+      return;
+    }
+    if ('replScene' in parsedLine) {
+      const scene1 = parsedLine.replScene.scene1;
+      engineRef.current?.launchScene(scene1 - 1);
+      patchUi('scene', scene1);
+      setPaintScene(scene1);
+      setStatus(`scene ${scene1}`);
+      setRepl('');
+      return;
+    }
+    if ('replStop' in parsedLine) {
+      engineRef.current?.stopClip(parsedLine.replStop.track);
+      setStatus(`stop ${parsedLine.replStop.track}`);
+      setRepl('');
+      return;
+    }
+    if ('replBind' in parsedLine) {
+      const { code, track, slot } = parsedLine.replBind;
+      setLiveSetBindings((prev) => ({ ...prev, [code]: { track, slot } }));
+      setStatus(`bind ${code} → ${track}.${slot}`);
+      setRepl('');
+      return;
+    }
+    if ('replQuant' in parsedLine) {
+      engineRef.current?.setLaunchQuantization(parsedLine.replQuant);
+      setStatus(`quant · ${parsedLine.replQuant}`);
       setRepl('');
       return;
     }
@@ -995,22 +1087,42 @@ export const DawWorkspace: React.FC = () => {
 
   const rackPanel = (
     <PanelDock title={FL.channelRack} short="CR" accent={STUDIO.accent} visible className="h-full">
-      <ChannelRack
-        project={project}
-        selected={selected}
-        paintScene={paintScene}
-        playMode={project.playMode}
-        launchedScene={project.scene}
-        onSelectTrack={onSelectTrack}
-        onSelectScene={setPaintScene}
-        onAddScene={onAddScene}
-        onLaunchScene={(scene) => {
-          patchUi('scene', scene);
-          setPaintScene(scene);
-        }}
-        onAddChannel={onAddChannel}
-        onRemoveChannel={onRemoveChannel}
-      />
+      <div className="flex h-full min-h-0 flex-col">
+        <div className="min-h-0 flex-1 overflow-hidden">
+          <ChannelRack
+            project={project}
+            selected={selected}
+            paintScene={paintScene}
+            playMode={project.playMode}
+            launchedScene={project.scene}
+            onSelectTrack={onSelectTrack}
+            onSelectScene={setPaintScene}
+            onAddScene={onAddScene}
+            onLaunchScene={(scene) => {
+              engineRef.current?.launchScene(scene - 1);
+              patchUi('scene', scene);
+              setPaintScene(scene);
+            }}
+            onAddChannel={onAddChannel}
+            onRemoveChannel={onRemoveChannel}
+          />
+        </div>
+        {project.playMode === 'session' && (
+          <LiveSetGrid
+            project={project}
+            engine={engineRef.current}
+            playing={playing}
+            beat={beatDisplay}
+            bindings={liveSetBindings}
+            onLaunch={(track, slot) => {
+              engineRef.current?.launchClip(track, slot);
+              setLiveSetUiTick((n) => n + 1);
+              setStatus(`launch ${track} · slot ${slot}`);
+            }}
+            refreshToken={liveSetUiTick}
+          />
+        )}
+      </div>
     </PanelDock>
   );
 
@@ -1110,7 +1222,7 @@ export const DawWorkspace: React.FC = () => {
               getCurrentBar={() => beatRef.current.bar}
               onEnsurePlaying={ensurePlayingForVocal}
               onPreview={() => engineRef.current?.previewTrack(selected)}
-              keysOn={keysOn}
+              keysOn={keysOn && keyboardMode === 'piano'}
               octave={octave}
               onOctave={setOctave}
               onNoteOn={(midi) => {
@@ -1146,7 +1258,7 @@ export const DawWorkspace: React.FC = () => {
                     runRepl();
                   }
                 }}
-                placeholder="play arr · launch 2 · bpm 120"
+                placeholder="launch kick 2 · scene 2 · stop snare · bind q bass.1 · quant bar"
                 className="h-full flex-1 bg-transparent font-mono text-[11px] outline-none"
                 style={{ color: '#b8e0c8' }}
               />
@@ -1259,6 +1371,8 @@ export const DawWorkspace: React.FC = () => {
         looping={looping}
         metronome={metronome}
         keysOn={keysOn}
+        keyboardMode={keyboardMode}
+        onKeyboardMode={onKeyboardMode}
         snapSteps={snapSteps}
         snapBars={snapBars}
         swing={swing}
