@@ -5,6 +5,7 @@ import './i18n';
 import { Navigation } from './components/Navigation';
 import {
   HomePage,
+  LinksPage,
   PortfolioPage,
   SkillsPage,
   JourneyPage,
@@ -79,6 +80,7 @@ function AppShell() {
         <Suspense fallback={<PageFallback />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/links" element={<LinksPage />} />
             <Route path="/julia" element={<JuliaPage />} />
             <Route path="/orbit" element={<OrbitRouterPage />} />
             <Route path="/music" element={<MusicPage />} />

@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 
 export const HomePage = lazy(() => import('./HomePage').then((m) => ({ default: m.HomePage })));
+export const LinksPage = lazy(() => import('./LinksPage').then((m) => ({ default: m.LinksPage })));
 export const PortfolioPage = lazy(() => import('./PortfolioPage').then((m) => ({ default: m.PortfolioPage })));
 export const SkillsPage = lazy(() => import('./SkillsPage').then((m) => ({ default: m.SkillsPage })));
 export const JourneyPage = lazy(() => import('./JourneyPage').then((m) => ({ default: m.JourneyPage })));
