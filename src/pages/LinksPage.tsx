@@ -41,16 +41,29 @@ type BioLinkButtonProps = {
   label: string;
   url: string;
   icon: React.ComponentType<{ className?: string; size?: number }>;
+  logo?: string;
   index: number;
 };
 
-function BioLinkButton({ label, url, icon: Icon, index }: BioLinkButtonProps) {
+function BioLinkButton({ label, url, icon: Icon, logo, index }: BioLinkButtonProps) {
   const external = isExternalBioLink(url);
 
   const inner = (
     <>
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/5 text-neon-green group-hover:text-neon-blue transition-colors">
-        <Icon size={20} aria-hidden />
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/5 text-neon-green group-hover:text-neon-blue transition-colors overflow-hidden">
+        {logo ? (
+          <img
+            src={logo}
+            alt=""
+            className="h-9 w-9 rounded-md object-contain"
+            width={36}
+            height={36}
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <Icon size={20} aria-hidden />
+        )}
       </span>
       <span className="flex-1 font-medium text-base group-hover:text-neon-green transition-colors">
         {label}
@@ -162,6 +175,7 @@ export const LinksPage: React.FC = () => {
                     label={item.label}
                     url={item.url as string}
                     icon={item.icon}
+                    logo={item.logo}
                     index={index}
                   />
                 ))}

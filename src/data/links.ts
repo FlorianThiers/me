@@ -18,12 +18,14 @@ export type BioLinkItem = {
   label: string;
   url: string | null;
   icon: LucideIcon;
+  /** Optional brand mark under /public (e.g. /logos/foo.svg). Shown instead of icon when set. */
+  logo?: string;
 };
 
 export const BIO_LINK_ITEMS: readonly BioLinkItem[] = [
   { label: 'Website', url: '/', icon: Globe },
   { label: 'Instagram', url: 'https://www.instagram.com/florian_thiers/', icon: Instagram },
-  { label: 'Urban Culture', url: 'https://urban-culture-connect.com/', icon: Sparkles },
+  { label: 'Urban Culture', url: 'https://urban-culture-connect.com/', icon: Sparkles, logo: '/logos/urban-culture.svg' },
   { label: 'GitHub', url: 'https://github.com/FlorianThiers', icon: Github },
   { label: 'Contact', url: '/#contact', icon: Mail },
   { label: 'Vijverkuis', url: 'https://vijverkuis.com/', icon: Droplets },
