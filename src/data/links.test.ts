@@ -16,7 +16,20 @@ describe('getVisibleBioLinks', () => {
     const visible = getVisibleBioLinks(BIO_LINK_ITEMS);
     const labels = visible.map((i) => i.label);
 
-    expect(labels).toEqual(['Website', 'Instagram', 'Urban Culture', 'GitHub', 'Contact']);
+    expect(labels).toEqual([
+      'Website',
+      'Instagram',
+      'Urban Culture',
+      'GitHub',
+      'Contact',
+      'Vijverkuis',
+      'Anaconda',
+      'WaterSafe',
+      'Corridor',
+      'YouTube',
+      'X',
+      'Facebook',
+    ]);
     expect(visible.every((i) => i.url !== null && i.url.trim().length > 0)).toBe(true);
   });
 });

@@ -6,6 +6,8 @@ import {
   Github,
   Mail,
   Droplets,
+  Fish,
+  ShieldCheck,
   Route,
   Youtube,
   Facebook,
@@ -24,16 +26,13 @@ export const BIO_LINK_ITEMS: readonly BioLinkItem[] = [
   { label: 'Urban Culture', url: 'https://urban-culture-connect.com/', icon: Sparkles },
   { label: 'GitHub', url: 'https://github.com/FlorianThiers', icon: Github },
   { label: 'Contact', url: '/#contact', icon: Mail },
-  // TODO: add URL when ready
-  { label: 'Vijverkuis', url: null, icon: Droplets },
-  // TODO: add URL when ready
-  { label: 'Corridor', url: null, icon: Route },
-  // TODO: add URL when ready
-  { label: 'YouTube', url: null, icon: Youtube },
-  // TODO: add URL when ready — X (formerly Twitter)
-  { label: 'X', url: null, icon: Globe },
-  // TODO: add URL when ready
-  { label: 'Facebook', url: null, icon: Facebook },
+  { label: 'Vijverkuis', url: 'https://vijverkuis.com/', icon: Droplets },
+  { label: 'Anaconda', url: 'https://www.anaconda-pondcleaners.com/nl', icon: Fish },
+  { label: 'WaterSafe', url: 'https://watersafe-iota.vercel.app/', icon: ShieldCheck },
+  { label: 'Corridor', url: 'https://corridor.gent/', icon: Route },
+  { label: 'YouTube', url: 'https://www.youtube.com/@florianthiers', icon: Youtube },
+  { label: 'X', url: 'https://x.com/ThiersFlorian', icon: Globe },
+  { label: 'Facebook', url: 'https://www.facebook.com/florian.thiers.7', icon: Facebook },
 ] as const;
 
 /** Items with a non-empty URL, in config order. */
