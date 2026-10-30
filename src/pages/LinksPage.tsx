@@ -8,7 +8,7 @@ import { MANDELBROT_SPOTS } from '../data/pageMandelbrotConfig';
 import { CONTACT } from '../config/contact';
 import {
   BIO_LINK_ITEMS,
-  getVisibleBioLinks,
+  getVisibleBioLinkSections,
   isExternalBioLink,
 } from '../data/links';
 
@@ -100,7 +100,8 @@ function BioLinkButton({ label, url, icon: Icon, index }: BioLinkButtonProps) {
 
 export const LinksPage: React.FC = () => {
   useLinksPageMeta();
-  const links = getVisibleBioLinks(BIO_LINK_ITEMS);
+  const sections = getVisibleBioLinkSections(BIO_LINK_ITEMS);
+  let linkIndex = 0;
 
   return (
     <div className="relative min-h-screen min-h-[100svh] overflow-hidden">
@@ -155,17 +156,32 @@ export const LinksPage: React.FC = () => {
 
           <div className="max-w-lg mx-auto">
             <OrbitPanel title="Links" titleClassName="text-neon-green" className="orbit-readable-panel border-white/10">
-              <ul className="space-y-3 list-none m-0 p-0">
-                {links.map((item, index) => (
-                  <BioLinkButton
-                    key={item.label}
-                    label={item.label}
-                    url={item.url as string}
-                    icon={item.icon}
-                    index={index}
-                  />
-                ))}
-              </ul>
+              {sections.map((section) => (
+                <div
+                  key={section.id}
+                  className={section.heading ? 'mt-7 pt-2 border-t border-white/10 first:mt-0 first:pt-0 first:border-t-0' : ''}
+                >
+                  {section.heading ? (
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-neon-blue mb-3">
+                      {section.heading}
+                    </h3>
+                  ) : null}
+                  <ul className="space-y-3 list-none m-0 p-0">
+                    {section.items.map((item) => {
+                      const index = linkIndex++;
+                      return (
+                        <BioLinkButton
+                          key={item.label}
+                          label={item.label}
+                          url={item.url as string}
+                          icon={item.icon}
+                          index={index}
+                        />
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
             </OrbitPanel>
 
             <motion.p
