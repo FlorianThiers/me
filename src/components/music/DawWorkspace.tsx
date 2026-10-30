@@ -23,7 +23,6 @@ import {
 import type { VoicePack } from '../../music/types';
 import {
   addSceneRow,
-  arrangementLength,
   clipBarsForPattern,
   extendArrangement,
   extendPattern,

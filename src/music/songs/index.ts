@@ -374,6 +374,7 @@ export function importUserLibraryJson(raw: string): number {
       livecode: s.livecode,
       user: true,
       updatedAt: new Date().toISOString(),
+      revision: typeof s.revision === 'number' ? s.revision : 1,
     });
     n += 1;
   }
