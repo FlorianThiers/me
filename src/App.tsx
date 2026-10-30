@@ -127,7 +127,14 @@ function App() {
               <Route path="/philosopher/sigmund-freud" element={<SigmundFreudPage />} />
               <Route path="/philosopher/alan-turing" element={<AlanTuringPage />} />
               <Route path="/philosopher/itzhak-bentov" element={<ItzhakBentovPage />} />
-              <Route path="/topics/substances" element={<SubstancesPage />} />
+              <Route
+                path="/topics/substances"
+                element={
+                  <PrivateRoute>
+                    <SubstancesPage />
+                  </PrivateRoute>
+                }
+              />
               <Route path="/topics/meditation" element={<MeditationPage />} />
               <Route path="/topics/quantum" element={<QuantumPage />} />
               <Route path="/topics/ai-consciousness" element={<AIConsciousnessPage />} />
@@ -137,8 +144,22 @@ function App() {
               <Route path="/sports" element={<SportsPage />} />
               <Route path="/sports/dapo-flow-star" element={<DapoFlowStarPage />} />
               <Route path="/sports/dancing" element={<DancingPage />} />
-              <Route path="/cultivation" element={<CultivationPage />} />
-              <Route path="/cooking" element={<CookingPage />} />
+              <Route
+                path="/cultivation"
+                element={
+                  <PrivateRoute>
+                    <CultivationPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/cooking"
+                element={
+                  <PrivateRoute>
+                    <CookingPage />
+                  </PrivateRoute>
+                }
+              />
               <Route
                 path="/stock"
                 element={

@@ -6,6 +6,9 @@ export const PRIVATE_ROUTE_PREFIXES = [
   '/stock',
   '/beleggen',
   '/garden-designer',
+  '/cooking',
+  '/cultivation',
+  '/topics/substances',
 ] as const;
 
 export const LOGIN_PATH = '/login';
@@ -31,4 +34,11 @@ export const AUTH_ONLY_INTEREST_KEYS = new Set([
   'lifeRhythm',
   'gardenDesign',
   'investing',
+  'cultivation',
+  'cooking',
+  /** Chakra calendar card on /interests */
+  'timeVisualization',
 ]);
+
+/** Mind-computer topic cards linking to private routes (hidden for visitors). */
+export const AUTH_ONLY_MIND_COMPUTER_TOPIC_KEYS = new Set(['substances']);

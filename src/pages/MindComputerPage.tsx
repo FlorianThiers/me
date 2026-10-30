@@ -13,9 +13,12 @@ import {
     Zap,
     Atom
 } from 'lucide-react';
+import { useSiteAuth } from '../context/SiteAuthContext';
+import { AUTH_ONLY_MIND_COMPUTER_TOPIC_KEYS } from '../lib/siteRoutes';
 
 export const MindComputerPage: React.FC = () => {
     const { t } = useTranslation();
+    const { authenticated } = useSiteAuth();
     const [currentDiagram, setCurrentDiagram] = useState(0);
 
     const componentKeys = ['cpu', 'ram', 'gpu', 'database', 'network', 'io'];
@@ -777,7 +780,12 @@ export const MindComputerPage: React.FC = () => {
                                 icon: <Atom className="w-8 h-8" />,
                                 href: '/topics/quantum'
                             },
-                        ].map((topic, index) => (
+                        ]
+                            .filter(
+                                (topic) =>
+                                    authenticated || !AUTH_ONLY_MIND_COMPUTER_TOPIC_KEYS.has(topic.key),
+                            )
+                            .map((topic, index) => (
                             <motion.div
                                 key={topic.key}
                                 initial={{ opacity: 0, y: 20 }}
