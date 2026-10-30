@@ -41,10 +41,12 @@ import { CvPage } from './pages/CvPage';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollToTopButton } from './components/ScrollToTopButton';
+import { PrivateRoute } from './components/PrivateRoute';
+import { SiteAuthProvider } from './context/SiteAuthContext';
+import { LoginPage } from './pages/LoginPage';
 import { DASHBOARD_ENABLED } from './lib/dashboardFlag';
 
-// Lokaal persoonlijk dashboard (sidenav + sub-routes): alleen in dev of met VITE_ENABLE_DASHBOARD=1 (niet in de Vercel-build).
-const DashboardRoutes = DASHBOARD_ENABLED ? lazy(() => import('./pages/DashboardRoutes')) : null;
+const DashboardRoutes = lazy(() => import('./pages/DashboardRoutes'));
 
 function App() {
   const { i18n } = useTranslation();
@@ -60,6 +62,7 @@ function App() {
   }, [i18n.language]);
 
   return (
+    <SiteAuthProvider>
     <Router>
       <ScrollToTop />
       <div className="App relative">
@@ -72,9 +75,26 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/links" element={<LinksPage />} />
-            <Route path="/julia" element={<JuliaPage />} />
-            {DashboardRoutes && (
-              <Route path="/dashboard/*" element={<Suspense fallback={null}><DashboardRoutes /></Suspense>} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/julia"
+              element={
+                <PrivateRoute>
+                  <JuliaPage />
+                </PrivateRoute>
+              }
+            />
+            {DASHBOARD_ENABLED && (
+              <Route
+                path="/dashboard/*"
+                element={
+                  <PrivateRoute>
+                    <Suspense fallback={null}>
+                      <DashboardRoutes />
+                    </Suspense>
+                  </PrivateRoute>
+                }
+              />
             )}
 
             <Route element={<OrbitLayout />}>
@@ -84,8 +104,22 @@ function App() {
               <Route path="/journey" element={<JourneyPage />} />
               <Route path="/goals" element={<GoalsPage />} />
               <Route path="/mandelbrot" element={<MandelbrotPage />} />
-              <Route path="/julia/usage" element={<JuliaUsagePage />} />
-              <Route path="/life-rhythm" element={<LifeRhythmPage />} />
+              <Route
+                path="/julia/usage"
+                element={
+                  <PrivateRoute>
+                    <JuliaUsagePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/life-rhythm"
+                element={
+                  <PrivateRoute>
+                    <LifeRhythmPage />
+                  </PrivateRoute>
+                }
+              />
               <Route path="/interests" element={<InterestsPage />} />
               <Route path="/mind-computer" element={<MindComputerPage />} />
               <Route path="/philosopher/carl-jung" element={<CarlJungPage />} />
@@ -105,9 +139,30 @@ function App() {
               <Route path="/sports/dancing" element={<DancingPage />} />
               <Route path="/cultivation" element={<CultivationPage />} />
               <Route path="/cooking" element={<CookingPage />} />
-              <Route path="/stock" element={<StockPage />} />
-              <Route path="/garden-designer" element={<GardenDesignPage />} />
-              <Route path="/beleggen" element={<BeleggenPage />} />
+              <Route
+                path="/stock"
+                element={
+                  <PrivateRoute>
+                    <StockPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/garden-designer"
+                element={
+                  <PrivateRoute>
+                    <GardenDesignPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/beleggen"
+                element={
+                  <PrivateRoute>
+                    <BeleggenPage />
+                  </PrivateRoute>
+                }
+              />
               <Route path="/moltbook" element={<MoltbookPage />} />
             </Route>
           </Routes>
@@ -117,6 +172,7 @@ function App() {
         <ScrollToTopButton />
       </div>
     </Router>
+    </SiteAuthProvider>
   );
 }
 

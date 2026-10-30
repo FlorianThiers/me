@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { LibraryItem } from '../types/gardenDesigner';
 import type { PlantCatalogData } from '../types/plantCatalog';
 import { mergeLibraryItems } from '../utils/plantCatalog';
+import { fetchPrivateJson } from '../lib/privateFetch';
 
 interface UsePlantCatalogResult {
   catalog: PlantCatalogData | null;
@@ -19,29 +20,20 @@ export function usePlantCatalog(): UsePlantCatalogResult {
     let cancelled = false;
 
     async function load() {
-      try {
-        const res = await fetch('/data/plant-catalog.json');
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
-        }
-        const data = (await res.json()) as PlantCatalogData;
-        if (!cancelled) {
-          setCatalog(data);
-          setError(null);
-        }
-      } catch (err) {
-        if (!cancelled) {
-          setCatalog(null);
-          setError(err instanceof Error ? err.message : 'Catalogus laden mislukt');
-        }
-      } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
+      const result = await fetchPrivateJson<PlantCatalogData>('/api/private/plant-catalog');
+      if (cancelled) return;
+      if (result.ok) {
+        setCatalog(result.data);
+        setError(null);
+      } else if (result.status === 401) {
+        setError('Unauthorized');
+      } else {
+        setError('Catalog load failed');
       }
+      setLoading(false);
     }
 
-    load();
+    void load();
     return () => {
       cancelled = true;
     };
@@ -51,6 +43,6 @@ export function usePlantCatalog(): UsePlantCatalogResult {
     catalog,
     libraryItems: mergeLibraryItems(catalog),
     loading,
-    error
+    error,
   };
 }

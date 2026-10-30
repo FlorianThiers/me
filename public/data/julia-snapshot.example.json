@@ -1,0 +1,53 @@
+{
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "date": "1970-01-01",
+  "isDemo": true,
+  "exportNote": "EXAMPLE DATA ONLY — not a real daily briefing",
+  "greeting": "Good morning. This is placeholder briefing text.",
+  "workTop3": ["Example task one", "Example task two", "Example task three"],
+  "intents": [
+    { "id": "deep", "label": "deep", "text": "Example deep-work intent." },
+    { "id": "body", "label": "body", "text": "Example movement intent." },
+    { "id": "life", "label": "life", "text": "Example life intent." },
+    { "id": "admin", "label": "admin", "text": "Example admin intent." }
+  ],
+  "weekConstraint": null,
+  "sportTypeToday": null,
+  "anchors": { "sleep": 70, "nutrition": 50, "sport": 50, "hobby": 40, "home": 35 },
+  "links": {
+    "dayLog": null,
+    "todoistToday": "https://example.com/todoist-today",
+    "todoistSport": "https://example.com/todoist-sport",
+    "todoistHome": "https://example.com/todoist-home",
+    "todoistFood": "https://example.com/todoist-food",
+    "notionMySpace": "https://example.com/notion-myspace",
+    "notionLifeDay": "https://example.com/notion-life-day"
+  },
+  "life": {
+    "mealTonight": null,
+    "mealLunch": null,
+    "proteinG": 0,
+    "proteinTargetG": 140,
+    "waterL": 0,
+    "waterTargetL": 2.5,
+    "kcal": 0,
+    "fatG": 0,
+    "carbsG": 0,
+    "fiberG": 0,
+    "fiberTargetG": 30,
+    "macros": {
+      "proteinG": 0,
+      "fatG": 0,
+      "carbsG": 0,
+      "fiberG": 0,
+      "fiberTargetG": 30,
+      "kcal": 0
+    },
+    "movementMin": 0,
+    "lifeEntries": 0,
+    "pantryAlerts": [],
+    "micro": null,
+    "microGaps": null,
+    "mealPlan": null
+  }
+}

@@ -5,9 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat, Calendar, Home, TrendingUp, MessageSquare, Orbit } from 'lucide-react';
 import { ChakraCalendar } from '../components/ChakraCalendar';
 import { DevelopmentNoticePopup } from '../components/DevelopmentNoticePopup';
+import { AUTH_ONLY_INTEREST_KEYS } from '../lib/siteRoutes';
+import { useSiteAuth } from '../context/SiteAuthContext';
 
 export const InterestsPage: React.FC = () => {
   const { t } = useTranslation();
+  const { authenticated } = useSiteAuth();
   const [expandedCard, setExpandedCard] = React.useState<string | null>(null);
 
   const interests = [
@@ -146,6 +149,10 @@ export const InterestsPage: React.FC = () => {
 
   ];
 
+  const visibleInterests = interests.filter(
+    (interest) => authenticated || !AUTH_ONLY_INTEREST_KEYS.has(interest.key),
+  );
+
   return (
     <>
       <DevelopmentNoticePopup />
@@ -157,7 +164,7 @@ export const InterestsPage: React.FC = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {interests.map((interest, index) => (
+            {visibleInterests.map((interest, index) => (
               <motion.div
                 key={interest.key || interest.title}
                 initial={{ opacity: 0, y: 20 }}

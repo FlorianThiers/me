@@ -38,3 +38,5 @@ MOLTBOOK_INFO.md
 
 # Persoonlijk dashboard (lokaal, bevat persoonlijke data)
 public/data/dashboard-snapshot.json
+private-data/*
+!private-data/README.md
