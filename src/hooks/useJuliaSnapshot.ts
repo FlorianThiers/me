@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { JuliaSnapshot } from '../types/juliaSnapshot';
 import { demoSnapshot } from '../data/juliaDemoBriefing';
+import { fetchPrivateJson } from '../lib/privateFetch';
 
 const LIVE_MAX_AGE_MS = 36 * 60 * 60 * 1000;
 
@@ -11,21 +12,17 @@ export function useJuliaSnapshot() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch('/data/julia-snapshot.json')
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data: JuliaSnapshot | null) => {
-        if (cancelled) return;
-        if (data && data.date && !data.isDemo) {
-          setSnapshot(data);
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        if (!cancelled) {
-          setError(true);
-          setLoading(false);
-        }
-      });
+    (async () => {
+      const result = await fetchPrivateJson<JuliaSnapshot>('/api/private/julia-snapshot');
+      if (cancelled) return;
+      if (result.ok && result.data.date && !result.data.isDemo) {
+        setSnapshot(result.data);
+      }
+      if (!result.ok && result.status !== 401) {
+        setError(true);
+      }
+      setLoading(false);
+    })();
     return () => {
       cancelled = true;
     };

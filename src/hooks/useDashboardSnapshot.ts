@@ -1,28 +1,16 @@
 import { useEffect, useState } from 'react';
 import type { DashboardSnapshot } from '../types/dashboardSnapshot';
+import { fetchPrivateJson } from '../lib/privateFetch';
 
 export type DashboardSnapshotState = {
   snapshot: DashboardSnapshot | null;
   loading: boolean;
-  /** true als het echte (lokale, gitignored) bestand ontbrak en het voorbeeldbestand wordt getoond. */
+  /** true when only example/demo snapshot is available. */
   usingExample: boolean;
 };
 
-async function fetchSnapshot(url: string): Promise<DashboardSnapshot | null> {
-  try {
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) return null;
-    // Vite's SPA-fallback geeft index.html met 200 terug als het bestand ontbreekt -> JSON-parse faalt.
-    const data = (await res.json()) as DashboardSnapshot;
-    return data && data.schemaVersion === 1 ? data : null;
-  } catch {
-    return null;
-  }
-}
-
 /**
- * Leest public/data/dashboard-snapshot.json (lokaal gegenereerd, NIET gecommit).
- * Ontbreekt die, dan valt het terug op dashboard-snapshot.example.json (altijd isDemo).
+ * Loads dashboard snapshot via authenticated API (never from public static files).
  */
 export function useDashboardSnapshot(enabled: boolean): DashboardSnapshotState {
   const [state, setState] = useState<DashboardSnapshotState>({
@@ -35,9 +23,14 @@ export function useDashboardSnapshot(enabled: boolean): DashboardSnapshotState {
     if (!enabled) return;
     let cancelled = false;
     (async () => {
-      const real = await fetchSnapshot('/data/dashboard-snapshot.json');
-      const snapshot = real ?? (await fetchSnapshot('/data/dashboard-snapshot.example.json'));
-      if (!cancelled) setState({ snapshot, loading: false, usingExample: !real && !!snapshot });
+      const result = await fetchPrivateJson<DashboardSnapshot>('/api/private/dashboard-snapshot');
+      if (cancelled) return;
+      if (result.ok) {
+        const usingExample = !!result.data.isDemo;
+        setState({ snapshot: result.data, loading: false, usingExample });
+      } else {
+        setState({ snapshot: null, loading: false, usingExample: false });
+      }
     })();
     return () => {
       cancelled = true;

@@ -1,0 +1,31 @@
+{
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "date": "1970-01-01",
+  "isDemo": true,
+  "exportNote": "EXAMPLE DATA ONLY — not real household inventory",
+  "priorityLegend": ["Example priority order for UI demo"],
+  "expiringSoon": [],
+  "sections": [
+    {
+      "id": "fridge",
+      "label": "Fridge — fresh (example)",
+      "priority": 1,
+      "items": [
+        {
+          "name": "Example yogurt",
+          "quantity": "1",
+          "unit": "pot",
+          "location": "fridge",
+          "category": "Dairy",
+          "expiresOn": "1970-01-15"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "totalItems": 1,
+    "fridgeFresh": 1,
+    "freezer": 0,
+    "gardenReady": 0
+  }
+}

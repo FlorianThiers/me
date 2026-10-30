@@ -1,0 +1,40 @@
+{
+  "version": "1",
+  "exportedAt": "1970-01-01T00:00:00.000Z",
+  "source": "example",
+  "exportNote": "EXAMPLE DATA ONLY — fictional plants for UI demo",
+  "plants": [
+    {
+      "slug": "example-tomato",
+      "name": "Example tomato",
+      "category": "Vegetable",
+      "plantType": "vegetable",
+      "active": true,
+      "sun": "full",
+      "water": "medium",
+      "library": {
+        "icon": "🍅",
+        "fillColor": "#dc2626",
+        "strokeColor": "#991b1b",
+        "widthCm": 40,
+        "heightCm": 40
+      }
+    },
+    {
+      "slug": "example-basil",
+      "name": "Example basil",
+      "category": "Herb",
+      "plantType": "herb",
+      "active": true,
+      "sun": "partial",
+      "water": "medium",
+      "library": {
+        "icon": "🌿",
+        "fillColor": "#16a34a",
+        "strokeColor": "#15803d",
+        "widthCm": 25,
+        "heightCm": 25
+      }
+    }
+  ]
+}

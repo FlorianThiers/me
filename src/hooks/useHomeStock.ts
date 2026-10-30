@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { HomeStockSnapshot } from '../types/homeStock';
+import { fetchPrivateJson } from '../lib/privateFetch';
 
 export function useHomeStock() {
   const [snapshot, setSnapshot] = useState<HomeStockSnapshot | null>(null);
@@ -9,19 +10,17 @@ export function useHomeStock() {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      try {
-        const res = await fetch('/data/home-stock.json');
-        if (!res.ok) throw new Error(`${res.status}`);
-        const data = (await res.json()) as HomeStockSnapshot;
-        if (!cancelled) {
-          setSnapshot(data);
-          setError(null);
-        }
-      } catch {
-        if (!cancelled) setError('load_failed');
-      } finally {
-        if (!cancelled) setLoading(false);
+      const result = await fetchPrivateJson<HomeStockSnapshot>('/api/private/home-stock');
+      if (cancelled) return;
+      if (result.ok) {
+        setSnapshot(result.data);
+        setError(null);
+      } else if (result.status === 401) {
+        setError('unauthorized');
+      } else {
+        setError('load_failed');
       }
+      setLoading(false);
     })();
     return () => {
       cancelled = true;

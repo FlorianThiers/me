@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Globe, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { DASHBOARD_ENABLED } from '../lib/dashboardFlag';
+import { useSiteAuth } from '../context/SiteAuthContext';
 
 interface NavigationProps {
   onLanguageChange: (lang: string) => void;
@@ -35,17 +36,18 @@ export const Navigation: React.FC<NavigationProps> = ({
     setIsOpen(false);
   };
 
+  const { authenticated } = useSiteAuth();
+
   const navItems = [
     { path: '/cv', label: t('nav.cv') },
     { path: '/portfolio', label: t('nav.portfolio') },
     { path: '/skills', label: t('nav.skills') },
     { path: '/journey', label: t('nav.journey') },
     { path: '/goals', label: t('nav.goals') },
-    { path: '/julia', label: t('nav.julia') },
+    ...(authenticated ? [{ path: '/julia', label: t('nav.julia') }] : []),
     { path: '/mandelbrot', label: t('nav.mandelbrot') },
     { path: '/interests', label: t('nav.interests') },
-    // Alleen localhost/dev (of VITE_ENABLE_DASHBOARD=1): link naar het persoonlijke dashboard.
-    ...(DASHBOARD_ENABLED ? [{ path: '/dashboard', label: 'Dashboard' }] : []),
+    ...(authenticated && DASHBOARD_ENABLED ? [{ path: '/dashboard', label: 'Dashboard' }] : []),
   ];
 
   const isActive = (path: string) =>
