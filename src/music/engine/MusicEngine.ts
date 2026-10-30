@@ -36,12 +36,21 @@ import {
 } from '../types';
 import { LOOKAHEAD_MS, SCHEDULE_AHEAD } from './constants';
 import { makeSoftClipCurve } from './fx/curves';
+import { planArrangementBeat, usesPlaylistClips } from './scheduler/arrangementRhythm';
 import { humanize } from './scheduler/humanize';
 import { songLengthSteps, stepsInLoop } from './scheduler/timing';
+import {
+  applyPendingLaunches,
+  sessionSceneIdxForTrack,
+  shouldFlushLaunches,
+  type LaunchQuantization,
+  type PendingLaunch,
+} from './session/launchQueue';
 import { dispatchMelodic, voicePerc } from './synths/dispatch';
 import type { EngineOpts, HeldVoice, PercId, VoiceSynthHost } from './types';
 
 export type { EngineOpts, HeldVoice } from './types';
+export type { LaunchQuantization } from './session/launchQueue';
 
 export class MusicEngine {
   private ctx: AudioContext | null = null;
@@ -76,6 +85,10 @@ export class MusicEngine {
   private localMute: GainNode | null = null;
   /** Pattern-mode override (UI paint scene). null → project.scene */
   private sessionScene: number | null = null;
+  /** Session view: active clip slot (1-based pattern #) per track. */
+  private sessionClips = new Map<TrackId, number>();
+  private pendingLaunches: PendingLaunch[] = [];
+  private launchQuantization: LaunchQuantization = 'bar';
 
   constructor(project: MusicProject, opts: EngineOpts) {
     this.project = project;
@@ -97,6 +110,42 @@ export class MusicEngine {
   /** Which pattern # plays in Pattern (session) mode. */
   setSessionScene(scene: number | null) {
     this.sessionScene = scene !== null && scene > 0 ? Math.round(scene) : null;
+  }
+
+  setLaunchQuantization(quant: LaunchQuantization) {
+    this.launchQuantization = quant;
+  }
+
+  getLaunchQuantization(): LaunchQuantization {
+    return this.launchQuantization;
+  }
+
+  /** Active session clip slot for a track (1-based), if launched. */
+  getSessionClipSlot(trackId: TrackId): number | undefined {
+    const slot = this.sessionClips.get(trackId);
+    if (slot === undefined || slot <= 0) return undefined;
+    return slot;
+  }
+
+  /** Queue clip launch; applied at the next quantize boundary while playing. */
+  launchClip(trackId: TrackId, slot: number) {
+    this.pendingLaunches.push({ kind: 'launch', trackId, slot: Math.max(1, Math.round(slot)) });
+    this.tryFlushPendingLaunches(this.playing ? this.currentStepInBar() : 0);
+  }
+
+  /** Stop the track's session clip at the next quantize boundary. */
+  stopClip(trackId: TrackId) {
+    this.pendingLaunches.push({ kind: 'stop', trackId });
+    this.tryFlushPendingLaunches(this.playing ? this.currentStepInBar() : 0);
+  }
+
+  /**
+   * Launch all patterns in a scene for tracks that have content there.
+   * Does not stop tracks with no pattern in that scene.
+   */
+  launchScene(sceneIdx: number) {
+    this.pendingLaunches.push({ kind: 'scene', sceneIdx: Math.max(0, Math.round(sceneIdx)) });
+    this.tryFlushPendingLaunches(this.playing ? this.currentStepInBar() : 0);
   }
 
   /** Remember sink for next ensureContext / start (no AudioContext yet). */
@@ -415,18 +464,7 @@ export class MusicEngine {
       window.clearTimeout(this.timer);
       this.timer = null;
     }
-    // Release any held keyboard voices
-    for (const [key, voice] of this.held) {
-      const t = this.ctx?.currentTime ?? 0;
-      try {
-        voice.gain.gain.cancelScheduledValues(t);
-        voice.gain.gain.setValueAtTime(0.0001, t);
-        for (const osc of voice.oscs) osc.stop(t + 0.02);
-      } catch {
-        /* ignore */
-      }
-      this.held.delete(key);
-    }
+    this.releaseHeldVoices();
     this.opts.onBeat({ step: 0, patternStep: 0, bar: 0, scene: this.project.scene });
     // Keep UPnP session alive across stop/play; cleared in setOutputDevice / dispose.
     this.opts.onStop();
@@ -480,7 +518,7 @@ export class MusicEngine {
     if (!this.playing || !this.ctx) return;
     const ctx = this.ctx;
     const patternLen = stepsInLoop(this.project, this.sessionScene);
-    const clipMode = (this.project.clips?.length ?? 0) > 0;
+    const clipMode = usesPlaylistClips(this.project);
     const songSteps = songLengthSteps(this.project);
     while (this.nextNoteTime < ctx.currentTime + SCHEDULE_AHEAD) {
       const song = this.project.playMode === 'arr';
@@ -492,6 +530,7 @@ export class MusicEngine {
       const stepDur = stepDurationSec(this.project.bpm);
       const swingOffset = stepInBar % 2 === 1 ? stepDur * this.swing * 0.5 : 0;
       const eventTime = this.nextNoteTime + swingOffset;
+      this.tryFlushPendingLaunches(stepInBar);
       if (this.metronome) {
         const onBeat = stepInBar % STEPS_PER_BEAT === 0;
         const accent = stepInBar === 0;
@@ -535,53 +574,110 @@ export class MusicEngine {
     this.timer = window.setTimeout(this.scheduler, LOOKAHEAD_MS);
   };
 
+  private currentStepInBar(): number {
+    const song = this.project.playMode === 'arr';
+    const clipMode = usesPlaylistClips(this.project);
+    const patternLen = stepsInLoop(this.project, this.sessionScene);
+    const barDiv = song && clipMode ? STEPS_PER_BAR : patternLen;
+    return song ? this.globalBeat % barDiv : this.beat;
+  }
+
+  private tryFlushPendingLaunches(stepInBar: number) {
+    if (
+      !shouldFlushLaunches(
+        this.launchQuantization,
+        stepInBar,
+        this.playing,
+        this.pendingLaunches.length,
+      )
+    ) {
+      return;
+    }
+    const applied = applyPendingLaunches(this.project, this.sessionClips, this.pendingLaunches);
+    this.pendingLaunches = [];
+    this.sessionClips = applied.sessionClips;
+    if (applied.releaseHeldVoices) this.releaseHeldVoices();
+  }
+
+  private releaseHeldVoices() {
+    for (const [key, voice] of this.held) {
+      const t = this.ctx?.currentTime ?? 0;
+      try {
+        voice.gain.gain.cancelScheduledValues(t);
+        voice.gain.gain.setValueAtTime(0.0001, t);
+        for (const osc of voice.oscs) osc.stop(t + 0.02);
+      } catch {
+        /* ignore */
+      }
+      this.held.delete(key);
+    }
+  }
+
   private scheduleBeat(stepInBar: number, time: number, arrBar?: number) {
     const project = this.project;
     const anySolo = TRACK_IDS.some((id) => project.mixer[id].solo > 0);
-    const clipMode = (project.clips?.length ?? 0) > 0;
 
-    if (arrBar !== undefined && clipMode) {
-      const active = clipsAtBar(project, arrBar);
-      if (active.length === 0) return;
+    if (arrBar !== undefined) {
+      const plan = planArrangementBeat(project, arrBar);
+      if (plan.mode === 'silent') return;
 
-      const fired = new Set<string>();
-      for (const clip of active) {
-        const id = clip.track;
+      if (plan.mode === 'playlist') {
+        const fired = new Set<string>();
+        for (const clip of plan.clips) {
+          const id = clip.track;
+          if (isAudioTrack(id)) continue;
+          const mix = project.mixer[id];
+          if (mix.mute > 0) continue;
+          if (anySolo && mix.solo <= 0) continue;
+          const sceneIdx = clip.pattern - 1;
+          const rowLen = patternContentSteps(project, id, sceneIdx);
+          const patternStep = patternStepForClip(
+            clip,
+            arrBar,
+            stepInBar,
+            rowLen,
+            project.clipWrap !== false,
+          );
+          if (patternStep == null) continue;
+          const key = `${id}:${sceneIdx}:${patternStep}`;
+          if (fired.has(key)) continue;
+          fired.add(key);
+          const gain = Math.max(0, Math.min(1, mix.gain));
+          this.fireChannel(id, patternStep, time, gain, sceneIdx);
+        }
+        return;
+      }
+
+      // Legacy arrangement: one scene cell per bar per track.
+      for (const id of TRACK_IDS) {
         if (isAudioTrack(id)) continue;
         const mix = project.mixer[id];
         if (mix.mute > 0) continue;
         if (anySolo && mix.solo <= 0) continue;
-        const sceneIdx = clip.pattern - 1;
-        const rowLen = patternContentSteps(project, id, sceneIdx);
-        const patternStep = patternStepForClip(clip, arrBar, stepInBar, rowLen, project.clipWrap !== false);
-        if (patternStep == null) continue;
-        const key = `${id}:${sceneIdx}:${patternStep}`;
-        if (fired.has(key)) continue;
-        fired.add(key);
+        const scenePick = project.arrangement[id][arrBar] ?? 0;
+        if (scenePick <= 0) continue;
         const gain = Math.max(0, Math.min(1, mix.gain));
-        this.fireChannel(id, patternStep, time, gain, sceneIdx);
+        this.fireChannel(id, stepInBar, time, gain, scenePick - 1);
       }
       return;
     }
+
+    const fallbackScene =
+      this.sessionScene !== null ? this.sessionScene : project.scene;
 
     for (const id of TRACK_IDS) {
       if (isAudioTrack(id)) continue;
       const mix = project.mixer[id];
       if (mix.mute > 0) continue;
       if (anySolo && mix.solo <= 0) continue;
+      const sceneIdx = sessionSceneIdxForTrack(
+        this.sessionClips,
+        id,
+        fallbackScene,
+      );
+      if (sceneIdx === null) continue;
       const gain = Math.max(0, Math.min(1, mix.gain));
-
-      if (arrBar === undefined) {
-        const scene =
-          this.sessionScene !== null ? this.sessionScene : project.scene;
-        this.fireChannel(id, stepInBar, time, gain, Math.max(0, scene - 1));
-        continue;
-      }
-
-      // Legacy arrangement: one cell plays the full pattern from step 0.
-      const scenePick = project.arrangement[id][arrBar] ?? 0;
-      if (scenePick <= 0) continue;
-      this.fireChannel(id, stepInBar, time, gain, scenePick - 1);
+      this.fireChannel(id, stepInBar, time, gain, sceneIdx);
     }
   }
 
