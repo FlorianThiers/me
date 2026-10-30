@@ -38,6 +38,7 @@ import { JuliaUsagePage } from './pages/JuliaUsagePage';
 import { StockPage } from './pages/StockPage';
 import { LifeRhythmPage } from './pages/LifeRhythmPage';
 import { CvPage } from './pages/CvPage';
+import { AgendaPage } from './pages/AgendaPage';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollToTopButton } from './components/ScrollToTopButton';
@@ -73,6 +74,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/links" element={<LinksPage />} />
             <Route path="/julia" element={<JuliaPage />} />
+            <Route path="/agenda" element={<AgendaPage />} />
             {DashboardRoutes && (
               <Route path="/dashboard/*" element={<Suspense fallback={null}><DashboardRoutes /></Suspense>} />
             )}
