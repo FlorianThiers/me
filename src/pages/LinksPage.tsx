@@ -35,28 +35,27 @@ function useLinksPageMeta() {
 }
 
 const linkButtonClass =
-  'flex w-full items-center gap-3 rounded-xl border border-white/10 bg-dark-secondary/80 px-4 py-3.5 sm:py-4 text-left no-underline text-white transition-all duration-300 hover:border-neon-green/50 hover:bg-dark-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neon-green group';
+  'flex w-full min-h-[60px] items-center gap-4 rounded-xl border border-white/10 bg-dark-secondary/80 px-4 sm:px-5 py-3.5 text-left no-underline text-white transition-all duration-300 hover:border-neon-green/50 hover:bg-dark-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neon-green group';
 
 type BioLinkButtonProps = {
   label: string;
   url: string;
   icon: React.ComponentType<{ className?: string; size?: number }>;
-  index: number;
 };
 
-function BioLinkButton({ label, url, icon: Icon, index }: BioLinkButtonProps) {
+function BioLinkButton({ label, url, icon: Icon }: BioLinkButtonProps) {
   const external = isExternalBioLink(url);
 
   const inner = (
     <>
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/5 text-neon-green group-hover:text-neon-blue transition-colors">
-        <Icon size={20} aria-hidden className="shrink-0" />
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/5 text-neon-green group-hover:text-neon-blue transition-colors">
+        <Icon size={24} aria-hidden className="shrink-0" />
       </span>
-      <span className="flex-1 font-medium text-base group-hover:text-neon-green transition-colors">
+      <span className="flex-1 font-semibold text-lg leading-snug group-hover:text-neon-green transition-colors">
         {label}
       </span>
       {external ? (
-        <ExternalLink className="h-4 w-4 text-white/35 group-hover:text-neon-green/80 shrink-0" aria-hidden />
+        <ExternalLink className="h-5 w-5 text-white/35 group-hover:text-neon-green/80 shrink-0" aria-hidden />
       ) : (
         <span className="text-xs uppercase tracking-wider text-white/40 group-hover:text-neon-green/70 shrink-0">
           On site
@@ -66,42 +65,27 @@ function BioLinkButton({ label, url, icon: Icon, index }: BioLinkButtonProps) {
   );
 
   return (
-    <motion.li
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.04 }}
-      viewport={{ once: true, margin: '-20px' }}
-    >
+    <li>
       {external ? (
-        <motion.a
-          href={url}
-          className={linkButtonClass}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
+        <a href={url} className={linkButtonClass} target="_blank" rel="noopener noreferrer">
           {inner}
-        </motion.a>
+        </a>
       ) : url.startsWith('/#') ? (
-        <motion.a href={url} className={linkButtonClass} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+        <a href={url} className={linkButtonClass}>
           {inner}
-        </motion.a>
+        </a>
       ) : (
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Link to={url} className={linkButtonClass}>
-            {inner}
-          </Link>
-        </motion.div>
+        <Link to={url} className={linkButtonClass}>
+          {inner}
+        </Link>
       )}
-    </motion.li>
+    </li>
   );
 }
 
 export const LinksPage: React.FC = () => {
   useLinksPageMeta();
   const sections = getVisibleBioLinkSections(BIO_LINK_ITEMS);
-  let linkIndex = 0;
 
   return (
     <div className="relative min-h-screen min-h-[100svh] overflow-hidden">
@@ -113,7 +97,7 @@ export const LinksPage: React.FC = () => {
       />
 
       <section
-        className="section-padding relative z-10 pt-24 sm:pt-28 pb-20 bg-dark-bg/30"
+        className="section-padding relative z-10 pt-24 sm:pt-28 pb-20 bg-dark-bg/30 px-2 sm:px-4"
         aria-labelledby="links-page-title"
       >
         <div className="absolute top-0 left-0 w-full h-full opacity-[0.07] pointer-events-none" aria-hidden>
@@ -122,80 +106,74 @@ export const LinksPage: React.FC = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-96 h-96 bg-neon-pink rounded-full blur-3xl opacity-60" />
         </div>
 
-        <div className="container-custom relative z-10 px-4">
+        <div className="container-custom relative z-10 px-1 sm:px-4 max-w-2xl mx-auto">
           <motion.header
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-10 sm:mb-12 max-w-2xl mx-auto"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10 sm:mb-12"
           >
             <div className="relative mb-8 inline-block">
-              <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full overflow-hidden border-2 border-neon-green/40 shadow-2xl shadow-neon-green/20">
+              <div className="w-32 h-32 sm:w-36 sm:h-36 mx-auto rounded-full overflow-hidden border-2 border-neon-green/40 shadow-2xl shadow-neon-green/20">
                 <img
                   src="/me.jpg"
                   alt=""
                   className="w-full h-full object-cover"
-                  width={128}
-                  height={128}
+                  width={144}
+                  height={144}
                   loading="eager"
                   decoding="async"
                 />
               </div>
               <div
-                className="absolute -bottom-2 -right-2 w-14 h-14 bg-neon-pink/20 rounded-full border border-neon-pink/30 animate-pulse"
+                className="absolute -bottom-2 -right-2 w-16 h-16 bg-neon-pink/20 rounded-full border border-neon-pink/30 animate-pulse"
                 aria-hidden
               />
             </div>
 
-            <h1 id="links-page-title" className="text-4xl md:text-5xl font-bold mb-4 neon-text">
+            <h1 id="links-page-title" className="text-5xl sm:text-6xl font-bold mb-4 neon-text">
               {CONTACT.name}
             </h1>
-            <p className="text-lg sm:text-xl text-white/70 mb-6">{PAGE_DESCRIPTION}</p>
-            <div className="w-24 h-1 bg-gradient-to-r from-neon-green to-neon-blue mx-auto rounded-full" />
+            <p className="text-xl sm:text-2xl text-white/70 mb-6 max-w-md mx-auto">{PAGE_DESCRIPTION}</p>
+            <div className="w-28 h-1 bg-gradient-to-r from-neon-green to-neon-blue mx-auto rounded-full" />
           </motion.header>
 
-          <div className="max-w-lg mx-auto">
-            <OrbitPanel title="Links" titleClassName="text-neon-green" className="orbit-readable-panel border-white/10">
-              {sections.map((section) => (
-                <div
-                  key={section.id}
-                  className={section.heading ? 'mt-7 pt-2 border-t border-white/10 first:mt-0 first:pt-0 first:border-t-0' : ''}
-                >
-                  {section.heading ? (
-                    <h3 className="text-xs font-semibold uppercase tracking-wider text-neon-blue mb-3">
-                      {section.heading}
-                    </h3>
-                  ) : null}
-                  <ul className="space-y-3 list-none m-0 p-0">
-                    {section.items.map((item) => {
-                      const index = linkIndex++;
-                      return (
-                        <BioLinkButton
-                          key={item.label}
-                          label={item.label}
-                          url={item.url as string}
-                          icon={item.icon}
-                          index={index}
-                        />
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
-            </OrbitPanel>
+          <OrbitPanel
+            title="Links"
+            titleClassName="text-neon-green text-sm sm:text-base"
+            className="orbit-readable-panel border-white/10 p-5 sm:p-7"
+          >
+            {sections.map((section) => (
+              <div
+                key={section.id}
+                className={
+                  section.heading ? 'mt-8 pt-4 border-t border-white/10 first:mt-0 first:pt-0 first:border-t-0' : ''
+                }
+              >
+                {section.heading ? (
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-neon-blue mb-4">
+                    {section.heading}
+                  </h3>
+                ) : null}
+                <ul className="space-y-3.5 list-none m-0 p-0">
+                  {section.items.map((item) => (
+                    <BioLinkButton
+                      key={item.label}
+                      label={item.label}
+                      url={item.url as string}
+                      icon={item.icon}
+                    />
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </OrbitPanel>
 
-            <motion.p
-              className="text-center text-white/45 text-sm mt-8 font-mono"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <Link to="/" className="text-neon-green/80 hover:text-neon-green transition-colors no-underline">
-                ← Back to MySpace
-              </Link>
-            </motion.p>
-          </div>
+          <p className="text-center text-white/50 text-base mt-10 font-mono">
+            <Link to="/" className="text-neon-green/80 hover:text-neon-green transition-colors no-underline">
+              ← Back to MySpace
+            </Link>
+          </p>
         </div>
       </section>
     </div>
