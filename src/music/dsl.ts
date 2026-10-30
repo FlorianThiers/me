@@ -1,6 +1,11 @@
 import { emptyOverrides, emptyNotes, emptyProject } from './defaults';
 import { normalizeProjectGrid, normalizeSteps, parseAudioClips, parseClips, parseNotes } from './grid';
 import type { BindingValue, DrumId, MusicProject, ParseResult, PatchResult, TrackId, Waveform } from './types';
+import type { LaunchQuantization } from './engine/session/launchQueue';
+import {
+  parseLiveSetBindTarget,
+  parseLiveSetKeyToken,
+} from './liveSetKeys';
 import { isVoicePack, TRACK_IDS, WAVEFORMS } from './types';
 
 const TRACK_KEY = 'kick|snare|hihat|mc|bass|wt|an|tp|rg|vox';
@@ -452,14 +457,58 @@ export function patchBinding(code: string, key: string, value: BindingValue): Pa
   return { code: lines.join('\n'), line: cursor };
 }
 
-export function parseRepl(
-  line: string,
-): { key: string; value: BindingValue } | { error: string } | { launch: number } | null {
+export type ReplParseResult =
+  | { key: string; value: BindingValue }
+  | { error: string }
+  /** Legacy: select paint scene in UI (`launch 2`). */
+  | { launch: number }
+  | { replLaunch: { track: TrackId; slot: number } }
+  | { replScene: { scene1: number } }
+  | { replStop: { track: TrackId } }
+  | { replBind: { code: string; track: TrackId; slot: number } }
+  | { replQuant: LaunchQuantization };
+
+export function parseRepl(line: string): ReplParseResult | null {
   const raw = line.trim();
   if (!raw || raw.startsWith('//')) return null;
 
+  const launchTrack = raw.match(/^launch\s+([\w]+)\s+(\d+)$/i);
+  if (launchTrack) {
+    const track = launchTrack[1].toLowerCase();
+    if (!isTrack(track)) return { error: `unknown track: ${launchTrack[1]}` };
+    return { replLaunch: { track, slot: Math.max(1, Math.round(Number(launchTrack[2]))) } };
+  }
+
   const launch = raw.match(/^launch\s+(\d+)$/i);
   if (launch) return { launch: Number(launch[1]) };
+
+  const sceneCmd = raw.match(/^scene\s+(\d+)$/i);
+  if (sceneCmd) {
+    return { replScene: { scene1: Math.max(1, Math.round(Number(sceneCmd[1]))) } };
+  }
+
+  const stopCmd = raw.match(/^stop\s+([\w]+)$/i);
+  if (stopCmd) {
+    const track = stopCmd[1].toLowerCase();
+    if (!isTrack(track)) return { error: `unknown track: ${stopCmd[1]}` };
+    return { replStop: { track } };
+  }
+
+  const bindCmd = raw.match(/^bind\s+(\S+)\s+([\w.]+)$/i);
+  if (bindCmd) {
+    const code = parseLiveSetKeyToken(bindCmd[1]);
+    if (!code) return { error: `unknown key: ${bindCmd[1]}` };
+    const target = parseLiveSetBindTarget(bindCmd[2]);
+    if (!target) return { error: `use track.slot e.g. kick.2` };
+    return { replBind: { code, track: target.track, slot: target.slot } };
+  }
+
+  const quantCmd = raw.match(/^quant(?:ize|ization)?\s+(bar|beat|now|immediate)$/i);
+  if (quantCmd) {
+    const q = quantCmd[1].toLowerCase();
+    const replQuant: LaunchQuantization = q === 'beat' ? 'beat' : q === 'bar' ? 'bar' : 'immediate';
+    return { replQuant };
+  }
 
   const playCmd = raw.match(/^play\s+(session|arr|arrangement|song)$/i);
   if (playCmd) {

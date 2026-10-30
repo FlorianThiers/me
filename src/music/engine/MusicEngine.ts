@@ -127,6 +127,16 @@ export class MusicEngine {
     return slot;
   }
 
+  /** Pending clip/scene launches (for UI “armed” state). */
+  getPendingLaunches(): PendingLaunch[] {
+    return [...this.pendingLaunches];
+  }
+
+  /** Copy of active session clip slots (0 = stopped). */
+  getSessionClipSlots(): Map<TrackId, number> {
+    return new Map(this.sessionClips);
+  }
+
   /** Queue clip launch; applied at the next quantize boundary while playing. */
   launchClip(trackId: TrackId, slot: number) {
     this.pendingLaunches.push({ kind: 'launch', trackId, slot: Math.max(1, Math.round(slot)) });

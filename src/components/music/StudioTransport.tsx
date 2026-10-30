@@ -52,6 +52,8 @@ type Props = {
   looping: boolean;
   metronome: boolean;
   keysOn: boolean;
+  keyboardMode: 'piano' | 'liveSet';
+  onKeyboardMode: (mode: 'piano' | 'liveSet') => void;
   snapSteps: 1 | 2 | 4;
   snapBars: 1 | 2 | 4;
   swing: number;
@@ -116,6 +118,8 @@ export const StudioTransport: React.FC<Props> = ({
   looping,
   metronome,
   keysOn,
+  keyboardMode,
+  onKeyboardMode,
   snapSteps,
   snapBars,
   swing,
@@ -241,9 +245,41 @@ export const StudioTransport: React.FC<Props> = ({
           onClick={onKeys}
           className={`h-[22px] px-2 text-[10px] ${keysOn ? 'text-[#ff8c00]' : 'text-[#666]'}`}
           style={{ background: keysOn ? STUDIO.active : STUDIO.surface }}
+          title="Master keyboard shortcuts on/off"
         >
           Keys
         </button>
+
+        <div
+          className="flex h-[22px] overflow-hidden border text-[9px]"
+          style={{ borderColor: STUDIO.border }}
+          title="Piano typing keyboard vs live-set clip/scene keys (same physical keys, different mode)"
+        >
+          <button
+            type="button"
+            disabled={!keysOn}
+            onClick={() => onKeyboardMode('piano')}
+            className="px-2 uppercase tracking-wide"
+            style={{
+              background: keysOn && keyboardMode === 'piano' ? STUDIO.accent : STUDIO.surface,
+              color: keysOn && keyboardMode === 'piano' ? STUDIO.accentText : STUDIO.textDim,
+            }}
+          >
+            Piano
+          </button>
+          <button
+            type="button"
+            disabled={!keysOn}
+            onClick={() => onKeyboardMode('liveSet')}
+            className="px-2 uppercase tracking-wide"
+            style={{
+              background: keysOn && keyboardMode === 'liveSet' ? STUDIO.accent : STUDIO.surface,
+              color: keysOn && keyboardMode === 'liveSet' ? STUDIO.accentText : STUDIO.textDim,
+            }}
+          >
+            Live
+          </button>
+        </div>
 
         <div className="mx-2 h-5 w-px" style={{ background: STUDIO.border }} />
 
