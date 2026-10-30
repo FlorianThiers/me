@@ -5,6 +5,7 @@ import './i18n';
 import { Navigation } from './components/Navigation';
 import { OrbitLayout } from './components/orbit/OrbitLayout';
 import { HomePage } from './pages/HomePage';
+import { LinksPage } from './pages/LinksPage';
 import { PortfolioPage } from './pages/PortfolioPage';
 import { SkillsPage } from './pages/SkillsPage';
 import { JourneyPage } from './pages/JourneyPage';
@@ -70,6 +71,7 @@ function App() {
         <main className="relative z-10">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/links" element={<LinksPage />} />
             <Route path="/julia" element={<JuliaPage />} />
             {DashboardRoutes && (
               <Route path="/dashboard/*" element={<Suspense fallback={null}><DashboardRoutes /></Suspense>} />
