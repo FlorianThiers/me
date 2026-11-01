@@ -7,6 +7,12 @@ Place real exports here for local dev or a secure deployment pipeline:
 - `plant-catalog.json`
 - `dashboard-snapshot.json`
 
+Ops usage (CSV):
+
+- `ops-usage/grok-usage.csv`
+- `ops-usage/cursor-csv/*.csv`
+- optional `ops-usage/config.json` (`cursorMonthlyTokenLimit`)
+
 This directory is gitignored. The authenticated `/api/private/*` handlers read
 these files first, then fall back to sanitized `public/data/*.example.json`.
 

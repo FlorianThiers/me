@@ -35,6 +35,7 @@ import { MoltbookPage } from './pages/MoltbookPage';
 import { MandelbrotPage } from './pages/MandelbrotPage';
 import { JuliaPage } from './pages/JuliaPage';
 import { JuliaUsagePage } from './pages/JuliaUsagePage';
+import { OpsUsagePage } from './pages/OpsUsagePage';
 import { StockPage } from './pages/StockPage';
 import { LifeRhythmPage } from './pages/LifeRhythmPage';
 import { CvPage } from './pages/CvPage';
@@ -104,6 +105,14 @@ function App() {
               <Route path="/journey" element={<JourneyPage />} />
               <Route path="/goals" element={<GoalsPage />} />
               <Route path="/mandelbrot" element={<MandelbrotPage />} />
+              <Route
+                path="/ops/usage"
+                element={
+                  <PrivateRoute>
+                    <OpsUsagePage />
+                  </PrivateRoute>
+                }
+              />
               <Route
                 path="/julia/usage"
                 element={
