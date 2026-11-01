@@ -9,6 +9,10 @@ Currently, two official plugins are available:
 
 ## Expanding the ESLint configuration
 
+### Ops usage data (private)
+
+See [`private-data/README.md`](private-data/README.md). Upload live CSV exports to Vercel Blob with `scripts/upload-ops-usage.mjs` and server-only `BLOB_READ_WRITE_TOKEN`.
+
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
 ```js

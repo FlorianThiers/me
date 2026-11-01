@@ -1,4 +1,4 @@
-import type { OpsUsagePayload } from '../../types/opsUsage';
+import type { OpsUsagePayload, OpsUsageSources } from './types.js';
 import {
   formatBrusselsDate,
   getCursorMonthlyCycle,
@@ -24,17 +24,7 @@ import {
 } from './parseCursorCsv';
 import { clampPct, usageWarningLevel } from './warningLevel';
 
-export type OpsUsageConfig = {
-  cursorMonthlyTokenLimit?: number;
-  exportNote?: string;
-};
-
-export type OpsUsageSources = {
-  grokCsv: string;
-  cursorCsvFiles: string[];
-  config?: OpsUsageConfig;
-  isDemo: boolean;
-};
+export type { OpsUsageConfig, OpsUsageSources } from './types.js';
 
 function latestGrokPctInCycle(rows: GrokLogRow[]): number {
   if (rows.length === 0) return 0;
