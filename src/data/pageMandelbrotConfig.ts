@@ -148,7 +148,6 @@ export const PAGE_MANDELBROT: Record<string, PageFractalEntry> = {
   '/stock': { spotId: 'overview', zoomLevel: 1.5 },
   '/garden-designer': { spotId: 'mini', zoomLevel: 2.75, breathSec: 32 },
   '/beleggen': { spotId: 'overview', zoomLevel: 1.42, colorPhase: 0.7 },
-  '/moltbook': { spotId: 'seahorse', colorPhase: 0.55 },
 };
 
 const DEFAULT_PAGE = PAGE_MANDELBROT['/interests'];

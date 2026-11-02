@@ -783,18 +783,6 @@
       ],
       "explore": "Explorar Inflación e Inversiones"
     },
-    "moltbook": {
-      "title": "Agente Moltbook",
-      "description": "Mi agente de IA en Moltbook donde puedo hacer preguntas y responder publicaciones de otros agentes. Una plataforma para comunicación de IA a IA e intercambio de conocimientos.",
-      "details": [
-        "Comunicación de IA",
-        "Hacer Preguntas",
-        "Responder",
-        "Comunidad",
-        "Intercambio de Conocimientos"
-      ],
-      "explore": "Abrir Agente Moltbook"
-    },
     "howInterestsShape": {
       "title": "Cómo Estos Intereses Dan Forma a Mi Trabajo",
       "description": "Mis diversos intereses influyen en mi enfoque del diseño y desarrollo. Desde el ritmo y estructura de la música hasta la narrativa interactiva de los videojuegos, cada interés aporta perspectivas únicas que me ayudan a crear soluciones más atractivas e innovadoras. Creo que una persona completa crea un trabajo más completo."
@@ -1844,64 +1832,6 @@
       "cannotFetchGold": "No se pudo obtener el precio del oro",
       "cannotFetchRealTime": "No se pudieron obtener datos en tiempo real. Usa datos simulados."
     }
-  },
-  "moltbook": {
-    "backToInterests": "Volver a Intereses",
-    "title": "Agente Moltbook",
-    "subtitle": "Haz preguntas y responde publicaciones de otros agentes",
-    "apiKeyConfiguration": "Configuración de Clave API",
-    "enterApiKey": "Ingresa tu clave API de Moltbook para comenzar. Puedes encontrarla en tu archivo de credenciales.",
-    "save": "Guardar",
-    "saving": "Guardando...",
-    "newName": "Nuevo nombre",
-    "cancel": "Cancelar",
-    "nameUpdated": "Nombre cambiado exitosamente a",
-    "errorUpdatingName": "Error al actualizar el nombre",
-    "changeNameOnWebsite": "Puedes cambiar el nombre a través del sitio web de Moltbook:",
-    "createPost": "Crear Publicación",
-    "titleLabel": "Título",
-    "content": "Contenido",
-    "submolt": "Submolt",
-    "send": "Enviar",
-    "posts": "Publicaciones",
-    "all": "Todas",
-    "my": "Mis",
-    "sort": {
-      "new": "Nuevas",
-      "hot": "Populares",
-      "top": "Top"
-    },
-    "loading": "Cargando...",
-    "noPosts": "No se encontraron publicaciones",
-    "comments": "Comentarios",
-    "reply": "Responder",
-    "posting": "Publicando...",
-    "refresh": "Actualizar",
-    "autoReply": "Respuesta Automática",
-    "replyingTo": "Respondiendo al comentario de",
-    "askQuestion": "Hacer una Pregunta",
-    "generatePost": "Generar...",
-    "aiPost": "Publicación de IA",
-    "allPosts": "Todas las Publicaciones",
-    "myPosts": "Mis Publicaciones",
-    "newest": "Más Recientes",
-    "hide": "Ocultar",
-    "view": "Ver",
-    "loadingOwnPosts": "Cargando publicaciones propias...",
-    "foundOwnPosts": "Encontradas",
-    "ownPosts": "publicaciones propias. Verificando nuevos comentarios...",
-    "checkingPost": "Verificando publicación:",
-    "rateLimitReached": "Límite de velocidad alcanzado. Espera un momento...",
-    "working": "Trabajando...",
-    "changeName": "Cambiar Nombre",
-    "profile": "Perfil",
-    "karma": "Karma",
-    "followers": "Seguidores",
-    "following": "Siguiendo",
-    "writeAnswer": "Escribe tu respuesta...",
-    "postAnswer": "Publicar Respuesta",
-    "by": "Por",
-    "replies": "respuestas"
   },
   "developmentNotice": {
     "title": "Trabajo en Progreso",

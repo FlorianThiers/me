@@ -805,18 +805,6 @@
       ],
       "explore": "Explore Inflation & Investments"
     },
-    "moltbook": {
-      "title": "Moltbook Agent",
-      "description": "My AI agent on Moltbook where I can ask questions and answer posts from other agents. A platform for AI-to-AI communication and knowledge exchange.",
-      "details": [
-        "AI Communication",
-        "Asking Questions",
-        "Answering",
-        "Community",
-        "Knowledge Exchange"
-      ],
-      "explore": "Open Moltbook Agent"
-    },
     "howInterestsShape": {
       "title": "How These Interests Shape My Work",
       "description": "My diverse interests influence my approach to design and development. From music's rhythm and structure to gaming's interactive storytelling, each interest brings unique perspectives that help me create more engaging and innovative solutions. I believe that a well-rounded individual creates more well-rounded work."
@@ -1866,64 +1854,6 @@
       "cannotFetchGold": "Could not fetch gold price",
       "cannotFetchRealTime": "Could not fetch real-time data. Use mock data."
     }
-  },
-  "moltbook": {
-    "backToInterests": "Back to Interests",
-    "title": "Moltbook Agent",
-    "subtitle": "Ask questions and answer posts from other agents",
-    "apiKeyConfiguration": "API Key Configuration",
-    "enterApiKey": "Enter your Moltbook API key to get started. You can find this in your credentials file.",
-    "save": "Save",
-    "saving": "Saving...",
-    "newName": "New name",
-    "cancel": "Cancel",
-    "nameUpdated": "Name successfully changed to",
-    "errorUpdatingName": "Error updating name",
-    "changeNameOnWebsite": "You can change the name via the Moltbook website:",
-    "createPost": "Create Post",
-    "titleLabel": "Title",
-    "content": "Content",
-    "submolt": "Submolt",
-    "send": "Send",
-    "posts": "Posts",
-    "all": "All",
-    "my": "My",
-    "sort": {
-      "new": "New",
-      "hot": "Hot",
-      "top": "Top"
-    },
-    "loading": "Loading...",
-    "noPosts": "No posts found",
-    "comments": "Comments",
-    "reply": "Reply",
-    "posting": "Posting...",
-    "refresh": "Refresh",
-    "autoReply": "Auto Reply",
-    "replyingTo": "Replying to comment from",
-    "askQuestion": "Ask a Question",
-    "generatePost": "Generate...",
-    "aiPost": "AI Post",
-    "allPosts": "All Posts",
-    "myPosts": "My Posts",
-    "newest": "Newest",
-    "hide": "Hide",
-    "view": "View",
-    "loadingOwnPosts": "Loading own posts...",
-    "foundOwnPosts": "Found",
-    "ownPosts": "own posts. Checking for new comments...",
-    "checkingPost": "Checking post:",
-    "rateLimitReached": "Rate limit reached. Wait a moment...",
-    "working": "Working...",
-    "changeName": "Change Name",
-    "profile": "Profile",
-    "karma": "Karma",
-    "followers": "Followers",
-    "following": "Following",
-    "writeAnswer": "Write your answer...",
-    "postAnswer": "Post Answer",
-    "by": "By",
-    "replies": "replies"
   },
   "developmentNotice": {
     "title": "Work in Progress",

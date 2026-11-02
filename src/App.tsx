@@ -31,7 +31,6 @@ import { CultivationPage } from './pages/CultivationPage';
 import { CookingPage } from './pages/CookingPage';
 import { GardenDesignPage } from './pages/GardenDesignPage';
 import { BeleggenPage } from './pages/BeleggenPage';
-import { MoltbookPage } from './pages/MoltbookPage';
 import { MandelbrotPage } from './pages/MandelbrotPage';
 import { JuliaPage } from './pages/JuliaPage';
 import { JuliaUsagePage } from './pages/JuliaUsagePage';
@@ -193,7 +192,6 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              <Route path="/moltbook" element={<MoltbookPage />} />
             </Route>
           </Routes>
         </main>
