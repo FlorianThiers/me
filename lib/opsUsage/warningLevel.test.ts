@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { usageWarningLevel } from './warningLevel';
+import { usageWarningLevel } from './warningLevel.js';
 
 describe('usageWarningLevel', () => {
   it('blijft ok onder 70%', () => {

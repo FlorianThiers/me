@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseCursorUsageCsv } from './parseCursorCsv';
+import { parseCursorUsageCsv } from './parseCursorCsv.js';
 
 const SAMPLE = `Date,Kind,Model,Max Mode,Input (w/ Cache Write),Input (w/o Cache Write),Cache Read,Output Tokens,Total Tokens,Cost
 2025-10-28,Included in Pro,claude-4-sonnet,No,900,2800,600,1800,6100,0.00`;

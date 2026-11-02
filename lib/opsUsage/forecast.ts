@@ -1,4 +1,4 @@
-import { clampPct } from './warningLevel';
+import { clampPct } from './warningLevel.js';
 
 /** Prognose: huidig % + (gemiddelde per dag sinds reset × resterende dagen). */
 export function forecastUsagePct(

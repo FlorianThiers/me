@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildOpsUsagePayload } from './buildPayload';
+import { buildOpsUsagePayload } from './buildPayload.js';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
