@@ -163,7 +163,7 @@
     "errorInvalidKey": "EmailJS configuratie fout: Ongeldige Public Key. Controleer je EmailJS credentials in het .env bestand.",
     "errorInvalidService": "EmailJS configuratie fout: Ongeldige Service ID. Controleer je EmailJS credentials.",
     "errorInvalidTemplate": "EmailJS configuratie fout: Ongeldige Template ID. Controleer je EmailJS credentials.",
-    "errorResendNotConfigured": "Contactformulier is niet geconfigureerd op de server. Zet RESEND_API_KEY, RESEND_FROM_EMAIL en RESEND_TO_EMAIL op Vercel (alleen server, geen VITE_ prefix).",
+    "errorResendNotConfigured": "Contactformulier is niet geconfigureerd op de server. Zet BREVO_API_KEY, BREVO_FROM_EMAIL en BREVO_TO_EMAIL op Vercel (of optioneel RESEND_* zonder Brevo).",
     "errorGeneric": "Bericht verzenden mislukt. Controleer je verbinding en probeer opnieuw.",
     "sendMessage": "Stuur me een bericht",
     "getInTouch": "Neem contact op",

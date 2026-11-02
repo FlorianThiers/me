@@ -1,5 +1,5 @@
 // Email Service Configuration
-// Production contact form: 'resend' → server /api/contact (RESEND_* on Vercel).
+// Production contact form → /api/contact (BREVO_* on Vercel; RESEND_* optional fallback).
 export const EMAIL_SERVICE = (import.meta.env.VITE_EMAIL_SERVICE || 'resend') as
   | 'brevo'
   | 'web3forms'
