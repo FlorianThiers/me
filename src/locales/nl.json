@@ -806,18 +806,6 @@
       ],
       "explore": "Verken Inflatie & Investeringen"
     },
-    "moltbook": {
-      "title": "Moltbook Agent",
-      "description": "Mijn AI agent op Moltbook waar ik vragen kan stellen en antwoorden kan geven op posts van andere agents. Een platform voor AI-to-AI communicatie en kennisuitwisseling.",
-      "details": [
-        "AI Communicatie",
-        "Vragen Stellen",
-        "Antwoorden",
-        "Community",
-        "Kennisuitwisseling"
-      ],
-      "explore": "Open Moltbook Agent"
-    },
     "howInterestsShape": {
       "title": "Hoe Deze Interesses Mijn Werk Vormen",
       "description": "Mijn diverse interesses beïnvloeden mijn aanpak van design en ontwikkeling. Van de ritme en structuur van muziek tot de interactieve verhalen van gaming - elke interesse brengt unieke perspectieven die me helpen om boeiendere en innovatievere oplossingen te creëren. Ik geloof dat een veelzijdig individu meer veelzijdig werk creëert."
@@ -1867,64 +1855,6 @@
       "cannotFetchGold": "Kon goudprijs niet ophalen",
       "cannotFetchRealTime": "Kon geen real-time data ophalen. Gebruik mock data."
     }
-  },
-  "moltbook": {
-    "backToInterests": "Terug naar Interesses",
-    "title": "Moltbook Agent",
-    "subtitle": "Stel vragen en beantwoord posts van andere agents",
-    "apiKeyConfiguration": "API Key Configuratie",
-    "enterApiKey": "Voer je Moltbook API key in om te beginnen. Je kunt deze vinden in je credentials bestand.",
-    "save": "Opslaan",
-    "saving": "Opslaan...",
-    "newName": "Nieuwe naam",
-    "cancel": "Annuleren",
-    "nameUpdated": "Naam succesvol gewijzigd naar",
-    "errorUpdatingName": "Fout bij het wijzigen van de naam",
-    "changeNameOnWebsite": "Je kunt de naam wijzigen via de Moltbook website:",
-    "createPost": "Maak Bericht",
-    "titleLabel": "Titel",
-    "content": "Inhoud",
-    "submolt": "Submolt",
-    "send": "Verstuur",
-    "posts": "Berichten",
-    "all": "Alle",
-    "my": "Mijn",
-    "sort": {
-      "new": "Nieuw",
-      "hot": "Hot",
-      "top": "Top"
-    },
-    "loading": "Laden...",
-    "noPosts": "Geen berichten gevonden",
-    "comments": "Reacties",
-    "reply": "Reageer",
-    "posting": "Versturen...",
-    "refresh": "Vernieuw",
-    "autoReply": "Auto Reply",
-    "replyingTo": "Reageren op comment van",
-    "askQuestion": "Stel een Vraag",
-    "generatePost": "Genereren...",
-    "aiPost": "AI Post",
-    "allPosts": "Alle Posts",
-    "myPosts": "Mijn Posts",
-    "newest": "Nieuwste",
-    "hide": "Verberg",
-    "view": "Bekijk",
-    "loadingOwnPosts": "Laden van eigen posts...",
-    "foundOwnPosts": "Gevonden",
-    "ownPosts": "eigen posts. Controleren op nieuwe comments...",
-    "checkingPost": "Controleren post:",
-    "rateLimitReached": "Rate limit bereikt. Wacht even...",
-    "working": "Bezig...",
-    "changeName": "Naam wijzigen",
-    "profile": "Profiel",
-    "karma": "Karma",
-    "followers": "Volgers",
-    "following": "Volgend",
-    "writeAnswer": "Schrijf je antwoord...",
-    "postAnswer": "Post Antwoord",
-    "by": "Door",
-    "replies": "reacties"
   },
   "developmentNotice": {
     "title": "In Ontwikkeling",

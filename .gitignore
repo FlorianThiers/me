@@ -30,11 +30,6 @@ dist-ssr
 .env.test.local
 .env.production.local
 
-# Moltbook credentials and sensitive data
-moltbook-registration.json
-*credentials*.json
-*credentials*.ps1
-MOLTBOOK_INFO.md
 
 # Persoonlijk dashboard (lokaal, bevat persoonlijke data)
 public/data/dashboard-snapshot.json

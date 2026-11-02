@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat, Calendar, Home, TrendingUp, MessageSquare, Orbit } from 'lucide-react';
+import { Music, Gamepad2, BookOpen, Camera, Palette, Globe, Users, Activity, Brain, Leaf, ChefHat, Calendar, Home, TrendingUp, Orbit } from 'lucide-react';
 import { ChakraCalendar } from '../components/ChakraCalendar';
 import { DevelopmentNoticePopup } from '../components/DevelopmentNoticePopup';
 import { AUTH_ONLY_INTEREST_KEYS } from '../lib/siteRoutes';
@@ -136,15 +136,6 @@ export const InterestsPage: React.FC = () => {
       details: t('interests.investing.details', { returnObjects: true }) as string[],
       link: '/beleggen',
       explore: t('interests.investing.explore')
-    },
-    {
-      key: 'moltbook',
-      icon: <MessageSquare className="w-8 h-8" />,
-      title: t('interests.moltbook.title'),
-      description: t('interests.moltbook.description'),
-      details: t('interests.moltbook.details', { returnObjects: true }) as string[],
-      link: '/moltbook',
-      explore: t('interests.moltbook.explore')
     },
 
   ];
