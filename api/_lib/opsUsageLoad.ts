@@ -1,70 +1,42 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { buildOpsUsagePayload, type OpsUsageConfig } from '../../src/lib/opsUsage/buildPayload.js';
+import { buildOpsUsagePayload } from '../../lib/opsUsage/buildPayload.js';
+import type { OpsUsagePayload } from '../../lib/opsUsage/types.js';
+import { loadOpsUsageFromBlob } from './opsUsageBlob.js';
+import {
+  loadOpsUsageExamples,
+  loadOpsUsageFromFilesystem,
+  rawFromBlob,
+} from './opsUsageSources.js';
 
-function readUtf8(filePath: string): string | null {
+/**
+ * Resolves ops usage inputs: Blob → private-data → example fallbacks.
+ * Never throws; returns null when no usable data exists.
+ */
+export async function loadOpsUsagePayload(): Promise<OpsUsagePayload | null> {
   try {
-    if (fs.existsSync(filePath)) return fs.readFileSync(filePath, 'utf8');
-  } catch {
-    // ignore
-  }
-  return null;
-}
+    const blobRaw = await loadOpsUsageFromBlob();
+    if (blobRaw) {
+      const fromBlob = rawFromBlob(blobRaw);
+      if (fromBlob) {
+        return buildOpsUsagePayload({
+          ...fromBlob,
+          config: fromBlob.config ?? { exportNote: 'Live Blob data' },
+        });
+      }
+    }
 
-function readJson<T>(filePath: string): T | null {
-  const raw = readUtf8(filePath);
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw) as T;
-  } catch {
+    const fromFs = loadOpsUsageFromFilesystem();
+    if (fromFs) {
+      return buildOpsUsagePayload(fromFs);
+    }
+
+    const examples = await loadOpsUsageExamples();
+    if (examples) {
+      return buildOpsUsagePayload(examples);
+    }
+
     return null;
+  } catch (err) {
+    console.error('[ops-usage] loadOpsUsagePayload failed:', err);
+    throw err;
   }
-}
-
-function listCsvFiles(dir: string): string[] {
-  try {
-    if (!fs.existsSync(dir)) return [];
-    return fs
-      .readdirSync(dir)
-      .filter((f) => f.endsWith('.csv'))
-      .map((f) => path.join(dir, f))
-      .sort();
-  } catch {
-    return [];
-  }
-}
-
-export function loadOpsUsagePayload() {
-  const root = process.cwd();
-  const privateDir = path.join(root, 'private-data', 'ops-usage');
-  const publicDir = path.join(root, 'public', 'data', 'ops-usage');
-
-  const privateGrok = readUtf8(path.join(privateDir, 'grok-usage.csv'));
-  const exampleGrok = readUtf8(path.join(publicDir, 'grok-usage.example.csv'));
-  const grokCsv = privateGrok ?? exampleGrok ?? '';
-  const isDemo = privateGrok == null;
-
-  const privateCursorDir = path.join(privateDir, 'cursor-csv');
-  const exampleCursorDir = path.join(publicDir, 'cursor-csv');
-  let cursorFiles = listCsvFiles(privateCursorDir);
-  if (cursorFiles.length === 0) {
-    cursorFiles = listCsvFiles(exampleCursorDir).filter((f) => f.endsWith('.example.csv'));
-  }
-  const cursorCsvFiles = cursorFiles.map((f) => readUtf8(f)).filter((s): s is string => s != null);
-
-  const config =
-    readJson<OpsUsageConfig>(path.join(privateDir, 'config.json')) ??
-    readJson<OpsUsageConfig>(path.join(publicDir, 'config.example.json')) ??
-    undefined;
-
-  if (!grokCsv && cursorCsvFiles.length === 0) {
-    return null;
-  }
-
-  return buildOpsUsagePayload({
-    grokCsv,
-    cursorCsvFiles,
-    config: config ?? { exportNote: 'EXAMPLE DATA ONLY' },
-    isDemo,
-  });
 }
