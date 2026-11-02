@@ -42,8 +42,8 @@ export const ContactSection: React.FC = () => {
       console.warn('Web3Forms access key is not configured. Please add VITE_WEB3FORMS_ACCESS_KEY to your .env file.');
     } else if (service === 'formspree' && !import.meta.env.VITE_FORMSPREE_FORM_ID) {
       console.warn('Formspree form ID is not configured. Please add VITE_FORMSPREE_FORM_ID to your .env file.');
-    } else if (service === 'sendgrid' && !import.meta.env.VITE_SENDGRID_API_KEY) {
-      console.warn('SendGrid API key is not configured. Please add VITE_SENDGRID_API_KEY to your .env file.');
+    } else if (service === 'sendgrid') {
+      // SendGrid option now routes via /api/contact (server-side keys).
     } else if (service === 'resend' || service === 'brevo') {
       // Keys live on Vercel (RESEND_API_KEY); client uses /api/contact only.
     }
