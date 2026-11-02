@@ -162,7 +162,7 @@
     "errorInvalidKey": "EmailJS configuration error: Invalid Public Key. Please check your EmailJS credentials in the .env file.",
     "errorInvalidService": "EmailJS configuration error: Invalid Service ID. Please check your EmailJS credentials.",
     "errorInvalidTemplate": "EmailJS configuration error: Invalid Template ID. Please check your EmailJS credentials.",
-    "errorResendNotConfigured": "Contact form is not configured on the server. Set RESEND_API_KEY or BREVO_API_KEY in Vercel (server-only, no VITE_ prefix).",
+    "errorResendNotConfigured": "Contact form is not configured on the server. Set RESEND_API_KEY, RESEND_FROM_EMAIL, and RESEND_TO_EMAIL on Vercel (server-only, no VITE_ prefix).",
     "errorGeneric": "Failed to send message. Please check your connection and try again.",
     "sendMessage": "Send me a message",
     "getInTouch": "Get in touch",
