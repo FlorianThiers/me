@@ -1,4 +1,4 @@
-import { getMoltbookApiKey, MOLTBOOK_CONFIG } from '../config/moltbook';
+import { MOLTBOOK_CONFIG } from '../config/moltbook';
 
 export interface MoltbookPost {
   id: string;
@@ -47,29 +47,27 @@ export interface ApiResponse<T> {
   error?: string;
 }
 
-// Helper to make authenticated API calls
+// Helper to make authenticated API calls (site session cookie → /api/moltbook proxy)
 const makeRequest = async <T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<ApiResponse<T>> => {
-  const apiKey = getMoltbookApiKey();
-  
-  if (!apiKey) {
-    return {
-      success: false,
-      error: 'Moltbook API key niet geconfigureerd. Voeg je API key toe in de instellingen.'
-    };
-  }
-
   try {
     const response = await fetch(`${MOLTBOOK_CONFIG.BASE_URL}${encodeURIComponent(endpoint)}`, {
       ...options,
+      credentials: 'include',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
         ...options.headers,
       },
     });
+
+    if (response.status === 401) {
+      return {
+        success: false,
+        error: 'Unauthorized. Log in with your site admin session to use Moltbook.',
+      };
+    }
 
     const data = await response.json();
 

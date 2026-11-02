@@ -8,8 +8,6 @@ import {
   MessageSquare, 
   RefreshCw, 
   Settings, 
-  Eye, 
-  EyeOff,
   Loader2,
   AlertCircle,
   CheckCircle2,
@@ -32,12 +30,11 @@ import {
   type MoltbookPost,
   type MoltbookComment
 } from '../services/moltbookService';
-import { getMoltbookApiKey, saveMoltbookApiKey } from '../config/moltbook';
+import { useSiteAuth } from '../context/SiteAuthContext';
 
 export const MoltbookPage: React.FC = () =>{
   const { t } = useTranslation();
-  const [apiKey, setApiKey] = useState<string>('');
-  const [showApiKey, setShowApiKey] = useState(false);
+  const { authenticated, loading: authLoading } = useSiteAuth();
   const [isConfigured, setIsConfigured] = useState(false);
   const [agentProfile, setAgentProfile] = useState<any>(null);
   const [agentName, setAgentName] = useState<string | null>(null);
@@ -71,17 +68,18 @@ export const MoltbookPage: React.FC = () =>{
   const [isAutoReplying, setIsAutoReplying] = useState(false);
   const [autoReplyProgress, setAutoReplyProgress] = useState<string>('');
 
-  // Load API key on mount
+  // Load Moltbook data when site session is active
   useEffect(() =>{
-    const key = getMoltbookApiKey();
-    if (key) {
-      setApiKey(key);
+    if (authLoading) return;
+    if (authenticated) {
       setIsConfigured(true);
       loadAgentProfile();
       loadSubmolts();
       loadPosts();
+    } else {
+      setIsConfigured(false);
     }
-  }, []);
+  }, [authenticated, authLoading]);
 
   // Reload posts when view or sort changes
   useEffect(() =>{
@@ -158,22 +156,6 @@ export const MoltbookPage: React.FC = () =>{
       console.error('Error loading submolts:', error);
       // Set default submolts if loading fails
       setSubmolts([{ name: 'general', display_name: 'General', subscriber_count: 0 }]);
-    }
-  };
-
-  // Save API key
-  const handleSaveApiKey = () =>{
-    if (apiKey.trim()) {
-      saveMoltbookApiKey(apiKey.trim());
-      setIsConfigured(true);
-      setError(null);
-      setSuccess('API key opgeslagen!');
-      loadAgentProfile();
-      loadSubmolts();
-      loadPosts();
-      setTimeout(() => setSuccess(null), 3000);
-    } else {
-      setError('Voer een geldige API key in');
     }
   };
 
@@ -533,8 +515,8 @@ export const MoltbookPage: React.FC = () =>{
           </h1>
           <p className="text-white/70 text-lg">{t('moltbook.subtitle')}
           </p>
-        </div>{/* API Key Configuration */}
-        {!isConfigured && (
+        </div>
+        {!authLoading && !authenticated && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -544,29 +526,15 @@ export const MoltbookPage: React.FC = () =>{
               <Settings className="w-6 h-6 text-neon-green mr-3" />
               <h2 className="text-2xl font-bold">{t('moltbook.apiKeyConfiguration')}</h2>
             </div>
-            <p className="text-white/70 mb-4">{t('moltbook.enterApiKey')}
+            <p className="text-white/70 mb-4">
+              Log in with your site admin account to use the Moltbook proxy (MOLTBOOK_API_KEY on the server).
             </p>
-            <div className="flex gap-4">
-              <div className="flex-1 relative">
-                <input
-                  type={showApiKey ? 'text' : 'password'}
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="moltbook_sk_..."
-                  className="w-full px-4 py-3 bg-dark-primary/50 border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-neon-green transition-colors"
-                />
-                <button
-                  onClick={() => setShowApiKey(!showApiKey)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors"
-                >{showApiKey ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
-              </div>
-              <button
-                onClick={handleSaveApiKey}
-                className="px-6 py-3 bg-neon-green hover:bg-neon-blue text-dark-primary font-semibold rounded-lg transition-colors duration-300"
-              >{t('moltbook.save')}
-              </button>
-            </div>
+            <Link
+              to="/login"
+              className="inline-flex px-6 py-3 bg-neon-green hover:bg-neon-blue text-dark-primary font-semibold rounded-lg transition-colors duration-300"
+            >
+              Log in
+            </Link>
           </motion.div>
         )}
 

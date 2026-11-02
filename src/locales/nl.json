@@ -163,7 +163,7 @@
     "errorInvalidKey": "EmailJS configuratie fout: Ongeldige Public Key. Controleer je EmailJS credentials in het .env bestand.",
     "errorInvalidService": "EmailJS configuratie fout: Ongeldige Service ID. Controleer je EmailJS credentials.",
     "errorInvalidTemplate": "EmailJS configuratie fout: Ongeldige Template ID. Controleer je EmailJS credentials.",
-    "errorResendNotConfigured": "Resend API key is niet geconfigureerd. Voeg VITE_RESEND_API_KEY toe aan je .env bestand.",
+    "errorResendNotConfigured": "Contactformulier is niet geconfigureerd op de server. Zet BREVO_API_KEY, BREVO_FROM_EMAIL en BREVO_TO_EMAIL op Vercel (of optioneel RESEND_* zonder Brevo).",
     "errorGeneric": "Bericht verzenden mislukt. Controleer je verbinding en probeer opnieuw.",
     "sendMessage": "Stuur me een bericht",
     "getInTouch": "Neem contact op",
@@ -1853,11 +1853,8 @@
       "cryptocurrency": "Cryptocurrency"
     },
     "errorMessages": {
-      "apiKeyNotConfigured": "Alpha Vantage API Key niet geconfigureerd",
-      "addApiKey": "Voeg",
-      "toEnvFile": "toe aan je .env bestand om real-time data te gebruiken.",
-      "important": "Belangrijk:",
-      "restartServer": "Herstart je development server na het toevoegen van de API key!",
+      "apiKeyNotConfigured": "Marktdata-API niet geconfigureerd op de server",
+      "serverEnvHint": "Zet ALPHA_VANTAGE_API_KEY en FRED_API_KEY op Vercel (alleen server, geen VITE_ prefix). Deploy opnieuw na het toevoegen.",
       "getApiKey": "Krijg hier een gratis API key",
       "usingMockData": "Gebruikt mock data",
       "cannotFetchData": "Kon geen real-time data ophalen. Toont voorbeelddata.",

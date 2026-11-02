@@ -162,7 +162,7 @@
     "errorInvalidKey": "EmailJS configuration error: Invalid Public Key. Please check your EmailJS credentials in the .env file.",
     "errorInvalidService": "EmailJS configuration error: Invalid Service ID. Please check your EmailJS credentials.",
     "errorInvalidTemplate": "EmailJS configuration error: Invalid Template ID. Please check your EmailJS credentials.",
-    "errorResendNotConfigured": "Resend API key is not configured. Please add VITE_RESEND_API_KEY to your .env file.",
+    "errorResendNotConfigured": "Contact form is not configured on the server. Set BREVO_API_KEY, BREVO_FROM_EMAIL, and BREVO_TO_EMAIL on Vercel (or optionally RESEND_* if Brevo is absent).",
     "errorGeneric": "Failed to send message. Please check your connection and try again.",
     "sendMessage": "Send me a message",
     "getInTouch": "Get in touch",
@@ -1852,11 +1852,8 @@
       "cryptocurrency": "Cryptocurrency"
     },
     "errorMessages": {
-      "apiKeyNotConfigured": "Alpha Vantage API Key not configured",
-      "addApiKey": "Add",
-      "toEnvFile": "to your .env file to use real-time data.",
-      "important": "Important:",
-      "restartServer": "Restart your development server after adding the API key!",
+      "apiKeyNotConfigured": "Market data API not configured on the server",
+      "serverEnvHint": "Set ALPHA_VANTAGE_API_KEY and FRED_API_KEY on Vercel (server-only, no VITE_ prefix). Redeploy after adding env vars.",
       "getApiKey": "Get a free API key here",
       "usingMockData": "Using mock data",
       "cannotFetchData": "Could not fetch real-time data. Showing sample data.",
