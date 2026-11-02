@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getCursorMonthlyCycle, getGrokWeeklyCycle } from './cycles';
+import { getCursorMonthlyCycle, getGrokWeeklyCycle } from './cycles.js';
 
 describe('getCursorMonthlyCycle', () => {
   it('gebruikt 27e als maandanker', () => {

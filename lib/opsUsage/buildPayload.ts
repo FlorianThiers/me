@@ -3,8 +3,8 @@ import {
   formatBrusselsDate,
   getCursorMonthlyCycle,
   getGrokWeeklyCycle,
-} from './cycles';
-import { forecastUsagePct } from './forecast';
+} from './cycles.js';
+import { forecastUsagePct } from './forecast.js';
 import {
   aggregateGrokBots,
   grokRowsInCycle,
@@ -12,7 +12,7 @@ import {
   parseGrokUsageCsv,
   sumNamed,
   type GrokLogRow,
-} from './parseGrokCsv';
+} from './parseGrokCsv.js';
 import {
   cursorRowsInRange,
   dailyTokenTotals,
@@ -21,8 +21,8 @@ import {
   totalsByKind,
   totalsByModel,
   type CursorUsageRow,
-} from './parseCursorCsv';
-import { clampPct, usageWarningLevel } from './warningLevel';
+} from './parseCursorCsv.js';
+import { clampPct, usageWarningLevel } from './warningLevel.js';
 
 export type { OpsUsageConfig, OpsUsageSources } from './types.js';
 

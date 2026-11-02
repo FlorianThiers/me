@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { forecastUsagePct } from './forecast';
+import { forecastUsagePct } from './forecast.js';
 
 describe('forecastUsagePct', () => {
   it('extrapoleert lineair tot reset', () => {

@@ -8,7 +8,7 @@
  * Default sourceDir: /workspace/ops-usage
  *
  * Expected layout:
- *   grok-usage.csv
+ *   grok-usage.csv or grok-usage-log.csv (uploaded as ops-usage/grok-usage.csv)
  *   cursor-usage-summary.json (optional)
  *   cursor-csv/*.csv
  */
@@ -57,12 +57,21 @@ async function main() {
     process.exit(1);
   }
 
-  const grok = path.join(sourceDir, 'grok-usage.csv');
-  try {
-    await stat(grok);
-    await uploadFile('grok-usage.csv', grok);
-  } catch {
-    console.warn('Skip: grok-usage.csv not found');
+  const grokCandidates = ['grok-usage.csv', 'grok-usage-log.csv'];
+  let grokUploaded = false;
+  for (const name of grokCandidates) {
+    const candidate = path.join(sourceDir, name);
+    try {
+      await stat(candidate);
+      await uploadFile('grok-usage.csv', candidate);
+      grokUploaded = true;
+      break;
+    } catch {
+      // try next name
+    }
+  }
+  if (!grokUploaded) {
+    console.warn('Skip: grok-usage.csv / grok-usage-log.csv not found');
   }
 
   const summary = path.join(sourceDir, 'cursor-usage-summary.json');
