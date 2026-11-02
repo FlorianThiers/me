@@ -1,15 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { requireAuth } from './julia/_lib/auth';
+import { requireSiteSession } from './_lib/siteSession.js';
 
 const BASE_URL = 'https://www.moltbook.com/api/v1';
 
 /**
  * Server-side Moltbook proxy. The Moltbook key lives only in process.env.MOLTBOOK_API_KEY.
- * Callers must send `Authorization: Bearer <JULIA_API_SECRET>` (owner-only).
+ * Requires site admin session cookie (private owner pages).
  * Usage: /api/moltbook?path=/posts?sort=new
  */
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (!requireAuth(req, res)) return;
+  if (!requireSiteSession(req, res)) return;
 
   const apiKey = process.env.MOLTBOOK_API_KEY?.trim();
   if (!apiKey) {

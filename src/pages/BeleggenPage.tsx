@@ -4,11 +4,9 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, TrendingUp, TrendingDown, DollarSign, BarChart3, Info, Loader2, AlertCircle, RefreshCw } from 'lucide-react';
 import { getStockQuote, getCurrencyRate, getRemainingQuota } from '../services/alphaVantageService';
-import { ALPHA_VANTAGE_CONFIG } from '../config/alphaVantage';
 import { getCachedInvestments, setCachedInvestments, clearCache, getCacheAge } from '../utils/investmentCache';
 import { getCryptoPrice } from '../services/coinGeckoService';
 import { getInflationRate, getHistoricalInflation } from '../services/fredService';
-import { FRED_CONFIG } from '../config/fred';
 import { getMultipleYahooQuotes, getMultipleHistoricalReturns } from '../services/yahooFinanceService';
 
 interface PeriodReturns {
@@ -48,6 +46,8 @@ export const BeleggenPage: React.FC = () =>{
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [useMockData, setUseMockData] = useState(false);
+  const [marketApiConfigured, setMarketApiConfigured] = useState(true);
+  const [fredLive, setFredLive] = useState(false);
   
   const [inflationData, setInflationData] = useState<InflationData>({
     current: 2.5, // Default - wordt bijgewerkt van FRED API indien beschikbaar
@@ -64,13 +64,11 @@ export const BeleggenPage: React.FC = () =>{
   useEffect(() =>{
     const fetchInflationData = async () =>{
       console.log(' Fetching inflation data from FRED API...');
-      console.log(' FRED API Key configured:', !!FRED_CONFIG.API_KEY);
-      
+
       try {
-        // Fetch current inflation rate
         const fredInflation = await getInflationRate();
         if (fredInflation !== null && !isNaN(fredInflation) && fredInflation > -100 && fredInflation < 100) {
-          // Validate that inflation is a reasonable value (between -100% and 100%)
+          setFredLive(true);
           console.log(' FRED inflation rate fetched:', fredInflation, '%');
           setInflationData(prev => ({
             ...prev,
@@ -332,29 +330,7 @@ export const BeleggenPage: React.FC = () =>{
 
   // Fetch real data from Alpha Vantage
   const fetchInvestmentData = async (forceRefresh: boolean = false) =>{
-      // Check if API key is configured
-      console.log('API Key check:', ALPHA_VANTAGE_CONFIG.API_KEY ? 'Found' : 'Not found');
-      console.log('API Key length:', ALPHA_VANTAGE_CONFIG.API_KEY.length);
-      console.log('All import.meta.env keys:', Object.keys(import.meta.env));
-      
-      if (!ALPHA_VANTAGE_CONFIG.API_KEY) {
-        console.warn('Alpha Vantage API key not configured. Using mock data.');
-        console.warn('Troubleshooting:');
-        console.warn('1. Check if .env file exists in project root');
-        console.warn('2. Check if variable name is exactly: VITE_ALPHA_VANTAGE_API_KEY');
-        console.warn('3. Restart development server after adding .env file');
-        console.warn('4. Check .env file format: VITE_ALPHA_VANTAGE_API_KEY=your_key_here (no spaces around =)');
-        setUseMockData(true);
-        setIsLoading(false);
-        setRawInvestments(mockInvestments);
-        const adjustedMock = mockInvestments.map(inv =>{
-          const inflationRate = inflationData.current / 100;
-          const adjustedValue = inv.currentValue * (1 - inflationRate);
-          return { ...inv, inflationAdjusted: adjustedValue };
-        });
-        setInvestments(adjustedMock);
-        return;
-      }
+      setMarketApiConfigured(true);
 
       // Check cache first (unless forced refresh)
       if (!forceRefresh) {
@@ -671,7 +647,14 @@ export const BeleggenPage: React.FC = () =>{
         }
       } catch (err: any) {
         console.error('Error fetching investment data:', err);
-        setError(err?.message || t('investing.errorMessages.cannotFetchRealTime'));
+        const msg = err?.message || '';
+        if (
+          typeof msg === 'string' &&
+          (msg.includes('not configured on server') || msg.includes('ALPHA_VANTAGE_API_KEY'))
+        ) {
+          setMarketApiConfigured(false);
+        }
+        setError(msg || t('investing.errorMessages.cannotFetchRealTime'));
         setUseMockData(true);
         setRawInvestments(mockInvestments);
         // Calculate inflation-adjusted for mock data too
@@ -778,7 +761,7 @@ export const BeleggenPage: React.FC = () =>{
         </div>
 
         <div className="max-w-6xl mx-auto">{/* Error/Info Banner */}
-          {(error || useMockData || !ALPHA_VANTAGE_CONFIG.API_KEY) && (
+          {(error || useMockData || !marketApiConfigured) && (
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -786,12 +769,10 @@ export const BeleggenPage: React.FC = () =>{
             >
               <div className="flex items-start">
                 <AlertCircle className="w-5 h-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" />
-                <div className="flex-1">{!ALPHA_VANTAGE_CONFIG.API_KEY ? (
+                <div className="flex-1">{!marketApiConfigured ? (
                     <div>
                       <p className="text-yellow-300 font-semibold mb-1">{t('investing.errorMessages.apiKeyNotConfigured')}</p>
-                      <p className="text-yellow-200/80 text-sm">{t('investing.errorMessages.addApiKey')} <code className="bg-yellow-500/20 px-1 rounded">VITE_ALPHA_VANTAGE_API_KEY</code>{t('investing.errorMessages.toEnvFile')}
-                        <br />
-                        <strong className="text-yellow-300">{t('investing.errorMessages.important')}</strong>{t('investing.errorMessages.restartServer')}
+                      <p className="text-yellow-200/80 text-sm">{t('investing.errorMessages.serverEnvHint')}
                         <br />
                         <a 
                           href="https://www.alphavantage.co/support/#api-key" 
@@ -800,9 +781,6 @@ export const BeleggenPage: React.FC = () =>{
                           className="text-yellow-300 underline hover:text-yellow-200"
                         >{t('investing.errorMessages.getApiKey')}
                         </a>
-                      </p>
-                      <p className="text-yellow-200/60 text-xs mt-2">
-                        Debug: API Key lengte = {ALPHA_VANTAGE_CONFIG.API_KEY.length} (moet &gt; 0 zijn)
                       </p>
                     </div>
                   ) : useMockData ? (
@@ -903,14 +881,14 @@ export const BeleggenPage: React.FC = () =>{
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-dark-bg/50 rounded-lg p-4 border border-white/10">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-white/60 text-sm">Gemiddelde Inflatie ({selectedPeriod})</p>{FRED_CONFIG.API_KEY && (
+                  <p className="text-white/60 text-sm">Gemiddelde Inflatie ({selectedPeriod})</p>{fredLive && (
                     <span className="text-xs px-2 py-1 bg-neon-green/20 text-neon-green rounded">
                       FRED API
                     </span>
                   )}
                 </div>
                 <p className="text-3xl font-bold text-neon-green">{getAverageInflationForPeriod().toFixed(2)}%</p>
-                <p className="text-white/50 text-xs mt-2">{FRED_CONFIG.API_KEY ? 'Real-time data' : 'Default waarde'} • Huidig: {inflationData.current}%
+                <p className="text-white/50 text-xs mt-2">{fredLive ? 'Real-time data' : 'Default waarde'} • Huidig: {inflationData.current}%
                 </p>
               </div>
               <div className="bg-dark-bg/50 rounded-lg p-4 border border-white/10">
@@ -1160,7 +1138,7 @@ export const BeleggenPage: React.FC = () =>{
                   je koopkracht toeneemt, terwijl een negatief rendement betekent dat je koopkracht afneemt, 
                   zelfs als je investering in waarde stijgt.
                 </p>
-                <div className="text-white/60 text-sm">{ALPHA_VANTAGE_CONFIG.API_KEY ? (
+                <div className="text-white/60 text-sm">{marketApiConfigured && !useMockData ? (
                     <>
                       <p><strong>Data Bronnen:</strong></p>
                       <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
@@ -1191,7 +1169,7 @@ export const BeleggenPage: React.FC = () =>{
                         <li><strong>FRED API:</strong> Inflatie data (optioneel, onbeperkt gratis)</li>
                       </ul>
                       <p className="text-xs mt-2 text-white/50">
-                        <strong>Let op:</strong> Alpha Vantage API key niet geconfigureerd. Goud data gebruikt mock data.
+                        <strong>Let op:</strong> Server market API niet geconfigureerd (ALPHA_VANTAGE_API_KEY). Goud data gebruikt mock data.
                       </p>
                     </>
                   )}

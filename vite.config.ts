@@ -45,12 +45,6 @@ export default defineConfig({
       'Referrer-Policy': 'strict-origin-when-cross-origin'
     },
     proxy: {
-      '/api/fred': {
-        target: 'https://api.stlouisfed.org/fred',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/fred/, ''),
-        secure: true
-      },
       '/api/yahoo': {
         target: 'https://query1.finance.yahoo.com',
         changeOrigin: true,

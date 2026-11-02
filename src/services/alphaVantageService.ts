@@ -110,10 +110,6 @@ const waitForRateLimit = (): Promise<void> => {
 };
 
 const makeAPICall = async <T>(params: Record<string, string>): Promise<T> => {
-  if (!ALPHA_VANTAGE_CONFIG.API_KEY) {
-    throw new Error('Alpha Vantage API key not configured. Please add VITE_ALPHA_VANTAGE_API_KEY to your .env file');
-  }
-
   // Check daily quota before making the call
   if (!checkDailyQuota()) {
     throw new Error('Daily API quota exceeded. Please try again tomorrow or use cached data.');
@@ -124,17 +120,20 @@ const makeAPICall = async <T>(params: Record<string, string>): Promise<T> => {
   await waitForRateLimit();
   console.log('Rate limit passed, making API call...');
 
-  const queryParams = new URLSearchParams({
-    ...params,
-    apikey: ALPHA_VANTAGE_CONFIG.API_KEY,
-  });
+  const queryParams = new URLSearchParams(params);
+  const url = `${ALPHA_VANTAGE_CONFIG.PROXY_URL}?${queryParams.toString()}`;
 
-  const url = `${ALPHA_VANTAGE_CONFIG.BASE_URL}?${queryParams.toString()}`;
-  console.log('API Call URL:', url.replace(ALPHA_VANTAGE_CONFIG.API_KEY, '***'));
-  
   try {
-    const response = await fetch(url);
-    
+    const response = await fetch(url, { credentials: 'include', cache: 'no-store' });
+
+    if (response.status === 401) {
+      throw new Error('Unauthorized. Log in to fetch market data.');
+    }
+    if (response.status === 503) {
+      const errBody = (await response.json().catch(() => ({}))) as { error?: string };
+      throw new Error(errBody.error || 'ALPHA_VANTAGE_API_KEY not configured on server.');
+    }
+
     if (!response.ok) {
       throw new Error(`API request failed: ${response.status} ${response.statusText}`);
     }
