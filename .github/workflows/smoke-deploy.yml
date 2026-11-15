@@ -1,0 +1,116 @@
+name: Smoke (deploy)
+
+on:
+  deployment_status:
+
+concurrency:
+  group: smoke-deploy-${{ github.event.deployment.id }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      github.event.sender.login == 'vercel[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    env:
+      BASE_URL: ${{ github.event.deployment_status.target_url }}
+      DEPLOYMENT_ENV: ${{ github.event.deployment.environment }}
+      DEPLOYMENT_REF: ${{ github.event.deployment.ref }}
+      BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium (Playwright)
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Install Chromium deps (cache hit)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      - name: Decide whether to run smoke
+        id: plan
+        run: |
+          set -euo pipefail
+          is_production=false
+          if [ "$DEPLOYMENT_ENV" = "Production" ]; then
+            is_production=true
+          fi
+          is_preview=false
+          if [ "$is_production" = "false" ]; then
+            is_preview=true
+          fi
+          run_smoke=false
+          skip_reason=""
+          if [ "$is_production" = "true" ]; then
+            case "$DEPLOYMENT_REF" in
+              refs/heads/master|refs/heads/main)
+                run_smoke=true
+                ;;
+              *)
+                skip_reason="Production deployment is not from master/main; smoke skipped."
+                ;;
+            esac
+          elif [ "$is_preview" = "true" ]; then
+            if [ -n "${BYPASS_SECRET:-}" ]; then
+              run_smoke=true
+            else
+              skip_reason="Preview deployment may be Vercel-protected; set repo secret VERCEL_AUTOMATION_BYPASS_SECRET to enable preview smoke."
+            fi
+          else
+            skip_reason="Unknown deployment environment; smoke skipped."
+          fi
+          echo "is_production=$is_production" >> "$GITHUB_OUTPUT"
+          echo "run_smoke=$run_smoke" >> "$GITHUB_OUTPUT"
+          echo "skip_reason=$skip_reason" >> "$GITHUB_OUTPUT"
+
+      - name: Job summary (skip)
+        if: steps.plan.outputs.run_smoke != 'true'
+        run: |
+          {
+            echo "### Smoke test overgeslagen"
+            echo ""
+            echo "- **URL:** \`${BASE_URL}\`"
+            echo "- **Omgeving:** \`${DEPLOYMENT_ENV}\`"
+            echo "- **Ref:** \`${DEPLOYMENT_REF}\`"
+            echo ""
+            echo "${{ steps.plan.outputs.skip_reason }}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Run Playwright smoke
+        if: steps.plan.outputs.run_smoke == 'true'
+        env:
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: npm run test:smoke
+
+      - name: Job summary (success)
+        if: steps.plan.outputs.run_smoke == 'true'
+        run: |
+          {
+            echo "### Smoke test geslaagd"
+            echo ""
+            echo "- **URL:** \`${BASE_URL}\`"
+            echo "- **Omgeving:** \`${DEPLOYMENT_ENV}\`"
+            echo "- **Productie:** \`${{ steps.plan.outputs.is_production }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
