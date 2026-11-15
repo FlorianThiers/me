@@ -1,0 +1,310 @@
+{
+  "version": 1,
+  "errorCount": 38,
+  "issues": [
+    {
+      "id": "api/auth/login.ts:3:3:@typescript-eslint/no-unused-vars",
+      "file": "api/auth/login.ts",
+      "line": 3,
+      "column": 3,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'clearSessionCookie' is defined but never used."
+    },
+    {
+      "id": "api/auth/login.ts:7:3:@typescript-eslint/no-unused-vars",
+      "file": "api/auth/login.ts",
+      "line": 7,
+      "column": 3,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'isSiteSessionValid' is defined but never used."
+    },
+    {
+      "id": "api/julia/_lib/llmRouter.ts:3:60:@typescript-eslint/no-unused-vars",
+      "file": "api/julia/_lib/llmRouter.ts",
+      "line": 3,
+      "column": 60,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'DayUsage' is defined but never used."
+    },
+    {
+      "id": "api/private/market/alphavantage.ts:23:31:no-useless-escape",
+      "file": "api/private/market/alphavantage.ts",
+      "line": 23,
+      "column": 31,
+      "rule": "no-useless-escape",
+      "message": "Unnecessary escape character: \\-."
+    },
+    {
+      "id": "src/components/ContactSection.tsx:101:21:@typescript-eslint/no-explicit-any",
+      "file": "src/components/ContactSection.tsx",
+      "line": 101,
+      "column": 21,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/components/gardenDesigner/DesignCanvas.tsx:834:30:@typescript-eslint/no-unused-vars",
+      "file": "src/components/gardenDesigner/DesignCanvas.tsx",
+      "line": 834,
+      "column": 30,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'_e' is defined but never used."
+    },
+    {
+      "id": "src/components/gardenDesigner/NameInputDialog.tsx:63:9:no-case-declarations",
+      "file": "src/components/gardenDesigner/NameInputDialog.tsx",
+      "line": 63,
+      "column": 9,
+      "rule": "no-case-declarations",
+      "message": "Unexpected lexical declaration in case block."
+    },
+    {
+      "id": "src/components/gardenDesigner/NameInputDialog.tsx:76:9:no-case-declarations",
+      "file": "src/components/gardenDesigner/NameInputDialog.tsx",
+      "line": 76,
+      "column": 9,
+      "rule": "no-case-declarations",
+      "message": "Unexpected lexical declaration in case block."
+    },
+    {
+      "id": "src/components/gardenDesigner/NameInputDialog.tsx:81:9:no-case-declarations",
+      "file": "src/components/gardenDesigner/NameInputDialog.tsx",
+      "line": 81,
+      "column": 9,
+      "rule": "no-case-declarations",
+      "message": "Unexpected lexical declaration in case block."
+    },
+    {
+      "id": "src/components/gardenDesigner/NameInputDialog.tsx:82:9:no-case-declarations",
+      "file": "src/components/gardenDesigner/NameInputDialog.tsx",
+      "line": 82,
+      "column": 9,
+      "rule": "no-case-declarations",
+      "message": "Unexpected lexical declaration in case block."
+    },
+    {
+      "id": "src/components/gardenDesigner/NameInputDialog.tsx:84:9:no-case-declarations",
+      "file": "src/components/gardenDesigner/NameInputDialog.tsx",
+      "line": 84,
+      "column": 9,
+      "rule": "no-case-declarations",
+      "message": "Unexpected lexical declaration in case block."
+    },
+    {
+      "id": "src/components/gardenDesigner/ObjectsPanel.tsx:58:47:@typescript-eslint/no-unused-vars",
+      "file": "src/components/gardenDesigner/ObjectsPanel.tsx",
+      "line": 58,
+      "column": 47,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'_folderId' is defined but never used."
+    },
+    {
+      "id": "src/components/gardenDesigner/PropertiesPanel.tsx:51:58:@typescript-eslint/no-explicit-any",
+      "file": "src/components/gardenDesigner/PropertiesPanel.tsx",
+      "line": 51,
+      "column": 58,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/components/orbit/JuliaOrb.tsx:88:12:@typescript-eslint/no-unused-vars",
+      "file": "src/components/orbit/JuliaOrb.tsx",
+      "line": 88,
+      "column": 12,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'_variant' is assigned a value but never used."
+    },
+    {
+      "id": "src/context/SiteAuthContext.tsx:73:17:react-refresh/only-export-components",
+      "file": "src/context/SiteAuthContext.tsx",
+      "line": 73,
+      "column": 17,
+      "rule": "react-refresh/only-export-components",
+      "message": "Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components."
+    },
+    {
+      "id": "src/data/pageMandelbrotConfig.ts:158:19:@typescript-eslint/no-unused-vars",
+      "file": "src/data/pageMandelbrotConfig.ts",
+      "line": 158,
+      "column": 19,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'_s' is assigned a value but never used."
+    },
+    {
+      "id": "src/data/pageMandelbrotConfig.ts:158:36:@typescript-eslint/no-unused-vars",
+      "file": "src/data/pageMandelbrotConfig.ts",
+      "line": 158,
+      "column": 36,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'_k' is assigned a value but never used."
+    },
+    {
+      "id": "src/hooks/useJuliaVoice.ts:1:1:@typescript-eslint/triple-slash-reference",
+      "file": "src/hooks/useJuliaVoice.ts",
+      "line": 1,
+      "column": 1,
+      "rule": "@typescript-eslint/triple-slash-reference",
+      "message": "Do not use a triple slash reference for ../speech.d.ts, use `import` style instead."
+    },
+    {
+      "id": "src/lib/juliaVoiceIntents.ts:37:3:@typescript-eslint/no-unused-vars",
+      "file": "src/lib/juliaVoiceIntents.ts",
+      "line": 37,
+      "column": 3,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'_date' is defined but never used."
+    },
+    {
+      "id": "src/pages/BeleggenPage.tsx:369:27:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/BeleggenPage.tsx",
+      "line": 369,
+      "column": 27,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/BeleggenPage.tsx:459:30:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/BeleggenPage.tsx",
+      "line": 459,
+      "column": 30,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/BeleggenPage.tsx:482:29:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/BeleggenPage.tsx",
+      "line": 482,
+      "column": 29,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/BeleggenPage.tsx:540:23:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/BeleggenPage.tsx",
+      "line": 540,
+      "column": 23,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/BeleggenPage.tsx:564:23:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/BeleggenPage.tsx",
+      "line": 564,
+      "column": 23,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/BeleggenPage.tsx:599:23:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/BeleggenPage.tsx",
+      "line": 599,
+      "column": 23,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/BeleggenPage.tsx:648:21:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/BeleggenPage.tsx",
+      "line": 648,
+      "column": 21,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/GardenDesignPage.tsx:763:16:@typescript-eslint/no-unused-vars",
+      "file": "src/pages/GardenDesignPage.tsx",
+      "line": 763,
+      "column": 16,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'error' is defined but never used."
+    },
+    {
+      "id": "src/pages/MusicPage.tsx:13:80:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/MusicPage.tsx",
+      "line": 13,
+      "column": 80,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/MusicPage.tsx:13:98:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/MusicPage.tsx",
+      "line": 13,
+      "column": 98,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/MusicPage.tsx:297:41:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/MusicPage.tsx",
+      "line": 297,
+      "column": 41,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/MusicPage.tsx:344:99:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/MusicPage.tsx",
+      "line": 344,
+      "column": 99,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/MusicPage.tsx:411:74:@typescript-eslint/no-explicit-any",
+      "file": "src/pages/MusicPage.tsx",
+      "line": 411,
+      "column": 74,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/pages/MusicPage.tsx:533:18:@typescript-eslint/no-unused-vars",
+      "file": "src/pages/MusicPage.tsx",
+      "line": 533,
+      "column": 18,
+      "rule": "@typescript-eslint/no-unused-vars",
+      "message": "'error' is defined but never used."
+    },
+    {
+      "id": "src/services/alphaVantageService.ts:167:19:@typescript-eslint/no-explicit-any",
+      "file": "src/services/alphaVantageService.ts",
+      "line": 167,
+      "column": 19,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/services/formspreeService.ts:57:19:@typescript-eslint/no-explicit-any",
+      "file": "src/services/formspreeService.ts",
+      "line": 57,
+      "column": 19,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/services/web3formsService.ts:65:19:@typescript-eslint/no-explicit-any",
+      "file": "src/services/web3formsService.ts",
+      "line": 65,
+      "column": 19,
+      "rule": "@typescript-eslint/no-explicit-any",
+      "message": "Unexpected any. Specify a different type."
+    },
+    {
+      "id": "src/utils/dimensionCalculation.ts:38:7:no-case-declarations",
+      "file": "src/utils/dimensionCalculation.ts",
+      "line": 38,
+      "column": 7,
+      "rule": "no-case-declarations",
+      "message": "Unexpected lexical declaration in case block."
+    },
+    {
+      "id": "src/utils/gardenExport.ts:215:28:no-useless-escape",
+      "file": "src/utils/gardenExport.ts",
+      "line": 215,
+      "column": 28,
+      "rule": "no-useless-escape",
+      "message": "Unnecessary escape character: \\-."
+    }
+  ]
+}

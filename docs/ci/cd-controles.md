@@ -13,7 +13,7 @@ Beide workflows gebruiken **concurrency** met `cancel-in-progress`.
 
 ### Basis-CI
 
-- **Lint:** `npm run lint`
+- **Lint (CI):** `npm run lint:ci` — draait ESLint op de hele tree en **faalt alleen op nieuwe fouten** t.o.v. [`eslint-baseline.json`](../../eslint-baseline.json). Lokaal blijft `npm run lint` de volledige output tonen.
 - **Typecheck:** `npm run typecheck` (`tsc -b`)
 - **Build:** `npm run build` met placeholder `VITE_*`-waarden (geen echte secrets in CI)
 - **npm-cache** via `actions/setup-node@v4` (`cache: npm`)
@@ -41,7 +41,8 @@ Geen secrets worden in workflows of logs gezet. Niet zelf configureren via deze 
 
 ```bash
 npm ci
-npm run lint
+npm run lint          # volledige ESLint-uitvoer
+npm run lint:ci       # zoals in GitHub Actions
 npm run typecheck
 npm run build
 npx playwright install chromium
@@ -52,7 +53,12 @@ BASE_URL=http://127.0.0.1:4173 npm run test:smoke
 
 Vitest (`npm test`) blijft los van de deploy-smoke.
 
+## ESLint-baseline (bestaande schuld)
+
+- **38** bekende errors (nov 2025) staan in `eslint-baseline.json`; CI blokkeert geen merges daarvan, wel **nieuwe** errors in gewijzigde of nieuwe code.
+- Na het oplossen van baseline-issues: `npm run lint:baseline:update` en commit de bijgewerkte baseline.
+- Kleine veilige fix in deze PR: `prefer-const` in `api/_lib/opsUsageSources.ts` (2 fouten minder dan bij eerste CI-run).
+
 ## Bekende beperkingen
 
-- **Lint:** de codebase heeft bestaande ESLint-fouten; CI faalt op lint tot die zijn opgelost.
 - **Smoke-deploy** is niet lokaal gedraaid tegen echte Vercel-preview/productie-URL's in deze setup.

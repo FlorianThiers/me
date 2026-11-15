@@ -127,12 +127,12 @@ export async function loadOpsUsageExamples(): Promise<RawOpsUsageSources | null>
   const root = process.cwd();
   const publicDir = path.join(root, 'public', 'data', 'ops-usage');
 
-  let grokCsv =
+  const grokCsv =
     readUtf8File(path.join(publicDir, 'grok-usage.example.csv')) ??
     (await fetchPublicAsset(EXAMPLE_PATHS.grok));
 
   const exampleCursorDir = path.join(publicDir, 'cursor-csv');
-  let cursorPaths = listCsvInDir(exampleCursorDir).filter((f) => f.endsWith('.example.csv'));
+  const cursorPaths = listCsvInDir(exampleCursorDir).filter((f) => f.endsWith('.example.csv'));
   let cursorCsvFiles = cursorPaths
     .map((f) => readUtf8File(f))
     .filter((s): s is string => s != null);

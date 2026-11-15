@@ -8,6 +8,8 @@
     "dev:vercel": "vercel dev",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint:ci": "node scripts/eslint-baseline.mjs check",
+    "lint:baseline:update": "node scripts/eslint-baseline.mjs update",
     "typecheck": "tsc -b",
     "preview": "vite preview",
     "test": "vitest run",
