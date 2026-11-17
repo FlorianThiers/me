@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: 'node',
+    exclude: ['**/node_modules/**', '**/dist/**', 'e2e/**'],
   },
   esbuild: {
     // Remove console and debugger in production

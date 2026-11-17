@@ -8,8 +8,12 @@
     "dev:vercel": "vercel dev",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint:ci": "node scripts/eslint-baseline.mjs check",
+    "lint:baseline:update": "node scripts/eslint-baseline.mjs update",
+    "typecheck": "tsc -b",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:smoke": "playwright test"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -29,6 +33,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@playwright/test": "^1.65.1",
     "@types/node": "^25.2.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
