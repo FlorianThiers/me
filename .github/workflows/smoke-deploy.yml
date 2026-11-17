@@ -13,17 +13,16 @@ jobs:
       github.event.deployment_status.state == 'success' &&
       github.event.sender.login == 'vercel[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 10
     env:
       BASE_URL: ${{ github.event.deployment_status.target_url }}
       DEPLOYMENT_ENV: ${{ github.event.deployment.environment }}
       DEPLOYMENT_REF: ${{ github.event.deployment.ref }}
-      BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
     steps:
-      - name: Checkout default branch
+      - name: Checkout deployed commit
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          ref: ${{ github.event.deployment.sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -51,28 +50,19 @@ jobs:
 
       - name: Decide whether to run smoke
         id: plan
+        env:
+          BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: |
           set -euo pipefail
           is_production=false
           if [ "$DEPLOYMENT_ENV" = "Production" ]; then
             is_production=true
           fi
-          is_preview=false
-          if [ "$is_production" = "false" ]; then
-            is_preview=true
-          fi
           run_smoke=false
           skip_reason=""
           if [ "$is_production" = "true" ]; then
-            case "$DEPLOYMENT_REF" in
-              refs/heads/master|refs/heads/main)
-                run_smoke=true
-                ;;
-              *)
-                skip_reason="Production deployment is not from master/main; smoke skipped."
-                ;;
-            esac
-          elif [ "$is_preview" = "true" ]; then
+            run_smoke=true
+          elif [ "$is_production" = "false" ]; then
             if [ -n "${BYPASS_SECRET:-}" ]; then
               run_smoke=true
             else

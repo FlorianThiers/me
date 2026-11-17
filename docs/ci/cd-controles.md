@@ -21,8 +21,8 @@ Beide workflows gebruiken **concurrency** met `cancel-in-progress`.
 ### Smoke na deploy
 
 - Alleen **GET** op publieke pagina's (`/`, `/links`, `/portfolio`, `/skills`): status 2xx, geen `console.error`.
-- **Chromium** alleen; totale run beperkt (`timeout-minutes: 2`, `globalTimeout` in Playwright).
-- **Productie:** `deployment.environment == Production` én ref `refs/heads/master` of `refs/heads/main`.
+- **Chromium** alleen; Playwright-run beperkt (`globalTimeout` 90s); GitHub-job `timeout-minutes: 10` (ruimte voor `npm ci` + browserinstall).
+- **Productie:** `github.event.deployment.environment == Production` (geen branchnaam-check).
 - **Preview:** alleen als repo-secret **`VERCEL_AUTOMATION_BYPASS_SECRET`** is gezet (header `x-vercel-protection-bypass`). Zonder secret: job **slaagt** en noteert in de **job summary** dat preview-smoke is overgeslagen.
 
 ### Supabase-migraties
